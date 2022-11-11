@@ -1,0 +1,42 @@
+::1 - Fri Nov 04 2022 14:39:15 GMT+0530 (India Standard Time) - OPTIONS /volunteer-program HTTP/1.1 200 24 - 8 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+::1 - Fri Nov 04 2022 14:40:25 GMT+0530 (India Standard Time) - OPTIONS /api/artist-type HTTP/1.1 200 8 - 3 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+::1 - Fri Nov 04 2022 14:40:25 GMT+0530 (India Standard Time) - OPTIONS /api/artist?type=&filter= HTTP/1.1 200 8 - 4 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+::1 - Fri Nov 04 2022 14:40:26 GMT+0530 (India Standard Time) - GET /api/artist-type HTTP/1.1 304 - - 1540 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+::1 - Fri Nov 04 2022 14:40:27 GMT+0530 (India Standard Time) - GET /api/artist?type=&filter= HTTP/1.1 304 - - 2372 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+::1 - Fri Nov 04 2022 14:41:02 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 17 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 14:42:45 GMT+0530 (India Standard Time) - GET /api/artist?type=painting HTTP/1.1 200 549 - 189 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 16:38:59 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 - - 56 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 16:39:21 GMT+0530 (India Standard Time) - POST /artwork/ HTTP/1.1 200 55 - 234 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 16:40:26 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 204 - - 4 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 16:40:37 GMT+0530 (India Standard Time) - GET /api/arttist HTTP/1.1 404 35 - 5 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 16:40:45 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 51 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 16:41:10 GMT+0530 (India Standard Time) - GET /api/art-work HTTP/1.1 404 35 - 5 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 16:42:37 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 32 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 16:44:32 GMT+0530 (India Standard Time) - GET /api/artist?type=painting HTTP/1.1 200 549 - 42 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 16:44:48 GMT+0530 (India Standard Time) - GET /api/artist?type=Art HTTP/1.1 200 - - 90 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 17:22:22 GMT+0530 (India Standard Time) - OPTIONS /volunteer-program HTTP/1.1 200 24 - 21 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+::1 - Fri Nov 04 2022 17:45:52 GMT+0530 (India Standard Time) - POST /api/artwork?filter=A HTTP/1.1 200 30 - 89 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 17:48:11 GMT+0530 (India Standard Time) - GET /api/artist?`filter=a HTTP/1.1 200 - - 127 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 17:48:41 GMT+0530 (India Standard Time) - GET /api/artist?filter=K HTTP/1.1 200 - - 183 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 17:48:56 GMT+0530 (India Standard Time) - GET /api/artist?filter=A HTTP/1.1 200 525 - 25 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 17:49:56 GMT+0530 (India Standard Time) - GET /api/artist?filter=A&type=Art HTTP/1.1 200 525 - 16 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 17:50:10 GMT+0530 (India Standard Time) - GET /api/artist?filter=A&type=painter HTTP/1.1 200 68 - 84 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 17:51:04 GMT+0530 (India Standard Time) - OPTIONS /api/artwork-type HTTP/1.1 200 8 - 2 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+::1 - Fri Nov 04 2022 17:51:06 GMT+0530 (India Standard Time) - GET /api/artwork-type HTTP/1.1 200 49 - 12 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+::1 - Fri Nov 04 2022 17:51:23 GMT+0530 (India Standard Time) - OPTIONS /volunteer-program HTTP/1.1 200 24 - 2 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+::1 - Fri Nov 04 2022 17:51:23 GMT+0530 (India Standard Time) - GET /volunteer-program HTTP/1.1 200 49 - 8 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+::1 - Fri Nov 04 2022 18:01:38 GMT+0530 (India Standard Time) - GET /api/art-work HTTP/1.1 404 35 - 20 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 18:01:43 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 204 - - 5 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 18:01:58 GMT+0530 (India Standard Time) - GET /api/artist?type=Art& HTTP/1.1 200 - - 119 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 18:25:17 GMT+0530 (India Standard Time) - POST /artwork/ HTTP/1.1 200 55 - 122 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 18:25:34 GMT+0530 (India Standard Time) - GET /api/artist?type=Art& HTTP/1.1 200 - - 77 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 18:26:14 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 204 - - 2 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 18:47:08 GMT+0530 (India Standard Time) - GET /artistofyear HTTP/1.1 200 263 - 141 - PostmanRuntime/7.29.2
+::1 - Fri Nov 04 2022 18:47:19 GMT+0530 (India Standard Time) - POST /artistofyear/ HTTP/1.1 200 62 - 879 - PostmanRuntime/7.29.2
+::1 - Tue Nov 08 2022 11:58:24 GMT+0530 (India Standard Time) - GET /category?type=Painter HTTP/1.1 200 190 - 164 - PostmanRuntime/7.29.2
+::1 - Tue Nov 08 2022 11:59:56 GMT+0530 (India Standard Time) - GET /client HTTP/1.1 200 - - 274 - PostmanRuntime/7.29.2
+::1 - Tue Nov 08 2022 12:40:35 GMT+0530 (India Standard Time) - GET /api/artist?type=Art& HTTP/1.1 200 - - 868 - PostmanRuntime/7.29.2
+::1 - Tue Nov 08 2022 12:49:47 GMT+0530 (India Standard Time) - POST /api/artwork?type=painter HTTP/1.1 200 30 - 66 - PostmanRuntime/7.29.2
+::1 - Tue Nov 08 2022 12:54:54 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 204 - - 19 - PostmanRuntime/7.29.2
+::1 - Tue Nov 08 2022 13:00:46 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 14 - 45 - PostmanRuntime/7.29.2
+::1 - Tue Nov 08 2022 13:01:15 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 95 - PostmanRuntime/7.29.2

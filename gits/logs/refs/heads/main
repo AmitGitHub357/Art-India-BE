@@ -1,0 +1,66 @@
+0000000000000000000000000000000000000000 cf214fe4861db605a52de0931dbbfcf50ae525c6 arjunk-iconflux <arjun.k@iconflux.com> 1624011194 +0530	commit (initial): Server Init
+cf214fe4861db605a52de0931dbbfcf50ae525c6 66ca2767fd51ef82bebcc4b3e0f3d8490c350ee4 arjunk-iconflux <arjun.k@iconflux.com> 1624012930 +0530	commit: Client Route Created
+66ca2767fd51ef82bebcc4b3e0f3d8490c350ee4 80e26642be8346db10ff6152c2e11f260322a5a6 arjunk-iconflux <arjunkhetia@gmail.com> 1624012987 +0530	commit: Clear Logs
+80e26642be8346db10ff6152c2e11f260322a5a6 34088a95f729a0530dd58e4b943060779f862db4 arjunk-iconflux <arjunkhetia@gmail.com> 1624455529 +0530	commit: Login + Client Done
+34088a95f729a0530dd58e4b943060779f862db4 4aa936c0debbef2ef5965d4d79d66b65d4ee381e arjunk-iconflux <arjunkhetia@gmail.com> 1624474605 +0530	commit: JWT Implemented
+4aa936c0debbef2ef5965d4d79d66b65d4ee381e 8e87c2019a449831fd693954f2e33463e77405b0 arjunk-iconflux <arjunkhetia@gmail.com> 1624528453 +0530	commit: Route Security Done
+8e87c2019a449831fd693954f2e33463e77405b0 8dd489064a93eee1c7ae1225fd82b7011a5005e2 arjunk-iconflux <arjunkhetia@gmail.com> 1624529639 +0530	commit: JWT parse Done
+8dd489064a93eee1c7ae1225fd82b7011a5005e2 d2d40590a8567121a6d37971a428a36b0375ab11 arjunk-iconflux <arjunkhetia@gmail.com> 1624533255 +0530	commit: Artist API Done
+d2d40590a8567121a6d37971a428a36b0375ab11 3d81e48b5460a0f23d460acfa85f19a10e3c6191 arjunk-iconflux <arjunkhetia@gmail.com> 1624534217 +0530	commit: Artwork Done
+3d81e48b5460a0f23d460acfa85f19a10e3c6191 6278603961f3bf1abacbd6e2909464d6f4c761bc arjunk-iconflux <arjunkhetia@gmail.com> 1624535126 +0530	commit: Event Done
+6278603961f3bf1abacbd6e2909464d6f4c761bc fbd7b5a52458c17d8022b95836cb0b8c1052dacb arjunk-iconflux <arjunkhetia@gmail.com> 1624548141 +0530	commit: Forgot Password Done
+fbd7b5a52458c17d8022b95836cb0b8c1052dacb 2a7c818e173e0bc6d1f413e595615ea846330aae arjunk-iconflux <arjunkhetia@gmail.com> 1624624496 +0530	commit: JWT Renew Done
+2a7c818e173e0bc6d1f413e595615ea846330aae f43c80f67a8bcd6f33f73912a5830d38d3817c14 arjunk-iconflux <arjunkhetia@gmail.com> 1624630447 +0530	commit: Dashboard API Done
+f43c80f67a8bcd6f33f73912a5830d38d3817c14 4b1242aa0c7927c1a5848953c1ad60aec286adf3 arjunk-iconflux <arjunkhetia@gmail.com> 1624631121 +0530	commit: Dashboard API Done
+4b1242aa0c7927c1a5848953c1ad60aec286adf3 e2068b36d226b53d0259b54cef1afadcbe65bc4d arjunk-iconflux <arjunkhetia@gmail.com> 1624631567 +0530	commit: Dashboard API Done
+e2068b36d226b53d0259b54cef1afadcbe65bc4d d5065dec66cb720ef7d984fcca1a4df7a1e4465a arjunk-iconflux <arjunkhetia@gmail.com> 1624731143 +0530	commit: Artist Type Done
+d5065dec66cb720ef7d984fcca1a4df7a1e4465a 80e5e94533e0abebbdf76619910ee7ee6b2696c7 arjunk-iconflux <arjunkhetia@gmail.com> 1624731532 +0530	commit: Artwork Type Done
+80e5e94533e0abebbdf76619910ee7ee6b2696c7 0b8f90170c6eeca5dd4908ccbbef889ec914c270 arjunk-iconflux <arjunkhetia@gmail.com> 1624732039 +0530	commit: Artwork Category Done
+0b8f90170c6eeca5dd4908ccbbef889ec914c270 8977a7de210b56a9e2812e652163e68763ed743c arjunk-iconflux <arjunkhetia@gmail.com> 1624732337 +0530	commit: Artwork Style Done
+8977a7de210b56a9e2812e652163e68763ed743c e3417b5bf6fae30a4e063218b728f3011caf6a7a arjunk-iconflux <arjunkhetia@gmail.com> 1624732695 +0530	commit: Artwork Technique Done
+e3417b5bf6fae30a4e063218b728f3011caf6a7a 6c6e210b4be7c1a97b43d32f5193562bf2e1ca52 arjunk-iconflux <arjunkhetia@gmail.com> 1624733164 +0530	commit: Artwork Frame Done
+6c6e210b4be7c1a97b43d32f5193562bf2e1ca52 072711eb92f4b4a92cebaf209894978e3f7faa91 arjunk-iconflux <arjunkhetia@gmail.com> 1624883017 +0530	commit: Query Issue Resolved
+072711eb92f4b4a92cebaf209894978e3f7faa91 4ae8291aad53ef42dc30e89398b6da4afbce117a arjunk-iconflux <arjunkhetia@gmail.com> 1625750014 +0530	commit: Upload to S3 Done
+4ae8291aad53ef42dc30e89398b6da4afbce117a 58691c427f47629293788f0a164cd51678b4c2d3 arjunk-iconflux <arjunkhetia@gmail.com> 1625769712 +0530	commit: Artist Upload Done
+58691c427f47629293788f0a164cd51678b4c2d3 73bbaca37df564d10d2cd5bf81ae36c19bd2bfc2 arjunk-iconflux <arjunkhetia@gmail.com> 1625774200 +0530	commit: Artwork Upload Done
+73bbaca37df564d10d2cd5bf81ae36c19bd2bfc2 becc49d86dcb69bc43e27ff2273600c5b1e22597 arjunk-iconflux <arjunkhetia@gmail.com> 1625814856 +0530	commit: Artist Id Fix
+becc49d86dcb69bc43e27ff2273600c5b1e22597 72329c3317001356f51f25a7694ac1ed13ff5338 arjunk-iconflux <arjunkhetia@gmail.com> 1625851830 +0530	commit: Client Upload Done
+72329c3317001356f51f25a7694ac1ed13ff5338 1ffcf41fb4e5475e67a87d2a9050f47af06708a1 arjunk-iconflux <arjunkhetia@gmail.com> 1625852923 +0530	commit: Event Done
+1ffcf41fb4e5475e67a87d2a9050f47af06708a1 f97f1915ae679a01dfaac0cdba523463994626c6 arjunk-iconflux <arjunkhetia@gmail.com> 1625853044 +0530	commit: Event Done
+f97f1915ae679a01dfaac0cdba523463994626c6 106552be1a11b5dedf3047f298a9f37fa1927eb5 arjunk-iconflux <arjunkhetia@gmail.com> 1625855212 +0530	commit: Client Delete Done
+106552be1a11b5dedf3047f298a9f37fa1927eb5 8df67ae41730db08866b1d04393e7dfe2c9ff23f arjunk-iconflux <arjunkhetia@gmail.com> 1625855807 +0530	commit: Artist Delete Done
+8df67ae41730db08866b1d04393e7dfe2c9ff23f 007fa3d5c99f9444e0aa3e1596e66f40411f8e36 arjunk-iconflux <arjunkhetia@gmail.com> 1625855962 +0530	commit: Artwork Delete Done
+007fa3d5c99f9444e0aa3e1596e66f40411f8e36 982bdcee7293ee1cbee58d4c5ef81235857e768e arjunk-iconflux <arjunkhetia@gmail.com> 1625913184 +0530	commit: Client Done
+982bdcee7293ee1cbee58d4c5ef81235857e768e 6362ffdb577876f0f1b22e0583108a59ee29eae5 arjunk-iconflux <arjunkhetia@gmail.com> 1625913847 +0530	commit: Artist Done
+6362ffdb577876f0f1b22e0583108a59ee29eae5 4b71bae5b2fcc69dfa567fa4babb0866394e38f7 arjunk-iconflux <arjunkhetia@gmail.com> 1625914840 +0530	commit: Artwork Done
+4b71bae5b2fcc69dfa567fa4babb0866394e38f7 3ad9a0743d3d60b7943130421b6a9452a3f5e405 arjunk-iconflux <arjunkhetia@gmail.com> 1625918350 +0530	commit: Artwork Done
+3ad9a0743d3d60b7943130421b6a9452a3f5e405 e0b91e5cd81f43f3f9d1ae76c817bdf3a6fdc2e5 arjunk-iconflux <arjunkhetia@gmail.com> 1625948162 +0530	commit: Artist Done
+e0b91e5cd81f43f3f9d1ae76c817bdf3a6fdc2e5 1789a64bf4aaa5d35a5f20549f7294134d121697 arjunk-iconflux <arjunkhetia@gmail.com> 1626016424 +0530	commit: Artist Dropdown Done
+1789a64bf4aaa5d35a5f20549f7294134d121697 b98a1eca005c0b30293fd6cbe88d5b7b55f7b120 arjunk-iconflux <arjunkhetia@gmail.com> 1626271865 +0530	commit: Home Page API Done
+b98a1eca005c0b30293fd6cbe88d5b7b55f7b120 d176b633fb236e5cab71ccf42fe879fbee625848 arjunk-iconflux <arjunkhetia@gmail.com> 1626508087 +0530	commit: Upgrade Done
+d176b633fb236e5cab71ccf42fe879fbee625848 d12e8f89e0920099a26e47f89cf3592d8119e1ca arjunk-iconflux <arjunkhetia@gmail.com> 1626542309 +0530	commit: Artist Done
+d12e8f89e0920099a26e47f89cf3592d8119e1ca e439c0379d51d89410ce6cb4ae925832e9edb96b arjunk-iconflux <arjunkhetia@gmail.com> 1626673614 +0530	commit: Volunteer Program Done
+e439c0379d51d89410ce6cb4ae925832e9edb96b aedca8c514b063f323333052f35f3eaefca4e2e0 arjunk-iconflux <arjunkhetia@gmail.com> 1626682029 +0530	commit: Email Template Done
+aedca8c514b063f323333052f35f3eaefca4e2e0 7eb4bba25f4462a45ccdb37e302c6735ba77a599 arjunk-iconflux <arjunkhetia@gmail.com> 1626759631 +0530	commit: Server Configured
+7eb4bba25f4462a45ccdb37e302c6735ba77a599 2860604be8b6a847cf167d86be58763226dfee73 arjunk-iconflux <arjunkhetia@gmail.com> 1626806655 +0530	commit: Structure Modified
+2860604be8b6a847cf167d86be58763226dfee73 e0342dfda3dbc4a69f5715b013c260b8ae2c97c5 arjunk-iconflux <arjunkhetia@gmail.com> 1627318994 +0530	commit: Artist Updated
+e0342dfda3dbc4a69f5715b013c260b8ae2c97c5 01ca1f1fda62a51fb7bed5b2c0074156610a966e arjunk-iconflux <arjunkhetia@gmail.com> 1627319299 +0530	commit: DB updated
+01ca1f1fda62a51fb7bed5b2c0074156610a966e 7c975c4f81916e31e1600238fc3a97cdee83b6f3 arjunk-iconflux <arjunkhetia@gmail.com> 1627419371 +0530	commit: Artwork Done
+7c975c4f81916e31e1600238fc3a97cdee83b6f3 601a353917298691d9b7c58af3f42663f5c19afe arjunk-iconflux <arjunkhetia@gmail.com> 1627456543 +0530	commit: Client Artist Done
+601a353917298691d9b7c58af3f42663f5c19afe 7f82447e5a9db55bca792172b7c1f98313dca0dd arjunk-iconflux <arjunkhetia@gmail.com> 1627457422 +0530	commit: Pagination Done
+7f82447e5a9db55bca792172b7c1f98313dca0dd 77c12f454d752e248aab9dd6afb31f262f527497 arjunk-iconflux <arjunkhetia@gmail.com> 1627466867 +0530	commit: Sorting Done
+77c12f454d752e248aab9dd6afb31f262f527497 dea96065120a34adec3682e941a9839b4e7908b8 arjunk-iconflux <arjunkhetia@gmail.com> 1627631971 +0530	commit: Sold Done
+dea96065120a34adec3682e941a9839b4e7908b8 bf21ecaa16e4489915cfd47d50dfe7740e7fa44f arjunkhetia <arjunkhetia@gmail.com> 1627644671 +0530	commit: Filter Done
+bf21ecaa16e4489915cfd47d50dfe7740e7fa44f 7be2411c7d428f21aac18ed250fa36322e919f2e arjunkhetia <arjunkhetia@gmail.com> 1627646098 +0530	commit: Count Done
+7be2411c7d428f21aac18ed250fa36322e919f2e 24c9df6f962da431b119168e353ba71dfc68ffd5 arjunkhetia <arjunkhetia@gmail.com> 1627646141 +0530	commit: Fix
+24c9df6f962da431b119168e353ba71dfc68ffd5 97c02bff7bb084933fe8158703a2f3f1a109249a arjunkhetia <arjunkhetia@gmail.com> 1627647202 +0530	commit: Artist Type Done
+97c02bff7bb084933fe8158703a2f3f1a109249a 8a034cdb116ba54c7248984b66fbcd348997d334 arjunkhetia <arjunkhetia@gmail.com> 1627924042 +0530	commit: Artwork + CST Done
+8a034cdb116ba54c7248984b66fbcd348997d334 cdc6da952e4a5c078c18ed4a6804cf1904abdcb0 arjunkhetia <arjunkhetia@gmail.com> 1627986922 +0530	commit: Artwork Done
+cdc6da952e4a5c078c18ed4a6804cf1904abdcb0 8f52b12c5f46c9ef41c400aa2eadf0c23a712ca6 arjunkhetia <arjunkhetia@gmail.com> 1627995606 +0530	commit: Alphabet Filter Done
+8f52b12c5f46c9ef41c400aa2eadf0c23a712ca6 bbf4755cbd568364c3138c24b43730ee38ba7e81 arjunkhetia <arjunkhetia@gmail.com> 1628226689 +0530	commit: Artwork Multiple Images Done
+bbf4755cbd568364c3138c24b43730ee38ba7e81 fa2123edfa85fdba34de02020904d330620f63ab arjunkhetia <arjunkhetia@gmail.com> 1628250490 +0530	commit: Artwork Frame Done
+fa2123edfa85fdba34de02020904d330620f63ab 662b547057eff32aee3595f4f59c1351b1f32d4b arjunkhetia <arjunkhetia@gmail.com> 1628253532 +0530	commit: Minor Fix
+662b547057eff32aee3595f4f59c1351b1f32d4b 37e5144dce73d043151aa3fe1e09380222b6aaa0 arjunkhetia <arjunkhetia@gmail.com> 1628262790 +0530	commit: Artwork Filter Done
+37e5144dce73d043151aa3fe1e09380222b6aaa0 eda6bcff12e5909f45ea00c58eb677416f74277f arjunkhetia <arjunkhetia@gmail.com> 1628853958 +0530	commit: Artwork Frame Done
+eda6bcff12e5909f45ea00c58eb677416f74277f a0e89caf88a0e21268009f791f415b7fa208691c arjunkhetia <arjunkhetia@gmail.com> 1631257776 +0530	commit: Artwork Details Client Done
+a0e89caf88a0e21268009f791f415b7fa208691c b776fc06cbe41aa6ed9e64ea9038a3692590e196 Arjun Khetia <arjunkhetia@gmail.com> 1651606652 +0530	commit: API services

@@ -1,0 +1,119 @@
+::1 - Wed Nov 02 2022 09:29:22 GMT+0530 (India Standard Time) - POST /api/contact HTTP/1.1 - - - - - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 09:29:33 GMT+0530 (India Standard Time) - GET /api/artist-type HTTP/1.1 200 136 - 106 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 09:29:39 GMT+0530 (India Standard Time) - GET /api/chitchat HTTP/1.1 404 35 - 5 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 09:30:39 GMT+0530 (India Standard Time) - GET /api/chit-chat HTTP/1.1 404 35 - 9 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 10:02:39 GMT+0530 (India Standard Time) - GET /api/chitchat HTTP/1.1 404 35 - 14 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 10:03:03 GMT+0530 (India Standard Time) - POST /api/chitchat HTTP/1.1 200 13 - 3 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 10:56:02 GMT+0530 (India Standard Time) - OPTIONS /volunteer-program HTTP/1.1 200 24 - 3 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 10:56:02 GMT+0530 (India Standard Time) - GET /volunteer-program HTTP/1.1 200 49 - 92 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 11:05:06 GMT+0530 (India Standard Time) - POST /api/chitchat HTTP/1.1 500 58 - 2196 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 11:05:44 GMT+0530 (India Standard Time) - POST /api/chitchat HTTP/1.1 200 131 - 64 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 11:44:38 GMT+0530 (India Standard Time) - OPTIONS /volunteer-program HTTP/1.1 200 24 - 9 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 11:47:25 GMT+0530 (India Standard Time) - POST /api/chitchat HTTP/1.1 - - - - - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 12:41:10 GMT+0530 (India Standard Time) - POST /api/program HTTP/1.1 200 54 - 3790 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 12:42:02 GMT+0530 (India Standard Time) - POST /api/contact HTTP/1.1 200 54 - 3702 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 12:48:19 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 549 - 1276 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 12:52:42 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 549 - 86 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 12:54:08 GMT+0530 (India Standard Time) - GET /api/artist?type=painting HTTP/1.1 200 549 - 119 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 12:54:50 GMT+0530 (India Standard Time) - POST /artist-type HTTP/1.1 200 59 - 68 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 12:55:20 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 38 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 12:55:35 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 31 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 12:56:34 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 5 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 12:56:43 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 - - 79 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 12:57:13 GMT+0530 (India Standard Time) - GET /api/artist?type=painting HTTP/1.1 200 549 - 20 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 12:57:27 GMT+0530 (India Standard Time) - GET /api/artist?type=Art HTTP/1.1 200 - - 67 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 13:03:53 GMT+0530 (India Standard Time) - GET /api/artist?type=Art&filter=paint HTTP/1.1 200 68 - 190 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 13:04:23 GMT+0530 (India Standard Time) - GET /api/artist?type=Art&filter=Ar HTTP/1.1 200 68 - 51 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 13:04:34 GMT+0530 (India Standard Time) - GET /api/artist?type=Art&filter= HTTP/1.1 200 - - 50 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 13:08:21 GMT+0530 (India Standard Time) - OPTIONS /api/artist-type HTTP/1.1 200 8 - 3 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 13:08:21 GMT+0530 (India Standard Time) - OPTIONS /api/artist?type=&filter= HTTP/1.1 200 8 - 2 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 13:08:21 GMT+0530 (India Standard Time) - GET /api/artist-type HTTP/1.1 200 224 - 14 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 13:08:21 GMT+0530 (India Standard Time) - GET /api/artist?type=&filter= HTTP/1.1 200 - - 60 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 13:09:04 GMT+0530 (India Standard Time) - OPTIONS /volunteer-program HTTP/1.1 200 24 - 1 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 13:09:04 GMT+0530 (India Standard Time) - GET /volunteer-program HTTP/1.1 200 49 - 13 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 13:09:10 GMT+0530 (India Standard Time) - OPTIONS /api/artist-type HTTP/1.1 200 8 - 1 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 13:09:10 GMT+0530 (India Standard Time) - OPTIONS /api/artist?type=&filter= HTTP/1.1 200 8 - 2 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 13:09:10 GMT+0530 (India Standard Time) - GET /api/artist-type HTTP/1.1 304 - - 11 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 13:09:10 GMT+0530 (India Standard Time) - GET /api/artist?type=&filter= HTTP/1.1 304 - - 16 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 13:09:43 GMT+0530 (India Standard Time) - OPTIONS /volunteer-program HTTP/1.1 200 24 - 1 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 13:09:43 GMT+0530 (India Standard Time) - GET /volunteer-program HTTP/1.1 304 - - 6 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 13:09:46 GMT+0530 (India Standard Time) - OPTIONS /api/artist-type HTTP/1.1 200 8 - 2 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 13:09:46 GMT+0530 (India Standard Time) - OPTIONS /api/artist?type=&filter= HTTP/1.1 200 8 - 2 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 13:09:46 GMT+0530 (India Standard Time) - GET /api/artist-type HTTP/1.1 304 - - 16 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 13:09:46 GMT+0530 (India Standard Time) - GET /api/artist?type=&filter= HTTP/1.1 304 - - 14 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 13:56:01 GMT+0530 (India Standard Time) - GET /api/forgotpassword HTTP/1.1 404 35 - 20 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 13:56:17 GMT+0530 (India Standard Time) - POST /api/forgotpassword HTTP/1.1 404 35 - 15 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 13:56:58 GMT+0530 (India Standard Time) - POST /auth/forgotpassword HTTP/1.1 500 64 - 138 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 13:59:06 GMT+0530 (India Standard Time) - POST /auth/forgotpassword HTTP/1.1 500 64 - 44 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 14:16:27 GMT+0530 (India Standard Time) - POST /auth/forgotpassword HTTP/1.1 200 13 - 46 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 14:17:47 GMT+0530 (India Standard Time) - POST /auth/forgotpassword HTTP/1.1 200 13 - 54 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 14:18:34 GMT+0530 (India Standard Time) - POST /auth/forgotpassword HTTP/1.1 200 13 - 12 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 14:18:42 GMT+0530 (India Standard Time) - POST /auth/forgotpassword HTTP/1.1 200 13 - 11 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 14:19:14 GMT+0530 (India Standard Time) - POST /auth/forgotpassword HTTP/1.1 200 13 - 49 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 14:19:36 GMT+0530 (India Standard Time) - POST /auth/forgotpassword HTTP/1.1 200 21 - 49 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 14:20:10 GMT+0530 (India Standard Time) - POST /auth/forgotpassword HTTP/1.1 200 13 - 106 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 14:20:24 GMT+0530 (India Standard Time) - POST /auth/forgotpassword HTTP/1.1 200 14 - 71 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 14:20:37 GMT+0530 (India Standard Time) - POST /auth/forgotpassword HTTP/1.1 200 13 - 79 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 14:23:01 GMT+0530 (India Standard Time) - POST /auth/forgotpassword HTTP/1.1 200 49 - 103 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 14:24:22 GMT+0530 (India Standard Time) - GET /client HTTP/1.1 200 - - 136 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 14:25:32 GMT+0530 (India Standard Time) - GET /artist-of-year/ HTTP/1.1 404 35 - 46 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 14:26:25 GMT+0530 (India Standard Time) - POST /client/ HTTP/1.1 200 54 - 267 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 14:26:38 GMT+0530 (India Standard Time) - GET /client HTTP/1.1 200 - - 16 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 14:29:02 GMT+0530 (India Standard Time) - GET /client HTTP/1.1 200 - - 11 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 14:30:24 GMT+0530 (India Standard Time) - POST /auth/forgotpassword HTTP/1.1 200 430 - 100 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 14:39:27 GMT+0530 (India Standard Time) - POST /auth/forgotpassword HTTP/1.1 500 64 - 117 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 15:12:55 GMT+0530 (India Standard Time) - OPTIONS /volunteer-program HTTP/1.1 200 24 - 4 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 15:12:56 GMT+0530 (India Standard Time) - OPTIONS /api/artist-type HTTP/1.1 200 8 - 3 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 15:12:56 GMT+0530 (India Standard Time) - GET /api/artist-type HTTP/1.1 304 - - 36 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 15:12:56 GMT+0530 (India Standard Time) - GET /volunteer-program HTTP/1.1 304 - - 87 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 15:12:56 GMT+0530 (India Standard Time) - OPTIONS /api/artist?type=&filter= HTTP/1.1 200 8 - 2 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 15:12:56 GMT+0530 (India Standard Time) - GET /api/artist?type=&filter= HTTP/1.1 304 - - 21 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 16:03:48 GMT+0530 (India Standard Time) - POST /auth/forgotpassword HTTP/1.1 500 64 - 282 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:09:23 GMT+0530 (India Standard Time) - GET /style/?type=Artist HTTP/1.1 401 59 - 19 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:12:34 GMT+0530 (India Standard Time) - GET /artwork/ HTTP/1.1 200 683 - 92 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:15:36 GMT+0530 (India Standard Time) - POST /artwork/ HTTP/1.1 200 55 - 98 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:15:43 GMT+0530 (India Standard Time) - GET /artwork/ HTTP/1.1 200 967 - 7 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:22:19 GMT+0530 (India Standard Time) - POST /artwork/ HTTP/1.1 200 55 - 52 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:23:04 GMT+0530 (India Standard Time) - POST /api/artwork/ HTTP/1.1 500 35 - 10 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:24:37 GMT+0530 (India Standard Time) - POST /api/artwork/ HTTP/1.1 500 35 - 6 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:28:14 GMT+0530 (India Standard Time) - POST /api/artwork/ HTTP/1.1 500 176 - 43 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:32:43 GMT+0530 (India Standard Time) - POST /api/artwork/ HTTP/1.1 200 32 - 56 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:46:29 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 204 - - 65 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:47:57 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 204 - - 11 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:48:20 GMT+0530 (India Standard Time) - GET /api/artwork/?artwork_id=63624a5093e887218d3af6cb HTTP/1.1 204 - - 2 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:48:54 GMT+0530 (India Standard Time) - GET /api/artwork/?artwork_id=63624a5093e887218d3af6cb HTTP/1.1 500 0 - 51 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:49:40 GMT+0530 (India Standard Time) - GET /api/artwork/?artwork_id=63624a5093e887218d3af6cb HTTP/1.1 500 12 - 45 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:50:12 GMT+0530 (India Standard Time) - GET /api/artwork/?artwork_id=63624a5093e887218d3af6cb HTTP/1.1 200 36 - 49 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:50:28 GMT+0530 (India Standard Time) - GET /api/artwork/?artwork_id=63624a5093e887218d3af6cb HTTP/1.1 200 332 - 72 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:51:17 GMT+0530 (India Standard Time) - GET /artwork/?artwork_id=63624a5093e887218d3af6cb HTTP/1.1 200 - - 11 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:52:20 GMT+0530 (India Standard Time) - GET /artwork/?artwork_id=63624a5093e887218d3af6cb HTTP/1.1 200 - - 14 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:52:32 GMT+0530 (India Standard Time) - GET /api/artist-type HTTP/1.1 200 224 - 8 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:54:25 GMT+0530 (India Standard Time) - GET /category?type=Painter HTTP/1.1 401 59 - 15 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:55:30 GMT+0530 (India Standard Time) - GET /category?type=Painter HTTP/1.1 200 190 - 128 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:57:06 GMT+0530 (India Standard Time) - GET /api/cst?type=painter HTTP/1.1 200 238 - 34 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 16:58:13 GMT+0530 (India Standard Time) - OPTIONS /volunteer-program HTTP/1.1 200 24 - 2 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 16:58:13 GMT+0530 (India Standard Time) - GET /volunteer-program HTTP/1.1 304 - - 6 http://localhost:4200/ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+::1 - Wed Nov 02 2022 17:08:29 GMT+0530 (India Standard Time) - GET /artwork-frame/ HTTP/1.1 401 59 - 17 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 17:08:40 GMT+0530 (India Standard Time) - GET /api/artwork-frame/ HTTP/1.1 200 209 - 228 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 17:14:07 GMT+0530 (India Standard Time) - GET /api/services HTTP/1.1 200 49 - 8 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 17:14:41 GMT+0530 (India Standard Time) - GET /services HTTP/1.1 401 59 - 17 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 17:14:55 GMT+0530 (India Standard Time) - GET /api/services HTTP/1.1 200 49 - 46 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 17:18:27 GMT+0530 (India Standard Time) - GET /api/testimonial/ HTTP/1.1 200 49 - 11 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 17:19:49 GMT+0530 (India Standard Time) - GET /api/client-logo HTTP/1.1 404 35 - 8 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 17:20:17 GMT+0530 (India Standard Time) - GET /api/clients/logo HTTP/1.1 200 49 - 65 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 17:49:43 GMT+0530 (India Standard Time) - POST /services/ HTTP/1.1 401 59 - 11 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 17:50:15 GMT+0530 (India Standard Time) - POST /services/ HTTP/1.1 200 56 - 310 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 17:50:23 GMT+0530 (India Standard Time) - GET /services/ HTTP/1.1 401 59 - 8 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 17:51:06 GMT+0530 (India Standard Time) - GET /api/services HTTP/1.1 200 179 - 20 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 18:04:00 GMT+0530 (India Standard Time) - GET /testimonial/ HTTP/1.1 401 59 - 20 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 18:05:42 GMT+0530 (India Standard Time) - POST /testimonial/ HTTP/1.1 200 59 - 260 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 18:05:53 GMT+0530 (India Standard Time) - GET /testimonial/ HTTP/1.1 401 59 - 2 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 18:06:16 GMT+0530 (India Standard Time) - GET /testimonial/ HTTP/1.1 200 173 - 37 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 18:11:53 GMT+0530 (India Standard Time) - GET /testimonial/ HTTP/1.1 401 59 - 51 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 18:12:12 GMT+0530 (India Standard Time) - PUT /testimonial/ HTTP/1.1 200 59 - 135 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 18:12:23 GMT+0530 (India Standard Time) - GET /api/testimonial/ HTTP/1.1 200 170 - 22 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 18:13:22 GMT+0530 (India Standard Time) - DELETE /testomonial/?testomonial_id=6362641e7e602ae280bda266 HTTP/1.1 404 35 - 4 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 18:14:08 GMT+0530 (India Standard Time) - DELETE /testimonial/?testimonial_id=6362641e7e602ae280bda266 HTTP/1.1 200 59 - 49 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 18:14:14 GMT+0530 (India Standard Time) - GET /testimonial/ HTTP/1.1 401 59 - 13 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 18:14:21 GMT+0530 (India Standard Time) - GET /api/testimonial/ HTTP/1.1 200 49 - 15 - PostmanRuntime/7.29.2
+::1 - Wed Nov 02 2022 18:15:25 GMT+0530 (India Standard Time) - GET /api/clients/logo HTTP/1.1 200 49 - 11 - PostmanRuntime/7.29.2

@@ -1,0 +1,10 @@
+::1 - Mon Oct 31 2022 14:03:28 GMT+0530 (India Standard Time) - GET /api/chit-chat HTTP/1.1 404 35 - 284 - PostmanRuntime/7.29.2
+::1 - Mon Oct 31 2022 14:03:49 GMT+0530 (India Standard Time) - GET /api/chit-chat HTTP/1.1 404 35 - 13 - PostmanRuntime/7.29.2
+::1 - Mon Oct 31 2022 14:04:01 GMT+0530 (India Standard Time) - GET /api/chitchat HTTP/1.1 404 35 - 2 - PostmanRuntime/7.29.2
+::1 - Mon Oct 31 2022 14:04:04 GMT+0530 (India Standard Time) - GET /api/chitchat HTTP/1.1 404 35 - 7 - PostmanRuntime/7.29.2
+::1 - Mon Oct 31 2022 14:04:24 GMT+0530 (India Standard Time) - GET /api/chitchat HTTP/1.1 404 35 - 7 - PostmanRuntime/7.29.2
+::1 - Mon Oct 31 2022 14:05:00 GMT+0530 (India Standard Time) - GET /api/artist-type HTTP/1.1 200 49 - 677 - PostmanRuntime/7.29.2
+::1 - Mon Oct 31 2022 14:05:16 GMT+0530 (India Standard Time) - GET /artist-type/ HTTP/1.1 200 49 - 12 - PostmanRuntime/7.29.2
+::1 - Mon Oct 31 2022 14:05:32 GMT+0530 (India Standard Time) - POST /artist-type HTTP/1.1 200 59 - 971 - PostmanRuntime/7.29.2
+::1 - Mon Oct 31 2022 14:05:42 GMT+0530 (India Standard Time) - GET /api/artist-type HTTP/1.1 200 136 - 19 - PostmanRuntime/7.29.2
+::1 - Mon Oct 31 2022 14:08:02 GMT+0530 (India Standard Time) - POST /api/contact HTTP/1.1 500 56 - 12353 - PostmanRuntime/7.29.2
