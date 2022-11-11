@@ -85,70 +85,70 @@ router.post("/login", function (req, res, next) {
       }
     });
 });
-router.post("/forgotpassword", async (req, res, next) => {
-  let OTP = ''
-  function generateOTP() {
-    var digits = '0123456789';
-    for (let i = 0; i < 4; i++) {
-      OTP += digits[Math.floor(Math.random() * 10)];
-    }
-    return OTP;
-  }
-  try {
-    const email = req.body.email ? req.body.email : "";
-    db.get()
-      .collection("client")
-      .find({ email: email })
-      .toArray(function (err, result) {
-        if (err) {
-          res.send({
-            error: err,
-            status: 400,
-            success: false
-          })
-        } else {
-          if (result.length === 0) {
-            res.send({
-              error: "no user found!",
-              status: 400,
-              success: true
-            })
-          } else {
-            // res.send({result})
-            transporter.sendMail(mailOptions, function (error, info) {
-              if (error) {
-                res.send(error);
-              } else {
-                console.log('Email sent: ' + info.response);
-                res.send({
-                  success: true,
-                  status: 200,
-                  message: result
-                })
-              }
-            });
+// router.post("/forgotpassword", async (req, res, next) => {
+//   let OTP = ''
+//   function generateOTP() {
+//     var digits = '0123456789';
+//     for (let i = 0; i < 4; i++) {
+//       OTP += digits[Math.floor(Math.random() * 10)];
+//     }
+//     return OTP;
+//   }
+//   try {
+//     const email = req.body.email ? req.body.email : "";
+//     db.get()
+//       .collection("client")
+//       .find({ email: email })
+//       .toArray(function (err, result) {
+//         if (err) {
+//           res.send({
+//             error: err,
+//             status: 400,
+//             success: false
+//           })
+//         } else {
+//           if (result.length === 0) {
+//             res.send({
+//               error: "no user found!",
+//               status: 400,
+//               success: true
+//             })
+//           } else {
+//             // res.send({result})
+//             transporter.sendMail(mailOptions, function (error, info) {
+//               if (error) {
+//                 res.send(error);
+//               } else {
+//                 console.log('Email sent: ' + info.response);
+//                 res.send({
+//                   success: true,
+//                   status: 200,
+//                   message: result
+//                 })
+//               }
+//             });
 
-            let context = {
-              code: nanoid()
-            };
-          }
-        }
-      })
+//             let context = {
+//               code: nanoid()
+//             };
+//           }
+//         }
+//       })
 
-    var mailOptions = {
-      from: secret.ADMIN_EMAIL,
-      to: "amit979786@gmail.com",
-      subject: 'forgot password OTP',
-      text: `Forgot Password otp for new password generate ${generateOTP()}`
-    }
-  } catch (err) {
-    res.send({
-      message: err.message,
-      status: 400,
-      success: false
-    })
-  }
-})
+//     var mailOptions = {
+//       from: secret.ADMIN_EMAIL,
+//       to: "amit979786@gmail.com",
+//       subject: 'forgot password OTP',
+//       text: `Forgot Password otp for new password generate ${generateOTP()}`
+//     }
+//   } catch (err) {
+//     res.send({
+//       message: err.message,
+//       status: 400,
+//       success: false
+//     })
+//   }
+// })
 //end
 // router.post("/forgotpassword", function (req, res, next) {
 // let OTP = ''
@@ -209,7 +209,7 @@ router.post("/forgotpassword", async (req, res, next) => {
 //       res.send(httpUtil.success(200, "Forgot Password Mail Sent.", result));
 //     }
 //   }
-//   // )
+// )
 // } catch (err) {
 //   res.send({
 //     error: err.message,
