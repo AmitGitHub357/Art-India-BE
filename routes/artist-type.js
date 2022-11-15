@@ -5,7 +5,7 @@ var { ObjectId } = require("mongodb");
 var httpUtil = require("../utilities/http-messages");
 var jwt = require("../utilities/jwt");
 
-router.get("/", function (req, res, next) {
+router.get("/", jwt.authenticateToken,function (req, res, next) {
   db.get()
     .collection("artist-type")
     .find({})
@@ -15,7 +15,7 @@ router.get("/", function (req, res, next) {
     });
 });
 
-router.post("/", function (req, res, next) {
+router.post("/", jwt.authenticateToken,function (req, res, next) {
   const data = {
     type: req.body.type ? req.body.type : "",
     createdAt: Date.now(),
@@ -35,7 +35,7 @@ router.post("/", function (req, res, next) {
 
 
 
-router.put("/", function (req, res, next) {
+router.put("/", jwt.authenticateToken, function (req, res, next) {
   const type_id = req.body.type_id ? ObjectId(req.body.type_id) : "";
   if (type_id) {
     let Id = { _id: type_id };
@@ -60,7 +60,7 @@ router.put("/", function (req, res, next) {
   }
 });
 
-router.delete("/", function (req, res, next) {
+router.delete("/",jwt.authenticateToken, function (req, res, next) {
   const type_id = req.query.type_id ? ObjectId(req.query.type_id) : "";
   if (type_id) {
     db.get()

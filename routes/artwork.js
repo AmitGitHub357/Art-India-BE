@@ -181,7 +181,7 @@ router.post("/", upload.any("files"), async function (req, res, next) {
 //   }
 // });
 
-router.put("/", upload.any("files"), async function (req, res, next) {
+router.put("/",jwt.authenticateToken, upload.any("files"), async function (req, res, next) {
   const files = req.files ? req.files : [];
   const body = req.body.data;
   const artwork_id = body.artwork_id ? ObjectId(body.artwork_id) : "";
@@ -285,7 +285,7 @@ router.put("/", upload.any("files"), async function (req, res, next) {
   }
 });
 
-router.patch("/", function (req, res, next) {
+router.patch("/",jwt.authenticateToken, function (req, res, next) {
   const artwork_id = req.body.artwork_id ? ObjectId(req.body.artwork_id) : "";
   if (artwork_id) {
     let Id = { _id: artwork_id };
@@ -308,7 +308,7 @@ router.patch("/", function (req, res, next) {
   }
 });
 
-router.delete("/", function (req, res, next) {
+router.delete("/",jwt.authenticateToken, function (req, res, next) {
   const artwork_id = req.query.artwork_id ? ObjectId(req.query.artwork_id) : "";
   if (artwork_id) {
     // unlinkAsync(req.file.path)

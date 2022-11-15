@@ -19,7 +19,7 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage });
 
-router.post("/", function (req, res, next) {
+router.post("/",jwt.authenticateToken, function (req, res, next) {
   const body = req.body
   const data = {
     heading: body.heading ? body.heading : "",
@@ -45,7 +45,7 @@ router.post("/", function (req, res, next) {
     });
 });
 
-router.delete("/", function (req, res, next) {
+router.delete("/",jwt.authenticateToken, function (req, res, next) {
   const aoy_id = req.query.aoy_id ? ObjectId(req.query.aoy_id) : "";
   if (aoy_id) {
     db.get()
@@ -70,7 +70,7 @@ router.get("/", function (req, res, next) {
     });
 });
 
-router.put("/", upload.single("file"), function (req, res, next) {
+router.put("/",jwt.authenticateToken, upload.single("file"), function (req, res, next) {
   const body = JSON.parse(req.body.data);
   const aoty_id = body.aoty_id ? ObjectId(body.aoty_id) : "";
   if (aoty_id) {

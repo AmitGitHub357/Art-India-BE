@@ -25,16 +25,6 @@ router.post("/",
     const body = req.body;
     body.createdAt = Date.now()
     body.updatedAt = null
-    // createdAt: Date.now(),
-    //   updatedAt: null,
-    // const data = {
-    //   frame: body.frame ? body.frame : "",
-    //             image: image,
-    //             sampleImage: sampleImage,
-    //             createdAt: Date.now(),
-    //             updatedAt: null,
-    //             status: true,
-    // }
     if (imageFiles) {
       for (let i = 0; i < imageFiles.length; i++) {
         let imgObj = imageFiles[i].destination + imageFiles[i].originalname
@@ -62,92 +52,8 @@ router.get("/",
       });
   });
 
-// router.post(
-//   "/",
-//   upload.any("files"),
-//   function (req, res, next) {
-//     const files = req.files ? req.files : [];
-//     const body = JSON.parse(req.body.data);
-//     let image, sampleImage;
-//     if (files.length && body.frame) {
-//       async.waterfall(
-//         [
-//           function (callback) {
-//             s3Utility
-//               .uploadFile("frame/", files[0])
-//               .then((uploadresult) => {
-//                 image = {
-//                   name: files[0].originalname,
-//                   mimetype: files[0].mimetype,
-//                   path: uploadresult,
-//                   size: files[0].size,
-//                 };
-//                 callback(null, "Done");
-//               })
-//               .catch((err) => {
-//                 console.log(err);
-//                 callback(err, null);
-//               });
-//           },
-//           function (result, callback) {
-//             s3Utility
-//               .uploadFile("frame/", files[1])
-//               .then((uploadresult) => {
-//                 sampleImage = {
-//                   name: files[1].originalname,
-//                   mimetype: files[1].mimetype,
-//                   path: uploadresult,
-//                   size: files[1].size,
-//                 };
-//                 callback(null, "Done");
-//               })
-//               .catch((err) => {
-//                 console.log(err);
-//                 callback(err, null);
-//               });
-//           },
-//           function (result, callback) {
-//             const data = {
-// frame: body.frame ? body.frame : "",
-// image: image,
-// sampleImage: sampleImage,
-// createdAt: Date.now(),
-// updatedAt: null,
-// status: true,
-//             };
-//             db.get()
-//               .collection("artwork-frame")
-//               .insertOne(data, function (err, dbresult) {
-//                 if (err) {
-//                   callback(err, null);
-//                 }
-//                 files.forEach((file) => {
-//                   fs.unlinkSync("./uploads/" + file.originalname);
-//                 });
-//                 callback(null, "Done");
-//               });
-//           },
-//         ],
-//         function (err, result) {
-//           if (err) {
-//             res
-//               .status(500)
-//               .send(httpUtil.error(500, "Artwork Frame Creation Failed."));
-//           } else {
-//             res.send(httpUtil.success(200, "Artwork Frame Created."));
-//           }
-//         }
-//       );
-//     } else {
-//       res
-//         .status(204)
-//         .send(httpUtil.error(204, "Artwork Frame Name or Image is missing."));
-//     }
-//   }
-// );
-
 router.put(
-  "/",
+  "/",jwt.authenticateToken,
   upload.any("files"),
   jwt.authenticateToken,
   async function (req, res, next) {

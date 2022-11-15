@@ -22,7 +22,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
-router.get("/:name", function (req, res, next) {
+router.get("/:name",jwt.authenticateToken, function (req, res, next) {
   const name = req.params.name
   db.get()
     .collection("artist")
@@ -34,7 +34,7 @@ router.get("/:name", function (req, res, next) {
     });
 });
 
-router.get("/", function (req, res, next) {
+router.get("/",jwt.authenticateToken, function (req, res, next) {
   db.get()
     .collection("artist")
     .find({})
@@ -45,7 +45,7 @@ router.get("/", function (req, res, next) {
     });
 });
 
-router.post("/", upload.single("file"), function (req, res, next) {
+router.post("/",jwt.authenticateToken, upload.single("file"), function (req, res, next) {
   try{
 
   const body = req.body;
@@ -141,7 +141,7 @@ router.post("/", upload.single("file"), function (req, res, next) {
   }
 });
 
-router.put("/", upload.single("file"), function (req, res, next) {
+router.put("/",jwt.authenticateToken, upload.single("file"), function (req, res, next) {
   const body = req.body;
   const artist_id = body.artist_id ? ObjectId(body.artist_id) : "";
   if (artist_id) {
@@ -252,7 +252,7 @@ router.put("/", upload.single("file"), function (req, res, next) {
   }
 });
 
-router.patch("/", function (req, res, next) {
+router.patch("/",jwt.authenticateToken, function (req, res, next) {
   const artist_id = req.body.artist_id ? ObjectId(req.body.artist_id) : "";
   if (artist_id) {
     let Id = { _id: artist_id };
@@ -275,7 +275,7 @@ router.patch("/", function (req, res, next) {
   }
 });
 
-router.delete("/", function (req, res, next) {
+router.delete("/",jwt.authenticateToken, function (req, res, next) {
   const artist_id = req.query.artist_id ? ObjectId(req.query.artist_id) : "";
   if (artist_id) {
     async.waterfall(

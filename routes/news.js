@@ -10,7 +10,7 @@ var multer = require("multer");
 var fs = require("fs");
 const { promisify } = require('util')
 const unlinkAsync = promisify(fs.unlink)
-// var jwt = require("../utilities/jwt")
+const path = require("path");
 async function asyncForEach(array, callback) {
   for (let index = 0; index < array.length; index++) {
     await callback(array[index], index, array);
@@ -19,7 +19,7 @@ async function asyncForEach(array, callback) {
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads/");
+    cb(null,"/uploads/");
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
@@ -43,8 +43,8 @@ router.post("/", upload.any("files"), async function (req, res, next) {
   const body = req.body;
   if (imageFiles) {
     for (let i = 0; i < imageFiles.length; i++) {
-      let imgObj = imageFiles[i].destination + imageFiles[i].originalname
-      imagePath.push(imgObj)
+      let imgObj =  path.join(`${__dirname} + ${imageFiles[i].destination} + ${imageFiles[i].originalname}`)
+      imagePath.push(imgObj) 
     }
     body.images = imagePath
   }
