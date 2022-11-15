@@ -29,6 +29,7 @@
     "portfinder": "^1.0.28",
     "request": "^2.88.2",
     "rotating-file-stream": "^2.1.5",
+    "sendmail": "^1.6.1",
     "serve-favicon": "^2.5.0",
     "winston": "^3.3.3"
   },

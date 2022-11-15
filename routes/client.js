@@ -31,103 +31,7 @@ router.get("/", function (req, res, next) {
     });
 });
 
-// router.post("/", upload.single("file"), async function (req, res, next) {
-  // res.send({
-  // body : req.body
-  // })
-  // res.send({ hash })
-  // return hash;
-  // res.send({
-  // salt : secret.SALT_ROUNDS
-  // })
-
-//   async.waterfall(
-//     [
-//       function (callback) {
-//         bcrypt.hash(
-//           req.body.password,
-//           secret.SALT_ROUNDS,
-//           function (err, hash) 
-//           {
-//             const data = {
-//   name: req.body.name ? req.body.name : "",
-//   password: hash ,
-//   email: req.body.email ? req.body.email : "",
-//   mobile: req.body.mobile ? req.body.mobile : "",
-//   dob: req.body.dob ? req.body.dob : "",
-//   gender: req.body.gender ? req.body.gender : "",
-//   address: req.body.address ? req.body.address : "",
-//   city: req.body.city ? req.body.city : "",
-//   state: req.body.state ? req.body.state : "",
-//   country: req.body.country ? req.body.country : "",
-//   zipcode: req.body.zipcode ? req.body.zipcode : "",
-//   favourite: req.body.favourite ? req.body.favourite : [],
-//   createdAt: Date.now(),
-//   updatedAt: null,
-//   status: req.body.status,
-//   type : req.body.type
-//             };
-//             // generate salt to hash password
-//   const salt = await bcrypt.genSalt(10);
-//   // now we set user password to hashed password
-//   body.password = await bcrypt.hash(body.password, salt);
-//             db.get()
-//               .collection("client")
-//               .insertOne(data, function (err, dbresult) {
-//                 if (err) callback(err, null);
-//                 callback(null, dbresult.insertedId);
-//               });
-//           }
-//         );
-//       },
-//       function (result, callback) {
-//         if (req.file) {
-//           s3Utility
-//             .uploadFile("client/" + result + "/", req.file)
-//             .then((uploadresult) => {
-//               let data = {
-//                 $set: {
-//                   image: {
-//                     name: req.file.originalname,
-//                     mimetype: req.file.mimetype,
-//                     path: uploadresult,
-//                     size: req.file.size,
-//                   },
-//                 },
-//               };
-//               db.get()
-//                 .collection("client")
-//                 .updateOne(
-//                   { _id: ObjectId(result) },
-//                   data,
-//                   function (err, dbresult) {
-//                     if (err) {
-//                       callback(err, null);
-//                     }
-//                     fs.unlinkSync("./uploads/" + req.file.originalname);        
-//                     callback(null, dbresult);
-//                   }
-//                 );
-//             })
-//             .catch((err) => {
-//               console.log(err);
-//               callback(err, null);
-//             });
-//         } else {
-//           callback(null, "No File.");
-//         }
-//       },
-//     ],
-//     function (err, result) {
-//       if (err) {
-//         res.status(500).send(httpUtil.error(500, "Client Creation Failed."));
-//       } else {
-//         res.send(httpUtil.success(200, "Client Created."));
-//       }
-//     }
-//   );
-// })
- router.post("/", upload.any("files"), async function (req, res, next) {
+router.post("/", upload.any("files"), async function (req, res, next) {
   const imageFiles = req.files ? req.files : [];
   const imagePath = []
   const body = req.body;
@@ -136,6 +40,7 @@ router.get("/", function (req, res, next) {
   const salt = await bcrypt.genSalt(10);
   // now we set user password to hashed password
   body.password = await bcrypt.hash(body.password, salt);
+  body.resetToken = ""
   if (imageFiles) { 
     for (let i = 0; i < imageFiles.length; i++) {
       let imgObj = imageFiles[i].destination + imageFiles[i].originalname
@@ -143,9 +48,7 @@ router.get("/", function (req, res, next) {
     }
     body.images = imagePath
   }
-  res.send({
-    body
-  })
+
   db.get()
     .collection("client")
     .insertOne(body, function (err, dbresult) {
@@ -154,88 +57,6 @@ router.get("/", function (req, res, next) {
       res.send(httpUtil.success(200, "Client Registered."));
     });
 })
-// router.post("/",upload.single("file"), async (req, res) => {
-//   try{
-//   const body = req.body;
-//   if (!(body.email && body.password)) {
-//     return res.status(400).send({ error: "Data not formatted properly" });
-//   }
-  // const body = req.body.password
-  // creating a new mongoose doc from user data
-  // const user = new User(body);
-  // generate salt to hash password
-  // const salt = await bcrypt.genSalt(10);
-  // now we set user password to hashed password
-  // body.password = await bcrypt.hash(body.password, salt);
-  // res.send({
-  //   pass : body
-  // })}catch(err){
-  //   res.send({
-  //     error : err.message
-  //   })
-  // }
-  // user.save().then((doc) => res.status(201).send(doc));
-// });
-
-//   router.post("/", async function (req, res, next) {
-    
-//     try{
-//     const hash = await bcrypt.hash(req.body.password, secret.SALT_ROUNDS,(err , hash) => {
-//       if(err){
-//         res.send({
-//           error : err.message
-//         })
-//       }
-//       else
-//         res.send(hash)
-//     });
-//     const data = {
-//       // name: req.body.name ? req.body.name : "",
-//       // type: req.body.type ? req.body.type : "",
-//       // start: req.body.start ? req.body.start : "",
-//       // stop: req.body.stop ? req.body.stop : "",
-//       // place: req.body.place ? req.body.place : "",
-//       // limit: req.body.limit ? req.body.limit : "",
-//       // participant: req.body.participant ? req.body.participant : [],
-//       // winner: req.body.winner ? req.body.winner : [],
-//       // createdAt: Date.now(),
-//       // updatedAt: null,
-//       // status: req.body.status ? req.body.status : "Active",
-//       name: req.body.name ? req.body.name : "",
-//       password: hash,
-//       email: req.body.email ? req.body.email : "",
-//       mobile: req.body.mobile ? req.body.mobile : "",
-//       dob: req.body.dob ? req.body.dob : "",
-//       gender: req.body.gender ? req.body.gender : "",
-//       address: req.body.address ? req.body.address : "",
-//       city: req.body.city ? req.body.city : "",
-//       state: req.body.state ? req.body.state : "",
-//       country: req.body.country ? req.body.country : "",
-//       zipcode: req.body.zipcode ? req.body.zipcode : "",
-//       favourite: req.body.favourite ? req.body.favourite : [],
-//       createdAt: Date.now(),
-//       updatedAt: null,
-//       status: req.body.status,
-//       type: req.body.type
-//     };
-//     res.send({
-//       data
-//     })
-//     db.get()
-//       .collection("client")
-//       .insertOne(data, function (err, dbresult) {
-//         if (err)
-//           res.status(500).send(httpUtil.error(500, "client Creation Failed."));
-//         res.send(httpUtil.success(200, "Client Registered"));
-//       });
-//   }catch(err) {
-//       res.send({
-//         status : 400,
-//         error : err.message
-//       })
-//   }});
-// });
-
 router.put("/", upload.single("file"), function (req, res, next) {
   const client_id = req.body.client_id ? ObjectId(req.body.client_id) : "";
   if (client_id) {

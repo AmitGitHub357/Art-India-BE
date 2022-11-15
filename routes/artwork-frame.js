@@ -19,48 +19,48 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage });
 router.post("/",
-jwt.authenticateToken, upload.any("files"), async function (req, res, next) {
-  const imageFiles = req.files ? req.files : [];
-  const imagePath = []
-  const body = req.body;
-  body.createdAt = Date.now()
-  body.updatedAt = null
-  // createdAt: Date.now(),
-  //   updatedAt: null,
-  // const data = {
-  //   frame: body.frame ? body.frame : "",
-  //             image: image,
-  //             sampleImage: sampleImage,
-  //             createdAt: Date.now(),
-  //             updatedAt: null,
-  //             status: true,
-  // }
-  if (imageFiles) {
-    for (let i = 0; i < imageFiles.length; i++) {
-      let imgObj = imageFiles[i].destination + imageFiles[i].originalname
-      imagePath.push(imgObj)
+  jwt.authenticateToken, upload.any("files"), async function (req, res, next) {
+    const imageFiles = req.files ? req.files : [];
+    const imagePath = []
+    const body = req.body;
+    body.createdAt = Date.now()
+    body.updatedAt = null
+    // createdAt: Date.now(),
+    //   updatedAt: null,
+    // const data = {
+    //   frame: body.frame ? body.frame : "",
+    //             image: image,
+    //             sampleImage: sampleImage,
+    //             createdAt: Date.now(),
+    //             updatedAt: null,
+    //             status: true,
+    // }
+    if (imageFiles) {
+      for (let i = 0; i < imageFiles.length; i++) {
+        let imgObj = imageFiles[i].destination + imageFiles[i].originalname
+        imagePath.push(imgObj)
+      }
+      body.frame_images = imagePath
     }
-    body.frame_images = imagePath
-  }
-  db.get()
-    .collection("artwork-frame")
-    .insertOne(body, function (err, dbresult) {
-      if (err)
-        res.status(500).send(httpUtil.error(500, "artwork frame Creation Failed."));
-      res.send(httpUtil.success(200, "artwork frame Created."));
-    });
-})
+    db.get()
+      .collection("artwork-frame")
+      .insertOne(body, function (err, dbresult) {
+        if (err)
+          res.status(500).send(httpUtil.error(500, "artwork frame Creation Failed."));
+        res.send(httpUtil.success(200, "artwork frame Created."));
+      });
+  })
 
 router.get("/",
-jwt.authenticateToken, function (req, res, next) {
-  db.get()
-    .collection("artwork-frame")
-    .find({})
-    .toArray(function (err, result) {
-      if (err) throw err;
-      res.send(httpUtil.success(200, "", result));
-    });
-});
+  jwt.authenticateToken, function (req, res, next) {
+    db.get()
+      .collection("artwork-frame")
+      .find({})
+      .toArray(function (err, result) {
+        if (err) throw err;
+        res.send(httpUtil.success(200, "", result));
+      });
+  });
 
 // router.post(
 //   "/",
@@ -255,29 +255,29 @@ router.put(
 //   }
 // });
 router.delete("/",
-jwt.authenticateToken, function (req, res, next) {
-  try{
-    const frame_id = req.query.frame_id ? ObjectId(req.query.frame_id) : "";
-    if (frame_id) {
-      // unlinkAsync(req.file.path)
-      db.get() 
-        .collection("artwork-frame")
-        .deleteOne({ _id: frame_id }, function (err, result) {
-          if (err)
-            res.status(204).send(httpUtil.error(204, "artwork-frame deletion error."));
-          res.send(httpUtil.success(200, "artwork-frame deleted."));
-        });
-    } else {
-      res.status(204).send(httpUtil.error(204, "artwork-frame ID is missing."));
+  jwt.authenticateToken, function (req, res, next) {
+    try {
+      const frame_id = req.query.frame_id ? ObjectId(req.query.frame_id) : "";
+      if (frame_id) {
+        // unlinkAsync(req.file.path)
+        db.get()
+          .collection("artwork-frame")
+          .deleteOne({ _id: frame_id }, function (err, result) {
+            if (err)
+              res.status(204).send(httpUtil.error(204, "artwork-frame deletion error."));
+            res.send(httpUtil.success(200, "artwork-frame deleted."));
+          });
+      } else {
+        res.status(204).send(httpUtil.error(204, "artwork-frame ID is missing."));
+      }
+    } catch (err) {
+      res.send({
+        status: 400,
+        error: err.message,
+        success: false
+      })
     }
-  }catch(err) {
-    res.send({
-      status : 400,
-      error : err.message,
-      success : false
-    })
-  }
-  
-});
+
+  });
 
 module.exports = router;

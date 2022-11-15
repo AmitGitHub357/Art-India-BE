@@ -45,6 +45,7 @@ router.post("/", upload.any("files"), async function (req, res, next) {
   const imageFiles = req.files ? req.files : [];
   const imagePath = []
   const body = req.body;
+  body.artistId = ObjectId(body.artistId); 
   if (imageFiles) {
     for (let i = 0; i < imageFiles.length; i++) {
       let imgObj = imageFiles[i].destination + imageFiles[i].originalname
@@ -53,13 +54,12 @@ router.post("/", upload.any("files"), async function (req, res, next) {
     body.images = imagePath
   }
   db.get()
-    .collection("artwork")
+    .collection("artwork")  
     .insertOne(body, function (err, dbresult) {
       if (err)
         res.status(500).send(httpUtil.error(500, "artwork Creation Failed."));
       res.send(httpUtil.success(200, "artwork Created."));
     });
-  // });
 })
 
 // router.post("/", upload.any("files"), async function (req, res, next) {
@@ -183,14 +183,14 @@ router.post("/", upload.any("files"), async function (req, res, next) {
 
 router.put("/", upload.any("files"), async function (req, res, next) {
   const files = req.files ? req.files : [];
-  const body = JSON.parse(req.body.data);
+  const body = req.body.data;
   const artwork_id = body.artwork_id ? ObjectId(body.artwork_id) : "";
   let mainImage;
   let supplementImages = [];
   let oldImages = [];
   if (artwork_id) {
     const data = {
-      $set: {
+      $set: {       
         name: body.name ? body.name : "",
         description: body.description ? body.description : "",
         price: body.price ? parseInt(body.price) : "",
