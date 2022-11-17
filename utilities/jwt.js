@@ -2,19 +2,21 @@ var jwt = require("jsonwebtoken");
 var secret = require("../conf/secrets");
 var httpUtil = require("../utilities/http-messages");
 var db = require("../dbconfig");
+const { ObjectID } = require("bson");
 
 module.exports.authenticateToken = async function (req, res, next) {
-  try {
+  try { 
     var token = req.headers.authorization
-    // res.send({
-    //   tokens : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyOWMyZmZkYWQ5NzBkZWViOTA1NCIsImVtYWlsIjoiYW1pdEBnbWFpbC5jb20iLCJpYXQiOjE2Njg1MTY2MDYsImV4cCI6MTY2ODUyMDIwNn0.7wHC-LTcTR5PLDdT5QcQoTWlmQgn3fiEoGCkr0avpgQ",
-    //   token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyOWMyZmZkYWQ5NzBkZWViOTA1NCIsImVtYWlsIjoiYW1pdEBnbWFpbC5jb20iLCJpYXQiOjE2Njg1MTUyNTEsImV4cCI6MTY2ODUxODg1MX0.7HKmhOA3MMH1FZfWQMjxY5NqvBGnL6P5rEmYNA9_yyQ",
-    //   tokend : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmUyOWMyZmZkYWQ5NzBkZWViOTA1NCIsImVtYWlsIjoiYW1pdEBnbWFpbC5jb20iLCJpYXQiOjE2Njg1MTUyNTEsImV4cCI6MTY2ODUxODg1MX0.7HKmhOA3MMH1FZfWQMjxY5NqvBGnL6P5rEmYNA9_yyQ"
-    // })
-    // res.send({
-    //   token
-    // })
-    db.get().collection("client").find({ accessToken: token }).toArray(function (err, result) {
+    const decoded = jwt.verify(token, secret.JWT_SECRET)
+    const id = ObjectID(decoded.id)
+    if(!token){
+      res.send({
+        status : 400,
+        success : false,
+        message : "token is missing !"
+      })
+    }   
+    db.get().collection("client").find({ _id : id }).toArray(function (err, result) {
       if (err) {
         res.send({
           error: err,
@@ -26,11 +28,15 @@ module.exports.authenticateToken = async function (req, res, next) {
           res.send({
             error: "invalid token",
             status: 400,
-            success: true
+            success: true,
+            result
           })
         }
         else {
+          req.token = result[0].accessToken
+          req.user =  result[0]
           next()
+          // res.send({ result })
         }
       }
     })
@@ -42,50 +48,6 @@ module.exports.authenticateToken = async function (req, res, next) {
     })
   }
 }
-// res.send({ 
-//   result,
-//   auth : token
-// })
-//  console.log('user')
-//    if (!user) {
-//      res.send({
-//        notice: "You have sent invalid token.",
-//        status: 401,
-//        success: false
-//      }).status(401);
-//    }
-//    else {
-//     // console.log('user',user)
-//      req.user = user;
-//      req.token = token;
-//      next();
-//    }
-//  })
-//  .catch(err => {
-//  //  console.log('err',err)
-//    res.status(401).send({
-//      notice: "Token invalid.",
-//      status: 401,
-//      success: false,
-//      error: err.message
-//    });
-//  });
-//  }
-//   const authHeader = req.headers.authorization;
-//   if (authHeader) 
-//   {
-//     const token = authHeader
-//     jwt.verify(JSON.parse(token), secret.JWT_SECRET, (err, user) => {
-//       if (err) {
-//         return res.status(401).send(httpUtil.error(401, "Invalid Token.", err));
-//       }
-//       req.user = user;
-//       next();
-//     });
-//   } else {
-//     return res.status(401).send(httpUtil.error(401, "Token is missing."));
-//   }
-// };
 
 module.exports.createNewToken = function (token) {
   return new Promise((resolve, reject) => {

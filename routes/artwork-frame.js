@@ -11,35 +11,41 @@ var fs = require("fs");
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads/");
+    cb(null, "uploads/artwork-frame/");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname);
+    cb(null, file.originalname );
   },
 });
 var upload = multer({ storage: storage });
-router.post("/",
-  jwt.authenticateToken, upload.any("files"), async function (req, res, next) {
+
+router.post("/", jwt.authenticateToken, upload.array("images"), function (req, res, next) {
+  try {
     const imageFiles = req.files ? req.files : [];
     const imagePath = []
     const body = req.body;
-    body.createdAt = Date.now()
-    body.updatedAt = null
     if (imageFiles) {
       for (let i = 0; i < imageFiles.length; i++) {
         let imgObj = imageFiles[i].destination + imageFiles[i].originalname
         imagePath.push(imgObj)
       }
-      body.frame_images = imagePath
+      body.images = imagePath
     }
     db.get()
       .collection("artwork-frame")
       .insertOne(body, function (err, dbresult) {
         if (err)
-          res.status(500).send(httpUtil.error(500, "artwork frame Creation Failed."));
-        res.send(httpUtil.success(200, "artwork frame Created."));
+          res.status(500).send(httpUtil.error(500, "artwork-frame Creation Failed."));
+        res.send(httpUtil.success(200, "artwork-frame Created."));
       });
-  })
+  } catch (err) {
+    res.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
+  }
+});
 
 router.get("/",
   jwt.authenticateToken, function (req, res, next) {
@@ -146,20 +152,7 @@ router.put(
   }
 );
 
-// router.delete("/", function (req, res, next) {
-//   const frame_id = req.query.frame_id ? ObjectId(req.query.frame_id) : "";
-//   if (frame_id) {
-//     db.get()
-//       .collection("artwork-frame")
-//       .find({ _id: frame_id })
-//       .toArray(async function (err, dbresult) {
-//         if (err) 
-//         res.status(204).send(httpUtil.error(204, "Artwork Frame deletion error."));
-//       });
-//   } else {
-//     res.status(200).send(httpUtil.success(204, "Artwork Frame deleted"));
-//   }
-// });
+
 router.delete("/",
   jwt.authenticateToken, function (req, res, next) {
     try {

@@ -11,18 +11,20 @@ var fs = require("fs");
 const { promisify } = require('util')
 const unlinkAsync = promisify(fs.unlink)
 const path = require("path");
+// const { resolve } = require("path");
 async function asyncForEach(array, callback) {
   for (let index = 0; index < array.length; index++) {
     await callback(array[index], index, array);
   }
 }
-
+const absolutePath = path.join(__dirname);
+console.log(absolutePath)
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null,"/uploads/");
+    cb(null, "uploads/news/");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname);
+    cb(null,file.originalname);
   },
 });
 
@@ -37,27 +39,35 @@ router.get("/", function (req, res, next) {
     });
 });
 
-router.post("/", upload.any("files"), async function (req, res, next) {
-  const imageFiles = req.files ? req.files : [];
-  const imagePath = []
-  const body = req.body;
-  if (imageFiles) {
-    for (let i = 0; i < imageFiles.length; i++) {
-      let imgObj =  path.join(`${__dirname} + ${imageFiles[i].destination} + ${imageFiles[i].originalname}`)
-      imagePath.push(imgObj) 
+router.post("/", jwt.authenticateToken, upload.array("images"), function (req, res, next) {
+  try {
+    const imageFiles = req.files ? req.files : [];
+    const imagePath = []
+    const body = req.body;
+    if (imageFiles) {
+      for (let i = 0; i < imageFiles.length; i++) {
+        let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
+        imagePath.push(imgObj)
+      }
+      body.images = imagePath
     }
-    body.images = imagePath
+    db.get()
+      .collection("news")
+      .insertOne(body, function (err, dbresult) {
+        if (err)
+          res.status(500).send(httpUtil.error(500, "news Creation Failed."));
+        res.send(httpUtil.success(200, "news Created."));
+      });
+  } catch (err) {
+    res.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
   }
-  db.get()
-    .collection("news")
-    .insertOne(body, function (err, dbresult) {
-      if (err)
-        res.status(500).send(httpUtil.error(500, "news Creation Failed."));
-      res.send(httpUtil.success(200, "news Created."));
-    });
-})
+});
 
-router.get("/:id",jwt.authenticateToken, function (req, res, next) {
+router.get("/:id", jwt.authenticateToken, function (req, res, next) {
   const _id = req.params.id ? ObjectId(req.params.id) : ""
   db.get()
     .collection("news")
@@ -68,7 +78,7 @@ router.get("/:id",jwt.authenticateToken, function (req, res, next) {
     });
 });
 
-router.patch("/",jwt.authenticateToken, function (req, res, next) {
+router.patch("/", jwt.authenticateToken, function (req, res, next) {
   const news_id = req.body.news_id ? ObjectId(req.body.news_id) : "";
   if (news_id) {
     let Id = { _id: news_id };
@@ -91,10 +101,10 @@ router.patch("/",jwt.authenticateToken, function (req, res, next) {
   }
 });
 
-router.delete("/",jwt.authenticateToken, function (req, res, next) {
+router.delete("/", jwt.authenticateToken, function (req, res, next) {
   const news_id = req.query.news_id ? ObjectId(req.query.news_id) : "";
   if (news_id) {
-    db.get() 
+    db.get()
       .collection("news")
       .deleteOne({ _id: news_id }, function (err, result) {
         if (err)
@@ -106,29 +116,46 @@ router.delete("/",jwt.authenticateToken, function (req, res, next) {
   }
 });
 
-router.put("/",jwt.authenticateToken, function (req, res, next) {
-  const news_id = req.body.news_id ? ObjectId(req.body.news_id) : "";
-  if (news_id) {
-    let Id = { _id: news_id };
-    const body = req.body
-    let data = {
-      $set: {
-        title: req.body.title ? req.body.title : "",
-        description: req.body.description ? req.body.description : "",
-        status: req.body.status ? req.body.status : "",
-        updatedAt: Date.now()
-      },
-    };
-    db.get()
-      .collection("news")
-      .updateOne(Id, data, function (err, result) {
-        if (err) {
-          res.status(204).send(httpUtil.error(204, "news updating error."));
-        }
-        res.send(httpUtil.success(200, "news updated."));
-      });
-  } else {
-    res.status(204).send(httpUtil.error(204, "news ID is missing."));
+router.put("/", jwt.authenticateToken,upload.array("images"), function (req, res, next) {
+  
+  try {
+    const news_id = req.body.news_id ? ObjectId(req.body.news_id) : "";
+    if (news_id) {
+      let Id = { _id: news_id };
+      const imageFiles = req.files ? req.files : [];
+      const imagePath = []
+      const body = req.body;
+      if (imageFiles) {
+        for (let i = 0; i < imageFiles.length; i++) {
+          let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
+          imagePath.push(imgObj)
+        } 
+      } 
+      body.images = imagePath
+      let data = {
+        $set: {
+          images: body.images ? body.images : "",
+          title: body.title ? body.title : "",
+          description: body.description ? body.description : "",
+          status: body.status ? body.status : "",
+          updatedAt: Date.now()
+        },
+      };
+      db.get()
+        .collection("news")
+        .updateOne(Id, data, function (err, dbresult) {
+          if (err)
+            res.status(500).send(httpUtil.error(500, "news Update Failed."));
+          res.send(httpUtil.success(200, "news Updated."));
+        });
+    }
+  }
+  catch (err) {
+    res.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
   }
 });
 

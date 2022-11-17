@@ -7,8 +7,7 @@ var jwt = require("../utilities/jwt");
 
 router.get("/", jwt.authenticateToken, function (req, res, next) {
   const type = req.query.type
-    ? req.query.type.split(" ").join("").toLowerCase()
-    : "";
+    ? req.query.type.split(" ").join("").toLowerCase() : "";
   if (type) {
     db.get()
       .collection(type + "-technique")
