@@ -59,41 +59,6 @@ router.post("/",jwt.authenticateToken, upload.any("files"), async function (req,
     });
 })
 
-// router.put("/",jwt.authenticateToken, function (req, res, next) { 
-//   const blog_id = req.body.blog_id ? ObjectId(req.body.blog_id) : "";
-//   if (blog_id) {
-//     let Id = { _id: blog_id };
-//     const body = req.body
-//     let data = {
-//       $set: {
-//         name: req.body.title,
-//         type: req.body.type,
-//         description: req.body.description,
-//         likes: req.body.likes,
-//         comment: ["this is was good"],
-//         created_by: req.body.created_by,
-//         links: req.body.links,
-//         updatedAt: Date.now(),
-//       },
-//     };
-
-//     db.get()
-//       .collection("blog")
-//       .updateOne(Id, data, function (err, result) {
-//         if (err) {
-//           res.status(204).send(httpUtil.error(204, "blog updating error."));
-//         }
-//         res.send(httpUtil.success(200, "blog updated."));
-//       });
-//   } else {
-//     res.status(204).send(httpUtil.error(204, "blog ID is missing."));
-//   }
-// });
-// "blog_id" : "6374b54a5ba40bf638138a1f",
-//     "title" : "WWE",
-//     "description" : "this is wrestling",
-//     "links" : "www.google.com",
-//     "likes" : "5"
 router.put("/", jwt.authenticateToken, upload.array("images"), function (req, res, next) {
   try {
     const blog_id = req.body.blog_id ? ObjectId(req.body.blog_id) : "";
@@ -116,21 +81,6 @@ router.put("/", jwt.authenticateToken, upload.array("images"), function (req, re
           description: body.description ? body.description : "",
           likes: body.likes ? body.likes : "0",
           links : body.links ? body.links : "",
-          // dob: body.dob ? body.dob : "",
-          // gender: body.gender ? body.gender : "",
-          // address: body.address ? body.address : "",
-          // city: body.city ? body.city : "",
-          // state: body.state ? body.state : "",
-          // country: body.country ? body.country : "",
-          // zipcode: body.zipcode ? body.zipcode : "",
-          // tagline: body.tagline ? body.tagline : "",
-          // description: body.description ? body.description : "",
-          // skill: body.skill ? body.skill : [],
-          // extra: body.extra ? body.extra : [],
-          // facebook: body.facebook ? body.facebook : "",
-          // linkedin: body.linkedin ? body.linkedin : "",
-          // instagram: body.instagram ? body.instagram : "",
-          // type: body.type ? body.type : "",
           updatedAt: Date.now(),
           status: body.status ? body.status : "Active",
         },
@@ -152,6 +102,7 @@ router.put("/", jwt.authenticateToken, upload.array("images"), function (req, re
     })
   }
 })
+
 router.patch("/",jwt.authenticateToken, function (req, res, next) {
   const blog_id = req.body.blog_id ? ObjectId(req.body.blog_id) : "";
   if (blog_id) {

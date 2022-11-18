@@ -16,14 +16,16 @@ router.get("/", jwt.authenticateToken,function (req, res, next) {
 });
 
 router.post("/", jwt.authenticateToken,function (req, res, next) {
-  const data = {
-    type: req.body.type ? req.body.type : "",
-    createdAt: Date.now(),
-    updatedAt: null,
-  };
+  // const data = {
+  //   type: req.body.type ? req.body.type : "",
+  //   status : req.body.status ? req.body.status : "Active",
+    const body = req.body
+    body.createdAt = Date.now()
+    body.updatedAt = null
+  // };
   db.get()
     .collection("artist-type")
-    .insertOne(data, function (err, dbresult) {
+    .insertOne(body, function (err, dbresult) {
       if (err) {
         res
           .status(500)

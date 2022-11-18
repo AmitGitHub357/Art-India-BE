@@ -26,7 +26,7 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
     const body = req.body;
     if (imageFiles) {
       for (let i = 0; i < imageFiles.length; i++) {
-        let imgObj = imageFiles[i].destination + imageFiles[i].originalname
+        let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
         imagePath.push(imgObj)
       }
       body.images = imagePath
@@ -57,101 +57,141 @@ router.get("/",
         res.send(httpUtil.success(200, "", result));
       });
   });
-
-router.put(
-  "/",jwt.authenticateToken,
-  upload.any("files"),
-  jwt.authenticateToken,
-  async function (req, res, next) {
-    const files = req.files ? req.files : [];
-    const body = req.body;
-    console.log(body);
-    const frame_id = body.frame_id ? ObjectId(body.frame_id) : "";
-    let image, sampleImage;
-    if (frame_id) {
-      if (files.length) {
-        db.get()
-          .collection("artwork-frame")
-          .find({ _id: frame_id })
-          .toArray(async function (err, dbresult) {
-            if (err)
-              res
-                .status(204)
-                .send(httpUtil.error(204, "Artwork Frame updating error."));
-            await s3Utility.deleteFile("frame/", dbresult[0].image.name);
-            await s3Utility.deleteFile("frame/", dbresult[0].sampleImage.name);
-            await s3Utility
-              .uploadFile("frame/", files[0])
-              .then((uploadresult) => {
-                image = {
-                  name: files[0].originalname,
-                  mimetype: files[0].mimetype,
-                  path: uploadresult,
-                  size: files[0].size,
-                };
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-            await s3Utility
-              .uploadFile("frame/", files[1])
-              .then((uploadresult) => {
-                sampleImage = {
-                  name: files[1].originalname,
-                  mimetype: files[1].mimetype,
-                  path: uploadresult,
-                  size: files[1].size,
-                };
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-            let data = {
-              $set: {
-                frame: body.frame ? body.frame : "",
-                image: image,
-                sampleImage: sampleImage,
-                updatedAt: Date.now(),
-              },
-            };
-            db.get()
-              .collection("artwork-frame")
-              .updateOne({ _id: frame_id }, data, function (err, result) {
-                if (err) {
-                  res
-                    .status(204)
-                    .send(httpUtil.error(204, "Artwork Frame updating error."));
-                }
-                files.forEach((file) => {
-                  fs.unlinkSync("./uploads/" + file.originalname);
-                });
-                res.send(httpUtil.success(200, "Artwork Frame updated."));
-              });
-          });
-      } else {
+  
+  router.put("/", jwt.authenticateToken, upload.array("images"), function (req, res, next) {
+    try {
+      const frame_id = req.body.frame_id ? ObjectId(req.body.frame_id) : "";
+      if (frame_id) {
+        let Id = { _id: frame_id };
+        const imageFiles = req.files ? req.files : [];
+        const imagePath = []
+        const body = req.body;
+        if (imageFiles) {
+          for (let i = 0; i < imageFiles.length; i++) {
+            let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
+            imagePath.push(imgObj)
+          }
+        }
+        body.images = imagePath
         let data = {
           $set: {
             frame: body.frame ? body.frame : "",
+            images : body.images ,
+            // sampleImage: sampleImage,
             updatedAt: Date.now(),
           },
         };
         db.get()
-          .collection("artwork-frame")
-          .updateOne({ _id: frame_id }, data, function (err, result) {
-            if (err) {
-              res
-                .status(204)
-                .send(httpUtil.error(204, "Artwork Frame updating error."));
-            }
-            res.send(httpUtil.success(200, "Artwork Frame updated."));
+          .collection("blog")
+          .updateOne(Id, data, function (err, dbresult) {
+            if (err)
+              res.status(500).send(httpUtil.error(500, "blog Update Failed."));
+            res.send(httpUtil.success(200, "blog Updated."));
           });
       }
-    } else {
-      res.status(204).send(httpUtil.error(204, "Artwork Frame ID is missing."));
     }
-  }
-);
+    catch (err) {
+      res.send({
+        status: 400,
+        error: err.message,
+        success: false
+      })
+    }
+  })
 
+// router.put(
+//   "/",jwt.authenticateToken,
+//   upload.any("files"),
+//   jwt.authenticateToken,
+//   async function (req, res, next) {
+//     const files = req.files ? req.files : [];
+//     const body = req.body;
+//     console.log(body);
+//     const frame_id = body.frame_id ? ObjectId(body.frame_id) : "";
+//     let image, sampleImage;
+//     if (frame_id) {
+//       if (files.length) {
+//         db.get()
+//           .collection("artwork-frame")
+//           .find({ _id: frame_id })
+//           .toArray(async function (err, dbresult) {
+//             if (err)
+//               res
+//                 .status(204)
+//                 .send(httpUtil.error(204, "Artwork Frame updating error."));
+//             await s3Utility.deleteFile("frame/", dbresult[0].image.name);
+//             await s3Utility.deleteFile("frame/", dbresult[0].sampleImage.name);
+//             await s3Utility
+//               .uploadFile("frame/", files[0])
+//               .then((uploadresult) => {
+//                 image = {
+//                   name: files[0].originalname,
+//                   mimetype: files[0].mimetype,
+//                   path: uploadresult,
+//                   size: files[0].size,
+//                 };
+//               })
+//               .catch((err) => {
+//                 console.log(err);
+//               });
+//             await s3Utility
+//               .uploadFile("frame/", files[1])
+//               .then((uploadresult) => {
+//                 sampleImage = {
+//                   name: files[1].originalname,
+//                   mimetype: files[1].mimetype,
+//                   path: uploadresult,
+//                   size: files[1].size,
+//                 };
+//               })
+//               .catch((err) => {
+//                 console.log(err);
+//               });
+//             let data = {
+              // $set: {
+              //   frame: body.frame ? body.frame : "",
+              //   image: image,
+              //   sampleImage: sampleImage,
+              //   updatedAt: Date.now(),
+              // },
+//             };
+//             db.get()
+//               .collection("artwork-frame")
+//               .updateOne({ _id: frame_id }, data, function (err, result) {
+//                 if (err) {
+//                   res
+//                     .status(204)
+//                     .send(httpUtil.error(204, "Artwork Frame updating error."));
+//                 }
+//                 files.forEach((file) => {
+//                   fs.unlinkSync("./uploads/" + file.originalname);
+//                 });
+//                 res.send(httpUtil.success(200, "Artwork Frame updated."));
+//               });
+//           });
+//       } else {
+//         let data = {
+//           $set: {
+//             frame: body.frame ? body.frame : "",
+//             updatedAt: Date.now(),
+//           },
+//         };
+//         db.get()
+//           .collection("artwork-frame")
+//           .updateOne({ _id: frame_id }, data, function (err, result) {
+//             if (err) {
+//               res
+//                 .status(204)
+//                 .send(httpUtil.error(204, "Artwork Frame updating error."));
+//             }
+//             res.send(httpUtil.success(200, "Artwork Frame updated."));
+//           });
+//       }
+//     } else {
+//       res.status(204).send(httpUtil.error(204, "Artwork Frame ID is missing."));
+//     }
+//   }
+// );
 
 router.delete("/",
   jwt.authenticateToken, function (req, res, next) {

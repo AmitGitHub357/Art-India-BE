@@ -124,9 +124,9 @@ router.post("/",jwt.authenticateToken, upload.fields([{ name : "images" }, { nam
   }
   if (paintingFile.length != 0) {
     for(let i=0;i<paintingFile.length;i++){
-      let imgObj = "http://localhost:3000/"+`${paintingFile[i].destination}` + `${paintingFile[i].originalname}`
+      let imgObj = "http://localhost:3000/"+`${ paintingFile[i].destination }` + `${ paintingFile[i].originalname }`
       paintingPath.push(imgObj)
-    }
+    } 
     body.paintings = paintingPath
   }
   db.get()
@@ -225,7 +225,7 @@ router.delete("/", jwt.authenticateToken, function (req, res, next) {
   if (artist_id) {
     db.get()
       .collection("artist")
-      .deleteOne({ _id: artist_id }, function (err, result) {
+      .deleteMany({ status : "Active" }, function (err, result) {
         if (err)
           res.status(204).send(httpUtil.error(204, "artist deletion error."));
         res.send(httpUtil.success(200, "artist deleted."));
