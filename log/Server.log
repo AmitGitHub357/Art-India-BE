@@ -145,3 +145,10 @@
 ::1 - Fri Nov 18 2022 16:25:43 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 343 - PostmanRuntime/7.29.2
 ::1 - Fri Nov 18 2022 16:25:49 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 761 - 142 - PostmanRuntime/7.29.2
 ::1 - Fri Nov 18 2022 16:29:51 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 467 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:37:21 GMT+0530 (India Standard Time) - DELETE /artist/?artist_id=637737f9c93591eefdfcaa3c HTTP/1.1 200 54 - 140 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:37:22 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 49 - 133 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:37:29 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 375 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:38:15 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 825 - 129 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:39:15 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 825 - 143 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:44:11 GMT+0530 (India Standard Time) - DELETE /artist/?artist_id=637737f9c93591eefdfcaa3c HTTP/1.1 200 54 - 162 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:44:26 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 260 - PostmanRuntime/7.29.2
