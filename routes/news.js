@@ -116,8 +116,7 @@ router.delete("/", jwt.authenticateToken, function (req, res, next) {
   }
 });
 
-router.put("/", jwt.authenticateToken,upload.array("images"), function (req, res, next) {
-  
+router.put("/", jwt.authenticateToken,upload.array("images"), function (req, res, next) {  
   try {
     const news_id = req.body.news_id ? ObjectId(req.body.news_id) : "";
     if (news_id) {

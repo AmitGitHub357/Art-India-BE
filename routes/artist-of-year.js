@@ -46,6 +46,7 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
     const imageFiles = req.files ? req.files : [];
     const imagePath = []
     const body = req.body;
+    body.artist_id = ObjectId(body.artist_id)
     if (imageFiles) {
       for (let i = 0; i < imageFiles.length; i++) {
         let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
@@ -85,13 +86,27 @@ router.delete("/",jwt.authenticateToken, function (req, res, next) {
 });
 
 router.get("/", function (req, res, next) {
-  db.get()
-    .collection("artist-of-year")
-    .find({})
-    .toArray(function (err, result) {
-      if (err) throw err;
-      res.send(httpUtil.success(200, "", result));
-    });
+  db.collection('artist-of-year').aggregate([
+    { $lookup:
+       {
+         from: 'artist-of-year',
+         localField: 'artist_id',
+         foreignField: '_id',
+         as: 'artist'
+       }
+     }
+    ]).toArray(function(err, res) {
+    if (err) throw err;
+    res.send(httpUtil.success(200, "", result));
+    // db.close();
+  });
+  // db.get()
+  //   .collection("artist-of-year")
+  //   .find({})
+  //   .toArray(function (err, result) {
+  //     if (err) throw err;
+  //     res.send(httpUtil.success(200, "", result));
+  //   });
 });
 
 // router.put("/",jwt.authenticateToken, upload.single("file"), function (req, res, next) {

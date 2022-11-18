@@ -43,47 +43,91 @@ router.get("/", jwt.authenticateToken, function (req, res, next) {
     });
 });
 
-// router.post("/", jwt.authenticateToken, upload.array("images"), function (req, res, next) {
-//   try {
-//     const imageFiles = req.files ? req.files : [];
-//     const imagePath = []
-//     const body = req.body;
-//     res.send({
-//       body,
-//       imageFiles
-//     })
-//     if (imageFiles) {
-//       for (let i = 0; i < imageFiles.length; i++) {
-//         let imgObj = imageFiles[i].destination + imageFiles[i].originalname
-//         imagePath.push(imgObj)
+// try {
+//   const body = req.body
+//   let imagesFile = [],previewImageFile = {},certificatesFile = [],certificatesPath = []
+//   let imagesPath = [],previewImagePath = ''
+//   if(Object.keys(req.files).length!=0){
+      
+//       if(Object.keys(req.files).includes('images')){
+        
+//        imagesFile = req.files.images
 //       }
-//       body.images = imagePath
-//     }
-//     db.get()
-//       .collection("artist")
-//       .insertOne(body, function (err, dbresult) {
-//         if (err)
-//           res.status(500).send(httpUtil.error(500, "Artist Creation Failed."));
-//         res.send(httpUtil.success(200, "Artist Created."));
-//       });
-//   } catch (err) {
-//     res.send({
-//       status: 400,
-//       error: err.message,
-//       success: false
-//     })
+//       if(Object.keys(req.files).includes('previewImage')){
+//           previewImageFile = req.files.previewImage
+//       }
+//       if(Object.keys(req.files).includes('certificates')){
+//           certificatesFile = req.files.certificates
+//       }
 //   }
-// });
-router.post("/",jwt.authenticateToken, upload.any("images"), async function (req, res, next) {
-  const imageFiles = req.files ? req.files : [];
-  const imagePath = []
-  const body = req.body;
-  if (imageFiles) {
-    for (let i = 0; i < imageFiles.length; i++) {
-      let imgObj = imageFiles[i].destination + imageFiles[i].originalname
-      imagePath.push(imgObj)
+//   if(imagesFile.length!=0){
+     
+//       for(let i=0;i<imagesFile.length;i++){
+//           let imgObj = imagesFile[i].destination.slice(1)+files[i].filename
+//           imagesPath.push(imgObj)
+//       }
+//       body.images = imagesPath
+         
+//   }
+//   if(certificatesFile.length!=0){
+     
+//       for(let i=0;i<certificatesFile.length;i++){
+//           let certificateObj = certificatesFile[i].destination.slice(1)+files[i].filename
+//           certificatesPath.push(certificateObj)
+//       }
+//       body.certificateIconsUrls = certificatesPath
+         
+//   }
+//    //GET PROFILE PHOTO OBJECT
+//   if(previewImageFile){
+//       previewImagePath = previewImageFile.destination.slice(1)+files[i].filename
+//       body.previewImage = previewImagePath
+     
+//   }
+//   body.createdBy = req.user._id
+//   const newAyurveda = new Ayurveda(body)
+//   const saveAyurveda = await newAyurveda.save()
+//   res.send({
+//       message : 'Ayurveda saved successfully',
+//       success : true,
+//       status : 201
+//   })
+// } catch (error) {
+//   res.send({
+//       message : 'Something went wrong,please try again',
+//       success : false,
+//       error : error.message,
+//       status : 400
+//   })
+// }
+router.post("/",jwt.authenticateToken, upload.fields([{ name : "images" }, { name : "paintingImages" , maxCount : 20 }]), async function (req, res, next) {
+  // res.send({
+  //   req : req.files
+  // })
+  var imagesPath = [],paintingPath = []
+  var imagesFile = [],paintingFile = []
+  var body = req.body;
+  if(Object.keys(req.files).length!=0){
+      if(Object.keys(req.files).includes('images')){
+       imagesFile = await req.files.images
+      }
+      if(Object.keys(req.files).includes('paintingImages')){
+          paintingFile = await req.files.paintingImages
+      }
+  }
+  if( imagesFile.length != 0 ){
+      for(let i=0;i<imagesFile.length;i++){
+        let imgObj = "http://localhost:3000/" + `${imagesFile[i].destination}` + `${imagesFile[i].originalname}`
+          imagesPath.push(imgObj)
+      }
+      body.images = imagesPath
+  }
+  if (paintingFile.length != 0) {
+    for(let i=0;i<paintingFile.length;i++){
+      let imgObj = "http://localhost:3000/"+`${paintingFile[i].destination}` + `${paintingFile[i].originalname}`
+      paintingPath.push(imgObj)
     }
-    body.images = imagePath
+    body.paintings = paintingPath
   }
   db.get()
     .collection("artist")
@@ -106,8 +150,8 @@ router.put("/", jwt.authenticateToken, upload.array("images"), function (req, re
         for (let i = 0; i < imageFiles.length; i++) {
           let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
           imagePath.push(imgObj)
-        } 
-      } 
+        }
+      }
       body.images = imagePath
       let data = {
         $set: {
@@ -139,11 +183,11 @@ router.put("/", jwt.authenticateToken, upload.array("images"), function (req, re
         .collection("artist")
         .updateOne(Id, data, function (err, dbresult) {
           if (err)
-            res.status(500).send(httpUtil.error(500, "artist Update Failed."));
+          res.status(500).send(httpUtil.error(500, "artist Update Failed."));
           res.send(httpUtil.success(200, "artist Updated."));
         });
     }
-  }
+  } 
   catch (err) {
     res.send({
       status: 400,
@@ -151,114 +195,6 @@ router.put("/", jwt.authenticateToken, upload.array("images"), function (req, re
       success: false
     })
   }
-  // const body = req.body;
-  // const artist_id = body.artist_id ? ObjectId(body.artist_id) : "";
-  // if (artist_id) {
-  //   async.waterfall(
-  //     [
-  //       function (callback) {
-  //         const data = {
-  //           $set: {
-              // name: body.name ? body.name : "",
-              // email: body.email ? body.email : "",
-              // mobile: body.mobile ? body.mobile : "",
-              // dob: body.dob ? body.dob : "",
-              // gender: body.gender ? body.gender : "",
-              // address: body.address ? body.address : "",
-              // city: body.city ? body.city : "",
-              // state: body.state ? body.state : "",
-              // country: body.country ? body.country : "",
-              // zipcode: body.zipcode ? body.zipcode : "",
-              // tagline: body.tagline ? body.tagline : "",
-              // description: body.description ? body.description : "",
-              // skill: body.skill ? body.skill : [],
-              // extra: body.extra ? body.extra : [],
-              // facebook: body.facebook ? body.facebook : "",
-              // linkedin: body.linkedin ? body.linkedin : "",
-              // instagram: body.instagram ? body.instagram : "",
-              // type: body.type ? body.type : "",
-              // updatedAt: Date.now(),
-              // status: body.status ? body.status : "Active"
-  //           },
-  //         };
-  //         db.get()
-  //           .collection("artist")
-  //           .updateOne({ _id: artist_id }, data, function (err, dbresult) {
-  //             if (err) {
-  //               callback(err, null);
-  //             }
-  //             callback(null, dbresult);
-  //           });
-  //       },
-  //       function (result, callback) {
-  //         if (req.file) {
-  //           db.get()
-  //             .collection("artist")
-  //             .find({ _id: artist_id })
-  //             .toArray(function (err, dbresult) {
-  //               if (err) callback(err, null);
-  //               callback(null, dbresult[0]["image"]["name"]);
-  //             });
-  //         } else {
-  //           callback(null, "No File.");
-  //         }
-  //       },
-  //       function (result, callback) {
-  //         if (req.file) {
-  //           s3Utility
-  //             .uploadFile("artist/" + artist_id + "/", req.file)
-  //             .then((uploadresult) => {
-  //               const data = {
-  //                 $set: {
-  //                   image: {
-  //                     name: req.file.originalname,
-  //                     mimetype: req.file.mimetype,
-  //                     path: uploadresult,
-  //                     size: req.file.size,
-  //                   },
-  //                 },
-  //               };
-  //               db.get()
-  //                 .collection("artist")
-  //                 .updateOne(
-  //                   { _id: artist_id },
-  //                   data,
-  //                   function (err, dbresult) {
-  //                     if (err) {
-  //                       callback(err, null);
-  //                     }
-  //                     s3Utility
-  //                       .deleteFile("artist/" + artist_id + "/", result)
-  //                       .then((s3result) => {
-  //                         fs.unlinkSync("./uploads/" + req.file.originalname);
-  //                         callback(null, dbresult);
-  //                       })
-  //                       .catch((error) => {
-  //                         callback(error, null);
-  //                       });
-  //                   }
-  //                 );
-  //             })
-  //             .catch((err) => {
-  //               console.log(err);
-  //               callback(err, null);
-  //             });
-  //         } else {
-  //           callback(null, "No File.");
-  //         }
-  //       },
-  //     ],
-  //     function (err, result) {
-  //       if (err) {
-  //         res.status(500).send(httpUtil.error(500, "Artist updating Failed."));
-  //       } else {
-  //         res.send(httpUtil.success(200, "Artist updated."));
-  //       }
-  //     }
-  //   );
-  // } else {
-  //   res.status(204).send(httpUtil.error(204, "Artist ID is missing."));
-  // }
 });
 
 router.patch("/", jwt.authenticateToken, function (req, res, next) {

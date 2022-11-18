@@ -99,13 +99,7 @@ router.post("/connect", function (req, res, next) {
     subject: req.body.subject ? req.body.subject : "",
     comment: req.body.comment ? req.body.comment : "",
   };
-  // sendMail("Connect", secret.ADMIN_EMAIL, context)
-  //   .then((mailresult) => {
-  //     res.send(httpUtil.success(200, "Connect Mail Sent.", mailresult));
-  //   })
-  //   .catch((error) => {
-  //     res.status(500).send(httpUtil.error(500, "Connect Error."));
-  //   });
+  
   var mailOptions = {
     from: secret.ADMIN_EMAIL,
     to: context.email,
@@ -172,6 +166,38 @@ router.get("/artist-type", function (req, res, next) {
       res.send(httpUtil.success(200, "", result));
     });
 });
+
+router.get("/news", function (req, res, next) {
+  db.get()
+    .collection("news")
+    .find({})
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
+router.get("/event", function (req, res, next) {
+  db.get()
+    .collection("event")
+    .find({})
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
+router.get("/blog", function (req, res, next) {
+  db.get()
+    .collection("blog")
+    .find({})
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
+
 
 router.get("/artist", function (req, res, next) {
 

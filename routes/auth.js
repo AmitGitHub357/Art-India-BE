@@ -19,7 +19,6 @@ var transporter = nodemailer.createTransport({
   }
 });
 
-
 var nanoid = customAlphabet(secret.NANOID_CHAR, secret.NANOID_LENGTH);
 router.post("/token", function (req, res, next) {
   const accessToken = req.body.accessToken;
