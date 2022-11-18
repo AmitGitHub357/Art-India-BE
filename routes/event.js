@@ -6,7 +6,6 @@ var httpUtil = require("../utilities/http-messages");
 var jwt = require("../utilities/jwt");
 
 router.get("/", function (req, res, next) {
-  
   db.get()
     .collection("event")
     .find({})

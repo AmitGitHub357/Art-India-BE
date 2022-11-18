@@ -40,8 +40,6 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/", upload.any("files"), async function (req, res, next) {
-  // const buyPrice = req.body.buyPrice ? req.body.buyPrice : "";
-  // const rentPrice = req.body.rentPrice ? req.body.rentPrice : ""
   const imageFiles = req.files ? req.files : [];
   const imagePath = []
   const body = req.body;

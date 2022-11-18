@@ -101,3 +101,47 @@
 ::1 - Fri Nov 18 2022 13:50:02 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 776 - 132 - PostmanRuntime/7.29.2
 ::1 - Fri Nov 18 2022 13:54:02 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 343 - PostmanRuntime/7.29.2
 ::1 - Fri Nov 18 2022 13:54:13 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 - - 143 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 14:58:09 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 331 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 14:58:37 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 - - 135 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:00:11 GMT+0530 (India Standard Time) - GET /blog/ HTTP/1.1 200 814 - 111 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:01:44 GMT+0530 (India Standard Time) - GET /event HTTP/1.1 200 49 - 49 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:01:51 GMT+0530 (India Standard Time) - POST /event HTTP/1.1 200 53 - 166 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:01:59 GMT+0530 (India Standard Time) - GET /event HTTP/1.1 200 290 - 58 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:03:21 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 804 - 78 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:05:19 GMT+0530 (India Standard Time) - DELETE /event HTTP/1.1 204 - - 2 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:09:31 GMT+0530 (India Standard Time) - GET /event?event_id=63775107c019fc730ff5a296 HTTP/1.1 200 290 - 91 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:10:02 GMT+0530 (India Standard Time) - POST /event HTTP/1.1 200 53 - 123 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:10:07 GMT+0530 (India Standard Time) - GET /event HTTP/1.1 200 532 - 79 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:44:47 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 523 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:46:27 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 804 - 68 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:47:56 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 - - 121 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:48:29 GMT+0530 (India Standard Time) - GET /uploads/artistScreenshot_2020-03-15-10-34-43-000_com.google.android.youtube.png HTTP/1.1 404 35 - 65 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+::1 - Fri Nov 18 2022 15:48:35 GMT+0530 (India Standard Time) - GET /uploads/artist/Screenshot_2020-03-15-10-34-43-000_com.google.android.youtube.png HTTP/1.1 404 35 - 3 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+::1 - Fri Nov 18 2022 15:52:21 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 52 - 18 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:52:41 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 320 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:56:51 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 282 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:57:04 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 - - 158 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:58:10 GMT+0530 (India Standard Time) - DELETE /artist/?artist_id=637737f9c93591eefdfcaa3c HTTP/1.1 200 54 - 153 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:58:28 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 49 - 156 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:58:34 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 351 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:59:16 GMT+0530 (India Standard Time) - DELETE /artist/?artist_id=637737f9c93591eefdfcaa3c HTTP/1.1 200 54 - 119 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:59:20 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 314 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 15:59:25 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 766 - 135 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:10:38 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 766 - 147 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:10:46 GMT+0530 (India Standard Time) - DELETE /artist/?artist_id=637737f9c93591eefdfcaa3c HTTP/1.1 200 54 - 167 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:10:51 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 49 - 125 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:13:00 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 553 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:13:06 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 791 - 160 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:14:24 GMT+0530 (India Standard Time) - DELETE /artist/?artist_id=637737f9c93591eefdfcaa3c HTTP/1.1 200 54 - 165 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:14:36 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 49 - 171 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:14:42 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 313 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:14:55 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 794 - 118 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:15:26 GMT+0530 (India Standard Time) - GET /public/uploads/artist/Screenshot_2020-03-15-10-34-43-000_com.google.android.youtube.png HTTP/1.1 404 35 - 12 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+::1 - Fri Nov 18 2022 16:18:38 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 794 - 205 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:20:30 GMT+0530 (India Standard Time) - DELETE /artist/?artist_id=637737f9c93591eefdfcaa3c HTTP/1.1 200 54 - 203 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:20:55 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 292 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:21:01 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 695 - 185 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:25:22 GMT+0530 (India Standard Time) - DELETE /artist/?artist_id=637737f9c93591eefdfcaa3c HTTP/1.1 200 54 - 184 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:25:43 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 343 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:25:49 GMT+0530 (India Standard Time) - GET /artist/ HTTP/1.1 200 761 - 142 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 16:29:51 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 467 - PostmanRuntime/7.29.2

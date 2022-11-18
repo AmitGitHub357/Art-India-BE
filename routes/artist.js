@@ -10,13 +10,14 @@ var async = require("async");
 var s3Utility = require("../utilities/s3-bucket");
 var multer = require("multer");
 var fs = require("fs");
+var path = require("path");
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads/artist");
+    cb(null, "./public/uploads/artist/");    
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname)
+    cb(null, file.fieldname + '.' + Date.now() + path.extname(file.originalname))
   },
 });
 
@@ -25,7 +26,6 @@ router.get("/:name", jwt.authenticateToken, function (req, res, next) {
   const name = req.params.name
   db.get().collection("artist")
     .find({ name: name })
-    // .project({ _id: 1, name: 1 })
     .toArray(function (err, result) {
       if (err) console.log(err);
       res.send(httpUtil.success(200, "", result));
@@ -43,91 +43,32 @@ router.get("/", jwt.authenticateToken, function (req, res, next) {
     });
 });
 
-// try {
-//   const body = req.body
-//   let imagesFile = [],previewImageFile = {},certificatesFile = [],certificatesPath = []
-//   let imagesPath = [],previewImagePath = ''
-//   if(Object.keys(req.files).length!=0){
-      
-//       if(Object.keys(req.files).includes('images')){
-        
-//        imagesFile = req.files.images
-//       }
-//       if(Object.keys(req.files).includes('previewImage')){
-//           previewImageFile = req.files.previewImage
-//       }
-//       if(Object.keys(req.files).includes('certificates')){
-//           certificatesFile = req.files.certificates
-//       }
-//   }
-//   if(imagesFile.length!=0){
-     
-//       for(let i=0;i<imagesFile.length;i++){
-//           let imgObj = imagesFile[i].destination.slice(1)+files[i].filename
-//           imagesPath.push(imgObj)
-//       }
-//       body.images = imagesPath
-         
-//   }
-//   if(certificatesFile.length!=0){
-     
-//       for(let i=0;i<certificatesFile.length;i++){
-//           let certificateObj = certificatesFile[i].destination.slice(1)+files[i].filename
-//           certificatesPath.push(certificateObj)
-//       }
-//       body.certificateIconsUrls = certificatesPath
-         
-//   }
-//    //GET PROFILE PHOTO OBJECT
-//   if(previewImageFile){
-//       previewImagePath = previewImageFile.destination.slice(1)+files[i].filename
-//       body.previewImage = previewImagePath
-     
-//   }
-//   body.createdBy = req.user._id
-//   const newAyurveda = new Ayurveda(body)
-//   const saveAyurveda = await newAyurveda.save()
-//   res.send({
-//       message : 'Ayurveda saved successfully',
-//       success : true,
-//       status : 201
-//   })
-// } catch (error) {
-//   res.send({
-//       message : 'Something went wrong,please try again',
-//       success : false,
-//       error : error.message,
-//       status : 400
-//   })
-// }
 router.post("/",jwt.authenticateToken, upload.fields([{ name : "images" }, { name : "paintingImages" , maxCount : 20 }]), async function (req, res, next) {
-  // res.send({
-  //   req : req.files
-  // })
   var imagesPath = [],paintingPath = []
   var imagesFile = [],paintingFile = []
   var body = req.body;
   if(Object.keys(req.files).length!=0){
-      if(Object.keys(req.files).includes('images')){
+      if(Object.keys(req.files).includes('images')){    
        imagesFile = await req.files.images
       }
-      if(Object.keys(req.files).includes('paintingImages')){
+      if(Object.keys(req.files).includes('paintingImages')){    
           paintingFile = await req.files.paintingImages
       }
   }
   if( imagesFile.length != 0 ){
       for(let i=0;i<imagesFile.length;i++){
-        let imgObj = "http://localhost:3000/" + `${imagesFile[i].destination}` + `${imagesFile[i].originalname}`
+        let imgObj = "http://localhost:3000/" + imagesFile[i].destination.slice(1) + imagesFile[i].filename
           imagesPath.push(imgObj)
       }
       body.images = imagesPath
   }
   if (paintingFile.length != 0) {
     for(let i=0;i<paintingFile.length;i++){
-      let imgObj = "http://localhost:3000/"+`${ paintingFile[i].destination }` + `${ paintingFile[i].originalname }`
+    //   let imgObj = "http://localhost:3000/"+`${ paintingFile[i].destination }` + `${ paintingFile[i].originalname }`
+    let imgObj = "http://localhost:3000/" + paintingFile[i].destination.slice(1) + paintingFile[i].filename
       paintingPath.push(imgObj)
     } 
-    body.paintings = paintingPath
+    body.painting = paintingPath
   }
   db.get()
     .collection("artist")
