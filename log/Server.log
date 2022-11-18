@@ -47,3 +47,4 @@
 ::1 - Fri Nov 18 2022 12:31:30 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 862 - PostmanRuntime/7.29.2
 ::1 - Fri Nov 18 2022 12:31:58 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 - - - - - PostmanRuntime/7.29.2
 ::1 - Fri Nov 18 2022 12:32:51 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 1006 - 405 - PostmanRuntime/7.29.2
+::1 - Fri Nov 18 2022 12:46:16 GMT+0530 (India Standard Time) - GET /news HTTP/1.1 200 921 - 104 - PostmanRuntime/7.29.2

@@ -519,6 +519,6 @@ router.get("/clients/logo", function (req, res, next) {
       if (err) throw err;
       res.send(httpUtil.success(200, "", result));
     });
-});
+});//
 
 module.exports = router;
