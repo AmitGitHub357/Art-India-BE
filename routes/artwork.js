@@ -27,9 +27,6 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 router.get("/", function (req, res, next) {
-  // res.send({
-  //   status : 200
-  // })
   db.get()
     .collection("artwork")
     .find({})
@@ -39,11 +36,31 @@ router.get("/", function (req, res, next) {
     });
 });
 
-router.post("/", upload.any("files"), async function (req, res, next) {
+// router.post("/", upload.any("files"), async function (req, res, next) {
+//   const imageFiles = req.files ? req.files : [];
+//   const imagePath = []
+//   const body = req.body;
+//   body.artistId = ObjectId(body.artistId); 
+//   if (imageFiles) {
+//     for (let i = 0; i < imageFiles.length; i++) {
+//       let imgObj = imageFiles[i].destination + imageFiles[i].originalname
+//       imagePath.push(imgObj)
+//     }
+//     body.images = imagePath
+//   }
+//   db.get()
+//     .collection("artwork")  
+//     .insertOne(body, function (err, dbresult) {
+//       if (err)
+//         res.status(500).send(httpUtil.error(500, "artwork Creation Failed."));
+//       res.send(httpUtil.success(200, "artwork Created."));
+//     });
+// })
+router.post("/", upload.array("images"), async function (req, res, next) {
   const imageFiles = req.files ? req.files : [];
   const imagePath = []
   const body = req.body;
-  body.artistId = ObjectId(body.artistId); 
+  body.artistId = ObjectId(body.artistId);
   if (imageFiles) {
     for (let i = 0; i < imageFiles.length; i++) {
       let imgObj = imageFiles[i].destination + imageFiles[i].originalname
@@ -52,11 +69,27 @@ router.post("/", upload.any("files"), async function (req, res, next) {
     body.images = imagePath
   }
   db.get()
-    .collection("artwork")  
+    .collection("artwork")
     .insertOne(body, function (err, dbresult) {
       if (err)
         res.status(500).send(httpUtil.error(500, "artwork Creation Failed."));
-      res.send(httpUtil.success(200, "artwork Created."));
+      db.get()
+        .collection("artwork")
+        .find({ artistId : body.artistId })
+        .toArray(function (err, result) {
+          if (err) console.log(err);
+          db.get().collection("artist").updateOne({ _id: body.artistId }, { $set: { painting : result } }, function (err, dbresult) {
+            res.send({
+              dbresult
+            })
+            if (err) {
+              res
+                .status(500)
+                .send(httpUtil.error(500, "Artwork creation Failed."));
+            }
+          })
+          res.send(httpUtil.success(200, "Artwork Created"));
+        });
     });
 })
 

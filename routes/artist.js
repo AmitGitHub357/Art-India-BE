@@ -43,41 +43,86 @@ router.get("/", jwt.authenticateToken, function (req, res, next) {
     });
 });
 
-router.post("/",jwt.authenticateToken, upload.fields([{ name : "images" }, { name : "paintingImages" , maxCount : 20 }]), async function (req, res, next) {
-  var imagesPath = [],paintingPath = []
-  var imagesFile = [],paintingFile = []
-  var body = req.body;
-  if(Object.keys(req.files).length!=0){
-      if(Object.keys(req.files).includes('images')){    
-       imagesFile = await req.files.images
+// router.post("/",jwt.authenticateToken, upload.fields([{ name : "images" }, { name : "paintingImages" , maxCount : 20 }]), async function (req, res, next) {
+//   var imagesPath = [],paintingPath = []
+//   var imagesFile = [],paintingFile = []
+//   var body = req.body;
+//   if(Object.keys(req.files).length!=0){
+//       if(Object.keys(req.files).includes('images')){    
+//        imagesFile = await req.files.images
+//       }
+//       if(Object.keys(req.files).includes('paintingImages')){    
+//           paintingFile = await req.files.paintingImages
+//       }
+//   }
+//   if( imagesFile.length != 0 ){
+//       for(let i=0;i<imagesFile.length;i++){
+//         let imgObj = "http://localhost:3000/" + imagesFile[i].destination.slice(1) + imagesFile[i].filename
+//           imagesPath.push(imgObj)
+//       }
+//       body.images = imagesPath
+//   }
+//   if (paintingFile.length != 0) {
+//     for(let i=0;i<paintingFile.length;i++){
+//     //   let imgObj = "http://localhost:3000/"+`${ paintingFile[i].destination }` + `${ paintingFile[i].originalname }`
+//     let imgObj = "http://localhost:3000/" + paintingFile[i].destination.slice(1) + paintingFile[i].filename
+//       paintingPath.push(imgObj)
+//     } 
+//     body.painting = paintingPath
+//   }
+//   db.get()
+//     .collection("artist")
+//     .insertOne(body, function (err, dbresult) {
+//       if (err)
+//         res.status(500).send(httpUtil.error(500, "artist Creation Failed."));
+//       res.send(httpUtil.success(200, "artist Created."));
+//     });
+// })
+router.post("/", jwt.authenticateToken, upload.array("images"), function (req, res, next) {
+  try {
+    const imageFiles = req.files ? req.files : [];
+    const imagePath = []
+    const body = req.body;
+    
+    if (imageFiles) {
+      for (let i = 0; i < imageFiles.length; i++) {
+        let imgObj = "http://localhost:3000/"+`${imageFiles[i].destination}`+`${imageFiles[i].originalname}`
+        imagePath.push(imgObj)
       }
-      if(Object.keys(req.files).includes('paintingImages')){    
-          paintingFile = await req.files.paintingImages
-      }
+      body.images = imagePath
+    }
+    body.painting = []
+    body.journey = {
+      paintings: 200,
+      groupExibition: 100,
+      soloExibition: 10,
+      awards: 3,
+      participation: 4,
+      artCamp: 2,
+      visualDesignArt: 10
+    }
+    db.get()
+      .collection("artist")
+      .insertOne(body, function (err, dbresult) {
+        if (err)
+          res.status(500).send(httpUtil.error(500, "artist Creation Failed."));
+        res.send(httpUtil.success(200, "artist Created."));
+      });
+    db.get()
+      .collection("artist")
+      .insertOne(body, function (err, dbresult) {
+        if (err)
+          res.status(500).send(httpUtil.error(500, "artist Creation Failed."));
+        res.send(httpUtil.success(200, "artist Created."));
+      });
+  } catch (err) {
+    res.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
   }
-  if( imagesFile.length != 0 ){
-      for(let i=0;i<imagesFile.length;i++){
-        let imgObj = "http://localhost:3000/" + imagesFile[i].destination.slice(1) + imagesFile[i].filename
-          imagesPath.push(imgObj)
-      }
-      body.images = imagesPath
-  }
-  if (paintingFile.length != 0) {
-    for(let i=0;i<paintingFile.length;i++){
-    //   let imgObj = "http://localhost:3000/"+`${ paintingFile[i].destination }` + `${ paintingFile[i].originalname }`
-    let imgObj = "http://localhost:3000/" + paintingFile[i].destination.slice(1) + paintingFile[i].filename
-      paintingPath.push(imgObj)
-    } 
-    body.painting = paintingPath
-  }
-  db.get()
-    .collection("artist")
-    .insertOne(body, function (err, dbresult) {
-      if (err)
-        res.status(500).send(httpUtil.error(500, "artist Creation Failed."));
-      res.send(httpUtil.success(200, "artist Created."));
-    });
-})
+});
 
 router.put("/", jwt.authenticateToken, upload.array("images"), function (req, res, next) {
   try {
