@@ -16,9 +16,6 @@ var transporter = nodemailer.createTransport({
 });
 
 router.post("/chitchat", function (req, res, next) {
-  // res.send({
-  //   mess: "ok"
-  // });
 
   const context = { 
     name: req.body.name ? req.body.name : "",
@@ -63,13 +60,7 @@ router.post("/program", function (req, res, next) {
     program: req.body.program ? req.body.program : "",
     comment: req.body.comment ? req.body.comment : "",
   };
-  // sendMail("Program", secret.ADMIN_EMAIL, context)
-  //   .then((mailresult) => {
-  //     res.send(httpUtil.success(200, "Program Mail Sent.", mailresult));
-  //   })
-  //   .catch((error) => {
-  //     res.status(500).send(httpUtil.error(500, "Program Error."));
-  //   });
+
   var mailOptions = {
     from: secret.ADMIN_EMAIL,
     to: context.email,
@@ -199,95 +190,105 @@ router.get("/blog", function (req, res, next) {
 
 
 
-router.get("/artist", function (req, res, next) {
+// router.get("/artist", function (req, res, next) {
 
-  let skip = req.query.skip ? req.query.skip : 0;
-  let limit = req.query.limit ? req.query.limit : 10;
-  let type = req.query.type ? req.query.type : "";
-  let filter = req.query.filter ? req.query.filter : "";
-  let filters = {};
-  let pipeline = [
-    {
-      $lookup: {
-        from: "artwork",
-        localField: "painting.artworkId",
-        foreignField: "_id",
-        as: "painting",
-      },
-    },
-    {
-      $sort: {
-        _id: -1,
-    },  
-    }
-  ];
-  if (type && filter) {
-    pipeline.push({
-      $match: {
-        type: type,
-        name: {
-          $regex: '^' + filter,
-          $options: 'i'
-        }
-      },
-    });
-    filters = {
-      type: type,
-      name: {
-        $regex: '^' + filter,
-        $options: 'i'
-      }
-    };
-  } else if (type) {
-    pipeline.push({
-      $match: {
-        type: type
-      },
-    });
-    filters = {
-      type: type
-    };
-  } else if (filter) {
-    pipeline.push({
-      $match: {
-        name: {
-          $regex: '^' + filter,
-          $options: 'i'
-        }
-      },
-    });
-    filters = {
-      name: {
-        $regex: '^' + filter,
-        $options: 'i'
-      }
-    };
-  }
-  if (skip) {
-    pipeline.push({
-      $skip: skip,
-    });
-  }
-  if (limit) {
-    pipeline.push({
-      $limit: limit,
-    });
-  }
+//   let skip = req.query.skip ? req.query.skip : 0;
+//   let limit = req.query.limit ? req.query.limit : 10;
+//   let type = req.query.type ? req.query.type : "";
+//   let filter = req.query.filter ? req.query.filter : "";
+//   let filters = {};
+//   let pipeline = [
+//     {
+//       $lookup: {
+//         from: "artwork",
+//         localField: "painting.artworkId",
+//         foreignField: "_id",
+//         as: "painting",
+//       },
+//     },
+//     {
+//       $sort: {
+//         _id: -1,
+//     },  
+//     }
+//   ];
+//   if (type && filter) {
+//     pipeline.push({
+//       $match: {
+//         type: type,
+//         name: {
+//           $regex: '^' + filter,
+//           $options: 'i'
+//         }
+//       },
+//     });
+//     filters = {
+//       type: type,
+//       name: {
+//         $regex: '^' + filter,
+//         $options: 'i'
+//       }
+//     };
+//   } else if (type) {
+//     pipeline.push({
+//       $match: {
+//         type: type
+//       },
+//     });
+//     filters = {
+//       type: type
+//     };
+//   } else if (filter) {
+//     pipeline.push({
+//       $match: {
+//         name: {
+//           $regex: '^' + filter,
+//           $options: 'i'
+//         }
+//       },
+//     });
+//     filters = {
+//       name: {
+//         $regex: '^' + filter,
+//         $options: 'i'
+//       }
+//     };
+//   }
+//   if (skip) {
+//     pipeline.push({
+//       $skip: skip,
+//     });
+//   }
+//   if (limit) {
+//     pipeline.push({
+//       $limit: limit,
+//     });
+//   }
+//   db.get()
+//     .collection("artist")
+//     .aggregate(pipeline)
+//     .project({ password: 0 })
+//     .toArray(function (err, result) {
+//       if (err) console.log(err);
+//       db.get()
+//         .collection("artist")
+//         .find(filters)
+//         .count(function (err, dbresult) {
+//           if (err) throw err;
+//           res.send(
+//             httpUtil.success(200, "", { count: dbresult, data: result })
+//           );
+//         });
+//     });
+// });
+router.get("/artist", function (req, res, next) {
   db.get()
     .collection("artist")
-    .aggregate(pipeline)
+    .find({})
     .project({ password: 0 })
     .toArray(function (err, result) {
       if (err) console.log(err);
-      db.get()
-        .collection("artist")
-        .find(filters)
-        .count(function (err, dbresult) {
-          if (err) throw err;
-          res.send(
-            httpUtil.success(200, "", { count: dbresult, data: result })
-          );
-        });
+      res.send(httpUtil.success(200, "", result));
     });
 });
 
