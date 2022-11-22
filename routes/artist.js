@@ -14,7 +14,7 @@ var path = require("path");
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./public/uploads/artist/");    
+    cb(null, "./public/uploads/artist/");
   },
   filename: function (req, file, cb) {
     cb(null, file.fieldname + '.' + Date.now() + path.extname(file.originalname))
@@ -83,38 +83,73 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
     const imageFiles = req.files ? req.files : [];
     const imagePath = []
     const body = req.body;
-    
     if (imageFiles) {
       for (let i = 0; i < imageFiles.length; i++) {
-        let imgObj = "http://localhost:3000/"+`${imageFiles[i].destination}`+`${imageFiles[i].originalname}`
+        let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
         imagePath.push(imgObj)
       }
       body.images = imagePath
     }
-    body.painting = []
-    body.journey = {
-      paintings: 200,
-      groupExibition: 100,
-      soloExibition: 10,
-      awards: 3,
-      participation: 4,
-      artCamp: 2,
-      visualDesignArt: 10
+    const data = {
+      name : body.name,
+      dob : body.dob,
+      email : body.email,
+      mobile : body.mobile,
+      gender : body.gender,
+      city : body.city,
+      state : body.state,
+      country : body.country,
+      title : body.title,
+      title : {
+        title : body.title,
+        titleShortDescription : body.titleShortDescription,
+        artistDescription : body.description,
+      },
+      interest : body.interest,
+      socialConnect : {
+        instagram : body.instagram ? body.instagram : "",
+        facebook : body.facebook ? body.facebook : "",
+        linkedin : body.linkedin ? body.linkedin : "",
+        twitter : body.twitter ? body.twitter : ""
+      },
+      status : body.status ? body.status : "",
+      type_id : body.type_id,
+      createdAt : Date.now(),
+      profileImages : body.images,
+      painting : [],
+      mileStone : [{
+        groupExibition : body.groupExibition ? body.groupExibition : "",
+        soloExibition:  body.soloExibition ? body.soloExibition : "",
+        awards:  body.awards ? body.awards : "",
+        participation:  body.participation ? body.participation : "",
+        artCamp:  body.artCamp ? body.artCamp : "",
+        visualDesignArt: body.visualDesignArt ? body.visualDesignArt : "" 
+      }]
     }
+    // body.painting = []
+    // body.milestone = {
+    //   paintings: body.painting ? body.painting : " ",
+    //   groupExibition: body.groupExibition ? body.groupExibition : " ",
+    //   soloExibition: body.soloExibition ? body.soloExibition : " ",
+    //   awards: body.award ? body.awards : " ",
+    //   participation: body.participation ? body.participation : " ",
+    //   artCamp: body.artCamp ? body.artCamp : " ",
+    //   visualDesignArt: body.visualDesignArt ? body.visualDesignArt : " "
+    // }
     db.get()
       .collection("artist")
-      .insertOne(body, function (err, dbresult) {
+      .insertOne(data, function (err, dbresult) {
         if (err)
           res.status(500).send(httpUtil.error(500, "artist Creation Failed."));
         res.send(httpUtil.success(200, "artist Created."));
       });
-    db.get()
-      .collection("artist")
-      .insertOne(body, function (err, dbresult) {
-        if (err)
-          res.status(500).send(httpUtil.error(500, "artist Creation Failed."));
-        res.send(httpUtil.success(200, "artist Created."));
-      });
+    // db.get()
+    //   .collection("artist")
+    //   .insertOne(body, function (err, dbresult) {
+    //     if (err)
+    //       res.status(500).send(httpUtil.error(500, "artist Creation Failed."));
+    //     res.send(httpUtil.success(200, "artist Created."));
+    //   });
   } catch (err) {
     res.send({
       status: 400,
@@ -169,11 +204,11 @@ router.put("/", jwt.authenticateToken, upload.array("images"), function (req, re
         .collection("artist")
         .updateOne(Id, data, function (err, dbresult) {
           if (err)
-          res.status(500).send(httpUtil.error(500, "artist Update Failed."));
+            res.status(500).send(httpUtil.error(500, "artist Update Failed."));
           res.send(httpUtil.success(200, "artist Updated."));
         });
     }
-  } 
+  }
   catch (err) {
     res.send({
       status: 400,
@@ -211,7 +246,7 @@ router.delete("/", jwt.authenticateToken, function (req, res, next) {
   if (artist_id) {
     db.get()
       .collection("artist")
-      .deleteMany({ status : "Active" }, function (err, result) {
+      .deleteMany({ gender: "Male" }, function (err, result) {
         if (err)
           res.status(204).send(httpUtil.error(204, "artist deletion error."));
         res.send(httpUtil.success(200, "artist deleted."));

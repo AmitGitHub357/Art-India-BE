@@ -188,6 +188,28 @@ router.get("/blog", function (req, res, next) {
     });
 });
 
+router.get("/artist", function (req, res, next) {
+  const type_id = req.params.artist_type
+  // db.get()
+  //   .collection("artist")
+    // .find({ }).populate("type_id")
+    // .toArray(function (err, result) {
+    //   if (err) console.log(err);
+    //   res.send(httpUtil.success(200, "", result));
+    // });
+    db.artist.aggregate([
+      { $lookup:
+          {
+             from: "artist-type",
+             localField: "type_id",
+             foreignField: "_id",
+             as: "artist_type"
+          }
+      }
+  ]).pretty();
+});
+
+
 
 
 // router.get("/artist", function (req, res, next) {

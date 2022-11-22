@@ -5,54 +5,58 @@ var { ObjectId } = require("mongodb");
 var httpUtil = require("../utilities/http-messages");
 var jwt = require("../utilities/jwt");
 
-router.get("/",jwt.authenticateToken, function (req, res, next)
-{
-  const type = req.query.type
-    ? req.query.type.split(" ").join("").toLowerCase()
-    : "";
-  if (type) {
-    db.get()
-      .collection(type + "-style")
-      .find({})
-      .toArray(function (err, result) {
-        if (err) throw err;
-        res.send(httpUtil.success(200, "", result));
-      });
-  } else {
-    res.status(204).send(httpUtil.error(204, "Type is missing."));
-  }
+// router.get("/",jwt.authenticateToken, function (req, res, next)
+// {
+//   const type = req.query.type
+//     ? req.query.type.split(" ").join("").toLowerCase()
+//     : "";
+//   if (type) {
+//   db.get()
+//     .collection(type + "-style")
+//     .find({})
+//     .toArray(function (err, result) {
+//       if (err) throw err;
+//       res.send(httpUtil.success(200, "", result));
+//     });
+// } else {
+//   res.status(204).send(httpUtil.error(204, "Type is missing."));
+// }
+// });
+router.get("/", jwt.authenticateToken, (req, res, next) => {
+  db.get()
+    .collection("style")
+    .find({})
+    .toArray(function (err, result) {
+      if (err)
+        throw err;
+      else {
+        res.send(httpUtil.success(200, "", result))
+      }
+    })
+})
+
+router.post("/", jwt.authenticateToken, function (req, res, next) {
+  // const type = req.body.type
+  //   ? req.body.type.split(" ").join("").toLowerCase()
+  //   : "";
+  // if (type) {
+  const body = req.body
+  db.get()
+    .collection("style")
+    .insertOne(body, function (err, dbresult) {
+      if (err) {
+        res.status(500).send(httpUtil.error(500, "Style Creation Failed."));
+      }
+      res.send(httpUtil.success(200, "Style Created."));
+    });
 });
 
-router.post("/",jwt.authenticateToken, function (req, res, next) {
-  const type = req.body.type
-    ? req.body.type.split(" ").join("").toLowerCase()
-    : "";
-  if (type) {
-    const data = {
-      type : req.body.type ? req.body.type : "",
-      style: req.body.style ? req.body.style : "",
-      createdAt: Date.now(),
-      updatedAt: null,
-    };
-    db.get()
-      .collection(type + "-style")
-      .insertOne(data, function (err, dbresult) {
-        if (err) {
-          res.status(500).send(httpUtil.error(500, "Style Creation Failed."));
-        }
-        res.send(httpUtil.success(200, "Style Created."));
-      });
-  } else {
-    res.status(204).send(httpUtil.error(204, "Type is missing."));
-  }
-});
-
-router.put("/",jwt.authenticateToken, function (req, res, next) {
+router.put("/", jwt.authenticateToken, function (req, res, next) {
   const type = req.body.type
     ? req.body.type.split(" ").join("").toLowerCase()
     : "";
   const style_id = req.body.style_id ? ObjectId(req.body.style_id) : "";
-  if (type && style_id) { 
+  if (type && style_id) {
     let Id = { _id: style_id };
     let data = {
       $set: {
@@ -73,7 +77,7 @@ router.put("/",jwt.authenticateToken, function (req, res, next) {
   }
 });
 
-router.delete("/",jwt.authenticateToken, function (req, res, next) {
+router.delete("/", jwt.authenticateToken, function (req, res, next) {
   const type = req.query.type
     ? req.query.type.split(" ").join("").toLowerCase()
     : "";

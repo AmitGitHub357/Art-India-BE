@@ -55,10 +55,6 @@ router.put("/", function (req, res, next) {
   if (event_id) {
     let Id = { _id: event_id };
     const body = req.body
-    // res.send({
-    //   Id,
-    //   body
-    // });
     let data = {
       $set: {
         name: req.body.name ,

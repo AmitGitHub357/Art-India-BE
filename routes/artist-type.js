@@ -35,6 +35,7 @@ router.post("/", jwt.authenticateToken,function (req, res, next) {
     });
 });
 
+
 router.put("/", jwt.authenticateToken, function (req, res, next) {
   const type_id = req.body.type_id ? ObjectId(req.body.type_id) : "";
   if (type_id) {

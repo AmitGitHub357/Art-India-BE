@@ -56,7 +56,7 @@ router.get("/", function (req, res, next) {
 //       res.send(httpUtil.success(200, "artwork Created."));
 //     });
 // })
-router.post("/", upload.array("images"), async function (req, res, next) {
+router.post("/", upload.fields("images"), async function (req, res, next) {
   const imageFiles = req.files ? req.files : [];
   const imagePath = []
   const body = req.body;
@@ -67,6 +67,21 @@ router.post("/", upload.array("images"), async function (req, res, next) {
       imagePath.push(imgObj)
     }
     body.images = imagePath
+  }
+
+  const data = {
+    artworkName : body.artworkName,
+    artistId : body.artistId,
+    shortDescription : body.shortDescription,
+    buyPrice : body.buyPrice,
+    rentPrice : body.rentPrice,
+    frames : body.frames,
+    artworkImage : body.artworkImage,
+    artworkType : body.artworkTypeId,
+    paintingCategory : body.paintingCategoryId,
+    paintingStyle : body.paintingStyleId,
+    paintingTechniques : body.paintingTechniquesId
+    
   }
   db.get()
     .collection("artwork")
@@ -226,7 +241,7 @@ router.delete("/",jwt.authenticateToken, function (req, res, next) {
     // unlinkAsync(req.file.path)
     db.get() 
       .collection("artwork")
-      .deleteOne({ _id: artwork_id }, function (err, result) {
+      .deleteMany({ technique : "colour" }, function (err, result) {
         if (err)
           res.status(204).send(httpUtil.error(204, "artwork deletion error."));
         res.send(httpUtil.success(200, "artwork deleted."));
