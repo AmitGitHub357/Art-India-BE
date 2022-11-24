@@ -121,33 +121,14 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
         linkedin: body.linkedin ? body.linkedin : "",
         twitter: body.twitter ? body.twitter : ""
       },
-      status: body.status ? body.status : "",
-      // type_id: body.type_id,
-      // [
-      //   {name: "Paintings", count:"500"},
-      //   {name: "Group Exhibition", count:"20"}
-      // ]
-      
+      status: body.status ? body.status : "",  
       createdAt: Date.now(),
       profileImages: body.images,
       painting: [],
       artist_type: body.artist_type,
       mileStone
-      // : [{
-      //     name : body.mileStoneTitle,
-      //     count : body.mileStoneCount
-      // }]
     }
-    // body.painting = []
-    // body.milestone = {
-    //   paintings: body.painting ? body.painting : " ",
-    //   groupExibition: body.groupExibition ? body.groupExibition : " ",
-    //   soloExibition: body.soloExibition ? body.soloExibition : " ",
-    //   awards: body.award ? body.awards : " ",
-    //   participation: body.participation ? body.participation : " ",
-    //   artCamp: body.artCamp ? body.artCamp : " ",
-    //   visualDesignArt: body.visualDesignArt ? body.visualDesignArt : " "
-    // }
+    
     db.get()
       .collection("artist")
       .insertOne(data, function (err, dbresult) {
@@ -155,13 +136,7 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
           res.status(500).send(httpUtil.error(500, "artist Creation Failed."));
         res.send(httpUtil.success(200, "artist Created."));
       });
-    // db.get()
-    //   .collection("artist")
-    //   .insertOne(body, function (err, dbresult) {
-    //     if (err)
-    //       res.status(500).send(httpUtil.error(500, "artist Creation Failed."));
-    //     res.send(httpUtil.success(200, "artist Created."));
-    //   });
+    
   } catch (err) {
     res.send({
       status: 400,

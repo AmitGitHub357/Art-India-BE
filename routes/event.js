@@ -20,27 +20,35 @@ router.get("/:event_id", function (req, res, next) {
   const _id = req.params.event_id ? ObjectId(req.params.event_id) : ""
   db.get()
     .collection("event")
-    .find( { _id : _id } ) 
+    .find({ _id: _id })
     .toArray(function (err, result) {
       if (err) console.log(err);
       res.send(httpUtil.success(200, "", result));
     });
 });
 
-router.post("/", function (req, res, next) { 
-    const data = {
+router.post("/", function (req, res, next) {
+  // res.send({ req : req.body })
+  const body = req.body
+  try{
+  const data = {
     name: req.body.name ? req.body.name : "",
-    type: req.body.type ? req.body.type : "",
-    start: req.body.start ? req.body.start : "",
-    stop: req.body.stop ? req.body.stop : "",
-    place: req.body.place ? req.body.place : "",
-    limit: req.body.limit ? req.body.limit : "",
+    description: {
+      shortDescription: body.shortDescription,
+      description: body.description
+    },
+    event_type: req.body.event_type ? req.body.event_type : "",
+    start_date: req.body.start_date ? req.body.start_date : "",
+    end_date: req.body.end_date ? req.body.end_date : "",
+    // place: req.body.place ? req.body.place : "",
+    // limit: req.body.limit ? req.body.limit : "",
     participant: req.body.participant ? req.body.participant : [],
     winner: req.body.winner ? req.body.winner : [],
     createdAt: Date.now(),
     updatedAt: null,
     status: req.body.status ? req.body.status : "Active",
   };
+  console.log(data)
   db.get()
     .collection("event")
     .insertOne(data, function (err, dbresult) {
@@ -48,6 +56,13 @@ router.post("/", function (req, res, next) {
         res.status(500).send(httpUtil.error(500, "Event Creation Failed."));
       res.send(httpUtil.success(200, "Event Created."));
     });
+  }catch(err){
+    res.send({
+      status : 400,
+      success : false,
+      error : err.message
+    })
+  }
 });
 
 router.put("/", function (req, res, next) {
@@ -57,17 +72,17 @@ router.put("/", function (req, res, next) {
     const body = req.body
     let data = {
       $set: {
-        name: req.body.name ,
-        type: req.body.type ,start: req.body.start ,
-        stop: req.body.stop ,
-        place: req.body.place ,
-        limit: req.body.limit ,
-        participant: req.body.participant ,
-        winner: req.body.winner ,
+        name: req.body.name,
+        type: req.body.type, start: req.body.start,
+        stop: req.body.stop,
+        place: req.body.place,
+        limit: req.body.limit,
+        participant: req.body.participant,
+        winner: req.body.winner,
         updatedAt: Date.now(),
       },
     };
-    
+
     db.get()
       .collection("event")
       .updateOne(Id._id, data, function (err, result) {
@@ -99,9 +114,8 @@ router.patch("/", function (req, res, next) {
         }
         res.send(httpUtil.success(200, "Event updated."));
       });
-  } 
-  else 
-  {
+  }
+  else {
     res.status(204).send(httpUtil.error(204, "Event ID is missing."));
   }
 });

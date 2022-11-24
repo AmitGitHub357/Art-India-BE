@@ -17,7 +17,7 @@ var transporter = nodemailer.createTransport({
 
 router.post("/chitchat", function (req, res, next) {
 
-  const context = { 
+  const context = {
     name: req.body.name ? req.body.name : "",
     email: req.body.email ? req.body.email : "",
     phone: req.body.phone ? req.body.phone : "",
@@ -90,7 +90,7 @@ router.post("/connect", function (req, res, next) {
     subject: req.body.subject ? req.body.subject : "",
     comment: req.body.comment ? req.body.comment : "",
   };
-  
+
   var mailOptions = {
     from: secret.ADMIN_EMAIL,
     to: context.email,
@@ -132,7 +132,7 @@ router.post("/contact", function (req, res, next) {
     to: context.email,
     subject: 'no reply',
     text: 'our team contact to you soon !'
-};
+  };
 
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
@@ -152,7 +152,7 @@ router.get("/artistType", function (req, res, next) {
   const type = req.query.type
   db.get()
     .collection("artist")
-    .find({ artist_type : type })
+    .find({ artist_type: type })
     .toArray(function (err, result) {
       if (err) console.log(err);
       res.send(httpUtil.success(200, "", result));
@@ -160,13 +160,11 @@ router.get("/artistType", function (req, res, next) {
 });
 
 router.get("/artistName", function (req, res, next) {
-  // res.send({ mess :""})
   const letter = req.query.letter
-  // db.collection.find( { name: { $regex: /S/i } } )
   db.get()
     .collection("artist")
-    .find({ name : { $regex : '^'+letter+'' } })
-    .toArray(function (err, result) { 
+    .find({ name: { $regex: '^' + letter + '' } })
+    .toArray(function (err, result) {
       if (err) res.send(err);
       res.send(httpUtil.success(200, "", result));
     });
@@ -189,6 +187,17 @@ router.get("/event", function (req, res, next) {
     .toArray(function (err, result) {
       if (err) console.log(err);
       res.send(httpUtil.success(200, "", result));
+    });
+});
+
+router.get("/event_type", function (req, res, next) {
+  const event_type = req.query.event_type
+  db.get()
+    .collection("event")
+    .find({ event_type : event_type })
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+        res.send(httpUtil.success(200, "", result));
     });
 });
 
@@ -411,7 +420,7 @@ router.post("/artwork", function (req, res, next) {
       pipeline[0].$match['style'] = {
         $in: style
       };
-      filter['style'] = { 
+      filter['style'] = {
         $in: style
       };
     }
@@ -437,11 +446,11 @@ router.post("/artwork", function (req, res, next) {
       .collection("artwork")
       .aggregate(pipeline)
       .toArray(function (err, result) {
-        if(err){
+        if (err) {
           res.send({
-            status : 400,
-            success : false,
-            error : err
+            status: 400,
+            success: false,
+            error: err
           })
         }
         db.get()
@@ -578,5 +587,27 @@ router.get("/clients/logo", function (req, res, next) {
       res.send(httpUtil.success(200, "", result));
     });
 });//
+
+router.get("/search", function (req, res, next) {
+  try {
+    const key = req.query.key
+    // db.get().collection("news")$or: [{ name: { $regex: key } }, { description: { $regex: key } }, { technique: { $regex: key } }, { style: { $regex: key } }, { artistname: { $regex: key } }] 
+    db.get().collection("artwork").find({
+      $or:
+        [{ artworkName : { $regex: key } }, { shortDescription: { $regex: key } }, { buyPrice: { $regex: key } }, { style: { $regex: key } }, { artistname: { $regex: key } }, { size: { $regex: key } },{ orientation : { $regex: key } }, { length : { $regex: key } },{ orientation : { $regex: key } },{ paintingCategory : { $regex: key } },{ paintingArtwork : { $regex: key } },{ paintingStyle : { $regex: key } },{ paintingTechniques : { $regex: key } }]
+    })
+      .toArray(function (err, result) {
+        if (err) console.log(err)
+        res.send(httpUtil.success({
+          status : 200,
+          success : true,
+          result,
+          totalCount : result.length
+        }))
+      });
+  } catch (err) {
+    res.send(httpUtil.error(400, { error: err.message }))
+  }
+});
 
 module.exports = router;
