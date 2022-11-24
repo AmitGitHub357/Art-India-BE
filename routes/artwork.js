@@ -36,7 +36,7 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { name: "frameImages", maxCount: 20 }]), async function (req, res, next) {
-  console.log(__dirname + '../../')
+  // console.log(__dirname + '../../')
   var imagesPath = [], framePath = []
   var imagesFile = [], frameFile = []
   var body = req.body;
@@ -69,7 +69,12 @@ router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { nam
     shortDescription: body.shortDescription,
     buyPrice: body.buyPrice,
     rentPrice: body.rentPrice,
+    size : body.size,
+    oriention : body.oriention,
     frameImage: body.frameImages,
+    length : body.length,
+    width : body.width,
+    likes : body.likes ? body.likes : "0",
     artworkImage: body.images,
     paintingCategory: body.painting_category,
     paintingArtwork: body.painting_artwork,
