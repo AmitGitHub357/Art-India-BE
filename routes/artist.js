@@ -91,6 +91,13 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
       }
       body.images = imagePath
     }
+    const mileStone = []
+    for(var i = 0; i < body.mileStoneTitle.length; i++){
+        mileStone.push({ mileStoneName : body.mileStoneTitle[i] , mileStoneCount : body.mileStoneCount[i] })
+    }
+    // console.log(mileStone)
+    // res.send({ mileStone })
+    // const mileStone = [{ name : body.mileStone.name }]
     const data = {
       name: body.name,
       dob: body.dob,
@@ -115,14 +122,20 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
       },
       status: body.status ? body.status : "",
       // type_id: body.type_id,
+      // [
+      //   {name: "Paintings", count:"500"},
+      //   {name: "Group Exhibition", count:"20"}
+      // ]
+      
       createdAt: Date.now(),
       profileImages: body.images,
       painting: [],
       artist_type: body.artist_type,
-      mileStone: [{
-          name : body.mileStoneTitle,
-          count : body.mileStoneCount
-      }]
+      mileStone
+      // : [{
+      //     name : body.mileStoneTitle,
+      //     count : body.mileStoneCount
+      // }]
     }
     // body.painting = []
     // body.milestone = {
@@ -244,7 +257,7 @@ router.delete("/", jwt.authenticateToken, function (req, res, next) {
   if (artist_id) {
     db.get()
       .collection("artist")
-      .deleteMany({ dob: "13071979" }, function (err, result) {
+      .deleteMany({ state : "Gujarat" }, function (err, result) {
         if (err)
           res.status(204).send(httpUtil.error(204, "artist deletion error."));
         res.send(httpUtil.success(200, "artist deleted."));
