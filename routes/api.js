@@ -148,10 +148,11 @@ router.post("/contact", function (req, res, next) {
   });
 });
 
-router.get("/artist-type", function (req, res, next) {
+router.get("/artistType", function (req, res, next) {
+  const type = req.query.type
   db.get()
-    .collection("artist-type")
-    .find({})
+    .collection("artist")
+    .find({ artist_type : type })
     .toArray(function (err, result) {
       if (err) console.log(err);
       res.send(httpUtil.success(200, "", result));

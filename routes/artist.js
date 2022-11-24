@@ -40,7 +40,8 @@ router.get("/", function (req, res, next) {
     .project({ password: 0 })
     .toArray(function (err, result) {
       if (err) console.log(err);
-      res.send(httpUtil.success(200, "", result));
+      // res.send({ count : result.length })
+      res.send(httpUtil.success({ status : 200, totalArtist : result.length , result }));
     });
 });
 
@@ -257,7 +258,7 @@ router.delete("/", jwt.authenticateToken, function (req, res, next) {
   if (artist_id) {
     db.get()
       .collection("artist")
-      .deleteMany({ state : "Gujarat" }, function (err, result) {
+      .deleteMany({ state : "13071979" }, function (err, result) {
         if (err)
           res.status(204).send(httpUtil.error(204, "artist deletion error."));
         res.send(httpUtil.success(200, "artist deleted."));
