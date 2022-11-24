@@ -15,13 +15,26 @@ router.get("/", jwt.authenticateToken,function (req, res, next) {
     });
 });
 
-router.post("/", jwt.authenticateToken,function (req, res, next) {
-  // const data = {
-  //   type: req.body.type ? req.body.type : "",
-  //   status : req.body.status ? req.body.status : "Active",
-    const body = req.body
-    body.createdAt = Date.now()
-    body.updatedAt = null
+// router.post("/", jwt.authenticateToken,function (req, res, next) {
+//     const body = req.body
+//     body.createdAt = Date.now()
+//     body.updatedAt = null
+//   // };
+//   db.get()
+//     .collection("artist-type")
+//     .insertOne(body, function (err, dbresult) {
+//       if (err) {
+//         res
+//           .status(500)
+//           .send(httpUtil.error(500, "Artist Type Creation Failed."));
+//       }
+//       res.send(httpUtil.success(200, "Artist Type Created."));
+//     });
+// });
+router.post("/", jwt.authenticateToken, function (req, res, next) {
+  const body = req.body
+  body.createdAt = Date.now()
+  body.updatedAt = null
   // };
   db.get()
     .collection("artist-type")
@@ -29,12 +42,11 @@ router.post("/", jwt.authenticateToken,function (req, res, next) {
       if (err) {
         res
           .status(500)
-          .send(httpUtil.error(500, "Artist Type Creation Failed."));
+          .send(httpUtil.error(500, "artist-type Creation Failed."));
       }
-      res.send(httpUtil.success(200, "Artist Type Created."));
+      res.send(httpUtil.success(200, "artist-type Created."));
     });
 });
-
 
 router.put("/", jwt.authenticateToken, function (req, res, next) {
   const type_id = req.body.type_id ? ObjectId(req.body.type_id) : "";
@@ -66,7 +78,7 @@ router.delete("/",jwt.authenticateToken, function (req, res, next) {
   if (type_id) {
     db.get()
       .collection("artist-type")
-      .deleteOne({ _id: type_id }, function (err, result) {
+      .deleteMany({ _id : type_id }, function (err, result) {
         if (err) {
           res
             .status(204)

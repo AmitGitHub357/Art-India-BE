@@ -159,6 +159,19 @@ router.get("/artistType", function (req, res, next) {
     });
 });
 
+router.get("/artistName", function (req, res, next) {
+  // res.send({ mess :""})
+  const letter = req.query.letter
+  // db.collection.find( { name: { $regex: /S/i } } )
+  db.get()
+    .collection("artist")
+    .find({ name : { $regex : '^'+letter+'' } })
+    .toArray(function (err, result) { 
+      if (err) res.send(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
 router.get("/news", function (req, res, next) {
   db.get()
     .collection("news")
@@ -192,6 +205,16 @@ router.get("/blog", function (req, res, next) {
 router.get("/", function (req, res, next) {
   db.get()
     .collection("artist")
+    .find({})
+    .project({ password: 0 })
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+router.get("/artist-type", function (req, res, next) {
+  db.get()
+    .collection("artist-type")
     .find({})
     .project({ password: 0 })
     .toArray(function (err, result) {
