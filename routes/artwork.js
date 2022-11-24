@@ -8,7 +8,7 @@ var async = require("async");
 var s3Utility = require("../utilities/s3-bucket");
 var multer = require("multer");
 var fs = require("fs");
-
+var path = require("path");
 async function asyncForEach(array, callback) {
   for (let index = 0; index < array.length; index++) {
     await callback(array[index], index, array);
@@ -17,11 +17,10 @@ async function asyncForEach(array, callback) {
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads/");
+    cb(null, "public/uploads/artwork/");
   },
-
   filename: function (req, file, cb) {
-    cb(null, file.originalname);
+    cb(null, file.originalname)
   },
 });
 
@@ -36,79 +35,82 @@ router.get("/", function (req, res, next) {
     });
 });
 
-// router.post("/", upload.any("files"), async function (req, res, next) {
-//   const imageFiles = req.files ? req.files : [];
-//   const imagePath = []
-//   const body = req.body;
-//   body.artistId = ObjectId(body.artistId); 
-//   if (imageFiles) {
-//     for (let i = 0; i < imageFiles.length; i++) {
-//       let imgObj = imageFiles[i].destination + imageFiles[i].originalname
-//       imagePath.push(imgObj)
-//     }
-//     body.images = imagePath
-//   }
-//   db.get()
-//     .collection("artwork")  
-//     .insertOne(body, function (err, dbresult) {
-//       if (err)
-//         res.status(500).send(httpUtil.error(500, "artwork Creation Failed."));
-//       res.send(httpUtil.success(200, "artwork Created."));
-//     });
-// })
-router.post("/", upload.fields("images"), async function (req, res, next) {
-  const imageFiles = req.files ? req.files : [];
-  const imagePath = []
-  const body = req.body;
-  body.artistId = ObjectId(body.artistId);
-  if (imageFiles) {
-    for (let i = 0; i < imageFiles.length; i++) {
-      let imgObj = imageFiles[i].destination + imageFiles[i].originalname
-      imagePath.push(imgObj)
+router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { name: "frameImages", maxCount: 20 }]), async function (req, res, next) {
+  console.log(__dirname + '../../')
+  var imagesPath = [], framePath = []
+  var imagesFile = [], frameFile = []
+  var body = req.body;
+  if (Object.keys(req.files).length != 0) {
+    if (Object.keys(req.files).includes('images')) {
+      imagesFile = await req.files.images
     }
-    body.images = imagePath
+    if (Object.keys(req.files).includes('frameImages')) {
+      frameFile = await req.files.frameImages
+    }
   }
-
+  if (imagesFile.length != 0) {
+    for (let i = 0; i < imagesFile.length; i++) {
+      // let imgObj = "http://localhost:3000/" + imagesFile[i].destination.slice(1) + imagesFile[i].filename
+      let imgObj = "http://localhost:3000/" + `${imagesFile[i].destination}` + `${imagesFile[i].originalname}`
+      imagesPath.push(imgObj)
+    }
+    body.images = imagesPath
+  }
+  if (frameFile.length != 0) {
+    for (let i = 0; i < frameFile.length; i++) {
+      let imgObj = "http://localhost:3000/" + `${frameFile[i].destination}` + `${frameFile[i].originalname}`
+      framePath.push(imgObj)
+    }
+    body.frameImages = framePath
+  }
   const data = {
-    artworkName : body.artworkName,
-    artistId : body.artistId,
-    shortDescription : body.shortDescription,
-    buyPrice : body.buyPrice,
-    rentPrice : body.rentPrice,
-    frames : body.frames,
-    artworkImage : body.artworkImage,
-    artworkType : body.artworkTypeId,
-    paintingCategory : body.paintingCategoryId,
-    paintingStyle : body.paintingStyleId,
-    paintingTechniques : body.paintingTechniquesId
-    
+    artworkName: body.artworkName,
+    artistId: body.artistId,
+    shortDescription: body.shortDescription,
+    buyPrice: body.buyPrice,
+    rentPrice: body.rentPrice,
+    frameImage: body.frameImages,
+    artworkImage: body.images,
+    paintingCategory: body.painting_category,
+    paintingArtwork: body.painting_artwork,
+    paintingStyle: body.painting_style,
+    paintingTechniques: body.painting_technique
   }
   db.get()
     .collection("artwork")
-    .insertOne(body, function (err, dbresult) {
+    .insertOne(data, function (err, dbresult) {
       if (err)
         res.status(500).send(httpUtil.error(500, "artwork Creation Failed."));
-      db.get()
-        .collection("artwork")
-        .find({ artistId : body.artistId })
-        .toArray(function (err, result) {
-          if (err) console.log(err);
-          db.get().collection("artist").updateOne({ _id: body.artistId }, { $set: { painting : result } }, function (err, dbresult) {
+      db.get().collection("artwork").find({ artistId: body.artistId }).toArray(function (err, result) {
+        if (err) res.send(err);
+        db.get().collection("artist").updateOne({ _id: ObjectId(body.artistId) }, { $set: { painting: result } }, function (err, result) {
+          if (err) {
+            res.status(204).send(httpUtil.error(204, err.message));
+          }
+          else
             res.send({
-              dbresult
+              status : 200,
+              success : true,
+              message : "Artwork Created"
             })
-            if (err) {
-              res
-                .status(500)
-                .send(httpUtil.error(500, "Artwork creation Failed."));
-            }
-          })
-          res.send(httpUtil.success(200, "Artwork Created"));
+          // db.get().collection("artist-type").find({ _id : body.artworkTypeId }).toArray(function (err, result) {
+          //   console.log(result)
+          //   if (err) res.send(err);
+          //     res.status(204).send(httpUtil.error(204,err.message));
+          //     db.get().collection("artist").updateOne({ type_id : ObjectId(body.artworkTypeId) }, { $set: { artist_type : result } }, function (err, result) 
+          //     { console.log(result)
+          //       if (err) 
+          //         res.status(204).send(httpUtil.error(204,err.message));
+
+          //     })
+          // })
         });
+      });
+      // res.send(httpUtil.success(200, "artwork Created."));
     });
 })
 
-router.put("/",jwt.authenticateToken, upload.any("files"), async function (req, res, next) {
+router.put("/", jwt.authenticateToken, upload.any("files"), async function (req, res, next) {
   const files = req.files ? req.files : [];
   const body = req.body.data;
   const artwork_id = body.artwork_id ? ObjectId(body.artwork_id) : "";
@@ -117,7 +119,7 @@ router.put("/",jwt.authenticateToken, upload.any("files"), async function (req, 
   let oldImages = [];
   if (artwork_id) {
     const data = {
-      $set: {       
+      $set: {
         name: body.name ? body.name : "",
         description: body.description ? body.description : "",
         price: body.price ? parseInt(body.price) : "",
@@ -212,7 +214,7 @@ router.put("/",jwt.authenticateToken, upload.any("files"), async function (req, 
   }
 });
 
-router.patch("/",jwt.authenticateToken, function (req, res, next) {
+router.patch("/", jwt.authenticateToken, function (req, res, next) {
   const artwork_id = req.body.artwork_id ? ObjectId(req.body.artwork_id) : "";
   if (artwork_id) {
     let Id = { _id: artwork_id };
@@ -235,13 +237,13 @@ router.patch("/",jwt.authenticateToken, function (req, res, next) {
   }
 });
 
-router.delete("/",jwt.authenticateToken, function (req, res, next) {
+router.delete("/", jwt.authenticateToken, function (req, res, next) {
   const artwork_id = req.query.artwork_id ? ObjectId(req.query.artwork_id) : "";
   if (artwork_id) {
     // unlinkAsync(req.file.path)
-    db.get() 
+    db.get()
       .collection("artwork")
-      .deleteMany({ technique : "colour" }, function (err, result) {
+      .deleteMany({ buyPrice: "3000" }, function (err, result) {
         if (err)
           res.status(204).send(httpUtil.error(204, "artwork deletion error."));
         res.send(httpUtil.success(200, "artwork deleted."));

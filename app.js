@@ -16,7 +16,6 @@ var db = require('./dbconfig');
 
 // Defining routes
 var routes = require('./routes');
-
 // Generating an express app
 var app = express();
 

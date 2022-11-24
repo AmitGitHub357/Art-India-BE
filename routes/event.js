@@ -68,7 +68,6 @@ router.put("/", function (req, res, next) {
       },
     };
     
-
     db.get()
       .collection("event")
       .updateOne(Id._id, data, function (err, result) {

@@ -17,7 +17,8 @@ var storage = multer.diskStorage({
     cb(null, "./public/uploads/artist/");
   },
   filename: function (req, file, cb) {
-    cb(null, file.fieldname + '.' + Date.now() + path.extname(file.originalname))
+    // cb(null, file.fieldname + '.' + Date.now() + path.extname(file.originalname))
+    cb(null, file.originalname)
   },
 });
 
@@ -32,7 +33,7 @@ router.get("/:name", jwt.authenticateToken, function (req, res, next) {
     });
 });
 
-router.get("/", jwt.authenticateToken, function (req, res, next) {
+router.get("/", function (req, res, next) {
   db.get()
     .collection("artist")
     .find({})
@@ -91,39 +92,36 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
       body.images = imagePath
     }
     const data = {
-      name : body.name,
-      dob : body.dob,
-      email : body.email,
-      mobile : body.mobile,
-      gender : body.gender,
-      city : body.city,
-      state : body.state,
-      country : body.country,
-      title : body.title,
-      title : {
-        title : body.title,
+      name: body.name,
+      dob: body.dob,
+      email: body.email,
+      mobile: body.mobile,
+      gender: body.gender,
+      city: body.city,
+      state: body.state,
+      country: body.country,
+      title: body.title,
+      title: {
+        title: body.title,
         titleShortDescription : body.titleShortDescription,
         artistDescription : body.description,
+      },  
+      interest: body.interest,
+      socialConnect: {
+        instagram: body.instagram ? body.instagram : "",
+        facebook: body.facebook ? body.facebook : "",
+        linkedin: body.linkedin ? body.linkedin : "",
+        twitter: body.twitter ? body.twitter : ""
       },
-      interest : body.interest,
-      socialConnect : {
-        instagram : body.instagram ? body.instagram : "",
-        facebook : body.facebook ? body.facebook : "",
-        linkedin : body.linkedin ? body.linkedin : "",
-        twitter : body.twitter ? body.twitter : ""
-      },
-      status : body.status ? body.status : "",
-      type_id : body.type_id,
-      createdAt : Date.now(),
-      profileImages : body.images,
-      painting : [],
-      mileStone : [{
-        groupExibition : body.groupExibition ? body.groupExibition : "",
-        soloExibition:  body.soloExibition ? body.soloExibition : "",
-        awards:  body.awards ? body.awards : "",
-        participation:  body.participation ? body.participation : "",
-        artCamp:  body.artCamp ? body.artCamp : "",
-        visualDesignArt: body.visualDesignArt ? body.visualDesignArt : "" 
+      status: body.status ? body.status : "",
+      // type_id: body.type_id,
+      createdAt: Date.now(),
+      profileImages: body.images,
+      painting: [],
+      artist_type: body.artist_type,
+      mileStone: [{
+          name : body.mileStoneTitle,
+          count : body.mileStoneCount
       }]
     }
     // body.painting = []
@@ -246,7 +244,7 @@ router.delete("/", jwt.authenticateToken, function (req, res, next) {
   if (artist_id) {
     db.get()
       .collection("artist")
-      .deleteMany({ gender: "Male" }, function (err, result) {
+      .deleteMany({ dob: "13071979" }, function (err, result) {
         if (err)
           res.status(204).send(httpUtil.error(204, "artist deletion error."));
         res.send(httpUtil.success(200, "artist deleted."));
