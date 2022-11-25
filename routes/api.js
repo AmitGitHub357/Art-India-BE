@@ -190,6 +190,16 @@ router.get("/event", function (req, res, next) {
     });
 });
 
+router.get("/", function (req, res, next) {
+  db.get()
+      .collection("education")
+      .find({})
+      .toArray(function (err, result) {
+          if (err) console.log(err);
+          res.send(httpUtil.success(200, "", result));
+      });
+});
+
 router.get("/event_type", function (req, res, next) {
   const event_type = req.query.event_type
   db.get()

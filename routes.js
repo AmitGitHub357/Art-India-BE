@@ -25,6 +25,8 @@ var blog = require('./routes/blog');
 var comment = require('./routes/comment');
 var cart = require('./routes/cart');
 var search = require('./routes/search')
+var education = require('./routes/education')
+var gallery = require('./routes/gallery')
 
 // Linking all the routes
 app.use('/', index);
@@ -51,4 +53,7 @@ app.use('/blog', blog);
 app.use('/comment', comment);
 app.use('/cart', cart);
 app.use('/search', search);
+app.use('/education', education);
+app.use('/gallery', gallery);
+
 module.exports = app;
