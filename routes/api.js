@@ -183,9 +183,24 @@ router.get("/news", function (req, res, next) {
 router.get("/event", function (req, res, next) {
   db.get()
     .collection("event")
-    .find({})
+    .find({}).sort({ start_date : 1 })
     .toArray(function (err, result) {
       if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
+router.get("/featured_events", function (req, res, next) {
+  db.get()
+    .collection("event")
+    // .aggregate(
+    //   [
+    //     { $sort : { end_date : -1 } }
+    //   ])
+    .find({ completed : "true" }).sort({ end_date : 1 })
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      console.log(result)
       res.send(httpUtil.success(200, "", result));
     });
 });

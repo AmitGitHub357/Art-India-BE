@@ -30,37 +30,38 @@ router.get("/:event_id", function (req, res, next) {
 router.post("/", function (req, res, next) {
   // res.send({ req : req.body })
   const body = req.body
-  try{
-  const data = {
-    name: req.body.name ? req.body.name : "",
-    description: {
-      shortDescription: body.shortDescription,
-      description: body.description
-    },
-    event_type: req.body.event_type ? req.body.event_type : "",
-    start_date: req.body.start_date ? req.body.start_date : "",
-    end_date: req.body.end_date ? req.body.end_date : "",
-    // place: req.body.place ? req.body.place : "",
-    // limit: req.body.limit ? req.body.limit : "",
-    participant: req.body.participant ? req.body.participant : [],
-    winner: req.body.winner ? req.body.winner : [],
-    createdAt: Date.now(),
-    updatedAt: null,
-    status: req.body.status ? req.body.status : "Active",
-  };
-  console.log(data)
-  db.get()
-    .collection("event")
-    .insertOne(data, function (err, dbresult) {
-      if (err)
-        res.status(500).send(httpUtil.error(500, "Event Creation Failed."));
-      res.send(httpUtil.success(200, "Event Created."));
-    });
-  }catch(err){
+  try {
+    const data = {
+      name: req.body.name ? req.body.name : "",
+      completed: body.completed,
+      description: {
+        shortDescription: body.shortDescription,
+        description: body.description
+      },
+      event_type: req.body.event_type ? req.body.event_type : "",
+      start_date: req.body.start_date ? req.body.start_date : "",
+      end_date: req.body.end_date ? req.body.end_date : "",
+      // place: req.body.place ? req.body.place : "",
+      // limit: req.body.limit ? req.body.limit : "",
+      participant: req.body.participant ? req.body.participant : [],
+      winner: req.body.winner ? req.body.winner : [],
+      createdAt: Date.now(),
+      updatedAt: null,
+      status: req.body.status ? req.body.status : "Active",
+    };
+    console.log(data)
+    db.get()
+      .collection("event")
+      .insertOne(data, function (err, dbresult) {
+        if (err)
+          res.status(500).send(httpUtil.error(500, "Event Creation Failed."));
+        res.send(httpUtil.success(200, "Event Created."));
+      });
+  } catch (err) {
     res.send({
-      status : 400,
-      success : false,
-      error : err.message
+      status: 400,
+      success: false,
+      error: err.message
     })
   }
 });
@@ -82,7 +83,6 @@ router.put("/", function (req, res, next) {
         updatedAt: Date.now(),
       },
     };
-
     db.get()
       .collection("event")
       .updateOne(Id._id, data, function (err, result) {
@@ -96,13 +96,75 @@ router.put("/", function (req, res, next) {
   }
 });
 
-router.patch("/", function (req, res, next) {
+router.put("/status", function (req, res, next) {
+  const event_id = req.body.event_id ? ObjectId(req.body.event_id) : "";
+  const event_status = req.body.event_status ? ObjectId(req.body.event_status) : "";
+  // const event_completed = req.body.event_completed ? ObjectId(req.body.event_completed) : "";
+
+  if (event_id) {
+    let Id = { _id: event_id };
+    let data = {
+      $set: {
+        status: req.body.event_status ? req.body.event_status : "Active",
+        updatedAt: Date.now(),
+      },
+    };
+
+    db.get()
+      .collection("event")
+      .updateOne(Id, data, function (err, result) {
+        if (err) {
+          res.status(204).send(httpUtil.error(204, "Event updating error."));
+        }
+        res.send(httpUtil.success(200, "Event status updated."));
+      });
+  }
+  else {
+    res.status(204).send(httpUtil.error(204, "Event ID is missing."));
+  }
+});
+
+// router.put("/featured", jwt.authenticateToken, function (req, res, next) {
+//   // res.send({ body : req.body })
+//   try {
+//     const event_id = req.body.event_id ? ObjectId(req.body.event_id) : ""
+//     const event_completed = req.body.event_completed ? ObjectId(req.body.event_completed) : "";
+//     if (event_id) {
+//       let Id = { _id: event_id };
+//       let data = {
+//         $set: {
+//           completed: event_completed ? event_completed : "",
+//           updatedAt: Date.now(),
+//         },
+//       };
+//       db.get()
+//         .collection("event")
+//         .updateOne(Id, data, function (err, result) {
+//           if (err) {
+//             res.status(204).send(httpUtil.error(204, "Event updating error."));
+//           }
+//           res.send(httpUtil.success(200, "Event featured updated."));
+//         });
+//     }
+//     else {
+//       res.status(204).send(httpUtil.error(204, "Event ID is missing."));
+//     }
+//   }catch(err){
+//     res.send({
+//       status : 400,
+//       error : err.message,
+//       success : false
+//     })
+//   }
+// });
+
+router.put("/featured", jwt.authenticateToken, function (req, res, next) {
   const event_id = req.body.event_id ? ObjectId(req.body.event_id) : "";
   if (event_id) {
     let Id = { _id: event_id };
     let data = {
       $set: {
-        status: req.body.status ? req.body.status : false,
+        completed: req.body.completed ? req.body.completed : "",
         updatedAt: Date.now(),
       },
     };
@@ -110,13 +172,14 @@ router.patch("/", function (req, res, next) {
       .collection("event")
       .updateOne(Id, data, function (err, result) {
         if (err) {
-          res.status(204).send(httpUtil.error(204, "Event updating error."));
+          res
+            .status(204)
+            .send(httpUtil.error(204, "event updating error."));
         }
-        res.send(httpUtil.success(200, "Event updated."));
+        res.send(httpUtil.success(200, "event featured updated."));
       });
-  }
-  else {
-    res.status(204).send(httpUtil.error(204, "Event ID is missing."));
+  } else {
+    res.status(204).send(httpUtil.error(204, "event ID is missing."));
   }
 });
 
