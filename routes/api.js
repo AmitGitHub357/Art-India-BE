@@ -190,9 +190,19 @@ router.get("/event", function (req, res, next) {
     });
 });
 
-router.get("/", function (req, res, next) {
+router.get("/education", function (req, res, next) {
   db.get()
       .collection("education")
+      .find({})
+      .toArray(function (err, result) {
+          if (err) console.log(err);
+          res.send(httpUtil.success(200, "", result));
+      });
+});
+
+router.get("/gallery", function (req, res, next) {
+  db.get()
+      .collection("gallery")
       .find({})
       .toArray(function (err, result) {
           if (err) console.log(err);
