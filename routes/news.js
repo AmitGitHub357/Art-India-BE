@@ -59,6 +59,7 @@ try {
       status: body.status ? body.status : "Active",
       createdAt: Date.now(),
       newsImages: body.images,
+      city : body.city
     }
     db.get()
       .collection("news")
