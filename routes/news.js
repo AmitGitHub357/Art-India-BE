@@ -55,6 +55,7 @@ try {
     const data = {
       name: body.title,
       date : body.date,
+      description : body.description,
       status: body.status ? body.status : "Active",
       createdAt: Date.now(),
       newsImages: body.images,

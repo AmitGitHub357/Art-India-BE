@@ -200,7 +200,18 @@ router.get("/artistName", function (req, res, next) {
 router.get("/news", function (req, res, next) {
   db.get()
     .collection("news")
-    .find({})
+    .find({}).limit(5)
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
+router.get("/news/:id", function (req, res, next) {
+  const _id = req.params.id ? ObjectId(req.params.id) : ""
+  db.get()
+    .collection("news")
+    .find({ _id: _id })
     .toArray(function (err, result) {
       if (err) console.log(err);
       res.send(httpUtil.success(200, "", result));
@@ -517,7 +528,8 @@ router.get("/artist", function (req, res, next) {
 // });
 router.post("/artwork_filter", function (req, res, next) {
   try {
-    const key = req.body.key
+    res.send({ req : req.body })
+    const key = req.body.key  
     const skip = req.body.skip ? req.body.skip : 0;
     const limit = req.body.limit ? req.body.limit : 10;
     const type = req.body.type ? req.body.type : "";
@@ -528,7 +540,7 @@ router.post("/artwork_filter", function (req, res, next) {
     const size = req.body.size ? req.body.size : "";
     const price = req.body.buyPrice ? req.body.buyPrice : "";
     const rentPrice = req.body.rentPrice ? req.body.rentPrice : ""
-    // db.get().collection("news")$or: [{ name: { $regex: key } }, { description: { $regex: key } }, { technique: { $regex: key } }, { style: { $regex: key } }, { artistname: { $regex: key } }] 
+
     db.get().collection("artwork").find({
       $or:
         [{ buyPrice: { $lte: price } }, { paintingStyle: { $regex: style } }, { size: { $regex: size } }, { oriention: { $regex: oriention } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { paintingCategory: { $regex: key } }, { paintingArtwork: { $regex: type } }, { painingStyle: { $regex: style } }, { paintingTechnique: { $regex: technique } }, { paintingcategory: { $regex: category } }]
