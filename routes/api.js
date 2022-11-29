@@ -197,7 +197,7 @@ router.get("/artistName", function (req, res, next) {
     });
 });
 
-router.get("/gallery", function (req, res, next) {
+router.get("/news_gallery", function (req, res, next) {
   db.get()
     .collection("news_gallery")
     .find({})

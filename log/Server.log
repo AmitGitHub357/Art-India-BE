@@ -778,3 +778,9 @@
 ::1 - Tue Nov 29 2022 15:56:39 GMT+0530 (India Standard Time) - POST /news/gallery HTTP/1.1 200 60 - 362 - PostmanRuntime/7.29.2
 ::1 - Tue Nov 29 2022 15:56:44 GMT+0530 (India Standard Time) - GET /news HTTP/1.1 200 - - 172 - PostmanRuntime/7.29.2
 ::1 - Tue Nov 29 2022 15:56:52 GMT+0530 (India Standard Time) - GET /news/gallery HTTP/1.1 200 595 - 142 - PostmanRuntime/7.29.2
+::1 - Tue Nov 29 2022 15:59:59 GMT+0530 (India Standard Time) - GET /api/gallery HTTP/1.1 200 595 - 177 - PostmanRuntime/7.29.2
+::1 - Tue Nov 29 2022 16:00:13 GMT+0530 (India Standard Time) - GET /gallery HTTP/1.1 200 349 - 179 - PostmanRuntime/7.29.2
+::1 - Tue Nov 29 2022 16:00:31 GMT+0530 (India Standard Time) - GET /api/gallery HTTP/1.1 200 595 - 96 - PostmanRuntime/7.29.2
+::1 - Tue Nov 29 2022 16:01:34 GMT+0530 (India Standard Time) - GET /api/gallery HTTP/1.1 200 595 - 155 - PostmanRuntime/7.29.2
+::1 - Tue Nov 29 2022 16:03:29 GMT+0530 (India Standard Time) - GET /api/news_gallery HTTP/1.1 200 595 - 117 - PostmanRuntime/7.29.2
+::1 - Tue Nov 29 2022 16:07:57 GMT+0530 (India Standard Time) - GET /api/news_gallery HTTP/1.1 200 595 - 82 - PostmanRuntime/7.29.2
