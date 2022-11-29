@@ -197,6 +197,16 @@ router.get("/artistName", function (req, res, next) {
     });
 });
 
+router.get("/gallery", function (req, res, next) {
+  db.get()
+    .collection("news_gallery")
+    .find({})
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
 router.get("/news", function (req, res, next) {
   db.get()
     .collection("news")
