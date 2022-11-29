@@ -8,27 +8,25 @@ var multer = require("multer");
 var fs = require("fs");
 const { promisify } = require('util')
 const unlinkAsync = promisify(fs.unlink)
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, "uploads/");
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.originalname);
-    },
-  });
-  
-  var upload = multer({ storage: storage });
-//   router.get("/", function (req, res, next) {
-//     db.get()
-//       .collection("news")
-//       .find({})
-//       .toArray(function (err, result) {
-//         if (err) console.log(err);
-//         res.send(httpUtil.success(200, "", result));
-//       });
+// var storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//       cb(null, "uploads/");
+//     },
+//     filename: function (req, file, cb) {
+//       cb(null, file.originalname);
+//     },
 //   });
-router.get("/", function (req, res, next) {
-  
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "/public/uploads/cart/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  },
+});
+var upload = multer({ storage: storage });
+
+router.get("/", function (req, res, next) {  
   db.get()
     .collection("cart")
     .find({})

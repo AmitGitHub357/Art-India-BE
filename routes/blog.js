@@ -39,25 +39,59 @@ router.get("/:blog_id", function (req, res, next) {
     });
 });
 
-router.post("/",jwt.authenticateToken, upload.any("files"), async function (req, res, next) {
-  const imageFiles = req.files ? req.files : [];
-  const imagePath = []
-  const body = req.body;
-  if (imageFiles) {
-    for (let i = 0; i < imageFiles.length; i++) {
-      let imgObj = imageFiles[i].destination + imageFiles[i].originalname
-      imagePath.push(imgObj)
+// router.post("/",jwt.authenticateToken, upload.any("files"), async function (req, res, next) {
+//   const imageFiles = req.files ? req.files : [];
+//   const imagePath = []
+//   const body = req.body;
+//   if (imageFiles) {
+//     for (let i = 0; i < imageFiles.length; i++) {
+//       let imgObj = imageFiles[i].destination + imageFiles[i].originalname
+//       imagePath.push(imgObj)
+//     }
+//     body.images = imagePath
+//   }
+//   db.get()
+//     .collection("blog")
+//     .insertOne(body, function (err, dbresult) {
+//       if (err)
+//         res.status(500).send(httpUtil.error(500, "blog Creation Failed."));
+//       res.send(httpUtil.success(200, "blog Created."));
+//     });
+// })
+router.post("/", jwt.authenticateToken, upload.array("images"), function (req, res, next) {
+  try {
+      const imageFiles = req.files ? req.files : [];
+      const imagePath = []
+      const body = req.body;
+       if (imageFiles) {
+        for (let i = 0; i < imageFiles.length; i++) {
+          let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
+          imagePath.push(imgObj)
+        }
+        body.images = imagePath
+      }
+      const data = {
+        name: body.title,
+        date : body.date,
+        status: body.status ? body.status : "Active",
+        createdAt: Date.now(),
+        blogImages: body.images,
+      }
+      db.get()
+        .collection("blog")
+        .insertOne(data, function (err, dbresult) {
+          if (err)
+            res.status(500).send(httpUtil.error(500, "blog Creation Failed."));
+          res.send(httpUtil.success(200, "blog Created."));
+        });
+    } catch (err) {
+      res.send({
+        status: 400,
+        error: err.message,
+        success: false
+      })
     }
-    body.images = imagePath
-  }
-  db.get()
-    .collection("blog")
-    .insertOne(body, function (err, dbresult) {
-      if (err)
-        res.status(500).send(httpUtil.error(500, "blog Creation Failed."));
-      res.send(httpUtil.success(200, "blog Created."));
-    });
-})
+});
 
 router.put("/", jwt.authenticateToken, upload.array("images"), function (req, res, next) {
   try {

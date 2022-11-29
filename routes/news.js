@@ -21,10 +21,10 @@ const absolutePath = path.join(__dirname);
 console.log(absolutePath)
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads/news/");
+    cb(null, "public/uploads/news/");
   },
   filename: function (req, file, cb) {
-    cb(null,file.originalname);
+    cb(null, file.originalname)
   },
 });
 
@@ -40,24 +40,33 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/", jwt.authenticateToken, upload.array("images"), function (req, res, next) {
-  try {
+try {
     const imageFiles = req.files ? req.files : [];
     const imagePath = []
     const body = req.body;
-    if (imageFiles) {
+     if (imageFiles) {
       for (let i = 0; i < imageFiles.length; i++) {
         let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
         imagePath.push(imgObj)
       }
       body.images = imagePath
     }
+
+    const data = {
+      name: body.title,
+      date : body.date,
+      status: body.status ? body.status : "Active",
+      createdAt: Date.now(),
+      newsImages: body.images,
+    }
     db.get()
       .collection("news")
-      .insertOne(body, function (err, dbresult) {
+      .insertOne(data, function (err, dbresult) {
         if (err)
           res.status(500).send(httpUtil.error(500, "news Creation Failed."));
         res.send(httpUtil.success(200, "news Created."));
       });
+
   } catch (err) {
     res.send({
       status: 400,
@@ -102,6 +111,7 @@ router.patch("/", jwt.authenticateToken, function (req, res, next) {
 });
 
 router.delete("/", jwt.authenticateToken, function (req, res, next) {
+  // res.send({ req : req.query })
   const news_id = req.query.news_id ? ObjectId(req.query.news_id) : "";
   if (news_id) {
     db.get()
@@ -112,11 +122,11 @@ router.delete("/", jwt.authenticateToken, function (req, res, next) {
         res.send(httpUtil.success(200, "news deleted."));
       });
   } else {
-    res.status(204).send(httpUtil.error(204, "news ID is missing."));
+    res.status(204).send(httpUtil.error(204, "news ID is missing."));    
   }
 });
 
-router.put("/", jwt.authenticateToken,upload.array("images"), function (req, res, next) {  
+router.put("/", jwt.authenticateToken, upload.array("images"), function (req, res, next) {
   try {
     const news_id = req.body.news_id ? ObjectId(req.body.news_id) : "";
     if (news_id) {
@@ -128,8 +138,8 @@ router.put("/", jwt.authenticateToken,upload.array("images"), function (req, res
         for (let i = 0; i < imageFiles.length; i++) {
           let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
           imagePath.push(imgObj)
-        } 
-      } 
+        }
+      }
       body.images = imagePath
       let data = {
         $set: {

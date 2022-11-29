@@ -14,10 +14,9 @@ var path = require("path");
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./public/uploads/artist/");
+    cb(null, "/public/uploads/artist/");
   },
   filename: function (req, file, cb) {
-    // cb(null, file.fieldname + '.' + Date.now() + path.extname(file.originalname))
     cb(null, file.originalname)
   },
 });
@@ -96,9 +95,7 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
     for(var i = 0; i < body.mileStoneTitle.length; i++){
         mileStone.push({ mileStoneName : body.mileStoneTitle[i] , mileStoneCount : body.mileStoneCount[i] })
     }
-    // console.log(mileStone)
-    // res.send({ mileStone })
-    // const mileStone = [{ name : body.mileStone.name }]
+
     const data = {
       name: body.name,
       dob: body.dob,

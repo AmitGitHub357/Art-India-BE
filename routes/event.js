@@ -140,7 +140,7 @@ router.put("/status", function (req, res, next) {
 //       db.get()
 //         .collection("event")
 //         .updateOne(Id, data, function (err, result) {
-//           if (err) {
+//           if (err) {     
 //             res.status(204).send(httpUtil.error(204, "Event updating error."));
 //           }
 //           res.send(httpUtil.success(200, "Event featured updated."));
