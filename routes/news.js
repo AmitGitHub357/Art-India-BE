@@ -17,8 +17,8 @@ async function asyncForEach(array, callback) {
     await callback(array[index], index, array);
   }
 }
-const absolutePath = path.join(__dirname);
-console.log(absolutePath)
+// const absolutePath = path.join(__dirname);
+// console.log(absolutePath)
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads/news/");

@@ -166,7 +166,7 @@ router.get("/featured_events", function (req, res, next) {
     //   [
     //     { $sort : { end_date : -1 } }
     //   ])
-    .find({ completed : "true" }).sort({ end_date : 1 })
+    .find({ completed: "true" }).sort({ end_date: 1 })
     .toArray(function (err, result) {
       if (err) console.log(err);
       console.log(result)
@@ -207,32 +207,32 @@ router.get("/event", function (req, res, next) {
 
 router.get("/education", function (req, res, next) {
   db.get()
-      .collection("education")
-      .find({})
-      .toArray(function (err, result) {
-          if (err) console.log(err);
-          res.send(httpUtil.success(200, "", result));
-      });
+    .collection("education")
+    .find({})
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
 });
 
 router.get("/gallery", function (req, res, next) {
   db.get()
-      .collection("gallery")
-      .find({})
-      .toArray(function (err, result) {
-          if (err) console.log(err);
-          res.send(httpUtil.success(200, "", result));
-      });
+    .collection("gallery")
+    .find({})
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
 });
 
 router.get("/event_type", function (req, res, next) {
   const event_type = req.query.event_type
   db.get()
     .collection("event")
-    .find({ event_type : event_type })
+    .find({ event_type: event_type })
     .toArray(function (err, result) {
       if (err) console.log(err);
-        res.send(httpUtil.success(200, "", result));
+      res.send(httpUtil.success(200, "", result));
     });
 });
 
@@ -291,217 +291,303 @@ router.get("/artist-type", function (req, res, next) {
 
 
 
-// router.get("/artist", function (req, res, next) {
-
-//   let skip = req.query.skip ? req.query.skip : 0;
-//   let limit = req.query.limit ? req.query.limit : 10;
-//   let type = req.query.type ? req.query.type : "";
-//   let filter = req.query.filter ? req.query.filter : "";
-//   let filters = {};
-//   let pipeline = [
-//     {
-//       $lookup: {
-//         from: "artwork",
-//         localField: "painting.artworkId",
-//         foreignField: "_id",
-//         as: "painting",
-//       },
-//     },
-//     {
-//       $sort: {
-//         _id: -1,
-//     },  
-//     }
-//   ];
-//   if (type && filter) {
-//     pipeline.push({
-//       $match: {
-//         type: type,
-//         name: {
-//           $regex: '^' + filter,
-//           $options: 'i'
-//         }
-//       },
-//     });
-//     filters = {
-//       type: type,
-//       name: {
-//         $regex: '^' + filter,
-//         $options: 'i'
-//       }
-//     };
-//   } else if (type) {
-//     pipeline.push({
-//       $match: {
-//         type: type
-//       },
-//     });
-//     filters = {
-//       type: type
-//     };
-//   } else if (filter) {
-//     pipeline.push({
-//       $match: {
-//         name: {
-//           $regex: '^' + filter,
-//           $options: 'i'
-//         }
-//       },
-//     });
-//     filters = {
-//       name: {
-//         $regex: '^' + filter,
-//         $options: 'i'
-//       }
-//     };
-//   }
-//   if (skip) {
-//     pipeline.push({
-//       $skip: skip,
-//     });
-//   }
-//   if (limit) {
-//     pipeline.push({
-//       $limit: limit,
-//     });
-//   }
-//   db.get()
-//     .collection("artist")
-//     .aggregate(pipeline)
-//     .project({ password: 0 })
-//     .toArray(function (err, result) {
-//       if (err) console.log(err);
-//       db.get()
-//         .collection("artist")
-//         .find(filters)
-//         .count(function (err, dbresult) {
-//           if (err) throw err;
-//           res.send(
-//             httpUtil.success(200, "", { count: dbresult, data: result })
-//           );
-//         });
-//     });
-// });
-router.get("/artist", function (req, res, next) {
+router.post("/artist_filter", function (req, res, next) {
+  let skip = req.query.skip ? req.query.skip : 0;
+  let limit = req.query.limit ? req.query.limit : 10;
+  let type = req.query.type ? req.query.type : "";
+  let filter = req.query.filter ? req.query.filter : "";
+  let filters = {};
+  let pipeline = [
+    // {
+    //   $lookup: {
+    //     from: "artwork",
+    //     localField: "artistId",
+    //     foreignField: "_id",
+    //     as: "artwork",
+    //   },
+    // },
+    {
+      $sort: {
+        _id: -1,
+      },
+    }
+  ];
+  if (type && filter) {
+    pipeline.push({
+      $match: {
+        type: type,
+        name: {
+          $regex: '^' + filter,
+          $options: 'i'
+        }
+      },
+    });
+    filters = {
+      type: type,
+      name: {
+        $regex: '^' + filter,
+        $options: 'i'
+      }
+    };
+  } else if (type) {
+    pipeline.push({
+      $match: {
+        type: type
+      },
+    });
+    filters = {
+      type: type
+    };
+  } else if (filter) {
+    pipeline.push({
+      $match: {
+        name: {
+          $regex: '^' + filter,
+          $options: 'i'
+        }
+      },
+    });
+    filters = {
+      name: {
+        $regex: '^' + filter,
+        $options: 'i'
+      }
+    };
+  }
+  if (skip) {
+    pipeline.push({
+      $skip: skip,
+    });
+  }
+  if (limit) {
+    pipeline.push({
+      $limit: limit,
+    });
+  }
   db.get()
     .collection("artist")
-    .find({})
+    .aggregate(pipeline)
     .project({ password: 0 })
     .toArray(function (err, result) {
+      db.get()
       if (err) console.log(err);
-      res.send(httpUtil.success(200, "", result));
+      // .collection("artist")
+      // .find(filters)
+      // .count(function (err, dbresult) {
+      // if (err) throw err;
+      res.send(
+        httpUtil.success(200, "", { count: dbresult, data: result })
+      );
     });
 });
 
-router.post("/artwork", function (req, res, next) {
-  // res.send({
-  // body : req.body
-  // })
-  try {
-    const skip = req.body.skip ? req.body.skip : 0;
-    const limit = req.body.limit ? req.body.limit : 10;
-    const type = req.body.type ? req.body.type : "";
-    const orientation = req.body.orientation ? req.body.orientation : "";
-    const category = req.body.category ? req.body.category : "";
-    const style = req.body.style ? req.body.style : "";
-    const technique = req.body.technique ? req.body.technique : "";
-    const size = req.body.size ? req.body.size : "";
-    const price = req.body.price ? req.body.price : "";
-    const rentPrice = req.body.rentPrice ? req.body.rentPrice : ""
-    let filter = {
-      type: type
-    };
-    let pipeline = [
-      {
-        $match: {
-          type: type
-        }
-      }
-    ];
-    if (size === 'Small') {
-      pipeline[0].$match['size.length'] = { $lte: 12 };
-      pipeline[0].$match['size.width'] = { $lte: 12 };
-      filter['size.length'] = { $lte: 12 };
-      filter['size.width'] = { $lte: 12 };
-    } else if (size === 'Medium') {
-      pipeline[0].$match['size.length'] = { $gte: 13, $lte: 36 };
-      pipeline[0].$match['size.width'] = { $gte: 13, $lte: 36 };
-      filter['size.length'] = { $gte: 13, $lte: 36 };
-      filter['size.width'] = { $gte: 13, $lte: 36 };
-    } else if (size === 'Large') {
-      pipeline[0].$match['size.length'] = { $gte: 37 };
-      pipeline[0].$match['size.width'] = { $gte: 37 };
-      filter['size.length'] = { $gte: 37 };
-      filter['size.width'] = { $gte: 37 };
-    }
-    if (price) {
-      pipeline[0].$match['price'] = { $lte: price };
-      filter['price'] = { $lte: price };
-    }
-    if (orientation) {
-      pipeline[0].$match['orientation'] = orientation;
-      filter['orientation'] = orientation;
-    }
-    if (category) {
-      pipeline[0].$match['category'] = {
+// });
 
-        $in: category
-      };
-      filter['category'] = {
-        $in: category
-      };
-    }
-    if (style) {
-      pipeline[0].$match['style'] = {
-        $in: style
-      };
-      filter['style'] = {
-        $in: style
-      };
-    }
-    if (technique) {
-      pipeline[0].$match['technique'] = {
-        $in: technique
-      };
-      filter['technique'] = {
-        $in: technique
-      };
-    }
-    if (skip) {
-      pipeline.push({
-        $skip: skip,
-      });
-    }
-    if (limit) {
-      pipeline.push({
-        $limit: limit,
-      });
-    }
-    db.get()
-      .collection("artwork")
-      .aggregate(pipeline)
-      .toArray(function (err, result) {
-        if (err) {
-          res.send({
-            status: 400,
-            success: false,
-            error: err
-          })
-        }
-        db.get()
-          .collection("artwork")
-          .find(filter)
-          .count(function (err, dbresult) {
-            if (err) throw err;
-            res.send(
-              httpUtil.success(200, "Artwork Data", { count: dbresult, data: result })
-            );
-          });
-      })
+
+
+
+
+// router.get("/artist", function (req, res, next) {
+//   db.get()
+//     .collection("artist")
+//     .find({})
+//     .project({ password: 0 })
+//     .toArray(function (err, result) {
+//       if (err) console.log(err);
+//       res.send(httpUtil.success(200, "", result));
+//     });
+// });
+
+router.post("/artwork", function (req, res, next) {
+  try {
+    const category = req.body.category ? req.body.category : ""
+    const technique = req.body.technique ? req.body.technique : ""
+    const style = req.body.style ? req.body.style : ""
+    const price = req.body.price ? req.body.price : ""
+    // const size = req.body.size ? req.body.size : ""
+    const oriention = req.body.oriention?req.body.oriention : ""
+    const query = {}
+
+    // query.$or = [{
+    //   // "artworkName": { $regex: "Indian God", $options: "i" },
+    //   "paintingCategory": { $regex: category , $options: "i" },
+    //   "paintingTechnique": { $regex: technique, $options: "i" },
+    //   "paintingStyle": { $regex: style, $options: "i" },
+    //   "paintingOriention": { $regex: oriention, $options: "i" },
+    //   "price": { $regex: price, $options: "i" },
+    //   "prize" : { $regex : size ,$options : "i" } 
+    // }]
+    //   db.get()
+    //     .collection("artwork")
+    //     .find(query)
+    //     .project({ password: 0 })
+    //     .toArray(function (err, result) {
+    //       if (err) console.log(err);
+    //       res.send(httpUtil.success(200, { count : result.length }, result));
+    //     });
+    //   db.get()
+    //     .collection("artwork")
+    //     .find(query)
+    //     .count(function (err, dbresult) {
+    //       if (err) throw err;
+    //       res.send(
+    //         httpUtil.success(200, "Artwork Data", { count: dbresult, data: result })
+    //       );
+    //     });
   } catch (err) {
-    res.send({
-      error: "Error"
+    //   res.send({
+    //     error: err.message,
+    //     success: false,
+    //     status: 400
+    //   })
+  }
+})
+//   const skip = req.body.skip ? req.body.skip : 0;
+//   const limit = req.body.limit ? req.body.limit : 10;
+//   const type = req.body.type ? req.body.type : "";
+//   const orientation = req.body.orientation ? req.body.orientation : "";
+//   const category = req.body.category ? req.body.category : "";
+//   const style = req.body.style ? req.body.style : "";
+//   const technique = req.body.technique ? req.body.technique : "";
+//   const size = req.body.size ? req.body.size : "";
+//   const price = req.body.price ? req.body.price : "";
+// const rentPrice = req.body.rentPrice ? req.body.rentPrice : ""
+// let filter = {
+//   type: type
+// };
+// let pipeline = [
+//   {
+//     $match: {
+//       type: type 
+//     }
+//   }
+// ];
+// if (size === 'Small') {
+//   pipeline[0].$match['size.length'] = { $lte: 12 };
+//   pipeline[0].$match['size.width'] = { $lte: 12 };
+//   filter['size.length'] = { $lte: 12 };
+//   filter['size.width'] = { $lte: 12 };
+// } else if (size === 'Medium') {
+//   pipeline[0].$match['size.length'] = { $gte: 13, $lte: 36 };
+//   pipeline[0].$match['size.width'] = { $gte: 13, $lte: 36 };
+//   filter['size.length'] = { $gte: 13, $lte: 36 };
+//   filter['size.width'] = { $gte: 13, $lte: 36 };
+// } else if (size === 'Large') {
+//   pipeline[0].$match['size.length'] = { $gte: 37 };
+//   pipeline[0].$match['size.width'] = { $gte: 37 };
+//   filter['size.length'] = { $gte: 37 };
+//   filter['size.width'] = { $gte: 37 };
+// }
+// if (price) {
+//   pipeline[0].$match['price'] = { $lte: price };
+//   filter['price'] = { $lte: price };
+// }
+// if (orientation) {
+//   pipeline[0].$match['orientation'] = orientation;
+//   filter['orientation'] = orientation;
+// }
+// if (category) {
+//   pipeline[0].$match['category'] = {
+
+//     $in: category
+//   };
+//   filter['category'] = {
+//     $in: category
+//   };
+// }
+// if (style) {
+//   pipeline[0].$match['style'] = {
+//     $in: style
+//   };
+//   filter['style'] = {
+//     $in: style
+//   };
+// }
+// if (technique) {
+//   pipeline[0].$match['technique'] = {
+//     $in: technique
+//   };
+//   filter['technique'] = {
+//     $in: technique
+//   };
+// }
+// if (skip) {
+//   pipeline.push({
+//     $skip: skip,
+//   });
+// }
+// if (limit) {
+//   pipeline.push({
+//     $limit: limit,
+//   });
+// }
+
+//     db.get()
+//       .collection("artwork")
+//       // .aggregate(pipeline)
+//       .toArray(function (err, result) {
+//         if (err) {
+//           res.send({
+//             status: 400,
+//             success: false,
+//             error: err
+//           })
+//         }
+//         db.get()
+//           .collection("artwork")
+//           .find(query)
+//           .count(function (err, dbresult) {
+//             if (err) throw err;
+//             res.send(
+//               httpUtil.success(200, "Artwork Data", { count: dbresult, data: result })
+//             );
+//           });
+//       })
+//   } catch (err) {
+//     res.send({
+//       error : err.message,
+//       success : false,
+//       status : 400
+//     })
+//   }
+// });
+
+//     db.get()
+//       .collection("artwork")
+//       .find(query)
+//       .count(function (err, dbresult) {
+//         if (err) throw err;
+//         res.send(
+//           httpUtil.success(200, "Artwork Data", { count: dbresult, data: result })
+//         );
+//       });
+//   } catch (err) {
+//     res.send({
+//       error: err.message,
+//       success: false,
+//       status: 400
+//     })
+//   }
+// })
+router.get("/blogSearch", function (req, res, next) {
+  try {
+    const key = req.query.key
+    // res.send({ key })
+    db.get().collection("blog").find({
+      $or:
+        [{ postedBy : { $regex: key } }, { title : { $regex: key } }, { category: { $regex: key } }, { description: { $regex: key } }, { date: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { paintingCategory: { $regex: key } }, { paintingArtwork: { $regex: key } }, { paintingStyle: { $regex: key } }, { paintingTechniques: { $regex: key } }]
     })
+      .toArray(function (err, result) {
+        if (err) console.log(err)
+        res.send(httpUtil.success({
+          status: 200,
+          success: true,
+          result,
+          totalCount: result.length
+        }))
+      });
+  } catch (err) {
+    res.send(httpUtil.error(400, { error: err.message }))
   }
 });
 
@@ -624,20 +710,21 @@ router.get("/clients/logo", function (req, res, next) {
 });//
 
 router.get("/search", function (req, res, next) {
+  res.send({ req : req.query.key })
   try {
     const key = req.query.key
     // db.get().collection("news")$or: [{ name: { $regex: key } }, { description: { $regex: key } }, { technique: { $regex: key } }, { style: { $regex: key } }, { artistname: { $regex: key } }] 
     db.get().collection("artwork").find({
       $or:
-        [{ artworkName : { $regex: key } }, { shortDescription: { $regex: key } }, { buyPrice: { $regex: key } }, { style: { $regex: key } }, { artistname: { $regex: key } }, { size: { $regex: key } },{ orientation : { $regex: key } }, { length : { $regex: key } },{ orientation : { $regex: key } },{ paintingCategory : { $regex: key } },{ paintingArtwork : { $regex: key } },{ paintingStyle : { $regex: key } },{ paintingTechniques : { $regex: key } }]
+        [{ artworkName: { $regex: key } }, { shortDescription: { $regex: key } }, { buyPrice: { $regex: key } }, { style: { $regex: key } }, { artistname: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { paintingCategory: { $regex: key } }, { paintingArtwork: { $regex: key } }, { paintingStyle: { $regex: key } }, { paintingTechniques: { $regex: key } }]
     })
       .toArray(function (err, result) {
         if (err) console.log(err)
         res.send(httpUtil.success({
-          status : 200,
-          success : true,
+          status: 200,
+          success: true,
           result,
-          totalCount : result.length
+          totalCount: result.length
         }))
       });
   } catch (err) {
