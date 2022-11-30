@@ -299,7 +299,7 @@ router.get("/blogCategory", function (req, res, next) {
     });
 });
 
-router.get("/", function (req, res, next) {
+router.get("/artist", function (req, res, next) {
   db.get()
     .collection("artist")
     .find({})
@@ -460,7 +460,9 @@ router.post("/artwork", function (req, res, next) {
     // const size = req.body.size ? req.body.size : ""
     const oriention = req.body.oriention ? req.body.oriention : ""
     const query = {}
-
+    if(category){
+      query.push( )
+    }
     // query.$or = [{
     //   // "artworkName": { $regex: "Indian God", $options: "i" },
     //   "paintingCategory": { $regex: category , $options: "i" },
