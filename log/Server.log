@@ -873,3 +873,4 @@
 ::1 - Wed Nov 30 2022 15:01:19 GMT+0530 (India Standard Time) - GET /api/blog/?blogCategory=Art HTTP/1.1 200 - - 98 - PostmanRuntime/7.29.2
 ::1 - Wed Nov 30 2022 15:02:42 GMT+0530 (India Standard Time) - GET /api/blog/?blogCategory=Art HTTP/1.1 200 - - 98 - PostmanRuntime/7.29.2
 ::1 - Wed Nov 30 2022 15:04:36 GMT+0530 (India Standard Time) - GET /api/blogCategory/?category=Art HTTP/1.1 200 349 - 111 - PostmanRuntime/7.29.2
+::1 - Wed Nov 30 2022 15:09:14 GMT+0530 (India Standard Time) - GET /api/blog/6386fbed8f19b1eefad20b63 HTTP/1.1 200 349 - 95 - PostmanRuntime/7.29.2

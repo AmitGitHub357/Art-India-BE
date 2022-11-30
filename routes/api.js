@@ -205,6 +205,17 @@ router.get("/event", function (req, res, next) {
     });
 });
 
+router.get("/blog/:blog_id", function (req, res, next) {
+  const _id = req.params.blog_id ? ObjectId(req.params.blog_id) : ""
+  db.get()
+    .collection("blog")
+    .find({ _id: _id })
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
 router.get("/education", function (req, res, next) {
   db.get()
     .collection("education")
