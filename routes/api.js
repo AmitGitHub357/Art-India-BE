@@ -7,8 +7,6 @@ var db = require("../dbconfig");
 var { ObjectId } = require("mongodb");
 var async = require("async");
 var nodemailer = require('nodemailer');
-var multer = require("multer");
-
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -17,18 +15,8 @@ var transporter = nodemailer.createTransport({
   }
 });
 
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/uploads/cart/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname)
-  },
-});
-
-var upload = multer({ storage: storage });
-
 router.post("/chitchat", function (req, res, next) {
+
   const context = {
     name: req.body.name ? req.body.name : "",
     email: req.body.email ? req.body.email : "",
@@ -197,31 +185,10 @@ router.get("/artistName", function (req, res, next) {
     });
 });
 
-router.get("/news_gallery", function (req, res, next) {
-  db.get()
-    .collection("news_gallery")
-    .find({})
-    .toArray(function (err, result) {
-      if (err) console.log(err);
-      res.send(httpUtil.success(200, "", result));
-    });
-});
-
 router.get("/news", function (req, res, next) {
   db.get()
     .collection("news")
-    .find({}).limit(5)
-    .toArray(function (err, result) {
-      if (err) console.log(err);
-      res.send(httpUtil.success(200, "", result));
-    });
-});
-
-router.get("/news/:id", function (req, res, next) {
-  const _id = req.params.id ? ObjectId(req.params.id) : ""
-  db.get()
-    .collection("news")
-    .find({ _id: _id })
+    .find({})
     .toArray(function (err, result) {
       if (err) console.log(err);
       res.send(httpUtil.success(200, "", result));
@@ -231,7 +198,7 @@ router.get("/news/:id", function (req, res, next) {
 router.get("/event", function (req, res, next) {
   db.get()
     .collection("event")
-    .find({}).sort({ start_date: 1 })
+    .find({})
     .toArray(function (err, result) {
       if (err) console.log(err);
       res.send(httpUtil.success(200, "", result));
@@ -273,6 +240,38 @@ router.get("/blog", function (req, res, next) {
   db.get()
     .collection("blog")
     .find({})
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
+router.get("/blogSearch", function (req, res, next) {
+  try {
+    const key = req.query.key
+    db.get().collection("blog").find({
+      $or:
+        [{ postedBy: { $regex: key } }, { title: { $regex: key } }, { category: { $regex: key } }, { description: { $regex: key } }, { date: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { paintingCategory: { $regex: key } }, { paintingArtwork: { $regex: key } }, { paintingStyle: { $regex: key } }, { paintingTechniques: { $regex: key } }]
+    })
+      .toArray(function (err, result) {
+        if (err) console.log(err)
+        res.send(httpUtil.success({
+          status: 200,
+          success: true,
+          result,
+          totalCount: result.length
+        }))
+      });
+  } catch (err) {
+    res.send(httpUtil.error(400, { error: err.message }))
+  }
+});
+
+router.get("/:category", function (req, res, next) {
+  const category = req.params.category ? ObjectId(req.params.category) : ""
+  db.get()
+    .collection("blog")
+    .find({ category: category })
     .toArray(function (err, result) {
       if (err) console.log(err);
       res.send(httpUtil.success(200, "", result));
@@ -414,7 +413,6 @@ router.post("/artist_filter", function (req, res, next) {
     });
 });
 
-<<<<<<< HEAD
 // });
 
 
@@ -439,7 +437,7 @@ router.post("/artwork", function (req, res, next) {
     const style = req.body.style ? req.body.style : ""
     const price = req.body.price ? req.body.price : ""
     // const size = req.body.size ? req.body.size : ""
-    const oriention = req.body.oriention?req.body.oriention : ""
+    const oriention = req.body.oriention ? req.body.oriention : ""
     const query = {}
 
     // query.$or = [{
@@ -606,10 +604,10 @@ router.post("/artwork", function (req, res, next) {
 router.get("/blogSearch", function (req, res, next) {
   try {
     const key = req.query.key
-    // res.send({ key })
+    res.send({ key })
     db.get().collection("blog").find({
       $or:
-        [{ postedBy : { $regex: key } }, { title : { $regex: key } }, { category: { $regex: key } }, { description: { $regex: key } }, { date: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { paintingCategory: { $regex: key } }, { paintingArtwork: { $regex: key } }, { paintingStyle: { $regex: key } }, { paintingTechniques: { $regex: key } }]
+        [{ postedBy: { $regex: key } }, { title: { $regex: key } }, { category: { $regex: key } }, { description: { $regex: key } }, { date: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { paintingCategory: { $regex: key } }, { paintingArtwork: { $regex: key } }, { paintingStyle: { $regex: key } }, { paintingTechniques: { $regex: key } }]
     })
       .toArray(function (err, result) {
         if (err) console.log(err)
@@ -621,150 +619,20 @@ router.get("/blogSearch", function (req, res, next) {
         }))
       });
   } catch (err) {
-=======
-// router.post("/artwork", function (req, res, next) {
-//   // res.send({
-//   //   req: req.body
-//   // })
-//   try {
-// const skip = req.body.skip ? req.body.skip : 0;
-// const limit = req.body.limit ? req.body.limit : 10;
-// const type = req.body.type ? req.body.type : "";
-// const orientation = req.body.orientation ? req.body.orientation : "";
-// const category = req.body.category ? req.body.category : "";
-// const style = req.body.style ? req.body.style : "";
-// const technique = req.body.technique ? req.body.technique : "";
-// const size = req.body.size ? req.body.size : "";
-// const price = req.body.buyPrice ? req.body.buyPrice : "";
-// const rentPrice = req.body.rentPrice ? req.body.rentPrice : ""
-//     let filter = {
-//       type: type
-//     };
-//     let pipeline = [
-//       {
-//         $match: {
-//           type: type
-//         }
-//       }
-//     ];
-//     if (size === 'Small') {
-//       pipeline[0].$match['length'] = { $lte: 12 };
-//       pipeline[0].$match['width'] = { $lte: 12 };
-//       filter['length'] = { $lte: 12 };
-//       filter['width'] = { $lte: 12 };
-//     } else if (size === 'Medium') {
-//       pipeline[0].$match['length'] = { $gte: 13, $lte: 36 };
-//       pipeline[0].$match['width'] = { $gte: 13, $lte: 36 };
-//       filter['length'] = { $gte: 13, $lte: 36 };
-//       filter['width'] = { $gte: 13, $lte: 36 };
-//     } else if (size === 'Large') {
-//       pipeline[0].$match['length'] = { $gte: 37 };
-//       pipeline[0].$match['width'] = { $gte: 37 };
-//       filter['length'] = { $gte: 37 };
-//       filter['width'] = { $gte: 37 };
-//     }
-//     if (price) {
-//       pipeline[0].$match['price'] = { $lte: price };
-//       filter['price'] = { $lte: price };
-//     }
-//     if (orientation) {
-//       pipeline[0].$match['orientation'] = orientation;
-//       filter['orientation'] = orientation;
-//     }
-//     if (category) {
-//       pipeline[0].$match['category'] = {
-//         $in: category
-//       };
-//       filter['category'] = {
-//         $in: category
-//       };
-//     }
-//     if (style) {
-//       pipeline[0].$match['style'] = {
-//         $in: style
-//       };
-//       filter['style'] = {
-//         $in: style
-//       };
-//     }
-//     if (technique) {
-//       pipeline[0].$match['technique'] = {
-//         $in: technique
-//       };
-//       filter['technique'] = {
-//         $in: technique
-//       };
-//     }
-//     if (skip) {
-//       pipeline.push({
-//         $skip: skip,
-//       });
-//     }
-//     if (limit) {
-//       pipeline.push({
-//         $limit: limit,
-//       });
-//     }
-//     db.get()
-//       .collection("artwork")
-//       .aggregate(pipeline)
-//       .toArray(function (err, result) {
-//         if (err) {
-//           res.send({
-//             status: 400,
-//             success: false,
-//             error: err
-//           })
-//         }
-//         db.get()
-//           .collection("artwork")
-//           .find(filter)
-//           .count(function (err, dbresult) {
-//             if (err) throw err;
-//             res.send(
-//               httpUtil.success(200, "Artwork Data", { count: dbresult, data: result })
-//             );
-//           });
-//       })
-//   } catch (err) {
-//     res.send({
-//       error: "Error"
-//     })
-//   }
-// });
-router.post("/artwork_filter", function (req, res, next) {
-  try {
-    res.send({ req : req.body })
-    const key = req.body.key  
-    const skip = req.body.skip ? req.body.skip : 0;
-    const limit = req.body.limit ? req.body.limit : 10;
-    const type = req.body.type ? req.body.type : "";
-    const oriention = req.body.oriention ? req.body.oriention : "";
-    const category = req.body.category ? req.body.category : "";
-    const style = req.body.style ? req.body.style : "";
-    const technique = req.body.technique ? req.body.technique : "";
-    const size = req.body.size ? req.body.size : "";
-    const price = req.body.buyPrice ? req.body.buyPrice : "";
-    const rentPrice = req.body.rentPrice ? req.body.rentPrice : ""
-
-    db.get().collection("artwork").find({
-      $or:
-        [{ buyPrice: { $lte: price } }, { paintingStyle: { $regex: style } }, { size: { $regex: size } }, { oriention: { $regex: oriention } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { paintingCategory: { $regex: key } }, { paintingArtwork: { $regex: type } }, { painingStyle: { $regex: style } }, { paintingTechnique: { $regex: technique } }, { paintingcategory: { $regex: category } }]
-    }).toArray(function (err, result) {
-      console.log(result)
-      if (err) console.log(err)
-      res.send(httpUtil.success({
-        status: 200,
-        success: true,
-        result,
-        // totalCount: result.length
-      }))
-    });
-  } catch (err) {
->>>>>>> f85fde50efa206df8bb37c45086cc150d577f81a
     res.send(httpUtil.error(400, { error: err.message }))
   }
-})
+});
+
+router.get("/:blog_id", function (req, res, next) {
+  const _id = req.params.blog_id ? ObjectId(req.params.blog_id) : ""
+  db.get()
+    .collection("blog")
+    .find({ _id: _id })
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
 
 router.get("/artwork", function (req, res, next) {
   const artwork_id = req.query.artwork_id ? ObjectId(req.query.artwork_id) : "";
@@ -885,17 +753,13 @@ router.get("/clients/logo", function (req, res, next) {
 });//
 
 router.get("/search", function (req, res, next) {
-  res.send({ req : req.query.key })
+  res.send({ req: req.query.key })
   try {
     const key = req.query.key
     // db.get().collection("news")$or: [{ name: { $regex: key } }, { description: { $regex: key } }, { technique: { $regex: key } }, { style: { $regex: key } }, { artistname: { $regex: key } }] 
     db.get().collection("artwork").find({
       $or:
-<<<<<<< HEAD
         [{ artworkName: { $regex: key } }, { shortDescription: { $regex: key } }, { buyPrice: { $regex: key } }, { style: { $regex: key } }, { artistname: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { paintingCategory: { $regex: key } }, { paintingArtwork: { $regex: key } }, { paintingStyle: { $regex: key } }, { paintingTechniques: { $regex: key } }]
-=======
-        [{ artworkName: { $regex: key } }, { shortDescription: { $regex: key } }, { buyPrice: { $regex: key } }, { style: { $regex: key } }, { artistname: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { orientation: { $regex: key } }, { paintingCategory: { $regex: key } }, { paintingArtwork: { $regex: key } }, { paintingStyle: { $regex: key } }, { paintingTechniques: { $regex: key } }]
->>>>>>> f85fde50efa206df8bb37c45086cc150d577f81a
     })
       .toArray(function (err, result) {
         if (err) console.log(err)
@@ -908,91 +772,6 @@ router.get("/search", function (req, res, next) {
       });
   } catch (err) {
     res.send(httpUtil.error(400, { error: err.message }))
-  }
-});
-
-router.get("/cart", function (req, res, next) {
-  try {
-    // const key = req.query.key
-    db.get().collection("cart").find({})
-      .toArray(function (err, result) {
-        if (err) console.log(err)
-        res.send(httpUtil.success({
-          status: 200,
-          success: true,
-          result,
-        }))
-      });
-  } catch (err) {
-    res.send(httpUtil.error(400, { error: err.message }))
-  }
-});
-
-router.post("/cart", upload.array("images"), function (req, res, next) {
-  try {
-    const imageFiles = req.files ? req.files : [];
-    const imagePath = []
-    const body = req.body;
-    if (imageFiles) {
-      for (let i = 0; i < imageFiles.length; i++) {
-        let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
-        imagePath.push(imgObj)
-      }
-      body.images = imagePath
-    }
-    // const context = {
-    //   name: body.name,
-    //   email: body.email,
-    //   number: body.number,
-    //   createdAt: Date.now(),
-    //   selectedImages: body.images,
-    //   address: body.address,
-    //   artwork: body.title,
-    //   buyPrice: body.buyPrice,
-    //   artistName: body.artistName
-    // };
-
-    var mailOptions = {
-      from: secret.ADMIN_EMAIL,
-      to: body.email,
-      subject: 'purchasing Artwork from Art India Art Official Website.',
-      text: `purchasing ${body.images}` + `${body.name} we recieved your detail we will contact you soon !`
-    };
-
-    const data = {
-      name: body.name,
-      email: body.email,
-      status: body.status ? body.status : "Active",
-      number: body.number,
-      createdAt: Date.now(),
-      selectedImages: body.images,
-      address: body.address,
-      artwork: body.title,
-      buyPrice: body.buyPrice,
-      artistName: body.artistName
-    }
-    db.get()
-      .collection("cart")
-      .insertOne(data, function (err, dbresult) {
-        if (err)
-          res.status(500).send(httpUtil.error(500, "cart Creation Failed."));
-        else {
-          transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-              res.send(error);
-            } else {
-              console.log('Email sent: ' + info.response);
-              res.send(httpUtil.success(200, "cart Added."));
-            }
-          })
-        }
-      });
-  } catch (err) {
-    res.send({
-      status: 400,
-      error: err.message,
-      success: false
-    })
   }
 });
 

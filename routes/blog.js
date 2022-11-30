@@ -40,7 +40,7 @@ router.get("/:blog_id", function (req, res, next) {
     });
 });
 
-<<<<<<< HEAD
+// <<<<<<< HEAD
 router.get("/search", function (req, res, next) {
   try {
     const key = req.query.key
@@ -142,7 +142,7 @@ router.put("/blog", jwt.authenticateToken, upload.array("images"), function (req
       success : false
     })
   }
-=======
+})
 // router.post("/",jwt.authenticateToken, upload.any("files"), async function (req, res, next) {
 //   const imageFiles = req.files ? req.files : [];
 //   const imagePath = []
@@ -195,7 +195,7 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
         success: false
       })
     }
->>>>>>> f85fde50efa206df8bb37c45086cc150d577f81a
+// >>>>>>> f85fde50efa206df8bb37c45086cc150d577f81a
 });
 
 router.put("/", jwt.authenticateToken, upload.array("images"), function (req, res, next) {
