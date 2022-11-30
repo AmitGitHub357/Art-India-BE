@@ -267,8 +267,18 @@ router.get("/blogSearch", function (req, res, next) {
   }
 });
 
-router.get("/:category", function (req, res, next) {
-  const category = req.params.category ? ObjectId(req.params.category) : ""
+// router.get("/blogCategory", function (req, res, next) { 
+//   const category = req.query.blogCategory ? ObjectId(req.query.blogCategory) : ""
+//   db.get()
+//     .collection("blog")
+//     .find({ category: category })
+//     .toArray(function (err, result) {
+//       if (err) console.log(err);
+//       res.send(httpUtil.success(200, "", result));
+//     });
+// });
+router.get("/blogCategory", function (req, res, next) {
+  const category = req.query.category
   db.get()
     .collection("blog")
     .find({ category: category })
