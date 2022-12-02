@@ -15,6 +15,16 @@ var transporter = nodemailer.createTransport({
   }
 });
 
+router.get("/cart", function (req, res, next) {
+  db.get()
+  .collection("cart")
+  .find({})
+  .toArray(function (err, result) {
+    if (err) throw err;
+    res.send(httpUtil.success(200, "", result));
+  });
+});
+
 router.post("/chitchat", function (req, res, next) {
 
   const context = {
@@ -278,16 +288,6 @@ router.get("/blogSearch", function (req, res, next) {
   }
 });
 
-// router.get("/blogCategory", function (req, res, next) { 
-//   const category = req.query.blogCategory ? ObjectId(req.query.blogCategory) : ""
-//   db.get()
-//     .collection("blog")
-//     .find({ category: category })
-//     .toArray(function (err, result) {
-//       if (err) console.log(err);
-//       res.send(httpUtil.success(200, "", result));
-//     });
-// });
 router.get("/blogCategory", function (req, res, next) {
   const category = req.query.category
   db.get()
@@ -309,6 +309,7 @@ router.get("/artist", function (req, res, next) {
       res.send(httpUtil.success(200, "", result));
     });
 });
+
 router.get("/artist-type", function (req, res, next) {
   db.get()
     .collection("artist-type")
@@ -341,104 +342,97 @@ router.get("/artist-type", function (req, res, next) {
 //   ]).pretty();
 // });
 
-
-
-
-router.post("/artist_filter", function (req, res, next) {
-  let skip = req.query.skip ? req.query.skip : 0;
-  let limit = req.query.limit ? req.query.limit : 10;
-  let type = req.query.type ? req.query.type : "";
-  let filter = req.query.filter ? req.query.filter : "";
-  let filters = {};
-  let pipeline = [
-    // {
-    //   $lookup: {
-    //     from: "artwork",
-    //     localField: "artistId",
-    //     foreignField: "_id",
-    //     as: "artwork",
-    //   },
-    // },
-    {
-      $sort: {
-        _id: -1,
-      },
-    }
-  ];
-  if (type && filter) {
-    pipeline.push({
-      $match: {
-        type: type,
-        name: {
-          $regex: '^' + filter,
-          $options: 'i'
-        }
-      },
-    });
-    filters = {
-      type: type,
-      name: {
-        $regex: '^' + filter,
-        $options: 'i'
-      }
-    };
-  } else if (type) {
-    pipeline.push({
-      $match: {
-        type: type
-      },
-    });
-    filters = {
-      type: type
-    };
-  } else if (filter) {
-    pipeline.push({
-      $match: {
-        name: {
-          $regex: '^' + filter,
-          $options: 'i'
-        }
-      },
-    });
-    filters = {
-      name: {
-        $regex: '^' + filter,
-        $options: 'i'
-      }
-    };
-  }
-  if (skip) {
-    pipeline.push({
-      $skip: skip,
-    });
-  }
-  if (limit) {
-    pipeline.push({
-      $limit: limit,
-    });
-  }
-  db.get()
-    .collection("artist")
-    .aggregate(pipeline)
-    .project({ password: 0 })
-    .toArray(function (err, result) {
-      db.get()
-      if (err) console.log(err);
-      // .collection("artist")
-      // .find(filters)
-      // .count(function (err, dbresult) {
-      // if (err) throw err;
-      res.send(
-        httpUtil.success(200, "", { count: dbresult, data: result })
-      );
-    });
-});
-
+// router.post("/artist_filter", function (req, res, next) {
+//   let skip = req.query.skip ? req.query.skip : 0;
+//   let limit = req.query.limit ? req.query.limit : 10;
+//   let type = req.query.type ? req.query.type : "";
+//   let filter = req.query.filter ? req.query.filter : "";
+//   let filters = {};
+// let pipeline = [
+// {
+//   $lookup: {
+//     from: "artwork",
+//     localField: "artistId",
+//     foreignField: "_id",
+//     as: "artwork",
+//   },
+// },
+//     {
+//       $sort: {
+//         _id: -1,
+//       },
+//     }
+//   ];
+//   if (type && filter) {
+//     pipeline.push({
+//       $match: {
+//         type: type,
+//         name: {
+//           $regex: '^' + filter,
+//           $options: 'i'
+//         }
+//       },
+//     });
+//     filters = {
+//       type: type,
+//       name: {
+//         $regex: '^' + filter,
+//         $options: 'i'
+//       }
+//     };
+//   } else if (type) {
+//     pipeline.push({
+//       $match: {
+//         type: type
+//       },
+//     });
+//     filters = {
+//       type: type
+//     };
+//   } else if (filter) {
+//     pipeline.push({
+//       $match: {
+//         name: {
+//           $regex: '^' + filter,
+//           $options: 'i'
+//         }
+//       },
+//     });
+//     filters = {
+//       name: {
+//         $regex: '^' + filter,
+//         $options: 'i'
+//       }
+//     };
+//   }
+//   if (skip) {
+//     pipeline.push({
+//       $skip: skip,
+//     });
+//   }
+//   if (limit) {
+//     pipeline.push({
+//       $limit: limit,
+//     });
+//   }
+//   db.get()
+//     .collection("artist")
+//     .aggregate(pipeline)
+//     .project({ password: 0 })
+//     .toArray(function (err, result) {
+//       db.get()
+//       if (err) console.log(err);
+//       // .collection("artist")
+//       // .find(filters)
+//       // .count(function (err, dbresult) {
+//       // if (err) throw err;
+//       res.send(
+//         httpUtil.success(200, "", { count: dbresult, data: result })
+//       );
+//     });
 // });
 
-
-
-
+// });
 
 // router.get("/artist", function (req, res, next) {
 //   db.get()
@@ -451,179 +445,76 @@ router.post("/artist_filter", function (req, res, next) {
 //     });
 // });
 
-router.post("/artwork", function (req, res, next) {
+router.put("/blogLike", function (req, res, next) {
+  // res.send({ id : req.body })
   try {
-    const category = req.body.category ? req.body.category : ""
-    const technique = req.body.technique ? req.body.technique : ""
-    const style = req.body.style ? req.body.style : ""
-    const price = req.body.price ? req.body.price : ""
-    // const size = req.body.size ? req.body.size : ""
-    const oriention = req.body.oriention ? req.body.oriention : ""
-    const query = {}
-    if(category){
-      query.push( )
+    const body = req.body
+    const blog_id = body.blog_id ? ObjectId(body.blog_id) : "";
+    if (blog_id) {
+      let Id = { _id: blog_id };
+      let data = {
+        $set: {
+          likes: body.likes,
+          updatedAt: Date.now()
+        },
+      };
+      db.get()
+        .collection("blog")
+        .updateOne(Id, data, function (err, dbresult) {
+          if (err)
+            res.status(500).send(httpUtil.error(500, "blog Update Failed."));
+          res.send(httpUtil.success(200, "blog Updated."));
+        });
     }
-    // query.$or = [{
-    //   // "artworkName": { $regex: "Indian God", $options: "i" },
-    //   "paintingCategory": { $regex: category , $options: "i" },
-    //   "paintingTechnique": { $regex: technique, $options: "i" },
-    //   "paintingStyle": { $regex: style, $options: "i" },
-    //   "paintingOriention": { $regex: oriention, $options: "i" },
-    //   "price": { $regex: price, $options: "i" },
-    //   "prize" : { $regex : size ,$options : "i" } 
-    // }]
-    //   db.get()
-    //     .collection("artwork")
-    //     .find(query)
-    //     .project({ password: 0 })
-    //     .toArray(function (err, result) {
-    //       if (err) console.log(err);
-    //       res.send(httpUtil.success(200, { count : result.length }, result));
-    //     });
-    //   db.get()
-    //     .collection("artwork")
-    //     .find(query)
-    //     .count(function (err, dbresult) {
-    //       if (err) throw err;
-    //       res.send(
-    //         httpUtil.success(200, "Artwork Data", { count: dbresult, data: result })
-    //       );
-    //     });
-  } catch (err) {
-    //   res.send({
-    //     error: err.message,
-    //     success: false,
-    //     status: 400
-    //   })
+  }
+  catch (err) {
+    res.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
   }
 })
-//   const skip = req.body.skip ? req.body.skip : 0;
-//   const limit = req.body.limit ? req.body.limit : 10;
-//   const type = req.body.type ? req.body.type : "";
-//   const orientation = req.body.orientation ? req.body.orientation : "";
-//   const category = req.body.category ? req.body.category : "";
-//   const style = req.body.style ? req.body.style : "";
-//   const technique = req.body.technique ? req.body.technique : "";
-//   const size = req.body.size ? req.body.size : "";
-//   const price = req.body.price ? req.body.price : "";
-// const rentPrice = req.body.rentPrice ? req.body.rentPrice : ""
-// let filter = {
-//   type: type
-// };
-// let pipeline = [
-//   {
-//     $match: {
-//       type: type 
-//     }
-//   }
-// ];
-// if (size === 'Small') {
-//   pipeline[0].$match['size.length'] = { $lte: 12 };
-//   pipeline[0].$match['size.width'] = { $lte: 12 };
-//   filter['size.length'] = { $lte: 12 };
-//   filter['size.width'] = { $lte: 12 };
-// } else if (size === 'Medium') {
-//   pipeline[0].$match['size.length'] = { $gte: 13, $lte: 36 };
-//   pipeline[0].$match['size.width'] = { $gte: 13, $lte: 36 };
-//   filter['size.length'] = { $gte: 13, $lte: 36 };
-//   filter['size.width'] = { $gte: 13, $lte: 36 };
-// } else if (size === 'Large') {
-//   pipeline[0].$match['size.length'] = { $gte: 37 };
-//   pipeline[0].$match['size.width'] = { $gte: 37 };
-//   filter['size.length'] = { $gte: 37 };
-//   filter['size.width'] = { $gte: 37 };
-// }
-// if (price) {
-//   pipeline[0].$match['price'] = { $lte: price };
-//   filter['price'] = { $lte: price };
-// }
-// if (orientation) {
-//   pipeline[0].$match['orientation'] = orientation;
-//   filter['orientation'] = orientation;
-// }
-// if (category) {
-//   pipeline[0].$match['category'] = {
 
-//     $in: category
-//   };
-//   filter['category'] = {
-//     $in: category
-//   };
-// }
-// if (style) {
-//   pipeline[0].$match['style'] = {
-//     $in: style
-//   };
-//   filter['style'] = {
-//     $in: style
-//   };
-// }
-// if (technique) {
-//   pipeline[0].$match['technique'] = {
-//     $in: technique
-//   };
-//   filter['technique'] = {
-//     $in: technique
-//   };
-// }
-// if (skip) {
-//   pipeline.push({
-//     $skip: skip,
-//   });
-// }
-// if (limit) {
-//   pipeline.push({
-//     $limit: limit,
-//   });
-// }
+router.post("/artwork", function (req, res, next) {
+  const category = req.body.paintingCategory ? req.body.paintingCategory : ""
+  const technique = req.body.paintingTechnique ? req.body.paintingTechnique : ""
+  const style = req.body.paintingStyle ? req.body.panitingStyle : ""
+  const price = req.body.buyPrice ? req.body.buyPrice : ""
+  const oriention = req.body.oriention ? req.body.oriention : ""
+  // let filter = {
+  //   // type: type
+  // }
+  // let pipeline = [
+  //   {
+  //     $match: {}
+  //   }
+  // ]
+  // if (price) {
+  //   pipeline[0].$match['buyPrice'] = { $lte: price };
+  //   filter['buyPrice'] = { $lte: price };
+  // }
+  // if (category) {
+  //   pipeline[0].$match['paintingCategory'] = category;
+  //   filter['paintingCategory'] = category;
+  // }
 
-//     db.get()
-//       .collection("artwork")
-//       // .aggregate(pipeline)
-//       .toArray(function (err, result) {
-//         if (err) {
-//           res.send({
-//             status: 400,
-//             success: false,
-//             error: err
-//           })
-//         }
-//         db.get()
-//           .collection("artwork")
-//           .find(query)
-//           .count(function (err, dbresult) {
-//             if (err) throw err;
-//             res.send(
-//               httpUtil.success(200, "Artwork Data", { count: dbresult, data: result })
-//             );
-//           });
-//       })
-//   } catch (err) {
-//     res.send({
-//       error : err.message,
-//       success : false,
-//       status : 400
-//     })
-//   }
-// });
+  db.get()
+    .collection("artwork").find({})
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      db.get()
+        .collection("artwork")
+        .find(filter)
+        .count(function (err, dbresult) {
+          if (err) throw err;
+          res.send(
+            httpUtil.success(200, "Artwork Data", { count: dbresult, data: result })
+          );
+        });
+    });
+});
 
-//     db.get()
-//       .collection("artwork")
-//       .find(query)
-//       .count(function (err, dbresult) {
-//         if (err) throw err;
-//         res.send(
-//           httpUtil.success(200, "Artwork Data", { count: dbresult, data: result })
-//         );
-//       });
-//   } catch (err) {
-//     res.send({
-//       error: err.message,
-//       success: false,
-//       status: 400
-//     })
-//   }
-// })
 router.get("/blogSearch", function (req, res, next) {
   try {
     const key = req.query.key
@@ -773,13 +664,12 @@ router.get("/clients/logo", function (req, res, next) {
       if (err) throw err;
       res.send(httpUtil.success(200, "", result));
     });
-});//
+});
 
 router.get("/search", function (req, res, next) {
   res.send({ req: req.query.key })
   try {
     const key = req.query.key
-    // db.get().collection("news")$or: [{ name: { $regex: key } }, { description: { $regex: key } }, { technique: { $regex: key } }, { style: { $regex: key } }, { artistname: { $regex: key } }] 
     db.get().collection("artwork").find({
       $or:
         [{ artworkName: { $regex: key } }, { shortDescription: { $regex: key } }, { buyPrice: { $regex: key } }, { style: { $regex: key } }, { artistname: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { paintingCategory: { $regex: key } }, { paintingArtwork: { $regex: key } }, { paintingStyle: { $regex: key } }, { paintingTechniques: { $regex: key } }]
@@ -798,4 +688,113 @@ router.get("/search", function (req, res, next) {
   }
 });
 
+router.post("/comment", async function (req, res, next) {
+  const body = req.body;
+  const data = {
+    name: body.name,
+    email: body.email,
+    feedback: body.feedback,
+    createdAt: Date.now(),
+    updatedAt: "",
+    status: body.status ? body.status : "Active",
+    blog_id: body.blog_id
+  }
+
+  db.get()
+    .collection("comment")
+    .insertOne(data, function (err, dbresult) {
+      if (err)
+        res.status(500).send(httpUtil.error(500, "comment Creation Failed."));
+      db.get().collection("comment").find({ blog_Id: body.blog_Id }).toArray(function (err, result) {
+        if (err) res.send(err);
+        db.get().collection("blog").updateOne({ _id: ObjectId(body.blog_id) }, { $set: { comments: result } }, function (err, result) {
+          if (err) {
+            res.status(204).send(httpUtil.error(204, err.message));
+          }
+          else
+            res.send({
+              status: 200,
+              success: true,
+              message: "Comment Created"
+            })
+        })
+      })
+    })
+})
+
+router.get("/comment/:blog_id", function (req, res, next) {
+  const _id = req.params.blog_id ? ObjectId(req.params.blog_id) : ""
+  db.get()
+    .collection("blog")
+    .find({ _id: _id })
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
+router.get("/", function (req, res, next) {
+  db.get()
+    .collection("comment")
+    .find({})
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
+// router.get("/cart", function (req, res, next) {
+//   res.send({ mess : "" })                       
+  
+// });
+
+router.get("/cart/:cart_id", function (req, res, next) {
+  const _id = req.params.cart_id ? ObjectId(req.params.cart_id) : ""  
+  db.get()
+    .collection("cart")
+    .find({ _id: _id })
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
+router.post("/cart", async function (req, res, next) {          
+  const body = req.body
+  const data = {
+    selectedFrames : body.selectedFrames,
+    artworkId : body.artworkId,
+    quantity : body.quantity,
+    userId : body.userId
+  }
+
+  db.get()
+    .collection("cart")
+    .insertOne(data, function (err, dbresult) {
+      if (err)
+        res.status(500).send(httpUtil.error(500, "cart Creation Failed."));
+      res.send(httpUtil.success(200, "cart Created."));
+    });
+})
+
+/*
+get single cart by id
+http://localhost:3000/api/cart/Id
+
+get comment by blog Id 
+http://localhost:3000/api/comment/Id
+
+get all blog comment
+http://localhost:3000/api/
+
+update blog likes
+http://localhost:3000/api/blogLike
+
+add blog comment 
+http://localhost:3000/api/comment
+
+get all user carts
+http://localhost:3000/api/cart
+
+*/
 module.exports = router;

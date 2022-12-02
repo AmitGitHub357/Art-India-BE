@@ -143,25 +143,7 @@ router.put("/blog", jwt.authenticateToken, upload.array("images"), function (req
     })
   }
 })
-// router.post("/",jwt.authenticateToken, upload.any("files"), async function (req, res, next) {
-//   const imageFiles = req.files ? req.files : [];
-//   const imagePath = []
-//   const body = req.body;
-//   if (imageFiles) {
-//     for (let i = 0; i < imageFiles.length; i++) {
-//       let imgObj = imageFiles[i].destination + imageFiles[i].originalname
-//       imagePath.push(imgObj)
-//     }
-//     body.images = imagePath
-//   }
-//   db.get()
-//     .collection("blog")
-//     .insertOne(body, function (err, dbresult) {
-//       if (err)
-//         res.status(500).send(httpUtil.error(500, "blog Creation Failed."));
-//       res.send(httpUtil.success(200, "blog Created."));
-//     });
-// })
+
 router.post("/", jwt.authenticateToken, upload.array("images"), function (req, res, next) {
   try {
       const imageFiles = req.files ? req.files : [];

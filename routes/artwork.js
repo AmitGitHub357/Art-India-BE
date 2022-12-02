@@ -36,7 +36,7 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { name: "frameImages", maxCount: 20 }]), async function (req, res, next) {
-  // console.log(__dirname + '../../')
+  
   var imagesPath = [], framePath = []
   var imagesFile = [], frameFile = []
   var body = req.body;
@@ -50,7 +50,6 @@ router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { nam
   }
   if (imagesFile.length != 0) {
     for (let i = 0; i < imagesFile.length; i++) {
-      // let imgObj = "http://localhost:3000/" + imagesFile[i].destination.slice(1) + imagesFile[i].filename
       let imgObj = "http://localhost:3000/" + `${imagesFile[i].destination}` + `${imagesFile[i].originalname}`
       imagesPath.push(imgObj)
     }
@@ -98,17 +97,6 @@ router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { nam
               success : true,
               message : "Artwork Created"
             })
-          // db.get().collection("artist-type").find({ _id : body.artworkTypeId }).toArray(function (err, result) {
-          //   console.log(result)
-          //   if (err) res.send(err);
-          //     res.status(204).send(httpUtil.error(204,err.message));
-          //     db.get().collection("artist").updateOne({ type_id : ObjectId(body.artworkTypeId) }, { $set: { artist_type : result } }, function (err, result) 
-          //     { console.log(result)
-          //       if (err) 
-          //         res.status(204).send(httpUtil.error(204,err.message));
-
-          //     })
-          // })
         });
       });
       // res.send(httpUtil.success(200, "artwork Created."));
