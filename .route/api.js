@@ -7,7 +7,6 @@ var db = require("../dbconfig");
 var { ObjectId } = require("mongodb");
 var async = require("async");
 var nodemailer = require('nodemailer');
-var multer = require("multer");
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -16,72 +15,15 @@ var transporter = nodemailer.createTransport({
   }
 });
 
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/uploads/cart/frames");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname)
-  },
-});
-var upload = multer({ storage: storage });
 router.get("/cart", function (req, res, next) {
   db.get()
-    .collection("cart")
-    .find({})
-    .toArray(function (err, result) {
-      if (err) throw err;
-      res.send(httpUtil.success(200, "", result));
-    });
+  .collection("cart")
+  .find({})
+  .toArray(function (err, result) {
+    if (err) throw err;
+    res.send(httpUtil.success(200, "", result));
+  });
 });
-
-router.get("/userCart", function (req, res, next) {
-  const userId = req.query.userId ? req.query.userId : ""
-  db.get()
-    .collection("cart")
-    .find({ userId: userId })
-    .toArray(function (err, result) {
-      if (err) res.send({ status: 400, success: false, error: err.message });
-      res.send({ status: 200, success: true, data: result })
-    });
-});
-router.post("/cart", upload.array("selectedFrames"), async function (req, res, next) {
-  try {
-    const imageFiles = req.files ? req.files : [];
-    const imagePath = []
-    const body = req.body
-    if (imageFiles) {
-      for (let i = 0; i < imageFiles.length; i++) {
-        let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
-        imagePath.push(imgObj)
-      }
-      body.selectedFrames = imagePath
-    }
-    const data = {
-      selectedFrames: body.selectedFrames,
-      artworkId: body.artworkId,
-      userId: body.userId,
-      status: body.status ? body.status : "Active",
-      buyPrice: body.buyPrice ? body.buyPrice : "",
-      rentPrice: body.rentPrice ? body.rentPrice : "",
-      cartId: body.cartId ? body.cartId : ""
-    }
-
-    db.get()
-      .collection("cart")
-      .insertOne(data, function (err, dbresult) {
-        if (err)
-          res.status(500).send(httpUtil.error(500, "cart Creation Failed."));
-        res.send(httpUtil.success(200, "cart Created."));
-      });
-  } catch (err) {
-    res.send({
-      status: 400,
-      error: err.message,
-      success: false
-    })
-  }
-})
 
 router.post("/chitchat", function (req, res, next) {
 
@@ -92,7 +34,13 @@ router.post("/chitchat", function (req, res, next) {
     about: req.body.about ? req.body.about : "",
     comment: req.body.comment ? req.body.comment : "",
   };
-
+  // sendMail("ChitChat", secret.ADMIN_EMAIL, context)
+  //   .then((mailresult) => {
+  //     res.send(httpUtil.success(200, "Chit Chat Mail Sent.", mailresult));
+  //   })
+  //   .catch((error) => {
+  //     res.status(500).send(httpUtil.error(500, "Chit Chat Error."));
+  //   });
   var mailOptions = {
     from: secret.ADMIN_EMAIL,
     to: context.email,
@@ -174,57 +122,6 @@ router.post("/connect", function (req, res, next) {
   });
 });
 
-router.post("/confirmEnquiryEmail", function (req, res, next) {
-  // res.send({
-  //     body : req.body
-  // })
-
-  try {
-    const body = req.body
-    const data = {
-      name: body.name ? body.name : "",
-      email: body.email ? body.email : "",
-      phone: body.phone ? body.phone : "",
-      date : body.data ? body.date : "",
-      artworkName: body.artworkName ? body.artworkName : "",
-      buyPrice: body.buyPrice ? body.buyPrice : body.rentPrice,
-    }
-    var mailOptions = {
-      from: secret.ADMIN_EMAIL,
-      to: body.email,
-      subject: body.buyPrice ? "we got enquiry for buy Artwork from Art India Art" : "enquiry for rent Artwork from Art India Art",
-      html: `<b>Artwork Name</b> : <h3>${body.artworkName}</h3><br> <b>Rate</b> : <h3>${body.buyPrice ? body.buyPrice : body.rentPrice}</h3><br><b>Message</b> : <h3>We will contact to you soon !</h3><br>`
-    };
-
-    db.get()
-      .collection("confirmEnquiryEmail")
-      .insertOne(data, function (err, dbresult) {
-        if (err)
-          res.status(500).send(httpUtil.error(500, "confirm EnquiryEmail Creation Failed."));
-        else {
-          transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-              res.send(error);
-            } else {
-              console.log('Email sent: ' + info.response);
-              res.send({
-                success: true,
-                status: 200,
-                message: `Email sent to ` + `${body.email}` + " confirm order Details added successfully !"
-              })
-            }
-          });
-        }
-      });
-  } catch (err) {
-    res.send({
-      status: 400,
-      error: err.message,
-      success: false
-    })
-  }
-});
-
 router.post("/contact", function (req, res, next) {
   const context = {
     name: req.body.name ? req.body.name : "",
@@ -233,7 +130,13 @@ router.post("/contact", function (req, res, next) {
     subject: req.body.subject ? req.body.subject : "",
     comment: req.body.comment ? req.body.comment : "",
   };
-
+  // sendMail("Contact", secret.ADMIN_EMAIL, context)
+  //   .then((mailresult) => {
+  //     res.send(httpUtil.success(200, "Contact Mail Sent.", mailresult));
+  //   })
+  //   .catch((error) => {
+  //     res.status(500).send(httpUtil.error(500, "Contact Error."));
+  //   });
   var mailOptions = {
     from: secret.ADMIN_EMAIL,
     to: context.email,
@@ -269,6 +172,10 @@ router.get("/artistType", function (req, res, next) {
 router.get("/featured_events", function (req, res, next) {
   db.get()
     .collection("event")
+    // .aggregate(
+    //   [
+    //     { $sort : { end_date : -1 } }
+    //   ])
     .find({ completed: "true" }).sort({ end_date: 1 })
     .toArray(function (err, result) {
       if (err) console.log(err);
@@ -414,6 +321,130 @@ router.get("/artist-type", function (req, res, next) {
     });
 });
 
+// router.get("/artist", function (req, res, next) {
+//   const type_id = req.params.artist_type
+//   db.get()
+//     .collection("artist")
+//     .find({ }).populate("type_id")
+//     .toArray(function (err, result) {
+//       if (err) console.log(err);
+//       res.send(httpUtil.success(200, "", result));
+//     });
+//     db.artist.aggregate([
+//       { $lookup:
+//           {
+//              from: "artist-type",
+//              localField: "type_id",
+//              foreignField: "_id",
+//              as: "artist_type"
+//           }
+//       }
+//   ]).pretty();
+// });
+
+// router.post("/artist_filter", function (req, res, next) {
+//   let skip = req.query.skip ? req.query.skip : 0;
+//   let limit = req.query.limit ? req.query.limit : 10;
+//   let type = req.query.type ? req.query.type : "";
+//   let filter = req.query.filter ? req.query.filter : "";
+//   let filters = {};
+// let pipeline = [
+// {
+//   $lookup: {
+//     from: "artwork",
+//     localField: "artistId",
+//     foreignField: "_id",
+//     as: "artwork",
+//   },
+// },
+//     {
+//       $sort: {
+//         _id: -1,
+//       },
+//     }
+//   ];
+//   if (type && filter) {
+//     pipeline.push({
+//       $match: {
+//         type: type,
+//         name: {
+//           $regex: '^' + filter,
+//           $options: 'i'
+//         }
+//       },
+//     });
+//     filters = {
+//       type: type,
+//       name: {
+//         $regex: '^' + filter,
+//         $options: 'i'
+//       }
+//     };
+//   } else if (type) {
+//     pipeline.push({
+//       $match: {
+//         type: type
+//       },
+//     });
+//     filters = {
+//       type: type
+//     };
+//   } else if (filter) {
+//     pipeline.push({
+//       $match: {
+//         name: {
+//           $regex: '^' + filter,
+//           $options: 'i'
+//         }
+//       },
+//     });
+//     filters = {
+//       name: {
+//         $regex: '^' + filter,
+//         $options: 'i'
+//       }
+//     };
+//   }
+//   if (skip) {
+//     pipeline.push({
+//       $skip: skip,
+//     });
+//   }
+//   if (limit) {
+//     pipeline.push({
+//       $limit: limit,
+//     });
+//   }
+//   db.get()
+//     .collection("artist")
+//     .aggregate(pipeline)
+//     .project({ password: 0 })
+//     .toArray(function (err, result) {
+//       db.get()
+//       if (err) console.log(err);
+//       // .collection("artist")
+//       // .find(filters)
+//       // .count(function (err, dbresult) {
+//       // if (err) throw err;
+//       res.send(
+//         httpUtil.success(200, "", { count: dbresult, data: result })
+//       );
+//     });
+// });
+
+// });
+
+// router.get("/artist", function (req, res, next) {
+//   db.get()
+//     .collection("artist")
+//     .find({})
+//     .project({ password: 0 })
+//     .toArray(function (err, result) {
+//       if (err) console.log(err);
+//       res.send(httpUtil.success(200, "", result));
+//     });
+// });
+
 router.put("/blogLike", function (req, res, next) {
   // res.send({ id : req.body })
   try {
@@ -449,17 +480,27 @@ router.post("/artwork", function (req, res, next) {
   const category = req.body.paintingCategory ? req.body.paintingCategory : ""
   const technique = req.body.paintingTechnique ? req.body.paintingTechnique : ""
   const style = req.body.paintingStyle ? req.body.panitingStyle : ""
-  const styles = ["Everyday-life", "Conceptual","Fantasy","Nature"]
   const price = req.body.buyPrice ? req.body.buyPrice : ""
   const oriention = req.body.oriention ? req.body.oriention : ""
-  for(var i = 0; i < style.length; i++ )
-  {
-      if(style[i] === styles[i])
-      style.push(styles)
-  }
-  res.send({ styles })
+  // let filter = {
+  //   // type: type
+  // }
+  // let pipeline = [
+  //   {
+  //     $match: {}
+  //   }
+  // ]
+  // if (price) {
+  //   pipeline[0].$match['buyPrice'] = { $lte: price };
+  //   filter['buyPrice'] = { $lte: price };
+  // }
+  // if (category) {
+  //   pipeline[0].$match['paintingCategory'] = category;
+  //   filter['paintingCategory'] = category;
+  // }
+
   db.get()
-    .collection("artwork").find({ price : { $lte: price } , category : { $all: ["Everyday-life", "Conceptual","Fantasy","Nature"] }}) 
+    .collection("artwork").find({})
     .toArray(function (err, result) {
       if (err) console.log(err);
       db.get()
@@ -702,8 +743,13 @@ router.get("/", function (req, res, next) {
     });
 });
 
+// router.get("/cart", function (req, res, next) {
+//   res.send({ mess : "" })                       
+  
+// });
+
 router.get("/cart/:cart_id", function (req, res, next) {
-  const _id = req.params.cart_id ? ObjectId(req.params.cart_id) : ""
+  const _id = req.params.cart_id ? ObjectId(req.params.cart_id) : ""  
   db.get()
     .collection("cart")
     .find({ _id: _id })
@@ -713,40 +759,42 @@ router.get("/cart/:cart_id", function (req, res, next) {
     });
 });
 
-// router.get("/confirmEnquiryEmail", function (req, res, next) {
-//   try{
-//     db.get()
-//     .collection("confirmEnquiryEmail")
-//     .find({})
-//     .toArray(function (err, result) {
-//       if (err) res.send({ status: 400, success: false, error: err.message });
-//       res.send({ status: 200, success: true, data: result })
-//     });
-//   }catch(err){
-//     res.send({
-//       status : 400,
-//       error : err.message,
-//       success : false
-//     })
-//   }
-  
-// });
-router.get("/confirmEnquiryEmail", function (req, res, next) {
-  try{
-    db.get()
-    .collection("confirmEnquiryEmail")
-    .find({})
-    .toArray(function (err, result) {
-      if (err) console.log(err);
-      res.send(httpUtil.success(200, "", result));
-    });
-  }catch(err){
-    res.send({
-      status : 400,
-      success : false,
-      error : err.message
-    })
+router.post("/cart", async function (req, res, next) {          
+  const body = req.body
+  const data = {
+    selectedFrames : body.selectedFrames,
+    artworkId : body.artworkId,
+    quantity : body.quantity,
+    userId : body.userId
   }
-  
-});
+
+  db.get()
+    .collection("cart")
+    .insertOne(data, function (err, dbresult) {
+      if (err)
+        res.status(500).send(httpUtil.error(500, "cart Creation Failed."));
+      res.send(httpUtil.success(200, "cart Created."));
+    });
+})
+
+/*
+get single cart by id
+http://localhost:3000/api/cart/Id
+
+get comment by blog Id 
+http://localhost:3000/api/comment/Id
+
+get all blog comment
+http://localhost:3000/api/
+
+update blog likes
+http://localhost:3000/api/blogLike
+
+add blog comment 
+http://localhost:3000/api/comment
+
+get all user carts
+http://localhost:3000/api/cart
+
+*/
 module.exports = router;

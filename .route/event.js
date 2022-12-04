@@ -27,6 +27,7 @@ router.get("/:event_id", function (req, res, next) {
 });
 
 router.post("/", function (req, res, next) {
+  // res.send({ req : req.body })
   const body = req.body
   try {
     const data = {
