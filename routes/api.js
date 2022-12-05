@@ -443,6 +443,17 @@ router.get("/artist-type", function (req, res, next) {
     });
 });
 
+router.get("/artwork", function (req, res, next) {
+  db.get()
+    .collection("artwork")
+    .find({})
+    .project({ password: 0 })
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
 router.put("/blogLike", function (req, res, next) {
   // res.send({ id : req.body })
   try {
