@@ -1142,3 +1142,17 @@
 ::1 - Mon Dec 05 2022 17:00:32 GMT+0530 (India Standard Time) - GET /artwork/ HTTP/1.1 200 - - 93 - PostmanRuntime/7.29.2
 ::1 - Mon Dec 05 2022 17:00:40 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 500 35 - 6 - PostmanRuntime/7.29.2
 ::1 - Mon Dec 05 2022 17:01:50 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 200 - - 130 - PostmanRuntime/7.29.2
+::1 - Mon Dec 05 2022 17:39:56 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 80 - 154 - PostmanRuntime/7.29.2
+::1 - Mon Dec 05 2022 17:42:01 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 80 - 296 - PostmanRuntime/7.29.2
+::1 - Mon Dec 05 2022 17:42:57 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 80 - 249 - PostmanRuntime/7.29.2
+::1 - Mon Dec 05 2022 17:43:20 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 80 - 94 - PostmanRuntime/7.29.2
+::1 - Mon Dec 05 2022 17:46:04 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 116 - PostmanRuntime/7.29.2
+::1 - Mon Dec 05 2022 17:47:41 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 223 - PostmanRuntime/7.29.2
+::1 - Mon Dec 05 2022 17:47:46 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 80 - 84 - PostmanRuntime/7.29.2
+::1 - Mon Dec 05 2022 17:49:28 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 80 - 122 - PostmanRuntime/7.29.2
+::1 - Mon Dec 05 2022 17:50:28 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 80 - 162 - PostmanRuntime/7.29.2
+::1 - Mon Dec 05 2022 17:50:36 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 11 - 86 - PostmanRuntime/7.29.2
+::1 - Mon Dec 05 2022 17:51:49 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 150 - PostmanRuntime/7.29.2
+::1 - Mon Dec 05 2022 17:51:55 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 245 - PostmanRuntime/7.29.2
+::1 - Mon Dec 05 2022 17:52:57 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 80 - 201 - PostmanRuntime/7.29.2
+::1 - Mon Dec 05 2022 17:53:05 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 99 - PostmanRuntime/7.29.2

@@ -205,7 +205,7 @@ router.post("/confirmEnquiryEmail", function (req, res, next) {
       subject: body.buyPrice ? "we got enquiry for buy Artwork from Art India Art" : "enquiry for rent Artwork from Art India Art",
       html: `<b>Artwork Name</b> : <h3>${body.artworkName}</h3><br> <b>Rate</b> : <h3>${body.buyPrice ? body.buyPrice : body.rentPrice}</h3><br><b>Message</b> : <h3>We will contact to you soon !</h3><br>`
     };
-    
+
     var mailOptions = {
       from: secret.ADMIN_EMAIL,
       to: body.email,
@@ -225,15 +225,15 @@ router.post("/confirmEnquiryEmail", function (req, res, next) {
             } else {
               // console.log('Email sent: ' + info.response);
               // res.send({
-                // success: true,
-                // status: 200,
-                // message: `Email sent to ` + `${body.email}` + " confirm order Details added successfully !"
+              // success: true,
+              // status: 200,
+              // message: `Email sent to ` + `${body.email}` + " confirm order Details added successfully !"
               // })
               transporter.sendMail(adminOptions, function (err, result) {
-                if(err) {
+                if (err) {
                   res.send({ status: 400, error: err.message, success: false })
                 }
-                else{
+                else {
                   res.send({
                     success: true,
                     status: 200,
@@ -488,14 +488,11 @@ router.put("/blogLike", function (req, res, next) {
 router.post("/artwork", function (req, res, next) {
   try {
     const body = req.body
-    // res.send({
-    //   style : body.paintingStyle
-    // })
     const category = body.paintingCategory ? body.paintingCategory : ""
     const techniques = body.paintingTechniques ? body.paintingTechniques : ""
     const style = body.paintingStyle ? body.paintingStyle : ""
     const artwork = body.paintingArtwork ? body.paintingArtwork : ""
-    const price = body.buyPrice ? body.buyPrice : "0"
+    const price = body.buyPrice ? body.buyPrice : ""
     const oriention = body.oriention ? body.oriention : ""
     const filter = []
 
@@ -511,12 +508,7 @@ router.post("/artwork", function (req, res, next) {
           result.filter((item) => {
             return item.buyPrice <= price
           })
-          // for(var i = 0; i < result.length; i++){
-          //   if(result[i].buyPrice <= price)
-          //   {
-          //     filter.push(result[i])
-          //   }
-          // }
+
           res.send(
             httpUtil.success(200, "Artwork Data", { count: result.length, data: result })
           );

@@ -36,7 +36,7 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { name: "frameImages", maxCount: 20 }]), async function (req, res, next) {
-  
+
   var imagesPath = [], framePath = []
   var imagesFile = [], frameFile = []
   var body = req.body;
@@ -68,17 +68,19 @@ router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { nam
     shortDescription: body.shortDescription,
     buyPrice: body.buyPrice,
     rentPrice: body.rentPrice,
-    size : body.size,
-    oriention : body.oriention,
+    size: body.size,
+    oriention: body.oriention,
     frameImage: body.frameImages,
-    length : body.length,
-    width : body.width,
-    likes : body.likes ? body.likes : "0",
+    length: body.length,
+    width: body.width,
+    likes: body.likes ? body.likes : "0",
     artworkImage: body.images,
+    discount: body.discount,
     paintingCategory: body.painting_category,
     paintingArtwork: body.painting_artwork,
     paintingStyle: body.painting_style,
-    paintingTechniques: body.painting_technique
+    paintingTechniques: body.painting_technique,
+    buyStatus: body.buyStatus ? body.buyStatus : false
   }
   db.get()
     .collection("artwork")
@@ -93,9 +95,9 @@ router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { nam
           }
           else
             res.send({
-              status : 200,
-              success : true,
-              message : "Artwork Created"
+              status: 200,
+              success: true,
+              message: "Artwork Created"
             })
         });
       });
