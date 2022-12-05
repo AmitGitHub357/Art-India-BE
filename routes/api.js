@@ -185,7 +185,7 @@ router.post("/confirmEnquiryEmail", function (req, res, next) {
       name: body.name ? body.name : "",
       email: body.email ? body.email : "",
       phone: body.phone ? body.phone : "",
-      date : body.data ? body.date : "",
+      date: body.data ? body.date : "",
       artworkName: body.artworkName ? body.artworkName : "",
       buyPrice: body.buyPrice ? body.buyPrice : body.rentPrice,
     }
@@ -446,32 +446,49 @@ router.put("/blogLike", function (req, res, next) {
 })
 
 router.post("/artwork", function (req, res, next) {
-  const category = req.body.paintingCategory ? req.body.paintingCategory : ""
-  const technique = req.body.paintingTechnique ? req.body.paintingTechnique : ""
-  const style = req.body.paintingStyle ? req.body.panitingStyle : ""
-  const styles = ["Everyday-life", "Conceptual","Fantasy","Nature"]
-  const price = req.body.buyPrice ? req.body.buyPrice : ""
-  const oriention = req.body.oriention ? req.body.oriention : ""
-  for(var i = 0; i < style.length; i++ )
-  {
-      if(style[i] === styles[i])
-      style.push(styles)
-  }
-  res.send({ styles })
-  db.get()
-    .collection("artwork").find({ price : { $lte: price } , category : { $all: ["Everyday-life", "Conceptual","Fantasy","Nature"] }}) 
-    .toArray(function (err, result) {
-      if (err) console.log(err);
-      db.get()
-        .collection("artwork")
-        .find(filter)
-        .count(function (err, dbresult) {
-          if (err) throw err;
+  try {
+    const body = req.body
+    // res.send({
+    //   style : body.paintingStyle
+    // })
+    const category = body.paintingCategory ? body.paintingCategory : ""
+    const techniques = body.paintingTechniques ? body.paintingTechniques : ""
+    const style = body.paintingStyle ? body.paintingStyle : ""
+    const artwork = body.paintingArtwork ? body.paintingArtwork : ""
+    const price = body.buyPrice ? body.buyPrice : "0"
+    const oriention = body.oriention ? body.oriention : ""
+    const filter = []
+
+    db.get().collection("artwork").find({
+      buyPrice : { $lte : price },
+      $or:
+        [{ paintingCategory: { $regex: `${category[0]}` } }, { paintingCategory: { $regex: `${category[1]}` } }, { paintingCategory: { $regex: `${category[2]}` } }, { paintingCategory: { $regex: `${category[3]}` } }, { paintingCategory: { $regex: `${category[4]}` } }, { paintingCategory: { $regex: `${category[5]}` } }, { paintingCategory: { $regex: `${category[6]}` } }, { paintingCategory: { $regex: `${category[7]}` } }, { paintingCategory: { $regex: `${category[8]}` } }, { paintingCategory: { $regex: `${category[9]}` } }, { paintingCategory: { $regex: `${category[10]}` } }, { paintingCategory: { $regex: `${category[3]}` } }, { paintingCategory: { $regex: `${category[4]}` } }, { paintingCategory: { $regex: `${category[5]}` } }, { paintingStyle: { $regex: `${style[0]}` } }, { paintingStyle: { $regex: `${style[1]}` } }, { paintingStyle: { $regex: `${style[2]}` } }, { paintingStyle: { $regex: `${style[3]}` } }, { paintingStyle: { $regex: `${style[4]}` } }, { paintingStyle: { $regex: `${style[5]}` } }, { paintingStyle: { $regex: `${style[6]}` } }, { paintingStyle: { $regex: `${style[7]}` } }, { paintingStyle: { $regex: `${style[8]}` } }, { paintingTechniques: { $regex: `${techniques[0]}` } }, { paintingTechniques: { $regex: `${techniques[1]}` } }, { paintingTechniques: { $regex: `${techniques[2]}` } }, { paintingTechniques: { $regex: `${techniques[3]}` } }, { paintingTechniques: { $regex: `${techniques[4]}` } }, { paintingTechniques: { $regex: `${techniques[5]}` } }, { paintingTechniques: { $regex: `${techniques[6]}` } }, { paintingTechniques: { $regex: `${techniques[7]}` } }, { paintingTechniques: { $regex: `${techniques[8]}` } }, { paintingTechniques: { $regex: `${techniques[9]}` } }, { paintingTechniques: { $regex: `${techniques[10]}` } }, { paintingTechniques: { $regex: `${techniques[11]}` } }, { paintingTechniques: { $regex: `${techniques[12]}` } }, { paintingTechniques: { $regex: `${techniques[13]}` } }, { paintingArtwork: { $regex: `${artwork[0]}` } }, { paintingArtwork: { $regex: `${artwork[1]}` } }, { paintingArtwork: { $regex: `${artwork[2]}` } }, { paintingArtwork: { $regex: `${artwork[3]}` } }, { paintingArtwork: { $regex: `${artwork[4]}` } }, { paintingArtwork: { $regex: `${artwork[5]}` } }]
+    })
+      .toArray(function (err, result) {
+        if (err) console.log(err);
+        if (err) throw err;
+        else{
+          result.filter((item) => {
+            return item.buyPrice <= price
+          })
+          // for(var i = 0; i < result.length; i++){
+          //   if(result[i].buyPrice <= price)
+          //   {
+          //     filter.push(result[i])
+          //   }
+          // }
           res.send(
-            httpUtil.success(200, "Artwork Data", { count: dbresult, data: result })
+            httpUtil.success(200, "Artwork Data", { count: result.length, data: result })
           );
-        });
-    });
+        }
+      });
+  } catch (err) {
+    res.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
+  }
 });
 
 router.get("/blogSearch", function (req, res, next) {
@@ -729,24 +746,39 @@ router.get("/cart/:cart_id", function (req, res, next) {
 //       success : false
 //     })
 //   }
-  
+
 // });
 router.get("/confirmEnquiryEmail", function (req, res, next) {
-  try{
+  try {
     db.get()
-    .collection("confirmEnquiryEmail")
-    .find({})
-    .toArray(function (err, result) {
-      if (err) console.log(err);
-      res.send(httpUtil.success(200, "", result));
-    });
-  }catch(err){
+      .collection("confirmEnquiryEmail")
+      .find({})
+      .toArray(function (err, result) {
+        if (err) console.log(err);
+        res.send(httpUtil.success(200, "", result));
+      });
+  } catch (err) {
     res.send({
-      status : 400,
-      success : false,
-      error : err.message
+      status: 400,
+      success: false,
+      error: err.message
     })
   }
-  
+
 });
+
+/*
+user confirm enquiry mail *post api
+http://localhost:3000/api/confirmEnquiryEmail
+
+get artwork by filter *post api
+http://localhost:3000/api/artwork/
+
+add cart artwork
+http://localhost:3000/api/cart *post api
+
+get all cart by userId
+http://localhost:3000/api/userCart?userId=123456789
+
+*/
 module.exports = router;
