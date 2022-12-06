@@ -19,6 +19,7 @@ async function asyncForEach(array, callback) {
 }
 // const absolutePath = path.join(__dirname);
 // console.log(absolutePath)
+
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "public/uploads/news/gallery");

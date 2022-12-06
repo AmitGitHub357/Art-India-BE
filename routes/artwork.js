@@ -69,7 +69,7 @@ router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { nam
     buyPrice: body.buyPrice,
     rentPrice: body.rentPrice,
     size: body.size,
-    oriention: body.oriention,
+    // oriention: body.oriention,
     frameImage: body.frameImages,
     length: body.length,
     width: body.width,

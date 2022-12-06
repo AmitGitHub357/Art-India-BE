@@ -8,6 +8,7 @@ var { ObjectId } = require("mongodb");
 var async = require("async");
 var nodemailer = require('nodemailer');
 var multer = require("multer");
+const { get } = require("request");
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -28,7 +29,8 @@ var upload = multer({ storage: storage });
 router.get("/cart", function (req, res, next) {
   db.get()
     .collection("cart")
-    .find({})
+    .find({}).
+    limit(10)
     .toArray(function (err, result) {
       if (err) throw err;
       res.send(httpUtil.success(200, "", result));
@@ -43,6 +45,54 @@ router.get("/artwork-type", function (req, res, next) {
       if (err) throw err;
       res.send(httpUtil.success(200, "", result));
     });
+});
+
+router.get("/artworks", function (req, res, next) {
+  try {
+    // res.send({ messa : req.query.artwork_id });
+    const artwork_id = req.query.artwork_id ? ObjectId(req.query.artwork_id) : "";
+    if (artwork_id) {
+      // db.get().collection("artwork").aggregate([
+      //   {
+      //     $lookup:
+      //     {
+      //       from: "artist",
+      //       localField: "size",
+      //       foreignField: "size",
+      //       as: "artist"
+      //     }
+      //   }
+      // ])
+      db.get().collection("artwork").aggregate([
+        {
+          "$lookup": {
+            "from": "artist",
+            "localField": "artistId",
+            "foreignField": "_id",
+            "as": "output"
+          }
+        }
+      ])
+        .toArray(function (err, result) {
+          if (err) console.log(err);
+          else {
+            result.filter((item) => {
+              return item._id === artwork_id
+            })
+            res.send(httpUtil.success(200, "", result));
+          }
+        });
+    } else {
+      res.status(204).send(httpUtil.error(204, "Artwork ID is missing."));
+    }
+  } catch (err) {
+    res.send({
+      status: 400,
+      success: false,
+      error: err.message
+    })
+  }
+
 });
 
 router.get("/userCart", function (req, res, next) {
@@ -185,9 +235,6 @@ router.post("/connect", function (req, res, next) {
 });
 
 router.post("/confirmEnquiryEmail", function (req, res, next) {
-  // res.send({
-  //     body : req.body
-  // })
 
   try {
     const body = req.body
@@ -488,16 +535,20 @@ router.put("/blogLike", function (req, res, next) {
 router.post("/artwork", function (req, res, next) {
   try {
     const body = req.body
+    const page = parseInt(body.page)
+    const limit = parseInt(body.limit)
+    const startIndex = (page - 1) * limit
+    const endIndex = page * limit
     const category = body.paintingCategory ? body.paintingCategory : ""
     const techniques = body.paintingTechniques ? body.paintingTechniques : ""
     const style = body.paintingStyle ? body.paintingStyle : ""
     const artwork = body.paintingArtwork ? body.paintingArtwork : ""
-    const price = body.buyPrice ? body.buyPrice : ""
-    const oriention = body.oriention ? body.oriention : ""
-    const filter = []
+    const price = body.buyPrice ? body.buyPrice : "10000"
+    // const oriention = body.oriention ? body.oriention : ""
 
+    const results = {}
     db.get().collection("artwork").find({
-      buyPrice: { $lte: price },
+      // buyPrice: { $lte: price },
       $or:
         [{ paintingCategory: { $regex: `${category[0]}` } }, { paintingCategory: { $regex: `${category[1]}` } }, { paintingCategory: { $regex: `${category[2]}` } }, { paintingCategory: { $regex: `${category[3]}` } }, { paintingCategory: { $regex: `${category[4]}` } }, { paintingCategory: { $regex: `${category[5]}` } }, { paintingCategory: { $regex: `${category[6]}` } }, { paintingCategory: { $regex: `${category[7]}` } }, { paintingCategory: { $regex: `${category[8]}` } }, { paintingCategory: { $regex: `${category[9]}` } }, { paintingCategory: { $regex: `${category[10]}` } }, { paintingCategory: { $regex: `${category[3]}` } }, { paintingCategory: { $regex: `${category[4]}` } }, { paintingCategory: { $regex: `${category[5]}` } }, { paintingStyle: { $regex: `${style[0]}` } }, { paintingStyle: { $regex: `${style[1]}` } }, { paintingStyle: { $regex: `${style[2]}` } }, { paintingStyle: { $regex: `${style[3]}` } }, { paintingStyle: { $regex: `${style[4]}` } }, { paintingStyle: { $regex: `${style[5]}` } }, { paintingStyle: { $regex: `${style[6]}` } }, { paintingStyle: { $regex: `${style[7]}` } }, { paintingStyle: { $regex: `${style[8]}` } }, { paintingTechniques: { $regex: `${techniques[0]}` } }, { paintingTechniques: { $regex: `${techniques[1]}` } }, { paintingTechniques: { $regex: `${techniques[2]}` } }, { paintingTechniques: { $regex: `${techniques[3]}` } }, { paintingTechniques: { $regex: `${techniques[4]}` } }, { paintingTechniques: { $regex: `${techniques[5]}` } }, { paintingTechniques: { $regex: `${techniques[6]}` } }, { paintingTechniques: { $regex: `${techniques[7]}` } }, { paintingTechniques: { $regex: `${techniques[8]}` } }, { paintingTechniques: { $regex: `${techniques[9]}` } }, { paintingTechniques: { $regex: `${techniques[10]}` } }, { paintingTechniques: { $regex: `${techniques[11]}` } }, { paintingTechniques: { $regex: `${techniques[12]}` } }, { paintingTechniques: { $regex: `${techniques[13]}` } }, { paintingArtwork: { $regex: `${artwork[0]}` } }, { paintingArtwork: { $regex: `${artwork[1]}` } }, { paintingArtwork: { $regex: `${artwork[2]}` } }, { paintingArtwork: { $regex: `${artwork[3]}` } }, { paintingArtwork: { $regex: `${artwork[4]}` } }, { paintingArtwork: { $regex: `${artwork[5]}` } }]
     })
@@ -508,9 +559,21 @@ router.post("/artwork", function (req, res, next) {
           result.filter((item) => {
             return item.buyPrice <= price
           })
-
+          if (startIndex > 0) {
+            results.previous = {
+              page: page - 1,
+              limit: limit
+            }
+          }
+          if(endIndex < result.length){
+            results.next = {
+              page : page + 1,
+              limit : limit
+            }
+          }
+          results.data = result.slice(startIndex,endIndex)
           res.send(
-            httpUtil.success(200, "Artwork Data", { count: result.length, data: result })
+            httpUtil.success(200, "Artwork Data", { count: result.length, data: results })
           );
         }
       });
@@ -556,21 +619,30 @@ router.get("/:blog_id", function (req, res, next) {
     });
 });
 
-router.get("/artwork", function (req, res, next) {
-  const artwork_id = req.query.artwork_id ? ObjectId(req.query.artwork_id) : "";
-  // res.send({ messa : artwork_id });
-  if (artwork_id) {
-    db.get()
-      .collection("artwork")
-      .find({ _id: artwork_id })
-      .toArray(function (err, result) {
-        if (err) console.log(err);
-        res.send(httpUtil.success(200, "", result));
-      });
-  } else {
-    res.status(204).send(httpUtil.error(204, "Artwork ID is missing."));
-  }
-});
+// router.get("/artwork", function (req, res, next) {
+//   const artwork_id = req.query.artwork_id ? ObjectId(req.query.artwork_id) : "";
+//   res.send({ messa : artwork_id });
+//   if (artwork_id) {
+//     db.get()
+//       .collection("artwork")
+//       .aggregate([
+//         {
+//           $lookup : {
+//             from : 'artist',
+//             localField : 'artistId',
+//             foreignField : '_id',
+//             as : 'artist'
+//           }
+//         }
+//       ])
+//       .toArray(function (err, result) {
+//         if (err) console.log(err);
+//         res.send(httpUtil.success(200, "", result));
+//       });
+//   } else {    
+//     res.status(204).send(httpUtil.error(204, "Artwork ID is missing."));
+//   }
+// });
 
 router.get("/cst", function (req, res, next) {
   let finalResult = {};
