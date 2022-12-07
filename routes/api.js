@@ -26,15 +26,43 @@ var storage = multer.diskStorage({
   },
 });
 var upload = multer({ storage: storage });
+// router.get("/cart", function (req, res, next) {
+//   db.get()
+//     .collection("cart")
+//     .find({}).
+//     limit(10)
+//     .toArray(function (err, result) {
+//       if (err) throw err;
+//       res.send(httpUtil.success(200, "", result));
+//     });
+// });
+
 router.get("/cart", function (req, res, next) {
-  db.get()
-    .collection("cart")
-    .find({}).
-    limit(10)
-    .toArray(function (err, result) {
-      if (err) throw err;
-      res.send(httpUtil.success(200, "", result));
-    });
+  try {
+    db.get().collection("cart").aggregate([
+      {
+        $lookup:
+        {
+          from: "artwork",
+          localField: "artworkId",
+          foreignField: "_id",
+          as: "artwork"
+        }
+      },
+      { $unwind: "$artwork" },
+    ]).toArray((err, result) => {
+      if (err) res.send({ error: err.message })
+      else {
+        res.send({ status: 200, count: result.length, data: result, success: true })
+      }
+    })
+  } catch (err) {
+    res.send({
+      status: 400,
+      success: false,
+      error: err.message
+    })
+  }
 });
 
 router.get("/artwork-type", function (req, res, next) {
@@ -61,10 +89,13 @@ router.get("/artworks", function (req, res, next) {
         }
       },
       { $unwind: "$artist" },
-      { 
+      {
         "$project": {
-          "artist.painting" : 0
+          "artist.painting": 0
         }
+      },
+      {
+        $match: { _id: artwork_id }
       }
     ]).toArray((err, result) => {
       if (err) res.send({ error: err.message })
@@ -84,13 +115,41 @@ router.get("/artworks", function (req, res, next) {
 
 router.get("/userCart", function (req, res, next) {
   const userId = req.query.userId ? req.query.userId : ""
-  db.get()
-    .collection("cart")
-    .find({ userId: userId })
-    .toArray(function (err, result) {
-      if (err) res.send({ status: 400, success: false, error: err.message });
-      res.send({ status: 200, success: true, data: result })
-    });
+  // db.get()
+  //   .collection("cart")
+  //   .find({ userId: userId })
+  //   .toArray(function (err, result) {
+  //     if (err) res.send({ status: 400, success: false, error: err.message });
+  //     res.send({ status: 200, success: true, data: result })
+  //   });
+  try {
+    db.get().collection("cart").aggregate([
+      {
+        $lookup:
+        {
+          from: "artwork",
+          localField: "artworkId",
+          foreignField: "_id",
+          as: "artwork"
+        }
+      },
+      { $unwind: "$artwork" },
+      {
+        $match : { userId : userId } 
+      }
+    ]).toArray((err, result) => {
+      if (err) res.send({ error: err.message })
+      else {
+        res.send({ status: 200, count: result.length, data: result, success: true })
+      }
+    })
+  } catch (err) {
+    res.send({
+      status: 400,
+      success: false,
+      error: err.message
+    })
+  }
 });
 router.post("/cart", upload.array("selectedFrames"), async function (req, res, next) {
   try {
@@ -106,12 +165,13 @@ router.post("/cart", upload.array("selectedFrames"), async function (req, res, n
     }
     const data = {
       selectedFrames: body.selectedFrames,
-      artworkId: body.artworkId,
+      artworkId: ObjectId(body.artworkId),
       userId: body.userId,
       status: body.status ? body.status : "Active",
-      buyPrice: body.buyPrice ? body.buyPrice : "",
-      rentPrice: body.rentPrice ? body.rentPrice : "",
-      cartId: body.cartId ? body.cartId : ""
+      // buyPrice: body.buyPrice ? body.buyPrice : "",
+      // rentPrice: body.rentPrice ? body.rentPrice : "",
+      artistName : body.artistName ? body.artistName : "",
+      // cartId: body.cartId ? body.cartId : ""
     }
 
     db.get()
@@ -603,31 +663,6 @@ router.get("/:blog_id", function (req, res, next) {
       res.send(httpUtil.success(200, "", result));
     });
 });
-
-// router.get("/artwork", function (req, res, next) {
-//   const artwork_id = req.query.artwork_id ? ObjectId(req.query.artwork_id) : "";
-//   res.send({ messa : artwork_id });
-//   if (artwork_id) {
-//     db.get()
-//       .collection("artwork")
-//       .aggregate([
-//         {
-//           $lookup : {
-//             from : 'artist',
-//             localField : 'artistId',
-//             foreignField : '_id',
-//             as : 'artist'
-//           }
-//         }
-//       ])
-//       .toArray(function (err, result) {
-//         if (err) console.log(err);
-//         res.send(httpUtil.success(200, "", result));
-//       });
-//   } else {    
-//     res.status(204).send(httpUtil.error(204, "Artwork ID is missing."));
-//   }
-// });
 
 router.get("/cst", function (req, res, next) {
   let finalResult = {};
