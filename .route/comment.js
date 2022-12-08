@@ -18,7 +18,6 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({ storage: storage })
-
 router.delete("/:comment_id", function (req, res, next) {
   res.send({ body: req.params.comment_id });
   const comment_id = req.query.comment_id ? ObjectId(req.query.comment_id) : "";
@@ -57,36 +56,35 @@ router.get("/:comment_id", function (req, res, next) {
 });
 
 router.post("/", async function (req, res, next) {
-   const body = req.body;
+  const body = req.body;
+  const data = {
+    name: body.name,
+    email: body.email,
+    blog_id: body.blog_id,
+    feedback: body.feedback
+  }
 
-  // db.get()
-  //   .collection("comment")
-  //   .insertOne(body, function (err, dbresult) {
-  //     if (err)
-  //       res.status(500).send(httpUtil.error(500, "comment Creation Failed."));
-  //     res.send(httpUtil.success(200, "comment Created."));
-  //   });
   db.get()
     .collection("comment")
     .insertOne(data, function (err, dbresult) {
       if (err)
         res.status(500).send(httpUtil.error(500, "comment Creation Failed."));
-      db.get().collection("comment").find({ blog_Id: body.blog_Id }).toArray(function (err, result) {
-        if (err) res.send(err);
-        db.get().collection("blog").updateOne({ _id: ObjectId(body.blog_id ) }, { $set: { comment : result } }, function (err, result) {
-          if (err) {
-            res.status(204).send(httpUtil.error(204, err.message));
-          }
-          else
-            res.send({
-              status: 200,
-              success: true,
-              message: "Comment Created"
-            })
+      // db.get().collection("comment").find({ blog_Id: body.blog_Id }).toArray(function (err, result) {
+      //   if (err) res.send(err);
+      //   db.get().collection("blog").updateOne({ _id: ObjectId(body.blog_id ) }, { $set: { comment : result } }, function (err, result) {
+      //     if (err) {
+      //       res.status(204).send(httpUtil.error(204, err.message));
+      //     }
+      else
+        res.send({
+          status: 200,
+          success: true,
+          message: "Comment Created"
         })
-      })
     })
 })
+//     })
+// })
 
 router.put("/", function (req, res, next) {
   const comment_id = req.body.comment_id ? ObjectId(req.body.comment_id) : "";

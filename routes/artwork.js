@@ -35,6 +35,7 @@ router.get("/", function (req, res, next) {
     });
 });
 
+
 router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { name: "frameImages", maxCount: 20 }]), async function (req, res, next) {
 
   var imagesPath = [], framePath = []
@@ -64,7 +65,7 @@ router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { nam
   }
   const data = {
     artworkName: body.artworkName,
-    artistId: body.artistId,
+    artistId: ObjectId(body.artistId),
     shortDescription: body.shortDescription,
     buyPrice: body.buyPrice,
     rentPrice: body.rentPrice,
@@ -76,10 +77,10 @@ router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { nam
     likes: body.likes ? body.likes : "0",
     artworkImage: body.images,
     discount: body.discount,
-    paintingCategory: body.painting_category,
-    paintingArtwork: body.painting_artwork,
-    paintingStyle: body.painting_style,
-    paintingTechniques: body.painting_technique,
+    category: body.category,
+    artwork: body.artwork,
+    style: body.style,
+    techniques: body.technique,
     buyStatus: body.buyStatus ? body.buyStatus : false
   }
   db.get()
@@ -87,12 +88,6 @@ router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { nam
     .insertOne(data, function (err, dbresult) {
       if (err)
         res.status(500).send(httpUtil.error(500, "artwork Creation Failed."));
-      db.get().collection("artwork").find({ artistId: body.artistId }).toArray(function (err, result) {
-        if (err) res.send(err);
-        db.get().collection("artist").updateOne({ _id: ObjectId(body.artistId) }, { $set: { painting: result } }, function (err, result) {
-          if (err) {
-            res.status(204).send(httpUtil.error(204, err.message));
-          }
           else
             res.send({
               status: 200,
@@ -102,8 +97,8 @@ router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { nam
         });
       });
       // res.send(httpUtil.success(200, "artwork Created."));
-    });
-})
+//     });
+// })
 
 router.put("/", jwt.authenticateToken, upload.any("files"), async function (req, res, next) {
   const files = req.files ? req.files : [];

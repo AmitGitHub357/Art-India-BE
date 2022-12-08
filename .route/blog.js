@@ -89,7 +89,7 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
       title: body.title,
       postedBy: body.postedBy,
       category: body.category, 
-      comments: [],
+      // comments: [],
       description: body.description,
       likes: body.likes ? body.likes : "",
       link: body.link,

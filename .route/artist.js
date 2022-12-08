@@ -31,7 +31,7 @@ router.get("/:name", jwt.authenticateToken, function (req, res, next) {
       res.send(httpUtil.success(200, "", result));
     });
 });
-
+ 
 router.get("/", function (req, res, next) {
   db.get()
     .collection("artist")
@@ -70,11 +70,11 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
       city: body.city,
       state: body.state,
       country: body.country,
-      title: body.title,
+      // title: body.title,
       title: {
         title: body.title,
         titleShortDescription : body.titleShortDescription,
-        artistDescription : body.description,
+        artistDescription : body.artistDescription,
       },  
       interest: body.interest,
       socialConnect: {
@@ -86,8 +86,6 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
       status: body.status ? body.status : "",  
       createdAt: Date.now(),
       profileImages: body.images,
-      painting: [],
-      artwork_id : "",
       artist_type: body.artist_type,
       mileStone
     }

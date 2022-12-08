@@ -574,57 +574,57 @@ router.get("/artwork-type", function (req, res, next) {
     });
 });
 
-router.get("/cst", function (req, res, next) {
-  let finalResult = {};
-  const type = req.query.type
-    ? req.query.type.split(" ").join("").toLowerCase()
-    : "";
-  if (type) {
-    async.waterfall(
-      [
-        function (callback) {
-          db.get()
-            .collection(type + "-category")
-            .find({})
-            .toArray(function (err, result) {
-              if (err) callback(err, null);
-              finalResult["category"] = result;
-              callback(null, "Done");
-            });
-        },
-        function (result, callback) {
-          db.get()
-            .collection(type + "-style")
-            .find({})
-            .toArray(function (err, result) {
-              if (err) callback(err, null);
-              finalResult["style"] = result;
-              callback(null, "Done");
-            });
-        },
-        function (result, callback) {
-          db.get()
-            .collection(type + "-technique")
-            .find({})
-            .toArray(function (err, result) {
-              if (err) callback(err, null);
-              finalResult["technique"] = result;
-              callback(null, "Done");
-            });
-        },
-      ],
-      function (err, result) {
-        if (err) {
-          res.status(500).send(httpUtil.error(500, "CST fetching Failed."));
-        } else {
-          res.send(httpUtil.success(200, "CST data.", finalResult));
-        }
-      }
-    );
-  } else {
-    res.status(204).send(httpUtil.error(204, "Type is missing."));
-  }
-});
+// router.get("/cst", function (req, res, next) {
+//   let finalResult = {};
+//   const type = req.query.type
+//     ? req.query.type.split(" ").join("").toLowerCase()
+//     : "";
+//   if (type) {
+//     async.waterfall(
+//       [
+//         function (callback) {
+//           db.get()
+//             .collection(type + "-category")
+//             .find({})
+//             .toArray(function (err, result) {
+//               if (err) callback(err, null);
+//               finalResult["category"] = result;
+//               callback(null, "Done");
+//             });
+//         },
+//         function (result, callback) {
+//           db.get()
+//             .collection(type + "-style")
+//             .find({})
+//             .toArray(function (err, result) {
+//               if (err) callback(err, null);
+//               finalResult["style"] = result;
+//               callback(null, "Done");
+//             });
+//         },
+//         function (result, callback) {
+//           db.get()
+//             .collection(type + "-technique")
+//             .find({})
+//             .toArray(function (err, result) {
+//               if (err) callback(err, null);
+//               finalResult["technique"] = result;
+//               callback(null, "Done");
+//             });
+//         },
+//       ],
+//       function (err, result) {
+//         if (err) {
+//           res.status(500).send(httpUtil.error(500, "CST fetching Failed."));
+//         } else {
+//           res.send(httpUtil.success(200, "CST data.", finalResult));
+//         }
+//       }
+//     );
+//   } else {
+//     res.status(204).send(httpUtil.error(204, "Type is missing."));
+//   }
+// });
 
 router.get("/artwork-frame", function (req, res, next) {
   db.get()
@@ -705,12 +705,12 @@ router.post("/comment", async function (req, res, next) {
     .insertOne(data, function (err, dbresult) {
       if (err)
         res.status(500).send(httpUtil.error(500, "comment Creation Failed."));
-      db.get().collection("comment").find({ blog_Id: body.blog_Id }).toArray(function (err, result) {
-        if (err) res.send(err);
-        db.get().collection("blog").updateOne({ _id: ObjectId(body.blog_id) }, { $set: { comments: result } }, function (err, result) {
-          if (err) {
-            res.status(204).send(httpUtil.error(204, err.message));
-          }
+      // db.get().collection("comment").find({ blog_Id: body.blog_Id }).toArray(function (err, result) {
+      //   if (err) res.send(err);
+      //   db.get().collection("blog").updateOne({ _id: ObjectId(body.blog_id) }, { $set: { comments: result } }, function (err, result) {
+      //     if (err) {
+      //       res.status(204).send(httpUtil.error(204, err.message));
+      //     }
           else
             res.send({
               status: 200,
@@ -719,8 +719,8 @@ router.post("/comment", async function (req, res, next) {
             })
         })
       })
-    })
-})
+//     })
+// })
 
 router.get("/comment/:blog_id", function (req, res, next) {
   const _id = req.params.blog_id ? ObjectId(req.params.blog_id) : ""
