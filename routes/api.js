@@ -37,6 +37,16 @@ var upload = multer({ storage: storage });
 //     });
 // });
 
+router.get("/comment", function (req, res, next) {
+  db.get()
+    .collection("comment")
+    .find({})
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
 router.get("/cart", function (req, res, next) {
   try {
     db.get().collection("cart").aggregate([
@@ -317,12 +327,6 @@ router.post("/confirmEnquiryEmail", function (req, res, next) {
             if (error) {
               res.send(error);
             } else {
-              // console.log('Email sent: ' + info.response);
-              // res.send({
-              // success: true,
-              // status: 200,
-              // message: `Email sent to ` + `${body.email}` + " confirm order Details added successfully !"
-              // })
               transporter.sendMail(adminOptions, function (err, result) {
                 if (err) {
                   res.send({ status: 400, error: err.message, success: false })
@@ -331,7 +335,7 @@ router.post("/confirmEnquiryEmail", function (req, res, next) {
                   res.send({
                     success: true,
                     status: 200,
-                    message: `Email sent to ` + `${body.email}` + " confirm order Details added successfully !"
+                    message: `Email sent to ` + `${body.email}` + " confirm order Details added successfully !"   
                   })
                 }
               })
@@ -475,7 +479,7 @@ router.get("/event_type", function (req, res, next) {
 
 router.get("/blog", function (req, res, next) {
   db.get()
-    .collection("blog")
+    .collection("blog") 
     .find({})
     .toArray(function (err, result) {
       if (err) console.log(err);
@@ -653,11 +657,11 @@ router.get("/blogSearch", function (req, res, next) {
   }
 });
 
-router.get("/:blog_id", function (req, res, next) {
-  const _id = req.params.blog_id ? ObjectId(req.params.blog_id) : ""
+router.get("/blogs", function (req, res, next) {
+  const blog_id = req.query.blog_id ? ObjectId(req.query.blog_id) : ""
   db.get()
     .collection("blog")
-    .find({ _id: _id })
+    .find({ _id: blog_id })
     .toArray(function (err, result) {
       if (err) console.log(err);
       res.send(httpUtil.success(200, "", result));
@@ -780,7 +784,8 @@ router.get("/search", function (req, res, next) {
 
 router.post("/comment", async function (req, res, next) {
   const body = req.body;
-  const data = {
+  // res.send({body})
+  const data = { 
     name: body.name,
     email: body.email,
     feedback: body.feedback,
@@ -812,7 +817,7 @@ router.post("/comment", async function (req, res, next) {
     })
 })
 
-router.get("/comment/:blog_id", function (req, res, next) {
+router.get("/comments/:blog_id", function (req, res, next) {
   const _id = req.params.blog_id ? ObjectId(req.params.blog_id) : ""
   db.get()
     .collection("blog")
@@ -823,15 +828,6 @@ router.get("/comment/:blog_id", function (req, res, next) {
     });
 });
 
-router.get("/", function (req, res, next) {
-  db.get()
-    .collection("comment")
-    .find({})
-    .toArray(function (err, result) {
-      if (err) console.log(err);
-      res.send(httpUtil.success(200, "", result));
-    });
-});
 
 router.get("/cart/:cart_id", function (req, res, next) {
   const _id = req.params.cart_id ? ObjectId(req.params.cart_id) : ""

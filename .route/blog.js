@@ -29,7 +29,11 @@ router.get("/", function (req, res, next) {
     });
 });
 
-router.get("/:blog_id", function (req, res, next) {
+
+
+// <<<<<<< HEAD
+router.get("/search", function (req, res, next) {
+  try {router.get("/:blog_id", function (req, res, next) {
   const _id = req.params.blog_id ? ObjectId(req.params.blog_id) : ""
   db.get()
     .collection("blog")
@@ -39,10 +43,6 @@ router.get("/:blog_id", function (req, res, next) {
       res.send(httpUtil.success(200, "", result));
     });
 });
-
-// <<<<<<< HEAD
-router.get("/search", function (req, res, next) {
-  try {
     const key = req.query.key
     db.get().collection("blog").find({
       $or:
@@ -88,7 +88,7 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
     const data = {
       title: body.title,
       postedBy: body.postedBy,
-      category: body.category,
+      category: body.category, 
       comments: [],
       description: body.description,
       likes: body.likes ? body.likes : "",
