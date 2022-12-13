@@ -37,61 +37,61 @@ router.get("/comment", function (req, res, next) {
     });
 });
 
-// router.post("/artwork", function (req, res, next) {
-//   try {
-//     const body = req.body
-//     // res.send({ body })
-//     const page = parseInt(body.page)
-//     const limit = parseInt(body.limit)
-//     const startIndex = (page - 1) * limit
-//     const endIndex = page * limit
-//     const category = body.category ? body.category : ""
-//     const techniques = body.techniques ? body.techniques : ""
-//     const style = body.style ? body.style : ""
-//     const artwork = body.artwork ? body.artwork : ""
-//     const price = body.buyPrice ? body.buyPrice : 1000000
-//     // console.log(price)
-//     const resultsData = []
-//     const results = {}
-//     db.get().collection("artwork").find({
-//       $or:
-//         [{ category: { $regex: `${category[0]}` } }, { category: { $regex: `${category[1]}` } }, { category: { $regex: `${category[2]}` } }, { category: { $regex: `${category[3]}` } }, { category: { $regex: `${category[4]}` } }, { category: { $regex: `${category[5]}` } }, { category: { $regex: `${category[6]}` } }, { category: { $regex: `${category[7]}` } }, { category: { $regex: `${category[8]}` } }, { category: { $regex: `${category[9]}` } }, { category: { $regex: `${category[10]}` } }, { category: { $regex: `${category[3]}` } }, { category: { $regex: `${category[4]}` } }, { category: { $regex: `${category[5]}` } }, { style: { $regex: `${style[0]}` } }, { style: { $regex: `${style[1]}` } }, { style: { $regex: `${style[2]}` } }, { style: { $regex: `${style[3]}` } }, { style: { $regex: `${style[4]}` } }, { style: { $regex: `${style[5]}` } }, { style: { $regex: `${style[6]}` } }, { style: { $regex: `${style[7]}` } }, { style: { $regex: `${style[8]}` } }, { techniques: { $regex: `${techniques[0]}` } }, { techniques: { $regex: `${techniques[1]}` } }, { techniques: { $regex: `${techniques[2]}` } }, { techniques: { $regex: `${techniques[3]}` } }, { techniques: { $regex: `${techniques[4]}` } }, { techniques: { $regex: `${techniques[5]}` } }, { techniques: { $regex: `${techniques[6]}` } }, { techniques: { $regex: `${techniques[7]}` } }, { techniques: { $regex: `${techniques[8]}` } }, { techniques: { $regex: `${techniques[9]}` } }, { techniques: { $regex: `${techniques[10]}` } }, { techniques: { $regex: `${techniques[11]}` } }, { techniques: { $regex: `${techniques[12]}` } }, { techniques: { $regex: `${techniques[13]}` } }, { artwork: { $regex: `${artwork[0]}` } }, { artwork: { $regex: `${artwork[1]}` } }, { artwork: { $regex: `${artwork[2]}` } }, { artwork: { $regex: `${artwork[3]}` } }, { artwork: { $regex: `${artwork[4]}` } }]
-//     })
+router.post("/artwork", function (req, res, next) {
+  try {
+    const body = req.body
+    // res.send({ body })
+    const page = parseInt(body.page)
+    const limit = parseInt(body.limit)
+    const startIndex = (page - 1) * limit
+    const endIndex = page * limit
+    const category = body.category ? body.category : ""
+    const techniques = body.techniques ? body.techniques : ""
+    const style = body.style ? body.style : ""
+    const artwork = body.artwork ? body.artwork : ""
+    const price = body.buyPrice ? body.buyPrice : 1000000
+    // console.log(price)
+    const resultsData = []
+    const results = {}
+    db.get().collection("artwork").find({
+      $or:
+        [{ category: { $regex: `${category[0]}` } }, { category: { $regex: `${category[1]}` } }, { category: { $regex: `${category[2]}` } }, { category: { $regex: `${category[3]}` } }, { category: { $regex: `${category[4]}` } }, { category: { $regex: `${category[5]}` } }, { category: { $regex: `${category[6]}` } }, { category: { $regex: `${category[7]}` } }, { category: { $regex: `${category[8]}` } }, { category: { $regex: `${category[9]}` } }, { category: { $regex: `${category[10]}` } }, { category: { $regex: `${category[3]}` } }, { category: { $regex: `${category[4]}` } }, { category: { $regex: `${category[5]}` } }, { style: { $regex: `${style[0]}` } }, { style: { $regex: `${style[1]}` } }, { style: { $regex: `${style[2]}` } }, { style: { $regex: `${style[3]}` } }, { style: { $regex: `${style[4]}` } }, { style: { $regex: `${style[5]}` } }, { style: { $regex: `${style[6]}` } }, { style: { $regex: `${style[7]}` } }, { style: { $regex: `${style[8]}` } }, { techniques: { $regex: `${techniques[0]}` } }, { techniques: { $regex: `${techniques[1]}` } }, { techniques: { $regex: `${techniques[2]}` } }, { techniques: { $regex: `${techniques[3]}` } }, { techniques: { $regex: `${techniques[4]}` } }, { techniques: { $regex: `${techniques[5]}` } }, { techniques: { $regex: `${techniques[6]}` } }, { techniques: { $regex: `${techniques[7]}` } }, { techniques: { $regex: `${techniques[8]}` } }, { techniques: { $regex: `${techniques[9]}` } }, { techniques: { $regex: `${techniques[10]}` } }, { techniques: { $regex: `${techniques[11]}` } }, { techniques: { $regex: `${techniques[12]}` } }, { techniques: { $regex: `${techniques[13]}` } }, { artwork: { $regex: `${artwork[0]}` } }, { artwork: { $regex: `${artwork[1]}` } }, { artwork: { $regex: `${artwork[2]}` } }, { artwork: { $regex: `${artwork[3]}` } }, { artwork: { $regex: `${artwork[4]}` } }]
+    })
  
-//       .toArray(function (err, result) {
-//         if (err) throw err;
-//         else {
-//           for (var i = 0; i < result.length; i++) {
-//             if (result[i].buyPrice <= price)
-//               resultsData.push(result[i])
-//           }
+      .toArray(function (err, result) {
+        if (err) throw err;
+        else {
+          for (var i = 0; i < result.length; i++) {
+            if (result[i].buyPrice <= price)
+              resultsData.push(result[i])
+          }
 
-//           if (startIndex > 0) {
-//             results.previous = {
-//               page: page - 1,
-//               limit: limit
-//             }
-//           }
-//           if (endIndex < resultsData.length) {
-//             results.next = {
-//               page: page + 1,
-//               limit: limit
-//             }
-//           }
-//           results.data = resultsData.slice(startIndex, endIndex)
-//           res.send(
-//             httpUtil.success(200, "Artwork Data", { pagination: { next: results.next, previous: results.previous }, count: resultsData.length, data: resultsData })
-//           );
-//         }
-//       });
-//   } catch (err) {
-//     res.send({
-//       status: 400,
-//       error: err.message,
-//       success: false
-//     })
-//   }
-// });
+          if (startIndex > 0) {
+            results.previous = {
+              page: page - 1,
+              limit: limit
+            }
+          }
+          if (endIndex < resultsData.length) {
+            results.next = {
+              page: page + 1,
+              limit: limit
+            }
+          }
+          results.data = resultsData.slice(startIndex, endIndex)
+          res.send(
+            httpUtil.success(200, "Artwork Data", { pagination: { next: results.next, previous: results.previous }, count: resultsData.length, data: resultsData })
+          );
+        }
+      });
+  } catch (err) {
+    res.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
+  }
+});
 
 // router.post("/artwork", function (req, res, next) {
 //   try {
