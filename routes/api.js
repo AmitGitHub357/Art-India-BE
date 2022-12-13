@@ -186,13 +186,14 @@ router.get("/artwork-type", function (req, res, next) {
 router.get("/artworks", function (req, res, next) {
   try {
     const artwork_id = req.query.artwork_id ? ObjectId(req.query.artwork_id) : "";
+    // res.send({ artwork_id })
     db.get().collection("artwork").aggregate([
       {
         $lookup:
         {
           from: "artist",
-          localField: "_id",
-          foreignField: "painting._id",
+          localField: "artistId",
+          foreignField: "_id",
           as: "artist"
         }
       },
@@ -203,7 +204,7 @@ router.get("/artworks", function (req, res, next) {
         }
       },
       {
-        $match: { _id: artwork_id }
+        $match: { _id: artwork_id } 
       }
     ]).toArray((err, result) => {
       if (err) res.send({ error: err.message })
@@ -548,9 +549,10 @@ router.get("/blog/:blog_id", function (req, res, next) {
     { $unwind: "$comment" },
     { match: { _id: blog_id } }
   ]).toArray((err, result) => {
+    var cnt = result.comment.length
     if (err) res.send({ error: err.message })
     else {
-      res.send({ status: 200, count: result.length, data: result, success: true })
+      res.send({ status: 200, count: result.length, data: result, success: true ,totalComment : cnt })
     }
   })
 });
@@ -569,6 +571,17 @@ router.get("/gallery", function (req, res, next) {
   db.get()
     .collection("gallery")
     .find({})
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
+router.get("/news/:news_id", function (req, res, next) {
+  const news_id = ObjectId(req.params.news_id)
+  db.get()
+    .collection("news")
+    .find({ _id : news_id })
     .toArray(function (err, result) {
       if (err) console.log(err);
       res.send(httpUtil.success(200, "", result));
@@ -611,8 +624,15 @@ router.get("/blog", function (req, res, next) {
   ]).toArray((err, result) => {
     if (err) res.send({ error: err.message })
     else {
-      const commentCount = 0
-      res.send({ status: 200, totalBlogs: result.length, count: commentCount, data: result, success: true })
+      res.send({ count : result[0].comment.length })
+      // const commentCount = result.length
+      // for(var i = 0;i < result.lenth;i++)
+      // {
+      //   result[i].comment.count = result[i].comment.length
+      // }
+      // res.send({ comment : result[0].comment })
+      // res.send({ status: 200, totalBlogs: result.length, count: commentCount, data: result, success: true })
+      // res.send({ comment : result[0].comment.length })
     }
   })
 });
@@ -648,6 +668,27 @@ router.get("/blogCategory", function (req, res, next) {
       res.send(httpUtil.success(200, "", result));
     });
 });
+
+// router.get("/eventSearch", function (req, res, next) {
+//   try {
+//     const key = req.query.key
+//     db.get().collection("event").find({
+//       $or:
+//         [{ name: { $regex: key } }, { event_type: { $regex: key } }]
+//     })
+//       .toArray(function (err, result) {
+//         if (err) console.log(err)
+//         res.send(httpUtil.success({
+//           status: 200,
+//           success: true,
+//           result,
+//           totalCount: result.length
+//         }))
+//       });
+//   } catch (err) {
+//     res.send(httpUtil.error(400, { error: err.message }))
+//   }
+// });
 
 router.get("/artist", function (req, res, next) {
   db.get().collection("artist").aggregate([
@@ -765,7 +806,7 @@ router.get("/blogs", function (req, res, next) {
         as: "comment"
       }
     },
-    { $unwind: "$comment" },
+    // { $unwind: "$comment" },
     { $match: { _id: blog_id } }
   ]).toArray((err, result) => {
     if (err) res.send({ error: err.message })
@@ -899,7 +940,7 @@ router.post("/comment", async function (req, res, next) {
     createdAt: Date.now(),
     updatedAt: "",
     status: body.status ? body.status : "Active",
-    blog_id: body.blog_id
+    blog_id: ObjectId(body.blog_id)
   }
 
   db.get()
