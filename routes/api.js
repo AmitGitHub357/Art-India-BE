@@ -57,7 +57,7 @@ router.post("/artwork", function (req, res, next) {
       $or:
         [{ category: { $regex: `${category[0]}` } }, { category: { $regex: `${category[1]}` } }, { category: { $regex: `${category[2]}` } }, { category: { $regex: `${category[3]}` } }, { category: { $regex: `${category[4]}` } }, { category: { $regex: `${category[5]}` } }, { category: { $regex: `${category[6]}` } }, { category: { $regex: `${category[7]}` } }, { category: { $regex: `${category[8]}` } }, { category: { $regex: `${category[9]}` } }, { category: { $regex: `${category[10]}` } }, { category: { $regex: `${category[3]}` } }, { category: { $regex: `${category[4]}` } }, { category: { $regex: `${category[5]}` } }, { style: { $regex: `${style[0]}` } }, { style: { $regex: `${style[1]}` } }, { style: { $regex: `${style[2]}` } }, { style: { $regex: `${style[3]}` } }, { style: { $regex: `${style[4]}` } }, { style: { $regex: `${style[5]}` } }, { style: { $regex: `${style[6]}` } }, { style: { $regex: `${style[7]}` } }, { style: { $regex: `${style[8]}` } }, { techniques: { $regex: `${techniques[0]}` } }, { techniques: { $regex: `${techniques[1]}` } }, { techniques: { $regex: `${techniques[2]}` } }, { techniques: { $regex: `${techniques[3]}` } }, { techniques: { $regex: `${techniques[4]}` } }, { techniques: { $regex: `${techniques[5]}` } }, { techniques: { $regex: `${techniques[6]}` } }, { techniques: { $regex: `${techniques[7]}` } }, { techniques: { $regex: `${techniques[8]}` } }, { techniques: { $regex: `${techniques[9]}` } }, { techniques: { $regex: `${techniques[10]}` } }, { techniques: { $regex: `${techniques[11]}` } }, { techniques: { $regex: `${techniques[12]}` } }, { techniques: { $regex: `${techniques[13]}` } }, { artwork: { $regex: `${artwork[0]}` } }, { artwork: { $regex: `${artwork[1]}` } }, { artwork: { $regex: `${artwork[2]}` } }, { artwork: { $regex: `${artwork[3]}` } }, { artwork: { $regex: `${artwork[4]}` } }]
     })
- 
+
       .toArray(function (err, result) {
         if (err) throw err;
         else {
@@ -204,7 +204,7 @@ router.get("/artworks", function (req, res, next) {
         }
       },
       {
-        $match: { _id: artwork_id } 
+        $match: { _id: artwork_id }
       }
     ]).toArray((err, result) => {
       if (err) res.send({ error: err.message })
@@ -552,7 +552,7 @@ router.get("/blog/:blog_id", function (req, res, next) {
     var cnt = result.comment.length
     if (err) res.send({ error: err.message })
     else {
-      res.send({ status: 200, count: result.length, data: result, success: true ,totalComment : cnt })
+      res.send({ status: 200, count: result.length, data: result, success: true, totalComment: cnt })
     }
   })
 });
@@ -581,7 +581,7 @@ router.get("/news/:news_id", function (req, res, next) {
   const news_id = ObjectId(req.params.news_id)
   db.get()
     .collection("news")
-    .find({ _id : news_id })
+    .find({ _id: news_id })
     .toArray(function (err, result) {
       if (err) console.log(err);
       res.send(httpUtil.success(200, "", result));
@@ -624,15 +624,11 @@ router.get("/blog", function (req, res, next) {
   ]).toArray((err, result) => {
     if (err) res.send({ error: err.message })
     else {
-      res.send({ count : result[0].comment.length })
-      // const commentCount = result.length
-      // for(var i = 0;i < result.lenth;i++)
-      // {
-      //   result[i].comment.count = result[i].comment.length
-      // }
-      // res.send({ comment : result[0].comment })
-      // res.send({ status: 200, totalBlogs: result.length, count: commentCount, data: result, success: true })
-      // res.send({ comment : result[0].comment.length })
+      for (var i = 0; i < result.length; i++) {
+        result[i].totalComment = result[i].comment.length
+      }
+      res.send({ status: 200, totalBlogs: result.length, data: result, success: true }) 
+
     }
   })
 });
