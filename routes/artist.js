@@ -80,6 +80,7 @@ router.get("/", function (req, res, next) {
 //     });
 // })
 router.post("/", jwt.authenticateToken, upload.array("images"), function (req, res, next) {
+  // res.send({ body : req.body })
   try {
     const imageFiles = req.files ? req.files : [];
     const imagePath = []
@@ -227,10 +228,11 @@ router.patch("/", jwt.authenticateToken, function (req, res, next) {
 
 router.delete("/", jwt.authenticateToken, function (req, res, next) {
   const artist_id = req.query.artist_id ? ObjectId(req.query.artist_id) : "";
+  // res.send(artist_id)
   if (artist_id) {
     db.get()
       .collection("artist")
-      .deleteMany({ state : "13071979" }, function (err, result) {
+      .deleteOne({ _id : artist_id }, function (err, result) {
         if (err)
           res.status(204).send(httpUtil.error(204, "artist deletion error."));
         res.send(httpUtil.success(200, "artist deleted."));

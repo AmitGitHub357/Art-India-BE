@@ -20,7 +20,7 @@ var storage = multer.diskStorage({
     cb(null, "public/uploads/artwork/");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname)
+    cb(null, file.originalname)       
   },
 });
 
@@ -37,12 +37,12 @@ router.get("/", function (req, res, next) {
 
 
 router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { name: "frameImages", maxCount: 20 }]), async function (req, res, next) {
-
+  // res.send({ body : req.body })
   var imagesPath = [], framePath = []
-  var imagesFile = [], frameFile = []
-  var body = req.body;
-  if (Object.keys(req.files).length != 0) {
-    if (Object.keys(req.files).includes('images')) {
+  var imagesFile = [], frameFile = [] 
+  var body = req.body;  
+  if (Object.keys(req.files).length != 0) { 
+    if (Object.keys(req.files).includes('images')) {  
       imagesFile = await req.files.images
     }
     if (Object.keys(req.files).includes('frameImages')) {
