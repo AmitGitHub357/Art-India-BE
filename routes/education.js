@@ -122,7 +122,7 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
         const body = req.body;
         if (imageFiles) {
             for (let i = 0; i < imageFiles.length; i++) {
-                let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
+                let imgObj = "http://localhost:3000/uploads/education/" + `${imageFiles[i].originalname}`
                 imagePath.push(imgObj)
             }
             body.images = imagePath

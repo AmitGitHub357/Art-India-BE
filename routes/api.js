@@ -40,7 +40,6 @@ router.get("/comment", function (req, res, next) {
 router.post("/artwork", function (req, res, next) {
   try {
     const body = req.body
-    // res.send({ body })
     const page = parseInt(body.page)
     const limit = parseInt(body.limit)
     const startIndex = (page - 1) * limit
@@ -57,7 +56,6 @@ router.post("/artwork", function (req, res, next) {
       $or:
         [{ category: { $regex: `${category[0]}` } }, { category: { $regex: `${category[1]}` } }, { category: { $regex: `${category[2]}` } }, { category: { $regex: `${category[3]}` } }, { category: { $regex: `${category[4]}` } }, { category: { $regex: `${category[5]}` } }, { category: { $regex: `${category[6]}` } }, { category: { $regex: `${category[7]}` } }, { category: { $regex: `${category[8]}` } }, { category: { $regex: `${category[9]}` } }, { category: { $regex: `${category[10]}` } }, { category: { $regex: `${category[3]}` } }, { category: { $regex: `${category[4]}` } }, { category: { $regex: `${category[5]}` } }, { style: { $regex: `${style[0]}` } }, { style: { $regex: `${style[1]}` } }, { style: { $regex: `${style[2]}` } }, { style: { $regex: `${style[3]}` } }, { style: { $regex: `${style[4]}` } }, { style: { $regex: `${style[5]}` } }, { style: { $regex: `${style[6]}` } }, { style: { $regex: `${style[7]}` } }, { style: { $regex: `${style[8]}` } }, { techniques: { $regex: `${techniques[0]}` } }, { techniques: { $regex: `${techniques[1]}` } }, { techniques: { $regex: `${techniques[2]}` } }, { techniques: { $regex: `${techniques[3]}` } }, { techniques: { $regex: `${techniques[4]}` } }, { techniques: { $regex: `${techniques[5]}` } }, { techniques: { $regex: `${techniques[6]}` } }, { techniques: { $regex: `${techniques[7]}` } }, { techniques: { $regex: `${techniques[8]}` } }, { techniques: { $regex: `${techniques[9]}` } }, { techniques: { $regex: `${techniques[10]}` } }, { techniques: { $regex: `${techniques[11]}` } }, { techniques: { $regex: `${techniques[12]}` } }, { techniques: { $regex: `${techniques[13]}` } }, { artwork: { $regex: `${artwork[0]}` } }, { artwork: { $regex: `${artwork[1]}` } }, { artwork: { $regex: `${artwork[2]}` } }, { artwork: { $regex: `${artwork[3]}` } }, { artwork: { $regex: `${artwork[4]}` } }]
     })
-
       .toArray(function (err, result) {
         if (err) throw err;
         else {
@@ -482,14 +480,34 @@ router.post("/contact", function (req, res, next) {
 });
 
 router.get("/artistType", function (req, res, next) {
-  const type = req.query.type
-  db.get()
-    .collection("artist")
-    .find({ artist_type: type })
-    .toArray(function (err, result) {
-      if (err) console.log(err);
-      res.send(httpUtil.success(200, "", result));
-    });
+  try {
+    const type = req.query.type
+    db.get().collection("artist").aggregate([
+      {
+        $lookup:
+        {
+          from: "artwork",
+          localField: "_id",
+          foreignField: "artistId",
+          as: "painting"
+        }
+      },
+      { $unwind: "$painting" },
+      { $match: { artist_type: type } }
+    ]).toArray((err, result) => {
+      if (err) res.send({ error: err.message })
+      else {
+        res.send({ status: 200, count: result.length, data: result, success: true })
+      }
+    })
+  } catch (err) {
+    res.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
+  }
+
 });
 
 router.get("/featured_events", function (req, res, next) {
@@ -504,14 +522,40 @@ router.get("/featured_events", function (req, res, next) {
 });
 
 router.get("/artistName", function (req, res, next) {
-  const letter = req.query.letter
-  db.get()
-    .collection("artist")
-    .find({ name: { $regex: '^' + letter + '' } })
-    .toArray(function (err, result) {
-      if (err) res.send(err);
-      res.send(httpUtil.success(200, "", result));
-    });
+  // const letter = req.query.letter
+  // db.get()
+  //   .collection("artist")
+  //   .find({ name: { $regex: '^' + letter + '' } })
+  //   .toArray(function (err, result) {
+  //     if (err) res.send(err);
+  //     res.send(httpUtil.success(200, "", result));
+  //   });
+  try {
+    const letter = req.query.letter
+    db.get().collection("artist").aggregate([
+      {
+        $lookup:
+        {
+          from: "artwork",
+          localField: "_id",
+          foreignField: "artistId",
+          as: "painting"
+        }
+      },
+      { $match : { name : { $regex: '^' + letter + '' }}}
+    ]).toArray((err, result) => {
+      if (err) res.send({ error: err.message })
+      else {
+        res.send({ status: 200, count: result.length, data: result, success: true })
+      }
+    })
+  } catch (err) {
+    res.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
+  }
 });
 
 router.get("/news", function (req, res, next) {
@@ -534,28 +578,29 @@ router.get("/event", function (req, res, next) {
     });
 });
 
-router.get("/blog/:blog_id", function (req, res, next) {
-  const _id = req.params.blog_id ? ObjectId(req.params.blog_id) : ""
-  db.get().collection("blog").aggregate([
-    {
-      $lookup:
-      {
-        from: "comment",
-        localField: "_id",
-        foreignField: "blog_id",
-        as: "comment"
-      }
-    },
-    { $unwind: "$comment" },
-    { match: { _id: blog_id } }
-  ]).toArray((err, result) => {
-    var cnt = result.comment.length
-    if (err) res.send({ error: err.message })
-    else {
-      res.send({ status: 200, count: result.length, data: result, success: true, totalComment: cnt })
-    }
-  })
-});
+// router.get("/blog/:blog_id", function (req, res, next) {
+//   res.send({ mess : "" }) 
+//   const _id = req.params.blog_id ? ObjectId(req.params.blog_id) : ""
+//   db.get().collection("blog").aggregate([
+//     {
+//       $lookup:
+//       {
+//         from: "comment",
+//         localField: "_id",
+//         foreignField: "blog_id",
+//         as: "comment"
+//       }
+//     },
+//     { $unwind: "$comment" },
+//     { match: { _id: _id } }
+//   ]).toArray((err, result) => {
+//     var cnt = result.comment.length
+//     if (err) res.send({ error: err.message })
+//     else {
+//       res.send({ status: 200, count: result.length, data: result, success: true, totalComment: cnt })
+//     }
+//   })
+// });
 
 router.get("/education", function (req, res, next) {
   db.get()
@@ -627,7 +672,7 @@ router.get("/blog", function (req, res, next) {
       for (var i = 0; i < result.length; i++) {
         result[i].totalComment = result[i].comment.length
       }
-      res.send({ status: 200, totalBlogs: result.length, data: result, success: true }) 
+      res.send({ status: 200, totalBlogs: result.length, data: result, success: true })
 
     }
   })
@@ -718,6 +763,7 @@ router.get("/artist-type", function (req, res, next) {
 });
 
 router.get("/artwork", function (req, res, next) {
+  
   // router.get("/artist", function (req, res, next) {
   db.get().collection("artwork").aggregate([
     {
@@ -768,48 +814,57 @@ router.put("/blogLike", function (req, res, next) {
   }
 })
 
-router.get("/blogSearch", function (req, res, next) {
-  try {
-    const key = req.query.key
-    res.send({ key })
-    db.get().collection("blog").find({
-      $or:
-        [{ postedBy: { $regex: key } }, { title: { $regex: key } }, { category: { $regex: key } }, { description: { $regex: key } }, { date: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { category: { $regex: key } }, { artwork: { $regex: key } }, { style: { $regex: key } }, { techniques: { $regex: key } }]
-    })
-      .toArray(function (err, result) {
-        if (err) console.log(err)
-        res.send(httpUtil.success({
-          status: 200,
-          success: true,
-          result,
-          totalCount: result.length
-        }))
-      });
-  } catch (err) {
-    res.send(httpUtil.error(400, { error: err.message }))
-  }
-});
+// router.get("/blogSearch", function (req, res, next) {
+//   try {
+//     const key = req.query.key
+//     res.send({ key })
+//     db.get().collection("blog").find({
+//       $or:
+//         [{ postedBy: { $regex: key } }, { title: { $regex: key } }, { category: { $regex: key } }, { description: { $regex: key } }, { date: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { category: { $regex: key } }, { artwork: { $regex: key } }, { style: { $regex: key } }, { techniques: { $regex: key } }]
+//     })
+//       .toArray(function (err, result) {
+//         if (err) console.log(err)
+//         res.send(httpUtil.success({
+//           status: 200,
+//           success: true,
+//           result,
+//           totalCount: result.length
+//         }))
+//       });
+//   } catch (err) {
+//     res.send(httpUtil.error(400, { error: err.message }))
+//   }
+// });
 
 router.get("/blogs", function (req, res, next) {
-  const blog_id = req.query.blog_id ? ObjectId(req.query.blog_id) : ""
-  db.get().collection("blog").aggregate([
-    {
-      $lookup:
+  try{
+    const blog_id = req.body.blog_id ? ObjectId(req.body.blog_id) : ""
+    // res.send({blog_id})
+    db.get().collection("blog").aggregate([
       {
-        from: "comment",
-        localField: "_id",
-        foreignField: "blog_id",
-        as: "comment"
+        $lookup:
+        {
+          from: "comment",
+          localField: "_id",
+          foreignField: "blog_id",
+          as: "comment"
+        }
+      },
+      { $match: { _id: blog_id } }
+    ]).toArray((err, result) => {
+      if (err) res.send({ error: err.message })
+      else {
+        res.send({ status: 200, count: result.length, data: result, success: true })
       }
-    },
-    // { $unwind: "$comment" },
-    { $match: { _id: blog_id } }
-  ]).toArray((err, result) => {
-    if (err) res.send({ error: err.message })
-    else {
-      res.send({ status: 200, count: result.length, data: result, success: true })
-    }
-  })
+    })
+  }catch(err){
+    res.send({
+      status : 400,
+      success : false,
+      error : err.message
+    })
+  }
+  
 });
 
 router.get("/cst", function (req, res, next) {
@@ -905,7 +960,7 @@ router.get("/clients/logo", function (req, res, next) {
 });
 
 router.get("/search", function (req, res, next) {
-  res.send({ req: req.query.key })
+  // res.send({ req: req.query.key })
   try {
     const key = req.query.key
     db.get().collection("artwork").find({
@@ -918,7 +973,7 @@ router.get("/search", function (req, res, next) {
           status: 200,
           success: true,
           result,
-          totalCount: result.length
+          totalCount: result.length ? result.length : []
         }))
       });
   } catch (err) {

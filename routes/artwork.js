@@ -38,7 +38,7 @@ router.get("/", function (req, res, next) {
 
 router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { name: "frameImages", maxCount: 20 }]), async function (req, res, next) {
   // res.send({ body : req.body })
-  var imagesPath = [], framePath = []
+  var imagesPath = [], framePath = [] 
   var imagesFile = [], frameFile = [] 
   var body = req.body;  
   if (Object.keys(req.files).length != 0) { 
@@ -51,14 +51,14 @@ router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { nam
   }
   if (imagesFile.length != 0) {
     for (let i = 0; i < imagesFile.length; i++) {
-      let imgObj = "http://localhost:3000/" + `${imagesFile[i].destination}` + `${imagesFile[i].originalname}`
+      let imgObj = "http://localhost:3000/uploads/artwork/" + `${imagesFile[i].originalname}`
       imagesPath.push(imgObj)
     }
     body.images = imagesPath
   }
   if (frameFile.length != 0) {
     for (let i = 0; i < frameFile.length; i++) {
-      let imgObj = "http://localhost:3000/" + `${frameFile[i].destination}` + `${frameFile[i].originalname}`
+      let imgObj = "http://localhost:3000/uploads/artwork/" + `${frameFile[i].originalname}`
       framePath.push(imgObj)
     }
     body.frameImages = framePath
@@ -67,6 +67,7 @@ router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { nam
     artworkName: body.artworkName,
     artistId: ObjectId(body.artistId),
     shortDescription: body.shortDescription,
+    description : body.description,
     buyPrice: body.buyPrice,
     rentPrice: body.rentPrice,
     size: body.size,

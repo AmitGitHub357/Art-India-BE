@@ -106,7 +106,6 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
       city: body.city,
       state: body.state,
       country: body.country,
-      title: body.title,
       title: {
         title: body.title,
         titleShortDescription : body.titleShortDescription,

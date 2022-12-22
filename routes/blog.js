@@ -22,7 +22,7 @@ var upload = multer({ storage: storage });
 router.get("/", function (req, res, next) {
   db.get()
     .collection("blog")
-    .find({}).sort({ createdAt : -1 })
+    .find({}).sort({ createdAt: -1 })
     .toArray(function (err, result) {
       if (err) console.log(err);
       res.send(httpUtil.success(200, "", result));
@@ -46,7 +46,7 @@ router.get("/search", function (req, res, next) {
     const key = req.query.key
     db.get().collection("blog").find({
       $or:
-        [{ postedBy : { $regex: key } }, { title : { $regex: key } }, { category: { $regex: key } }, { description: { $regex: key } }, { date: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { paintingCategory: { $regex: key } }, { paintingArtwork: { $regex: key } }, { paintingStyle: { $regex: key } }, { paintingTechniques: { $regex: key } }]
+        [{ postedBy: { $regex: key } }, { title: { $regex: key } }, { category: { $regex: key } }, { description: { $regex: key } }, { date: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { paintingCategory: { $regex: key } }, { paintingArtwork: { $regex: key } }, { paintingStyle: { $regex: key } }, { paintingTechniques: { $regex: key } }]
     })
       .toArray(function (err, result) {
         if (err) console.log(err)
@@ -80,11 +80,12 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
     const body = req.body;
     if (imageFiles) {
       for (let i = 0; i < imageFiles.length; i++) {
-        let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
+        let imgObj = "http://localhost:3000/uploads/blog/" + `${imageFiles[i].originalname}`
         imagePath.push(imgObj)
       }
       body.images = imagePath
     }
+    body.createdBy = req.user._id
     const data = {
       title: body.title,
       postedBy: body.postedBy,
@@ -97,7 +98,8 @@ router.post("/", jwt.authenticateToken, upload.array("images"), function (req, r
       createdAt: Date.now(),
       updatedAt: "",
       images: body.images ? body.images : "",
-      status: body.status ? body.status : ""
+      status: body.status ? body.status : "",
+      createdBy: body.createdBy
     }
     db.get()
       .collection("blog")
@@ -137,47 +139,47 @@ router.put("/blog", jwt.authenticateToken, upload.array("images"), function (req
   }
   catch (err) {
     res.send({
-      status : 400,
-      error : err.message,
-      success : false
+      status: 400,
+      error: err.message,
+      success: false
     })
   }
 })
 
 router.post("/", jwt.authenticateToken, upload.array("images"), function (req, res, next) {
   try {
-      const imageFiles = req.files ? req.files : [];
-      const imagePath = []
-      const body = req.body;
-       if (imageFiles) {
-        for (let i = 0; i < imageFiles.length; i++) {
-          let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
-          imagePath.push(imgObj)
-        }
-        body.images = imagePath
+    const imageFiles = req.files ? req.files : [];
+    const imagePath = []
+    const body = req.body;
+    if (imageFiles) {
+      for (let i = 0; i < imageFiles.length; i++) {
+        let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
+        imagePath.push(imgObj)
       }
-      const data = {
-        name: body.title,
-        date : body.date,
-        status: body.status ? body.status : "Active",
-        createdAt: Date.now(),
-        blogImages: body.images,
-      }
-      db.get()
-        .collection("blog")
-        .insertOne(data, function (err, dbresult) {
-          if (err)
-            res.status(500).send(httpUtil.error(500, "blog Creation Failed."));
-          res.send(httpUtil.success(200, "blog Created."));
-        });
-    } catch (err) {
-      res.send({
-        status: 400,
-        error: err.message,
-        success: false
-      })
+      body.images = imagePath
     }
-// >>>>>>> f85fde50efa206df8bb37c45086cc150d577f81a
+    const data = {
+      name: body.title,
+      date: body.date,
+      status: body.status ? body.status : "Active",
+      createdAt: Date.now(),
+      blogImages: body.images,
+    }
+    db.get()
+      .collection("blog")
+      .insertOne(data, function (err, dbresult) {
+        if (err)
+          res.status(500).send(httpUtil.error(500, "blog Creation Failed."));
+        res.send(httpUtil.success(200, "blog Created."));
+      });
+  } catch (err) {
+    res.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
+  }
+  // >>>>>>> f85fde50efa206df8bb37c45086cc150d577f81a
 });
 
 router.put("/", jwt.authenticateToken, upload.array("images"), function (req, res, next) {

@@ -21,7 +21,7 @@ async function asyncForEach(array, callback) {
 // console.log(absolutePath)
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/uploads/news/gallery");
+    cb(null, "public/uploads/news/");
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)
@@ -30,30 +30,48 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
-router.post("/cart", async function (req, res, next) {
-  try{
-    const body = req.body
-    res.send({ body })
-    const data = {
-      artworkId : body.artworkId,
-      quantity : body.quantity ? body.quantity : "0",
-      userId : body.userId
-    }
+router.get("/gallery", jwt.authenticateToken, function (req, res, next) {
+  try {
     db.get()
-      .collection("cart")
-      .insertOne(data, function (err, dbresult) {
-        if (err)
-          res.status(500).send(httpUtil.error(500, "cart Creation Failed."));
-        res.send(httpUtil.success(200, "cart Created."));
+      .collection("news_gallery")
+      .find({})
+      .toArray(function (err, result) {
+        if (err) console.log(err);
+        res.send(httpUtil.success(200, "", result));
       });
-  }catch(err){
+  } catch (err) {
     res.send({
-      status : 400,
-      error : err.message,
-      success : false
+      status: 400,
+      error: err.message,
+      success: false
     })
   }
-})
+});
+
+// router.post("/cart", async function (req, res, next) {
+//   try {
+//     const body = req.body
+//     res.send({ body })
+//     const data = {
+//       artworkId: body.artworkId,
+//       quantity: body.quantity ? body.quantity : "0",
+//       userId: body.userId
+//     }
+//     db.get()
+//       .collection("cart")
+//       .insertOne(data, function (err, dbresult) {
+//         if (err)
+//           res.status(500).send(httpUtil.error(500, "cart Creation Failed."));
+//         res.send(httpUtil.success(200, "cart Created."));
+//       });
+//   } catch (err) {
+//     res.send({
+//       status: 400,
+//       error: err.message,
+//       success: false
+//     })
+//   }
+// })
 
 router.get("/", function (req, res, next) {
   db.get()
@@ -65,72 +83,61 @@ router.get("/", function (req, res, next) {
     });
 });
 
-router.get("/gallery",jwt.authenticateToken, function (req, res, next) {
-  db.get()
-    .collection("news_gallery")
-    .find({})
-    .toArray(function (err, result) {
-      if (err) console.log(err);
-      res.send(httpUtil.success(200, "", result));
-    });
-});
-
 router.post("/gallery", jwt.authenticateToken, upload.array("images"), function (req, res, next) {
   try {
-      const imageFiles = req.files ? req.files : [];
-      const imagePath = []
-      const body = req.body;
-      if (imageFiles) {
-          for (let i = 0; i < imageFiles.length; i++) {
-              let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
-              imagePath.push(imgObj)
-          }
-          body.images = imagePath
+    const imageFiles = req.files ? req.files : [];
+    const imagePath = []
+    const body = req.body;
+    if (imageFiles) {
+      for (let i = 0; i < imageFiles.length; i++) {
+        let imgObj = "http://localhost:3000/uploads/news/" + `${imageFiles[i].originalname}`
+        imagePath.push(imgObj)
       }
-      const data = {
-          title: body.title ? body.title : "",
-          images: body.images,
-          status: body.status ? body.status : "Active"
-      }
-      db.get()
-          .collection("news_gallery")
-          .insertOne(data, function (err, dbresult) {
-              if (err)
-                  res.status(500).send(httpUtil.error(500, "news gallery Creation Failed."));
-              res.send(httpUtil.success(200, "news gallery Created."));
-          });
+      body.images = imagePath
+    }
+    const data = {
+      title: body.title ? body.title : "",
+      images: body.images,
+      status: body.status ? body.status : "Active"
+    }
+    db.get()
+      .collection("news_gallery")
+      .insertOne(data, function (err, dbresult) {
+        if (err)
+          res.status(500).send(httpUtil.error(500, "news gallery Creation Failed."));
+        res.send(httpUtil.success(200, "news gallery Created."));
+      });
   } catch (err) {
-      res.send({
-          status: 400,
-          error: err.message,
-          success: false
-      })
+    res.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
   }
 });
 
 router.post("/", jwt.authenticateToken, upload.array("images"), function (req, res, next) {
-try {
+  try {
     const imageFiles = req.files ? req.files : [];
     const imagePath = []
     const body = req.body;
-     if (imageFiles) {
+    if (imageFiles) {
       for (let i = 0; i < imageFiles.length; i++) {
-        let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
+        let imgObj = "http://localhost:3000/uploads/news/" + `${imageFiles[i].originalname}`
         imagePath.push(imgObj)
       }
       body.images = imagePath
     }
 
-    const d = body.date
-    
+    // const d = body.date
     const data = {
       name: body.title,
-      date : body.date,
-      description : body.description,
+      date: body.date,
+      description: body.description,
       status: body.status ? body.status : "Active",
       createdAt: Date.now(),
       newsImages: body.images,
-      city : body.city
+      city: body.city
     }
     db.get()
       .collection("news")
@@ -195,7 +202,7 @@ router.delete("/", jwt.authenticateToken, function (req, res, next) {
         res.send(httpUtil.success(200, "news deleted."));
       });
   } else {
-    res.status(204).send(httpUtil.error(204, "news ID is missing."));    
+    res.status(204).send(httpUtil.error(204, "news ID is missing."));
   }
 });
 
@@ -209,7 +216,7 @@ router.put("/", jwt.authenticateToken, upload.array("images"), function (req, re
       const body = req.body;
       if (imageFiles) {
         for (let i = 0; i < imageFiles.length; i++) {
-          let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
+          let imgObj = "http://localhost:3000/uploads/news/" + `${imageFiles[i].originalname}`
           imagePath.push(imgObj)
         }
       }
