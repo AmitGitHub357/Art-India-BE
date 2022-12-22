@@ -681,11 +681,18 @@ router.get("/blog", function (req, res, next) {
 router.get("/blogSearch", function (req, res, next) {
   try {
     const key = req.query.key
-    db.get().collection("blog").find({
-      $or:
-        [{ postedBy: { $regex: key } }, { title: { $regex: key } }, { category: { $regex: key } }, { description: { $regex: key } }, { date: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { category: { $regex: key } }, { artwork: { $regex: key } }, { style: { $regex: key } }, { techniques: { $regex: key } }]
-    })
-      .toArray(function (err, result) {
+    db.get().collection("blog").aggregate([
+      {
+        $lookup:
+        {
+          from: "comment",
+          localField: "_id",
+          foreignField: "blog_id",
+          as: "comment"
+        }
+      },
+      { $match: { title: key } } ,
+    ]).toArray(function (err, result) { 
         if (err) console.log(err)
         res.send(httpUtil.success({
           status: 200,
@@ -820,7 +827,7 @@ router.put("/blogLike", function (req, res, next) {
 //     res.send({ key })
 //     db.get().collection("blog").find({
 //       $or:
-//         [{ postedBy: { $regex: key } }, { title: { $regex: key } }, { category: { $regex: key } }, { description: { $regex: key } }, { date: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { category: { $regex: key } }, { artwork: { $regex: key } }, { style: { $regex: key } }, { techniques: { $regex: key } }]
+//         [{ postedBy: { $regex: key } }, { title: { $regex: key } }, { category: { $regex: key } }, { description: { $regex: key } }, { date: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { category: { $regex: key } }]
 //     })
 //       .toArray(function (err, result) {
 //         if (err) console.log(err)
@@ -839,7 +846,6 @@ router.put("/blogLike", function (req, res, next) {
 router.get("/blogs", function (req, res, next) {
   try{
     const blog_id = req.body.blog_id ? ObjectId(req.body.blog_id) : ""
-    // res.send({blog_id})
     db.get().collection("blog").aggregate([
       {
         $lookup:
