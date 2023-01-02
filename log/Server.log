@@ -812,3 +812,58 @@
 ::1 - Thu Dec 22 2022 16:44:40 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=Mumbai HTTP/1.1 200 79 - 251 - PostmanRuntime/7.30.0
 ::1 - Thu Dec 22 2022 16:45:12 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=MUMBAI HTTP/1.1 200 458 - 101 - PostmanRuntime/7.30.0
 ::1 - Thu Dec 22 2022 16:51:21 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=MUMBAI HTTP/1.1 200 471 - 462 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:08:57 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 200 - - 147 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:09:13 GMT+0530 (India Standard Time) - GET /uploads/artwork/frame1.jpg HTTP/1.1 200 2888 - 20 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Mon Jan 02 2023 15:14:40 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 2673 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:15:00 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=63a2fb957663050bc2896cd5 HTTP/1.1 200 - - 68 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:18:07 GMT+0530 (India Standard Time) - POST /api/search/?key=SHIVA HTTP/1.1 404 35 - 10 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:19:07 GMT+0530 (India Standard Time) - GET /api/search/?key=SHIVA HTTP/1.1 200 593 - 430 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:26:17 GMT+0530 (India Standard Time) - GET /api/search/?key=SHIVA HTTP/1.1 200 15 - 70 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:27:15 GMT+0530 (India Standard Time) - GET /api/search/?key=SHIVA HTTP/1.1 200 593 - 1071 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:28:10 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 184 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:29:52 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 610 - 1243 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:30:13 GMT+0530 (India Standard Time) - GET /uploads/artwork/Shiva'.jpg HTTP/1.1 200 2473 - 11 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Mon Jan 02 2023 15:30:32 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 610 - 3230 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:30:50 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 610 - 6781 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:31:41 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 96 - 81 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:31:52 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 794 - 58 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:32:09 GMT+0530 (India Standard Time) - GET /uploads/artwork/frame4.jpg HTTP/1.1 200 3296 - 4 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Mon Jan 02 2023 15:41:06 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 201 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:50:30 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 179 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:51:39 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 153 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:53:26 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 3212 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:54:47 GMT+0530 (India Standard Time) - GET /api/artistName/?letter=G HTTP/1.1 200 - - 3074 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:54:54 GMT+0530 (India Standard Time) - GET /api/artistType/?type=Photographer HTTP/1.1 200 - - 180 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:21:25 GMT+0530 (India Standard Time) - GET /api/news_gallery HTTP/1.1 200 629 - 89 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:24:35 GMT+0530 (India Standard Time) - GET /uploads/news/artwork9.jpg HTTP/1.1 200 109217 - 2326 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Mon Jan 02 2023 16:27:43 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 2234 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:34:36 GMT+0530 (India Standard Time) - GET /api/blogs/6391d4cbc3e6876af414cb78 HTTP/1.1 404 35 - 221 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:34:57 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=6391d4cbc3e6876af414cb78%20 HTTP/1.1 200 879 - 100 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:40:53 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=6391d4cbc3e6876af414cb78%20 HTTP/1.1 200 877 - 76 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:41:11 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=MUMBAI HTTP/1.1 200 469 - 70 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:41:29 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=MUM HTTP/1.1 200 79 - 64 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:41:33 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=MUM HTTP/1.1 200 79 - 1967 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:41:38 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=MUMBAI HTTP/1.1 200 469 - 64 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:41:52 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=Mini-diary HTTP/1.1 200 79 - 65 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:42:22 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=MUMBAI HTTP/1.1 200 469 - 86 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:42:49 GMT+0530 (India Standard Time) - GET /api/comments/63a2af57997476a4ce019722 HTTP/1.1 200 657 - 82 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:46:20 GMT+0530 (India Standard Time) - POST /api/chitchat HTTP/1.1 200 54 - 4381 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:46:55 GMT+0530 (India Standard Time) - POST /api/chitchat HTTP/1.1 200 54 - 9811 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:47:34 GMT+0530 (India Standard Time) - GET /api/testimonial/ HTTP/1.1 200 173 - 146 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:47:46 GMT+0530 (India Standard Time) - GET /api/clients/logo HTTP/1.1 200 49 - 419 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:47:51 GMT+0530 (India Standard Time) - GET /api/education HTTP/1.1 200 - - 57 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:48:04 GMT+0530 (India Standard Time) - GET /uploads/education/education1.jpg HTTP/1.1 200 5471 - 32 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Mon Jan 02 2023 17:09:23 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 194 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:09:51 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 343 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:11:16 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 1182 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:11:59 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 185 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:13:31 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 338 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:14:42 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 356 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:17:22 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 302 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:18:38 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 248 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:28:56 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 169 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:30:13 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 223 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:33:21 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 300 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:38:49 GMT+0530 (India Standard Time) - GET /api/artistType/?type=Photographer HTTP/1.1 200 - - 129 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:39:47 GMT+0530 (India Standard Time) - GET /api/artistType/?type=Photographer HTTP/1.1 200 - - 202 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:40:13 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 74 - PostmanRuntime/7.30.0

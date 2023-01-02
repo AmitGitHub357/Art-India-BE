@@ -492,14 +492,13 @@ router.get("/artistType", function (req, res, next) {
           as: "painting"
         }
       },
-      { $unwind: "$painting" },
       { $match: { artist_type: type } }
     ]).toArray((err, result) => {
       if (err) res.send({ error: err.message })
       else {
         res.send({ status: 200, count: result.length, data: result, success: true })
       }
-    })
+    }) 
   } catch (err) {
     res.send({
       status: 400,
@@ -542,7 +541,7 @@ router.get("/artistName", function (req, res, next) {
           as: "painting"
         }
       },
-      { $match : { name : { $regex: '^' + letter + '' }}}
+      { $match: { name: { $regex: '^' + letter + '' } } }
     ]).toArray((err, result) => {
       if (err) res.send({ error: err.message })
       else {
@@ -691,16 +690,16 @@ router.get("/blogSearch", function (req, res, next) {
           as: "comment"
         }
       },
-      { $match: { title: key } } ,
-    ]).toArray(function (err, result) { 
-        if (err) console.log(err)
-        res.send(httpUtil.success({
-          status: 200,
-          success: true,
-          result,
-          totalCount: result.length
-        }))
-      });
+      { $match: { title: key } },
+    ]).toArray(function (err, result) {
+      if (err) console.log(err)
+      res.send(httpUtil.success({
+        status: 200,
+        success: true,
+        result,
+        totalCount: result.length
+      }))
+    });
   } catch (err) {
     res.send(httpUtil.error(400, { error: err.message }))
   }
@@ -749,12 +748,14 @@ router.get("/artist", function (req, res, next) {
         as: "painting"
       }
     },
-    { $unwind: "$painting" },
+    // { $unwind: "$painting" },
   ]).toArray((err, result) => {
     if (err) res.send({ error: err.message })
-    else {
+    else
+      for(var i = 0;i < result.length;i++){
+        console.log(result[i].name)
+      }
       res.send({ status: 200, count: result.length, data: result, success: true })
-    }
   })
 });
 
@@ -770,7 +771,7 @@ router.get("/artist-type", function (req, res, next) {
 });
 
 router.get("/artwork", function (req, res, next) {
-  
+
   // router.get("/artist", function (req, res, next) {
   db.get().collection("artwork").aggregate([
     {
@@ -844,7 +845,7 @@ router.put("/blogLike", function (req, res, next) {
 // });
 
 router.get("/blogs", function (req, res, next) {
-  try{
+  try {
     const blog_id = req.body.blog_id ? ObjectId(req.body.blog_id) : ""
     db.get().collection("blog").aggregate([
       {
@@ -863,14 +864,14 @@ router.get("/blogs", function (req, res, next) {
         res.send({ status: 200, count: result.length, data: result, success: true })
       }
     })
-  }catch(err){
+  } catch (err) {
     res.send({
-      status : 400,
-      success : false,
-      error : err.message
+      status: 400,
+      success: false,
+      error: err.message
     })
   }
-  
+
 });
 
 router.get("/cst", function (req, res, next) {

@@ -17,8 +17,7 @@ async function asyncForEach(array, callback) {
     await callback(array[index], index, array);
   }
 }
-// const absolutePath = path.join(__dirname);
-// console.log(absolutePath)
+
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "public/uploads/news/");
@@ -47,31 +46,6 @@ router.get("/gallery", jwt.authenticateToken, function (req, res, next) {
     })
   }
 });
-
-// router.post("/cart", async function (req, res, next) {
-//   try {
-//     const body = req.body
-//     res.send({ body })
-//     const data = {
-//       artworkId: body.artworkId,
-//       quantity: body.quantity ? body.quantity : "0",
-//       userId: body.userId
-//     }
-//     db.get()
-//       .collection("cart")
-//       .insertOne(data, function (err, dbresult) {
-//         if (err)
-//           res.status(500).send(httpUtil.error(500, "cart Creation Failed."));
-//         res.send(httpUtil.success(200, "cart Created."));
-//       });
-//   } catch (err) {
-//     res.send({
-//       status: 400,
-//       error: err.message,
-//       success: false
-//     })
-//   }
-// })
 
 router.get("/", function (req, res, next) {
   db.get()
