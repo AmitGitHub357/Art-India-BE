@@ -16,7 +16,6 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/:event_id", function (req, res, next) {
-  // res.send({ req : req.params})
   const _id = req.params.event_id ? ObjectId(req.params.event_id) : ""
   db.get()
     .collection("event")
@@ -28,7 +27,6 @@ router.get("/:event_id", function (req, res, next) {
 });
 
 router.post("/", function (req, res, next) {
-  // res.send({ req : req.body })
   const body = req.body
   try {
     const data = {

@@ -8,7 +8,7 @@ var { ObjectId } = require("mongodb");
 var async = require("async");
 var nodemailer = require('nodemailer');
 var multer = require("multer");
-
+// const { get } = require("request");
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -19,82 +19,450 @@ var transporter = nodemailer.createTransport({
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/uploads/cart/");
+    cb(null, "public/uploads/cart/frames");
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)
   },
 });
-
 var upload = multer({ storage: storage });
 
-router.post("/chitchat", function (req, res, next) {
-  const context = {
-    name: req.body.name ? req.body.name : "",
-    email: req.body.email ? req.body.email : "",
-    phone: req.body.phone ? req.body.phone : "",
-    about: req.body.about ? req.body.about : "",
-    comment: req.body.comment ? req.body.comment : "",
-  };
-  // sendMail("ChitChat", secret.ADMIN_EMAIL, context)
-  //   .then((mailresult) => {
-  //     res.send(httpUtil.success(200, "Chit Chat Mail Sent.", mailresult));
-  //   })
-  //   .catch((error) => {
-  //     res.status(500).send(httpUtil.error(500, "Chit Chat Error."));
-  //   });
-  var mailOptions = {
-    from: secret.ADMIN_EMAIL,
-    to: context.email,
-    subject: 'no reply',
-    text: 'You registered Chichat Event !'
-  };
+router.get("/comment", function (req, res, next) {
+  db.get()
+    .collection("comment")
+    .find({}).limit(5)
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
 
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      res.send(error);
-    } else {
-      console.log('Email sent: ' + info.response);
-      res.send({
-        success: true,
-        status: 200,
-        message: "Email sent !"
+router.post("/artwork", function (req, resp, next) {  
+  try {
+    const body = req.body
+    // resp.send({ req : body })
+    const page = parseInt(body.page)  
+    const limit = parseInt(body.limit)
+    const category = body.category ? body.category : ""
+    const techniques = body.techniques ? body.techniques : ""
+    const style = body.style ? body.style : ""
+    const artwork = body.artwork ? body.artwork : ""
+    const skips = page * limit
+    const price = parseInt(body.buyPrice) ? parseInt(body.buyPrice) : 0
+    if (price == "" && artwork == "" && style == "" && techniques == "" && category == "") {
+      var totalRecord = 0
+      var pages = 0
+
+      db.get().collection("artwork").find({}).toArray((err, res) => {
+        if (err) resp.send({ status: 400, success: false, error: err })
+        totalRecord = res.length
+        pages = Math.ceil(res.length / limit)
+        console.log(res.length, limit, "pages" + pages)
+
+        db.get().collection("artwork").find({}).skip(skips).limit(limit).toArray((err, result) => {
+          if (err) {
+            resp.send({
+              status: 400,
+              success: false,
+              error: err
+            })
+          }
+          else
+            resp.send(httpUtil.success(200, "Artwork Data", { pageNumber: page, limits: limit, perPageCount: result.length, totalPages: pages, count: totalRecord, data: result }));
+        })
       })
     }
-  });
+    else if (price > 0 && artwork === "" && style === "" && techniques === "" && category === "") {
+      var totalRecord = 0
+      var pages = 0
+      db.get().collection("artwork").find({ buyPrice: { $lte: price } })
+        .toArray(function (err, res) {
+          if (err) res.send({ error: 400, status: false, error: err })
+          else {
+            totalRecord = res.length
+            pages = Math.ceil(res.length / limit)
+            // console.log(res.length, limit, "pages price" + pages)
+          }
+        });
+      db.get().collection("artwork").find({ buyPrice: { $lte: price } }).skip(skips).limit(limit)
+        .toArray(function (err, result) {
+          if (err) {
+            resp.send({
+              error: err,
+              status: 400,
+              success: false
+            })
+          }
+          else {
+            resp.send(httpUtil.success(200, "Artwork Data", { pageNumber: page, limits: limit, perPageCount: result.length, totalPages: pages, count: totalRecord, data: result }));
+          }
+        })
+    }
+    else {
+      var totalRecord = 0
+      var pages = 0
+      db.get().collection("artwork").find({
+        $or:
+          [{ category: { $regex: `${category[0]}` } }, { category: { $regex: `${category[1]}` } }, { category: { $regex: `${category[2]}` } }, { category: { $regex: `${category[3]}` } }, { category: { $regex: `${category[4]}` } }, { category: { $regex: `${category[5]}` } }, { category: { $regex: `${category[6]}` } }, { category: { $regex: `${category[7]}` } }, { category: { $regex: `${category[8]}` } }, { category: { $regex: `${category[9]}` } }, { category: { $regex: `${category[10]}` } }, { category: { $regex: `${category[3]}` } }, { category: { $regex: `${category[4]}` } }, { category: { $regex: `${category[5]}` } }, { style: { $regex: `${style[0]}` } }, { style: { $regex: `${style[1]}` } }, { style: { $regex: `${style[2]}` } }, { style: { $regex: `${style[3]}` } }, { style: { $regex: `${style[4]}` } }, { style: { $regex: `${style[5]}` } }, { style: { $regex: `${style[6]}` } }, { style: { $regex: `${style[7]}` } }, { style: { $regex: `${style[8]}` } }, { techniques: { $regex: `${techniques[0]}` } }, { techniques: { $regex: `${techniques[1]}` } }, { techniques: { $regex: `${techniques[2]}` } }, { techniques: { $regex: `${techniques[3]}` } }, { techniques: { $regex: `${techniques[4]}` } }, { techniques: { $regex: `${techniques[5]}` } }, { techniques: { $regex: `${techniques[6]}` } }, { techniques: { $regex: `${techniques[7]}` } }, { techniques: { $regex: `${techniques[8]}` } }, { techniques: { $regex: `${techniques[9]}` } }, { techniques: { $regex: `${techniques[10]}` } }, { techniques: { $regex: `${techniques[11]}` } }, { techniques: { $regex: `${techniques[12]}` } }, { techniques: { $regex: `${techniques[13]}` } }, { artwork: { $regex: `${artwork[0]}` } }, { artwork: { $regex: `${artwork[1]}` } }, { artwork: { $regex: `${artwork[2]}` } }, { artwork: { $regex: `${artwork[3]}` } }, { artwork: { $regex: `${artwork[4]}` } }]
+      }).toArray((err, res) => { 
+        if (err) resp.send({ status: 400, success: false, error: err })
+        else {
+          // console.log(res.filter(item => item.buyPrice <= 50000))
+          var counterResult = res.filter(function(item) {
+            return item.buyPrice <= price;
+        });
+          totalRecord = counterResult.length
+          pages = Math.ceil(counterResult.length / limit)
+          console.log(counterResult.length, limit, "pages" + pages)
+          db.get().collection("artwork").find({
+            $or:
+              [{ category: { $regex: `${category[0]}` } }, { category: { $regex: `${category[1]}` } }, { category: { $regex: `${category[2]}` } }, { category: { $regex: `${category[3]}` } }, { category: { $regex: `${category[4]}` } }, { category: { $regex: `${category[5]}` } }, { category: { $regex: `${category[6]}` } }, { category: { $regex: `${category[7]}` } }, { category: { $regex: `${category[8]}` } }, { category: { $regex: `${category[9]}` } }, { category: { $regex: `${category[10]}` } }, { category: { $regex: `${category[3]}` } }, { category: { $regex: `${category[4]}` } }, { category: { $regex: `${category[5]}` } }, { style: { $regex: `${style[0]}` } }, { style: { $regex: `${style[1]}` } }, { style: { $regex: `${style[2]}` } }, { style: { $regex: `${style[3]}` } }, { style: { $regex: `${style[4]}` } }, { style: { $regex: `${style[5]}` } }, { style: { $regex: `${style[6]}` } }, { style: { $regex: `${style[7]}` } }, { style: { $regex: `${style[8]}` } }, { techniques: { $regex: `${techniques[0]}` } }, { techniques: { $regex: `${techniques[1]}` } }, { techniques: { $regex: `${techniques[2]}` } }, { techniques: { $regex: `${techniques[3]}` } }, { techniques: { $regex: `${techniques[4]}` } }, { techniques: { $regex: `${techniques[5]}` } }, { techniques: { $regex: `${techniques[6]}` } }, { techniques: { $regex: `${techniques[7]}` } }, { techniques: { $regex: `${techniques[8]}` } }, { techniques: { $regex: `${techniques[9]}` } }, { techniques: { $regex: `${techniques[10]}` } }, { techniques: { $regex: `${techniques[11]}` } }, { techniques: { $regex: `${techniques[12]}` } }, { techniques: { $regex: `${techniques[13]}` } }, { artwork: { $regex: `${artwork[0]}` } }, { artwork: { $regex: `${artwork[1]}` } }, { artwork: { $regex: `${artwork[2]}` } }, { artwork: { $regex: `${artwork[3]}` } }, { artwork: { $regex: `${artwork[4]}` } }]
+          }).skip(skips).limit(limit)
+            .toArray(function (err, result) {
+              if (err) resp.send({
+                status: 400,
+                success: false,
+                error: err
+              })
+              else {
+                var results = result.filter(function(item) {
+                  return item.buyPrice <= price;
+              });
+                resp.send(httpUtil.success(200, "Artwork Data", { pageNumber: page, limits: limit, perPageCount: results.length, totalPages: pages, count: totalRecord, data: results }));
+              }
+            });
+        }
+      })
+    }
+
+  } catch (err) {
+    resp.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
+  }
+});
+
+// router.post("/artwork", function (req, res, next) {
+//   try {
+//     const body = req.body
+//     // res.send({ body })
+//     const page = parseInt(body.page)
+//     const limit = parseInt(body.limit)
+//     const startIndex = (page - 1) * limit
+//     const endIndex = page * limit
+//     const category = body.category ? body.category : ""
+//     const techniques = body.techniques ? body.techniques : ""
+//     const style = body.style ? body.style : ""
+//     const artwork = body.artwork ? body.artwork : ""
+//     const price = body.buyPrice ? body.buyPrice : "10000"
+//     const results = {}
+//     db.get().collection("artwork").find({
+//       $or:
+//         [{ category: { $regex: `${category[0]}` } }, { category: { $regex: `${category[1]}` } }, { category: { $regex: `${category[2]}` } }, { category: { $regex: `${category[3]}` } }, { category: { $regex: `${category[4]}` } }, { category: { $regex: `${category[5]}` } }, { category: { $regex: `${category[6]}` } }, { category: { $regex: `${category[7]}` } }, { category: { $regex: `${category[8]}` } }, { category: { $regex: `${category[9]}` } }, { category: { $regex: `${category[10]}` } }, { category: { $regex: `${category[3]}` } }, { category: { $regex: `${category[4]}` } }, { category: { $regex: `${category[5]}` } }, { style: { $regex: `${style[0]}` } }, { style: { $regex: `${style[1]}` } }, { style: { $regex: `${style[2]}` } }, { style: { $regex: `${style[3]}` } }, { style: { $regex: `${style[4]}` } }, { style: { $regex: `${style[5]}` } }, { style: { $regex: `${style[6]}` } }, { style: { $regex: `${style[7]}` } }, { style: { $regex: `${style[8]}` } }, { techniques: { $regex: `${techniques[0]}` } }, { techniques: { $regex: `${techniques[1]}` } }, { techniques: { $regex: `${techniques[2]}` } }, { techniques: { $regex: `${techniques[3]}` } }, { techniques: { $regex: `${techniques[4]}` } }, { techniques: { $regex: `${techniques[5]}` } }, { techniques: { $regex: `${techniques[6]}` } }, { techniques: { $regex: `${techniques[7]}` } }, { techniques: { $regex: `${techniques[8]}` } }, { techniques: { $regex: `${techniques[9]}` } }, { techniques: { $regex: `${techniques[10]}` } }, { techniques: { $regex: `${techniques[11]}` } }, { techniques: { $regex: `${techniques[12]}` } }, { techniques: { $regex: `${techniques[13]}` } }, { artwork: { $regex: `${artwork[0]}` } }, { artwork: { $regex: `${artwork[1]}` } }, { artwork: { $regex: `${artwork[2]}` } }, { artwork: { $regex: `${artwork[3]}` } }, { artwork: { $regex: `${artwork[4]}` } }, { artwork: { $regex: `${artwork[5]}` } }]
+//     })
+//       .toArray(function (err, result) {
+//         if (err) console.log(err);
+//         if (err) throw err;
+//         else {
+//           result.filter((item) => {
+//             return item.buyPrice <= price
+//           })
+//           if (startIndex > 0) {
+//             results.previous = {
+//               page: page - 1,
+//               limit: limit
+//             }
+//           }
+//           if (endIndex < result.length) {
+//             results.next = {
+//               page: page + 1,
+//               limit: limit
+//             }
+//           }
+//           results.data = result.slice(startIndex, endIndex)
+//           res.send(
+//             httpUtil.success(200, "Artwork Data", { count: result.length, results }) 
+//           );
+//         }
+//       });
+//   } catch (err) {
+//     res.send({
+//       status: 400,
+//       error: err.message,
+//       success: false
+//     })
+//   }
+// });
+
+router.get("/cart", function (req, res, next) {
+  try {
+    db.get().collection("cart").aggregate([
+      {
+        $lookup:
+        {
+          from: "artwork",
+          localField: "artworkId",
+          foreignField: "_id",
+          as: "artwork"
+        }
+      },
+      { $unwind: "$artwork" },
+    ]).toArray((err, result) => {
+      if (err) res.send({ error: err.message })
+      else {
+        res.send({ status: 200, count: result.length, data: result, success: true })
+      }
+    })
+  } catch (err) {
+    res.send({
+      status: 400,
+      success: false,
+      error: err.message
+    })
+  }
+});
+
+router.get("/artwork-type", function (req, res, next) {
+  db.get()
+    .collection("artwork-type")
+    .find({})
+    .toArray(function (err, result) {
+      if (err) throw err;
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
+router.get("/artworks", function (req, res, next) {
+  try {
+    const artwork_id = req.query.artwork_id ? ObjectId(req.query.artwork_id) : "";
+    // res.send({ artwork_id })
+    db.get().collection("artwork").aggregate([
+      {
+        $lookup:
+        {
+          from: "artist",
+          localField: "artistId",
+          foreignField: "_id",
+          as: "artist"
+        }
+      },
+      { $unwind: "$artist" },
+      {
+        "$project": {
+          "artist.painting": 0
+        }
+      },
+      {
+        $match: { _id: artwork_id }
+      }
+    ]).toArray((err, result) => {
+      if (err) res.send({ error: err.message })
+      else {
+        res.send({ status: 200, count: result.length, data: result, success: true })
+      }
+    })
+  } catch (err) {
+    res.send({
+      status: 400,
+      success: false,
+      error: err.message
+    })
+  }
+
+});
+
+router.get("/userCart", function (req, res, next) {
+  const userId = req.query.userId ? req.query.userId : ""
+  // db.get()
+  //   .collection("cart")
+  //   .find({ userId: userId })
+  //   .toArray(function (err, result) {
+  //     if (err) res.send({ status: 400, success: false, error: err.message });
+  //     res.send({ status: 200, success: true, data: result })
+  //   });
+  try {
+    db.get().collection("cart").aggregate([
+      {
+        $lookup:
+        {
+          from: "artwork",
+          localField: "artworkId",
+          foreignField: "_id",
+          as: "artwork"
+        }
+      },
+      { $unwind: "$artwork" },
+      {
+        $match: { userId: userId }
+      }
+    ]).toArray((err, result) => {
+      if (err) res.send({ error: err.message })
+      else {
+        res.send({ status: 200, count: result.length, data: result, success: true })
+      }
+    })
+  } catch (err) {
+    res.send({
+      status: 400,
+      success: false,
+      error: err.message
+    })
+  }
+});
+router.post("/cart", upload.array("selectedFrames"), async function (req, res, next) {
+  try {
+    const imageFiles = req.files ? req.files : [];
+    const imagePath = []
+    const body = req.body
+    if (imageFiles) {
+      for (let i = 0; i < imageFiles.length; i++) {
+        let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
+        imagePath.push(imgObj)
+      }
+      body.selectedFrames = imagePath
+    }
+    const data = {
+      selectedFrames: body.selectedFrames,
+      artworkId: ObjectId(body.artworkId),
+      userId: body.userId,
+      status: body.status ? body.status : "Active",
+      // buyPrice: body.buyPrice ? body.buyPrice : "",
+      // rentPrice: body.rentPrice ? body.rentPrice : "",
+      artistName: body.artistName ? body.artistName : "",
+      // cartId: body.cartId ? body.cartId : ""
+    }
+
+    db.get()
+      .collection("cart")
+      .insertOne(data, function (err, dbresult) {
+        if (err)
+          res.status(500).send(httpUtil.error(500, "cart Creation Failed."));
+        res.send(httpUtil.success(200, "cart Created."));
+      });
+  } catch (err) {
+    res.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
+  }
+})
+
+router.post("/eventProgram", function (req, res, next) {
+  try {
+    const context = {
+      name: req.body.name ? req.body.name : "",
+      eventType: req.body.eventType ? req.body.eventType : "",
+      eventTitle: req.body.eventTitle ? req.body.eventTitle : "",
+      email: req.body.email ? req.body.email : "",
+      phone: req.body.phone ? req.body.phone : "",
+      subject: req.body.subject ? req.body.subject : "",
+      comment: req.body.comment ? req.body.comment : "",
+    };
+    var mailOptions = {
+      from: secret.ADMIN_EMAIL,
+      to: context.email,
+      subject: 'no reply',
+      text: `Thank you for registeration on ${context.eventTitle} !`
+    };
+    var mailAdminOptions = {
+      from: secret.ADMIN_EMAIL,
+      to: "amit979786@gmail.com",  //admin reciever email
+      subject: `New Registration for ${context.eventTitle}`,
+      html: `<h1>Event Title : ${context.eventTitle}</h1><br><h1>Event Type : ${context.eventType}</h1><br><h2>Name : ${context.name}</h2><br><h2>Email : ${context.email}</h2><br><h2>Phone : ${context.phone}</h2><br><h2>Subject : ${context.subject}</h2><br><h2>Comment : ${context.comment}</h2>`
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        res.send(error);
+      } else {
+        // console.log('Email sent: ' + info.response);
+        transporter.sendMail(mailAdminOptions, (err, confirm) => {
+          if (err) {
+            res.send({
+              error: err,
+              status: 400,
+              success: false
+            })
+          }
+          console.log(confirm.response)
+          res.send({
+            success: true,
+            status: 200,
+            message: "Email sent successfully !"
+          })
+        })
+      }
+    });
+  } catch (err) {
+    res.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
+  }
 });
 
 router.post("/program", function (req, res, next) {
-  const context = {
-    name: req.body.name ? req.body.name : "",
-    email: req.body.email ? req.body.email : "",
-    phone: req.body.phone ? req.body.phone : "",
-    program: req.body.program ? req.body.program : "",
-    comment: req.body.comment ? req.body.comment : "",
-  };
+  // res.send({ req : req.body })
+  try {
+    const context = {
+      programTitle: req.body.programTitle ? req.body.programTitle : "",
+      name: req.body.name ? req.body.name : "",
+      email: req.body.email ? req.body.email : "",
+      phone: req.body.phone ? req.body.phone : "",
+      subject: req.body.subject ? req.body.subject : "",
+      comment: req.body.comment ? req.body.comment : "",
+    };
 
-  var mailOptions = {
-    from: secret.ADMIN_EMAIL,
-    to: context.email,
-    subject: 'no reply',
-    text: 'You registered Program Event !'
-  };
+    var mailOptions = {
+      from: secret.ADMIN_EMAIL,
+      to: context.email,
+      subject: 'no reply',
+      text: 'thank you for your registration !'
+    };
+    var mailAdminOptions = {
+      from: secret.ADMIN_EMAIL,
+      to: "amit979786@gmail.com",
+      subject: 'New Enquiry',
+      html: `<h1>Title : ${context.programTitle}</h1><br><h2>Name : ${context.name}</h2><br><h2>Email : ${context.email}</h2><br><h2>Phone : ${context.phone}</h2><br><h2>Subject : ${context.subject}</h2><br><h2>Comment : ${context.comment}</h2>`
+    };
 
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      res.send(error);
-    } else {
-      console.log('Email sent: ' + info.response);
-      res.send({
-        success: true,
-        status: 200,
-        message: "Email sent !"
-      })
-    }
-  });
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        res.send(error);
+      } else {
+        // console.log('Email sent: ' + info.response);
+        transporter.sendMail(mailAdminOptions, (err, confirm) => {
+          if (err) {
+            res.send({
+              error: err,
+              status: 400,
+              success: false
+            })
+          }
+          console.log(confirm.response)
+          res.send({
+            success: true,
+            status: 200,
+            message: "Email sent successfully !"
+          })
+        })
+      }
+    });
+  } catch (err) {
+    res.send({
+      error: err.message,
+      success: false,
+      status: 400
+    })
+  }
 });
 
 router.post("/connect", function (req, res, next) {
+  res.send({ req: req.body })
   const context = {
     name: req.body.name ? req.body.name : "",
     email: req.body.email ? req.body.email : "",
@@ -109,19 +477,143 @@ router.post("/connect", function (req, res, next) {
     subject: 'no reply',
     text: 'thank you for your registration !'
   };
+  var mailAdminOptions = {
+    from: secret.ADMIN_EMAIL,
+    to: "amit979786@gmail.com",
+    subject: 'New Enquiry',
+    html: `<h2>Name : ${context.name}</h2><br><h2>Email : ${context.email}</h2><br><h2>Phone : ${context.phone}</h2><br><h2>Subject : ${context.subject}</h2><br><h2>Comment : ${context.comment}</h2>`
+  };
 
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       res.send(error);
     } else {
-      console.log('Email sent: ' + info.response);
-      res.send({
-        success: true,
-        status: 200,
-        message: "Email sent !"
+      // console.log('Email sent: ' + info.response);
+      transporter.sendMail(mailAdminOptions, (err, confirm) => {
+        if (err) {
+          res.send({
+            error: err,
+            status: 400,
+            success: false
+          })
+        }
+        console.log(confirm.response)
+        res.send({
+          success: true,
+          status: 200,
+          message: "Email sent successfully !"
+        })
       })
     }
   });
+});
+
+// router.post("/education", function (req, res, next) {
+//   res.send({ req : req.body })
+//   const context = {
+//     name: req.body.name ? req.body.name : "",
+//     email: req.body.email ? req.body.email : "",
+//     phone: req.body.phone ? req.body.phone : "",
+//     subject: req.body.subject ? req.body.subject : "",
+//     comment: req.body.comment ? req.body.comment : "",
+//   };
+
+//   var mailOptions = {
+//     from: secret.ADMIN_EMAIL,
+//     to: context.email,
+//     subject: 'no reply',
+//     text: 'thank you for your registration !'
+//   };
+//   var mailAdminOptions = {
+//     from: secret.ADMIN_EMAIL,
+//     to: "amit979786@gmail.com",
+//     subject: 'New Enquiry',
+//     html: `<h2>Name : ${context.name}</h2><br><h2>Email : ${context.email}</h2><br><h2>Phone : ${context.phone}</h2><br><h2>Subject : ${context.subject}</h2><br><h2>Comment : ${context.comment}</h2>`
+//   };
+
+//   transporter.sendMail(mailOptions, function (error, info) {
+//     if (error) {
+//       res.send(error);
+//     } else {
+//       // console.log('Email sent: ' + info.response);
+//       transporter.sendMail(mailAdminOptions, (err, confirm) => {
+//         if (err) {
+//           res.send({
+//             error: err,
+//             status: 400,
+//             success: false
+//           })
+//         }
+//         console.log(confirm.response)
+//         res.send({
+//           success: true,
+//           status: 200,
+//           message: "Email sent successfully !"
+//         })
+//       })
+//     }
+//   });
+// });
+
+router.post("/confirmEnquiryEmail", function (req, res, next) {
+
+  try {
+    const body = req.body
+    const data = {
+      name: body.name ? body.name : "",
+      email: body.email ? body.email : "",
+      phone: body.phone ? body.phone : "",
+      date: body.data ? body.date : "",
+      artworkName: body.artworkName ? body.artworkName : "",
+      buyPrice: body.buyPrice ? body.buyPrice : body.rentPrice,
+    }
+    var adminOptions = {
+      from: secret.ADMIN_EMAIL,
+      to: "av686715@gmail.com",
+      subject: body.buyPrice ? "we got enquiry for buy Artwork from Art India Art" : "enquiry for rent Artwork from Art India Art",
+      html: `<b>Artwork Name</b> : <h3>${body.artworkName}</h3><br> <b>Rate</b> : <h3>${body.buyPrice ? body.buyPrice : body.rentPrice}</h3><br><b>Message</b> : <h3>We will contact to you soon !</h3><br>`
+    };
+
+    var mailOptions = {
+      from: secret.ADMIN_EMAIL,
+      to: body.email,
+      subject: body.buyPrice ? "we got enquiry for buy Artwork from Art India Art" : "enquiry for rent Artwork from Art India Art",
+      html: `<b>Artwork Name</b> : <h3>${body.artworkName}</h3><br> <b>Rate</b> : <h3>${body.buyPrice ? body.buyPrice : body.rentPrice}</h3><br><b>Message</b> : <h3>We will contact to you soon !</h3><br>`
+    };
+
+    db.get()
+      .collection("confirmEnquiryEmail")
+      .insertOne(data, function (err, dbresult) {
+        if (err)
+          res.status(500).send(httpUtil.error(500, "confirm EnquiryEmail Creation Failed."));
+        else {
+          transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+              res.send(error);
+            } else {
+              transporter.sendMail(adminOptions, function (err, result) {
+                if (err) {
+                  res.send({ status: 400, error: err.message, success: false })
+                }
+                else {
+                  res.send({
+                    success: true,
+                    status: 200,
+                    message: `Email sent to ` + `${body.email}` + " confirm order Details added successfully !"
+                  })
+                }
+              })
+            }
+          });
+        }
+      });
+  } catch (err) {
+    res.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
+  }
 });
 
 router.post("/contact", function (req, res, next) {
@@ -132,53 +624,100 @@ router.post("/contact", function (req, res, next) {
     subject: req.body.subject ? req.body.subject : "",
     comment: req.body.comment ? req.body.comment : "",
   };
-  // sendMail("Contact", secret.ADMIN_EMAIL, context)
-  //   .then((mailresult) => {
-  //     res.send(httpUtil.success(200, "Contact Mail Sent.", mailresult));
-  //   })
-  //   .catch((error) => {
-  //     res.status(500).send(httpUtil.error(500, "Contact Error."));
-  //   });
+
   var mailOptions = {
     from: secret.ADMIN_EMAIL,
     to: context.email,
     subject: 'no reply',
-    text: 'our team contact to you soon !'
+    text: 'thank you for your Feedback !'
+  };
+  var mailAdminOptions = {
+    from: secret.ADMIN_EMAIL,
+    to: "amit979786@gmail.com",
+    subject: 'New Enquiry',
+    html: `<h2>Name : ${context.name}</h2><br><h2>Email : ${context.email}</h2><br><h2>Phone : ${context.phone}</h2><br><h2>Subject : ${context.subject}</h2><br><h2>Comment : ${context.comment}</h2>`
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       res.send(error);
     } else {
-      console.log('Email sent: ' + info.response);
-      res.send({
-        success: true,
-        status: 200,
-        message: "Email sent !"
+      // console.log('Email sent: ' + info.response);
+      transporter.sendMail(mailAdminOptions, (err, confirm) => {
+        if (err) {
+          res.send({
+            error: err,
+            status: 400,
+            success: false
+          })
+        }
+        console.log(confirm.response)
+        res.send({
+          success: true,
+          status: 200,
+          message: "Email sent successfully !"
+        })
       })
     }
   });
 });
 
 router.get("/artistType", function (req, res, next) {
-  const type = req.query.type
-  db.get()
-    .collection("artist")
-    .find({ artist_type: type })
-    .toArray(function (err, result) {
-      if (err) console.log(err);
-      res.send(httpUtil.success(200, "", result));
-    });
+  try {
+    const type = req.query.type
+    const body = req.body
+    const page = parseInt(body.page)
+    const limit = parseInt(body.limit)
+    const skips = page * limit
+    var totalRecord = 0
+    var pages = 0
+    db.get().collection("artist").find({ artist_type: type }).toArray((err, resp) => {
+      if (err) {
+        resp.send({
+          status: 400,
+          success: false,
+          error: err
+        })
+      }
+      else {
+        totalRecord = resp.length
+        pages = Math.ceil(resp.length / limit)
+        console.log(resp.length, limit, "pages" + pages)
+        db.get().collection("artist").aggregate([
+          {
+            $lookup:
+            {
+              from: "artwork",
+              localField: "_id",
+              foreignField: "artistId",
+              as: "painting"
+            }
+          },
+          { $match: { artist_type: type } }
+        ]).skip(skips).limit(limit).toArray((err, result) => {
+          console.log(result.length + "limit" + limit + "skip" + skips)
+          if (err) res.send({ error: err, status: 400, success: false })
+          else {
+            // res.send({ status: 200, count: result.length, data: result, success: true })
+            res.send(httpUtil.success(200, "Artist Data", { success: true, pageNumber: page, limits: limit, perPageCount: result.length, totalPages: pages, count: totalRecord, data: result }));
+          }
+        })
+      }
+    })
+  } catch (err) {
+    res.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
+  }
+
 });
 
 router.get("/featured_events", function (req, res, next) {
   db.get()
     .collection("event")
-    // .aggregate(
-    //   [
-    //     { $sort : { end_date : -1 } }
-    //   ])
-    .find({ completed : "true" }).sort({ end_date : 1 })
+    .find({ completed: "true" }).sort({ end_date: 1 })
     .toArray(function (err, result) {
       if (err) console.log(err);
       console.log(result)
@@ -187,41 +726,58 @@ router.get("/featured_events", function (req, res, next) {
 });
 
 router.get("/artistName", function (req, res, next) {
-  const letter = req.query.letter
-  db.get()
-    .collection("artist")
-    .find({ name: { $regex: '^' + letter + '' } })
-    .toArray(function (err, result) {
-      if (err) res.send(err);
-      res.send(httpUtil.success(200, "", result));
-    });
-});
-
-router.get("/news_gallery", function (req, res, next) {
-  db.get()
-    .collection("news_gallery")
-    .find({})
-    .toArray(function (err, result) {
-      if (err) console.log(err);
-      res.send(httpUtil.success(200, "", result));
-    });
+  try {
+    const letter = req.query.letter
+    const body = req.body
+    const page = parseInt(body.page)
+    const limit = parseInt(body.limit)
+    const skips = page * limit
+    var totalRecord = 0
+    var pages = 0
+    db.get().collection("artist").find({ name: { $regex: '^' + letter + '' } }).toArray((err, resp) => {
+      if (err) {
+        res.send({
+          error: err,
+          status: 400,
+          success: false
+        })
+      }
+      else {
+        totalRecord = resp.length
+        pages = Math.ceil(resp.length / limit)
+        console.log(resp.length, limit, "pages" + pages)
+        db.get().collection("artist").aggregate([
+          {
+            $lookup:
+            {
+              from: "artwork",
+              localField: "_id",
+              foreignField: "artistId",
+              as: "painting"
+            }
+          },
+          { $match: { name: { $regex: '^' + letter + '' } } }
+        ]).skip(skips).limit(limit).toArray((err, result) => {
+          if (err) res.send({ error: err.message, success: false, status: 400 })
+          else {
+            res.send({ success: true, pageNumber: page, perPageCount: result.length, limits: limit, totalPages: pages, count: totalRecord, data: result })
+          }
+        })
+      }
+    })
+  } catch (err) {
+    res.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
+  }
 });
 
 router.get("/news", function (req, res, next) {
   db.get()
     .collection("news")
-    .find({}).limit(5)
-    .toArray(function (err, result) {
-      if (err) console.log(err);
-      res.send(httpUtil.success(200, "", result));
-    });
-});
-
-router.get("/news/:id", function (req, res, next) {
-  const _id = req.params.id ? ObjectId(req.params.id) : ""
-  db.get()
-    .collection("news")
-    .find({ _id: _id })
+    .find({})
     .toArray(function (err, result) {
       if (err) console.log(err);
       res.send(httpUtil.success(200, "", result));
@@ -231,12 +787,36 @@ router.get("/news/:id", function (req, res, next) {
 router.get("/event", function (req, res, next) {
   db.get()
     .collection("event")
-    .find({}).sort({ start_date: 1 })
+    .find({})
     .toArray(function (err, result) {
       if (err) console.log(err);
       res.send(httpUtil.success(200, "", result));
     });
 });
+
+// router.get("/blog/:blog_id", function (req, res, next) {
+//   res.send({ mess : "" }) 
+//   const _id = req.params.blog_id ? ObjectId(req.params.blog_id) : ""
+//   db.get().collection("blog").aggregate([
+//     {
+//       $lookup:
+//       {
+//         from: "comment",
+//         localField: "_id",
+//         foreignField: "blog_id",
+//         as: "comment"
+//       }
+//     },
+//     { $unwind: "$comment" },
+//     { match: { _id: _id } }
+//   ]).toArray((err, result) => {
+//     var cnt = result.comment.length
+//     if (err) res.send({ error: err.message })
+//     else {
+//       res.send({ status: 200, count: result.length, data: result, success: true, totalComment: cnt })
+//     }
+//   })
+// });
 
 router.get("/education", function (req, res, next) {
   db.get()
@@ -258,6 +838,27 @@ router.get("/gallery", function (req, res, next) {
     });
 });
 
+router.get("/news/:news_id", function (req, res, next) {
+  const news_id = ObjectId(req.params.news_id)
+  db.get()
+    .collection("news")
+    .find({ _id: news_id })
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
+router.get("/news_gallery", function (req, res, next) {
+  db.get()
+    .collection("news_gallery")
+    .find({})
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
 router.get("/event_type", function (req, res, next) {
   const event_type = req.query.event_type
   db.get()
@@ -270,25 +871,242 @@ router.get("/event_type", function (req, res, next) {
 });
 
 router.get("/blog", function (req, res, next) {
-  db.get()
-    .collection("blog")
-    .find({})
-    .toArray(function (err, result) {
-      if (err) console.log(err);
-      res.send(httpUtil.success(200, "", result));
-    });
+  try {
+    const body = req.body
+    const page = parseInt(body.page)
+    const limit = parseInt(body.limit)
+    const skips = page * limit
+    var totalRecord = 0
+    var pages = 0
+
+    db.get().collection("blog").find({}).toArray((err, counter) => {
+      if (err) {
+        res.send({
+          status: 400,
+          error: err,
+          success: false
+        })
+      }
+      else {
+        totalRecord = counter.length
+        pages = Math.ceil(counter.length / limit)
+        console.log(counter.length, limit, "blog" + pages)
+        db.get().collection("blog").aggregate([
+          {
+            $lookup:
+            {
+              from: "comment",
+              localField: "_id",
+              foreignField: "blog_id",
+              as: "comment"
+            }
+          },
+        ]).skip(skips).limit(limit).toArray((err, result) => {
+          if (err) res.send({ error: err.message })
+          else {
+            for (var i = 0; i < result.length; i++) {
+              result[i].totalComment = result[i].comment.length
+            }
+            res.send({ status: 200, success: true, perPageCount: result.length, totalPages: pages, pageNumber: page, limits: limit, totalPages: totalRecord, data: result })
+          }
+        })
+      }
+    })
+  } catch (err) {
+    res.send({
+      status: 400,
+      success: false,
+      error: err.message
+    })
+  }
 });
 
-router.get("/", function (req, res, next) {
-  db.get()
-    .collection("artist")
-    .find({})
-    .project({ password: 0 })
-    .toArray(function (err, result) {
-      if (err) console.log(err);
-      res.send(httpUtil.success(200, "", result));
-    });
+router.get("/blogSearch", function (req, res, next) {
+  try {
+    const key = req.body.key
+    const body = req.body
+    const page = parseInt(body.page)
+    const limit = parseInt(body.limit)
+    const skips = page * limit
+    var totalRecord = 0
+    var pages = 0
+
+    db.get().collection("blog").find({ title: key }).toArray((err, counter) => {
+      if (err) {
+        res.send({
+          status: 400,
+          error: err,
+          success: false
+        })
+      }
+      else {
+        totalRecord = counter.length
+        pages = Math.ceil(counter.length / limit)
+        console.log(counter.length, limit, "blog" + pages)
+        db.get().collection("blog").aggregate([
+          {
+            $lookup:
+            {
+              from: "comment",
+              localField: "_id",
+              foreignField: "blog_id",
+              as: "comment"
+            }
+          },
+          { $match: { title: key } },
+        ]).skip(skips).limit(limit).toArray((err, result) => {
+          if (err) res.send({ error: err.message })
+          else {
+            for (var i = 0; i < result.length; i++) {
+              result[i].totalComment = result[i].comment.length
+            }
+            res.send({ status: 200, success: true, perPageCount: result.length, totalPages: pages, pageNumber: page, limits: limit, totalPages: totalRecord, data: result })
+          }
+        })
+      }
+    })
+    // db.get().collection("blog").aggregate([
+    //   {
+    //     $lookup:
+    //     {
+    //       from: "comment",
+    //       localField: "_id",
+    //       foreignField: "blog_id",
+    //       as: "comment"
+    //     }
+    //   },
+    //   // { $match: { title: key } },
+    // ]).toArray(function (err, result) {
+    //   if (err) console.log(err)
+    //   res.send(httpUtil.success({
+    //     status: 200,
+    //     success: true,
+    //     result,
+    //     totalCount: result.length
+    //   }))
+    // });
+  } catch (err) {
+    res.send(httpUtil.error(400, { error: err.message }))
+  }
 });
+
+router.get("/blogCategory", function (req, res, next) {
+  try {
+    const body = req.body
+    const category = req.query.category
+    const page = parseInt(body.page)
+    const limit = parseInt(body.limit)
+    const skips = page * limit
+    var totalRecord = 0
+    var pages = 0
+    db.get().collection("blog").find({ category: category }).toArray((err, resp) => {
+      if (err) {
+        res.send({
+          status: 400,
+          success: false,
+          error: err
+        })
+      }
+      else {
+        totalRecord = resp.length
+        pages = Math.ceil(resp.length / limit)
+        console.log("blog Category" + pages, totalRecord, "limit" + limit + "skips" + skips)
+
+        db.get().collection("blog").aggregate([
+          {
+            $lookup:
+            {
+              from: "comment",
+              localField: "_id",
+              foreignField: "blog_id",
+              as: "comment"
+            }
+          }, { $match: { category: category } }
+        ]).skip(skips).limit(limit)
+          .toArray(function (err, result) {
+            if (err) res.send({ status: 400, success: false, error: err })
+            for (var i = 0; i < result.length; i++) {
+              result[i].totalComment = result[i].comment.length
+            }
+            // res.send(httpUtil.success(200, "", result));
+            res.send(httpUtil.success(200, "Blog Data", { success: true, perPageCount: result.length, pageNumber: page, limits: limit, totalPages: pages, count: totalRecord, data: result }));
+          });
+      }
+    })
+  } catch (err) {
+    res.send({
+      error: err.message,
+      success: false,
+      status: 400
+    })
+  }
+
+});
+
+// router.get("/eventSearch", function (req, res, next) {
+//   try {
+//     const key = req.query.key
+//     db.get().collection("event").find({
+//       $or:
+//         [{ name: { $regex: key } }, { event_type: { $regex: key } }]
+//     })
+//       .toArray(function (err, result) {
+//         if (err) console.log(err)
+//         res.send(httpUtil.success({
+//           status: 200,
+//           success: true,
+//           result,
+//           totalCount: result.length
+//         }))
+//       });
+//   } catch (err) {
+//     res.send(httpUtil.error(400, { error: err.message }))
+//   }
+// });
+
+router.get("/artist", function (req, res, next) {
+  const body = req.body
+  const page = parseInt(body.page)
+  const limit = parseInt(body.limit)
+  const skips = page * limit
+  var totalRecord = 0
+  var pages = 0
+
+  db.get().collection("artist").find({}).toArray((err, resp) => {
+    if (err) {
+      res.send({
+        status: 400,
+        success: false,
+        error: err
+      })
+    } else {
+      totalRecord = resp.length
+      pages = Math.ceil(resp.length / limit)
+      // console.log(resp.length, limit, "blog" + pages)
+      db.get().collection("artist").aggregate([
+        {
+          $lookup:
+          {
+            from: "artwork",
+            localField: "_id",
+            foreignField: "artistId",
+            as: "painting"
+          }
+        },
+        // { $unwind: "$painting" },
+      ]).toArray((err, result) => {
+        if (err) res.send({ error: err.message })
+        else
+          for (var i = 0; i < result.length; i++) {
+            console.log(result[i].name)
+          }
+        // res.send({ status: 200, count: result.length, data: result, success: true })
+        res.send({ success: true, pageNumber: page, perPageCount: result.length, limits: limit, totalPages: pages, count: totalRecord, data: result })
+      })
+    }
+  })
+});
+
 router.get("/artist-type", function (req, res, next) {
   db.get()
     .collection("artist-type")
@@ -300,299 +1118,111 @@ router.get("/artist-type", function (req, res, next) {
     });
 });
 
-// router.get("/artist", function (req, res, next) {
-//   const type_id = req.params.artist_type
-//   db.get()
-//     .collection("artist")
-//     .find({ }).populate("type_id")
-//     .toArray(function (err, result) {
-//       if (err) console.log(err);
-//       res.send(httpUtil.success(200, "", result));
-//     });
-//     db.artist.aggregate([
-//       { $lookup:
-//           {
-//              from: "artist-type",
-//              localField: "type_id",
-//              foreignField: "_id",
-//              as: "artist_type"
-//           }
-//       }
-//   ]).pretty();
-// });
-
-
-
-
-// router.get("/artist", function (req, res, next) {
-
-//   let skip = req.query.skip ? req.query.skip : 0;
-//   let limit = req.query.limit ? req.query.limit : 10;
-//   let type = req.query.type ? req.query.type : "";
-//   let filter = req.query.filter ? req.query.filter : "";
-//   let filters = {};
-//   let pipeline = [
-//     {
-//       $lookup: {
-//         from: "artwork",
-//         localField: "painting.artworkId",
-//         foreignField: "_id",
-//         as: "painting",
-//       },
-//     },
-//     {
-//       $sort: {
-//         _id: -1,
-//     },  
-//     }
-//   ];
-//   if (type && filter) {
-//     pipeline.push({
-//       $match: {
-//         type: type,
-//         name: {
-//           $regex: '^' + filter,
-//           $options: 'i'
-//         }
-//       },
-//     });
-//     filters = {
-//       type: type,
-//       name: {
-//         $regex: '^' + filter,
-//         $options: 'i'
-//       }
-//     };
-//   } else if (type) {
-//     pipeline.push({
-//       $match: {
-//         type: type
-//       },
-//     });
-//     filters = {
-//       type: type
-//     };
-//   } else if (filter) {
-//     pipeline.push({
-//       $match: {
-//         name: {
-//           $regex: '^' + filter,
-//           $options: 'i'
-//         }
-//       },
-//     });
-//     filters = {
-//       name: {
-//         $regex: '^' + filter,
-//         $options: 'i'
-//       }
-//     };
-//   }
-//   if (skip) {
-//     pipeline.push({
-//       $skip: skip,
-//     });
-//   }
-//   if (limit) {
-//     pipeline.push({
-//       $limit: limit,
-//     });
-//   }
-//   db.get()
-//     .collection("artist")
-//     .aggregate(pipeline)
-//     .project({ password: 0 })
-//     .toArray(function (err, result) {
-//       if (err) console.log(err);
-//       db.get()
-//         .collection("artist")
-//         .find(filters)
-//         .count(function (err, dbresult) {
-//           if (err) throw err;
-//           res.send(
-//             httpUtil.success(200, "", { count: dbresult, data: result })
-//           );
-//         });
-//     });
-// });
-router.get("/artist", function (req, res, next) {
-  db.get()
-    .collection("artist")
-    .find({})
-    .project({ password: 0 })
-    .toArray(function (err, result) {
-      if (err) console.log(err);
-      res.send(httpUtil.success(200, "", result));
-    });
+router.get("/artwork", function (req, res, next) {
+  // router.get("/artist", function (req, res, next) {
+  db.get().collection("artwork").aggregate([
+    {
+      $lookup:
+      {
+        from: "artist",
+        localField: "artistId",
+        foreignField: "_id",
+        as: "artist"
+      }
+    },
+    { $unwind: "$artist" },
+  ]).toArray((err, result) => {
+    if (err) res.send({ error: err.message })
+    else {
+      res.send({ status: 200, count: result.length, data: result, success: true })
+    }
+  })
 });
 
-// router.post("/artwork", function (req, res, next) {
-//   // res.send({
-//   //   req: req.body
-//   // })
-//   try {
-// const skip = req.body.skip ? req.body.skip : 0;
-// const limit = req.body.limit ? req.body.limit : 10;
-// const type = req.body.type ? req.body.type : "";
-// const orientation = req.body.orientation ? req.body.orientation : "";
-// const category = req.body.category ? req.body.category : "";
-// const style = req.body.style ? req.body.style : "";
-// const technique = req.body.technique ? req.body.technique : "";
-// const size = req.body.size ? req.body.size : "";
-// const price = req.body.buyPrice ? req.body.buyPrice : "";
-// const rentPrice = req.body.rentPrice ? req.body.rentPrice : ""
-//     let filter = {
-//       type: type
-//     };
-//     let pipeline = [
-//       {
-//         $match: {
-//           type: type
-//         }
-//       }
-//     ];
-//     if (size === 'Small') {
-//       pipeline[0].$match['length'] = { $lte: 12 };
-//       pipeline[0].$match['width'] = { $lte: 12 };
-//       filter['length'] = { $lte: 12 };
-//       filter['width'] = { $lte: 12 };
-//     } else if (size === 'Medium') {
-//       pipeline[0].$match['length'] = { $gte: 13, $lte: 36 };
-//       pipeline[0].$match['width'] = { $gte: 13, $lte: 36 };
-//       filter['length'] = { $gte: 13, $lte: 36 };
-//       filter['width'] = { $gte: 13, $lte: 36 };
-//     } else if (size === 'Large') {
-//       pipeline[0].$match['length'] = { $gte: 37 };
-//       pipeline[0].$match['width'] = { $gte: 37 };
-//       filter['length'] = { $gte: 37 };
-//       filter['width'] = { $gte: 37 };
-//     }
-//     if (price) {
-//       pipeline[0].$match['price'] = { $lte: price };
-//       filter['price'] = { $lte: price };
-//     }
-//     if (orientation) {
-//       pipeline[0].$match['orientation'] = orientation;
-//       filter['orientation'] = orientation;
-//     }
-//     if (category) {
-//       pipeline[0].$match['category'] = {
-//         $in: category
-//       };
-//       filter['category'] = {
-//         $in: category
-//       };
-//     }
-//     if (style) {
-//       pipeline[0].$match['style'] = {
-//         $in: style
-//       };
-//       filter['style'] = {
-//         $in: style
-//       };
-//     }
-//     if (technique) {
-//       pipeline[0].$match['technique'] = {
-//         $in: technique
-//       };
-//       filter['technique'] = {
-//         $in: technique
-//       };
-//     }
-//     if (skip) {
-//       pipeline.push({
-//         $skip: skip,
-//       });
-//     }
-//     if (limit) {
-//       pipeline.push({
-//         $limit: limit,
-//       });
-//     }
-//     db.get()
-//       .collection("artwork")
-//       .aggregate(pipeline)
-//       .toArray(function (err, result) {
-//         if (err) {
-//           res.send({
-//             status: 400,
-//             success: false,
-//             error: err
-//           })
-//         }
-//         db.get()
-//           .collection("artwork")
-//           .find(filter)
-//           .count(function (err, dbresult) {
-//             if (err) throw err;
-//             res.send(
-//               httpUtil.success(200, "Artwork Data", { count: dbresult, data: result })
-//             );
-//           });
-//       })
-//   } catch (err) {
-//     res.send({
-//       error: "Error"
-//     })
-//   }
-// });
-router.post("/artwork_filter", function (req, res, next) {
+router.put("/blogLike", function (req, res, next) {
   try {
-    res.send({ req : req.body })
-    const key = req.body.key  
-    const skip = req.body.skip ? req.body.skip : 0;
-    const limit = req.body.limit ? req.body.limit : 10;
-    const type = req.body.type ? req.body.type : "";
-    const oriention = req.body.oriention ? req.body.oriention : "";
-    const category = req.body.category ? req.body.category : "";
-    const style = req.body.style ? req.body.style : "";
-    const technique = req.body.technique ? req.body.technique : "";
-    const size = req.body.size ? req.body.size : "";
-    const price = req.body.buyPrice ? req.body.buyPrice : "";
-    const rentPrice = req.body.rentPrice ? req.body.rentPrice : ""
-
-    db.get().collection("artwork").find({
-      $or:
-        [{ buyPrice: { $lte: price } }, { paintingStyle: { $regex: style } }, { size: { $regex: size } }, { oriention: { $regex: oriention } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { paintingCategory: { $regex: key } }, { paintingArtwork: { $regex: type } }, { painingStyle: { $regex: style } }, { paintingTechnique: { $regex: technique } }, { paintingcategory: { $regex: category } }]
-    }).toArray(function (err, result) {
-      console.log(result)
-      if (err) console.log(err)
-      res.send(httpUtil.success({
-        status: 200,
-        success: true,
-        result,
-        // totalCount: result.length
-      }))
-    });
-  } catch (err) {
-    res.send(httpUtil.error(400, { error: err.message }))
+    const body = req.body
+    const blog_id = body.blog_id ? ObjectId(body.blog_id) : "";
+    if (blog_id) {
+      let Id = { _id: blog_id };
+      let data = {
+        $set: {
+          likes: body.likes,
+          updatedAt: Date.now()
+        },
+      };
+      db.get()
+        .collection("blog")
+        .updateOne(Id, data, function (err, dbresult) {
+          if (err)
+            res.status(500).send(httpUtil.error(500, "blog Update Failed."));
+          res.send(httpUtil.success(200, "blog Updated."));
+        });
+    }
+  }
+  catch (err) {
+    res.send({
+      status: 400,
+      error: err.message,
+      success: false
+    })
   }
 })
 
-router.get("/artwork", function (req, res, next) {
-  const artwork_id = req.query.artwork_id ? ObjectId(req.query.artwork_id) : "";
-  // res.send({ messa : artwork_id });
-  if (artwork_id) {
-    db.get()
-      .collection("artwork")
-      .find({ _id: artwork_id })
-      .toArray(function (err, result) {
-        if (err) console.log(err);
-        res.send(httpUtil.success(200, "", result));
-      });
-  } else {
-    res.status(204).send(httpUtil.error(204, "Artwork ID is missing."));
-  }
-});
+// router.get("/blogSearch", function (req, res, next) {
+//   try {
+//     const key = req.query.key
+//     res.send({ key })
+//     db.get().collection("blog").find({
+//       $or:
+//         [{ postedBy: { $regex: key } }, { title: { $regex: key } }, { category: { $regex: key } }, { description: { $regex: key } }, { date: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { category: { $regex: key } }]
+//     })
+//       .toArray(function (err, result) {
+//         if (err) console.log(err)
+//         res.send(httpUtil.success({
+//           status: 200,
+//           success: true,
+//           result,
+//           totalCount: result.length
+//         }))
+//       });
+//   } catch (err) {
+//     res.send(httpUtil.error(400, { error: err.message }))
+//   }
+// });
 
-router.get("/artwork-type", function (req, res, next) {
-  db.get()
-    .collection("artwork-type")
-    .find({})
-    .toArray(function (err, result) {
-      if (err) console.log(err);
-      res.send(httpUtil.success(200, "", result));
-    });
+router.get("/blogs", function (req, res, next) {
+  try {
+    const blog_id = req.query.blog_id ? ObjectId(req.query.blog_id) : ""
+    console.log(blog_id)
+    db.get().collection("blog").aggregate([
+      {
+        $lookup:
+        {
+          from: "comment",
+          localField: "_id",
+          foreignField: "blog_id",
+          as: "comment"
+        }
+      },
+      { $match: { _id: blog_id } }
+    ]).toArray((err, result) => {
+      if (err) res.send({ error: err.message, status: 400, success: false })
+      else {
+        for (var i = 0; i < result.length; i++) {
+          result[i].totalComment = result[i].comment.length
+        }
+        res.send({ status: 200, count: result.length, data: result, success: true })
+      }
+    })
+  } catch (err) {
+    res.send({
+      status: 400,
+      success: false,
+      error: err.message
+    })
+  }
+
 });
 
 router.get("/cst", function (req, res, next) {
@@ -685,15 +1315,15 @@ router.get("/clients/logo", function (req, res, next) {
       if (err) throw err;
       res.send(httpUtil.success(200, "", result));
     });
-});//
+});
 
 router.get("/search", function (req, res, next) {
+  // res.send({ req: req.query.key })
   try {
     const key = req.query.key
-    // db.get().collection("news")$or: [{ name: { $regex: key } }, { description: { $regex: key } }, { technique: { $regex: key } }, { style: { $regex: key } }, { artistname: { $regex: key } }] 
     db.get().collection("artwork").find({
       $or:
-        [{ artworkName: { $regex: key } }, { shortDescription: { $regex: key } }, { buyPrice: { $regex: key } }, { style: { $regex: key } }, { artistname: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { orientation: { $regex: key } }, { paintingCategory: { $regex: key } }, { paintingArtwork: { $regex: key } }, { paintingStyle: { $regex: key } }, { paintingTechniques: { $regex: key } }]
+        [{ artworkName: { $regex: key } }, { shortDescription: { $regex: key } }, { buyPrice: { $regex: key } }, { style: { $regex: key } }, { artistname: { $regex: key } }, { size: { $regex: key } }, { orientation: { $regex: key } }, { length: { $regex: key } }, { orientation: { $regex: key } }, { category: { $regex: key } }, { artwork: { $regex: key } }, { style: { $regex: key } }, { techniques: { $regex: key } }]
     })
       .toArray(function (err, result) {
         if (err) console.log(err)
@@ -701,7 +1331,7 @@ router.get("/search", function (req, res, next) {
           status: 200,
           success: true,
           result,
-          totalCount: result.length
+          totalCount: result.length ? result.length : []
         }))
       });
   } catch (err) {
@@ -709,89 +1339,91 @@ router.get("/search", function (req, res, next) {
   }
 });
 
-router.get("/cart", function (req, res, next) {
-  try {
-    // const key = req.query.key
-    db.get().collection("cart").find({})
-      .toArray(function (err, result) {
-        if (err) console.log(err)
-        res.send(httpUtil.success({
+router.post("/comment", async function (req, res, next) {
+  const body = req.body;
+  // res.send({body})
+  const data = {
+    name: body.name,
+    email: body.email,
+    feedback: body.feedback,
+    createdAt: Date.now(),
+    updatedAt: "",
+    status: body.status ? body.status : "Active",
+    blog_id: ObjectId(body.blog_id)
+  }
+
+  db.get()
+    .collection("comment")
+    .insertOne(data, function (err, dbresult) {
+      if (err)
+        res.status(500).send(httpUtil.error(500, "comment Creation Failed."));
+      // db.get().collection("comment").find({ blog_Id: body.blog_Id }).toArray(function (err, result) {
+      //   if (err) res.send(err);
+      //   db.get().collection("blog").updateOne({ _id: ObjectId(body.blog_id) }, { $set: { comments: result } }, function (err, result) {
+      //     if (err) {
+      //       res.status(204).send(httpUtil.error(204, err.message));
+      //     }
+      else
+        res.send({
           status: 200,
           success: true,
-          result,
-        }))
-      });
-  } catch (err) {
-    res.send(httpUtil.error(400, { error: err.message }))
-  }
+          message: "Comment Created"
+        })
+    })
+})
+//     })
+// })
+
+router.get("/comments/:blog_id", function (req, res, next) {
+  const _id = req.params.blog_id ? ObjectId(req.params.blog_id) : ""
+  db.get()
+    .collection("blog")
+    .find({ _id: _id })
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
 });
 
-router.post("/cart", upload.array("images"), function (req, res, next) {
+
+router.get("/cart/:cart_id", function (req, res, next) {
+  const _id = req.params.cart_id ? ObjectId(req.params.cart_id) : ""
+  db.get()
+    .collection("cart")
+    .find({ _id: _id })
+    .toArray(function (err, result) {
+      if (err) console.log(err);
+      res.send(httpUtil.success(200, "", result));
+    });
+});
+
+router.get("/confirmEnquiryEmail", function (req, res, next) {
   try {
-    const imageFiles = req.files ? req.files : [];
-    const imagePath = []
-    const body = req.body;
-    if (imageFiles) {
-      for (let i = 0; i < imageFiles.length; i++) {
-        let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
-        imagePath.push(imgObj)
-      }
-      body.images = imagePath
-    }
-    // const context = {
-    //   name: body.name,
-    //   email: body.email,
-    //   number: body.number,
-    //   createdAt: Date.now(),
-    //   selectedImages: body.images,
-    //   address: body.address,
-    //   artwork: body.title,
-    //   buyPrice: body.buyPrice,
-    //   artistName: body.artistName
-    // };
-
-    var mailOptions = {
-      from: secret.ADMIN_EMAIL,
-      to: body.email,
-      subject: 'purchasing Artwork from Art India Art Official Website.',
-      text: `purchasing ${body.images}` + `${body.name} we recieved your detail we will contact you soon !`
-    };
-
-    const data = {
-      name: body.name,
-      email: body.email,
-      status: body.status ? body.status : "Active",
-      number: body.number,
-      createdAt: Date.now(),
-      selectedImages: body.images,
-      address: body.address,
-      artwork: body.title,
-      buyPrice: body.buyPrice,
-      artistName: body.artistName
-    }
     db.get()
-      .collection("cart")
-      .insertOne(data, function (err, dbresult) {
-        if (err)
-          res.status(500).send(httpUtil.error(500, "cart Creation Failed."));
-        else {
-          transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-              res.send(error);
-            } else {
-              console.log('Email sent: ' + info.response);
-              res.send(httpUtil.success(200, "cart Added."));
-            }
-          })
-        }
+      .collection("confirmEnquiryEmail")
+      .find({})
+      .toArray(function (err, result) {
+        if (err) console.log(err);
+        res.send(httpUtil.success(200, "", result));
       });
   } catch (err) {
     res.send({
       status: 400,
-      error: err.message,
-      success: false
+      success: false,
+      error: err.message
     })
   }
+
 });
 
 module.exports = router;
+
+/*
+  http://localhost:3000/api/artwork
+  *post API get artwork by filter
+
+  http://localhost:3000/api/blog
+  *get API updated 
+  
+  
+*/
