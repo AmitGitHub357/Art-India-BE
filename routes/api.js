@@ -601,8 +601,7 @@ router.post("/confirmEnquiryEmail", function (req, res, next) {
           </tr>
         </table>
           </body>
-            </html>
-          `
+            </html>`
       };
 
       var mailOptions = {
@@ -1097,7 +1096,9 @@ router.get("/blogCategory", function (req, res, next) {
 //   }
 // });
 
-router.get("/artist", function (req, res, next) {
+router.get("/artist", function (req, res, next) { 
+  const type = req.query.type 
+  // res.send({ type })
   const body = req.body
   const page = parseInt(body.page)
   const limit = parseInt(body.limit)
@@ -1105,39 +1106,77 @@ router.get("/artist", function (req, res, next) {
   var totalRecord = 0
   var pages = 0
 
-  db.get().collection("artist").find({}).toArray((err, resp) => {
-    if (err) {
-      res.send({
-        status: 400,
-        success: false,
-        error: err
-      })
-    } else {
-      totalRecord = resp.length
-      pages = Math.ceil(resp.length / limit)
-      // console.log(resp.length, limit, "blog" + pages)
-      db.get().collection("artist").aggregate([
-        {
-          $lookup:
+  if (type) {
+    db.get().collection("artist").find({ artist_type : type }).skip(skips).limit(limit).toArray((err, resp) => {
+      if (err) {
+        res.send({
+          status: 400,
+          success: false,
+          error: err
+        })
+      } else {
+        totalRecord = resp.length
+        pages = Math.ceil(resp.length / limit)
+        // console.log(resp.length, limit, "blog" + pages)
+        db.get().collection("artist").aggregate([
           {
-            from: "artwork",
-            localField: "_id",
-            foreignField: "artistId",
-            as: "painting"
-          }
-        },
-        // { $unwind: "$painting" },
-      ]).toArray((err, result) => {
-        if (err) res.send({ error: err.message })
-        else
-          for (var i = 0; i < result.length; i++) {
-            console.log(result[i].name)
-          }
-        // res.send({ status: 200, count: result.length, data: result, success: true })
-        res.send({ success: true, pageNumber: page, perPageCount: result.length, limits: limit, totalPages: pages, count: totalRecord, data: result })
-      })
-    }
-  })
+            $lookup:
+            {
+              from: "artwork",
+              localField: "_id",
+              foreignField: "artistId",
+              as: "painting"
+            }
+          },
+          { $match : { artist_type : type }}
+          // { $unwind: "$painting" },
+        ]).toArray((err, result) => {
+          if (err) res.send({ error: err.message })
+          else
+            // for (var i = 0; i < result.length; i++) {
+            //   console.log(result[i].name)
+            // }
+          // res.send({ status: 200, count: result.length, data: result, success: true })
+          res.send({ success: true, pageNumber: page, perPageCount: result.length, limits: limit, totalPages: pages, count: totalRecord, data: result })
+        })
+      }
+    })
+  } else {
+    db.get().collection("artist").find({}).skip(skips).limit(limit).toArray((err, resp) => {
+      if (err) {
+        res.send({
+          status: 400,
+          success: false,
+          error: err
+        })
+      } else {
+        totalRecord = resp.length
+        pages = Math.ceil(resp.length / limit)
+        // console.log(resp.length, limit, "blog" + pages)
+        db.get().collection("artist").aggregate([
+          {
+            $lookup:
+            {
+              from: "artwork",
+              localField: "_id",
+              foreignField: "artistId",
+              as: "painting"
+            }
+          },
+          // { $unwind: "$painting" },
+        ]).toArray((err, result) => {
+          if (err) res.send({ error: err.message })
+          else
+            for (var i = 0; i < result.length; i++) {
+              // console.log(result[i].name)
+            }
+          // res.send({ status: 200, count: result.length, data: result, success: true })
+          res.send({ success: true, pageNumber: page, perPageCount: result.length, limits: limit, totalPages: pages, count: totalRecord, data: result })
+        })
+      }
+    })
+  }
+
 });
 
 router.get("/artist-type", function (req, res, next) {
