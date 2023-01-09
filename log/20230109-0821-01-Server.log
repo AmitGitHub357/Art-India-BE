@@ -1,0 +1,902 @@
+::1 - Tue Dec 06 2022 09:41:55 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 500 35 - 19 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 09:42:47 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 500 35 - 20 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 09:43:50 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 500 35 - 17 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 09:44:27 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 500 35 - 17 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 09:45:08 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 500 35 - 18 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 09:45:14 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 500 35 - 15 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 09:45:16 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 500 35 - 2 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 09:46:28 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 89 - 10 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 09:47:06 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 36 - 97 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 09:47:38 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 - - 161 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 09:51:49 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 - - 208 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 10:02:43 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 72 - 14 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 10:03:28 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 - - 445 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 10:05:07 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 77 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 10:05:30 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 77 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 10:06:14 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 52 - 6 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 10:06:23 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 448 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 10:06:44 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 564 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 10:06:49 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 84 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 10:07:19 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 - - 70 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 10:07:51 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 36 - 14 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 10:20:30 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 75 - 14 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 10:20:55 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 - - 85 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 10:56:40 GMT+0530 (India Standard Time) - GET /api/artworks/ HTTP/1.1 204 - - 21 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 10:56:43 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 200 - - 534 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 11:22:53 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 - - 84 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 11:26:10 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 87 - 15 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 11:27:14 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 64 - 30 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 11:27:45 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 64 - 17 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 11:34:06 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 - - 274 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 11:39:44 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 - - 97 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 11:40:17 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 - - 446 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 11:52:55 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f214f7205202f31e85bfc HTTP/1.1 200 49 - 88 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 11:53:29 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 200 - - 101 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 11:53:56 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 49 - 81 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 11:53:59 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 49 - 75 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 11:55:24 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 627 - 103 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 12:13:25 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 627 - 86 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 12:14:04 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 627 - 111 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 12:15:08 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 627 - 99 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 12:21:13 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 627 - 100 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 12:21:42 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 627 - 97 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 12:23:30 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 627 - 104 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 12:24:57 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 - - 100 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 12:26:04 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 - - 136 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 12:29:03 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 - - 211 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 12:30:32 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 - - 124 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 12:31:55 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 - - 130 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 13:10:52 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 - - 94 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 13:13:19 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 98 - 15 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 13:13:59 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 - - 102 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 13:14:44 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 - - - - - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 13:18:41 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 - - 133 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 13:20:21 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 - - 84 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 14:45:46 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 - - - - - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 14:47:19 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 - - 106 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 14:48:31 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 - - 421 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 14:54:37 GMT+0530 (India Standard Time) - GET /api/cart HTTP/1.1 200 515 - 81 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 15:38:43 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 695 - 2603 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 15:39:27 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 108 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 15:40:47 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 195 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 15:41:23 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 120 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 15:57:56 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 52 - 11 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 15:58:06 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 494 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 15:58:21 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 544 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 15:58:26 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 332 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 15:58:27 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 272 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 15:58:29 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 310 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 15:59:16 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 74 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 15:59:42 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 82 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 16:01:24 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 122 - 86 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 16:01:36 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 121 - 63 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 16:01:46 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 99 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 16:02:09 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 79 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 16:23:37 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 - - - - - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 16:23:41 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 - - - - - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 16:25:02 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 - - - - - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 16:25:25 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 - - - - - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 16:28:13 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 145 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 16:28:57 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 264 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 16:58:22 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 84 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 16:58:50 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 628 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 16:59:48 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 525 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 16:59:52 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 92 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:02:07 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 - - 239 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:03:11 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 - - 223 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:04:47 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 - - 291 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:06:42 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 - - 191 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:07:59 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 49 - 201 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:14:23 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 88 - 25 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:15:03 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 573 - 333 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:23:44 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 425 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:24:24 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 - - - - - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:24:30 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 - - - - - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:26:13 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 108 - 92 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:26:58 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 - - 84 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:27:43 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 108 - 89 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:29:03 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 - - 132 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:30:07 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 - - 85 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:34:59 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 49 - 90 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:35:44 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 49 - 85 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:45:21 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 49 - 88 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:49:16 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 - - 93 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 17:50:46 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 - - 102 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:00:13 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 - - 128 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:02:15 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 - - 151 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:12:10 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f27acca9b20ce65efba24 HTTP/1.1 200 - - 128 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:18:43 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 52 - 46 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:18:53 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 710 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:19:39 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 364 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:19:46 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 82 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:20:14 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 95 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:20:55 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 - - 76 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:25:10 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 - - 110 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:27:12 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 313 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:27:24 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 200 - - 118 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:27:40 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 99 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:35:56 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 120 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:37:35 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 485 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:37:41 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 160 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:38:01 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f15d7571e96db89d0de64 HTTP/1.1 200 - - 109 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:40:20 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f3e9725dd59c9c22319eb HTTP/1.1 200 - - 66 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:40:36 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 - - 57 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:46:06 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 2 - 340 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:46:26 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 2 - 348 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:52:04 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 33 - 161 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:52:33 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 2 - 300 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:53:06 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 2 - 278 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:53:54 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 354 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:55:01 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 385 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:55:08 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 440 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:57:51 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f3e4338cb22500949fbf2 HTTP/1.1 200 - - 247 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 18:59:11 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 137 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:02:46 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f2d474163d461f0421f4e HTTP/1.1 200 - - 100 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:03:39 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f2d474163d461f0421f4e HTTP/1.1 200 - - 109 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:05:12 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f2d474163d461f0421f4e HTTP/1.1 200 49 - 118 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:06:07 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f2d474163d461f0421f4e HTTP/1.1 200 - - 161 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:07:31 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f2d474163d461f0421f4e HTTP/1.1 200 - - 224 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:08:57 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f2d474163d461f0421f4e HTTP/1.1 200 - - 197 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:11:05 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f2d474163d461f0421f4e HTTP/1.1 200 - - 233 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:17:46 GMT+0530 (India Standard Time) - DELETE /artwork/?artwork_id=637afccd79e585c1116bc2ed HTTP/1.1 200 55 - 145 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:17:52 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 93 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:20:26 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 52 - 12 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:20:36 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 435 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:20:50 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 420 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:20:55 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 377 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:22:12 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 630 - 79 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:22:39 GMT+0530 (India Standard Time) - DELETE /artwork/?artwork_id=638f48baaf84bad74710412b HTTP/1.1 200 52 - 5 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:22:50 GMT+0530 (India Standard Time) - DELETE /artwork/?artwork_id=638f48baaf84bad74710412b HTTP/1.1 200 55 - 161 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:22:56 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 630 - 154 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:23:19 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 49 - 67 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 19:25:11 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 307 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 20:47:38 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f2d474163d461f0421f4e HTTP/1.1 200 49 - 230 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 20:47:48 GMT+0530 (India Standard Time) - GET /api/artworks/ HTTP/1.1 200 49 - 342 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 20:47:52 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 200 630 - 97 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 20:48:14 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f49beaf84bad74710412c HTTP/1.1 200 49 - 76 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 20:48:42 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 282 - PostmanRuntime/7.29.2
+::1 - Tue Dec 06 2022 20:50:55 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 260 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:13:22 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 171 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:13:25 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 86 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:13:29 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 126 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:14:54 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f17bcabde334cd9dafe4f HTTP/1.1 200 49 - 88 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:15:53 GMT+0530 (India Standard Time) - GET /api/artworks/ HTTP/1.1 200 - - 102 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:16:12 GMT+0530 (India Standard Time) - GET /api/artworks/ HTTP/1.1 200 - - 87 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:19:10 GMT+0530 (India Standard Time) - GET /api/artworks/' HTTP/1.1 404 35 - 25 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:19:13 GMT+0530 (India Standard Time) - GET /api/artworks/ HTTP/1.1 200 116 - 82 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:20:29 GMT+0530 (India Standard Time) - GET /api/artworks/ HTTP/1.1 200 - - 95 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:27:34 GMT+0530 (India Standard Time) - GET /api/artworks/ HTTP/1.1 200 - - 84 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:27:58 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f49beaf84bad74710412c HTTP/1.1 200 - - 67 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:28:11 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 630 - 83 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:33:30 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 52 - 15 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:33:48 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 486 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:34:04 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 363 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:34:11 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 67 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:34:35 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 68 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:36:28 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=637f15d7571e96db89d0de64 HTTP/1.1 200 - - 79 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:36:59 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=639010b33b0a70d0fc90f87d HTTP/1.1 200 - - 91 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:45:52 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=639010b33b0a70d0fc90f87d HTTP/1.1 200 - - 101 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 09:50:49 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=638f49beaf84bad74710412c HTTP/1.1 200 - - 65 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 10:01:19 GMT+0530 (India Standard Time) - GET /api/cart HTTP/1.1 500 35 - 19 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 10:02:41 GMT+0530 (India Standard Time) - GET /api/cart HTTP/1.1 200 66 - 24 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 10:04:18 GMT+0530 (India Standard Time) - GET /api/cart HTTP/1.1 200 515 - 76 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 10:07:07 GMT+0530 (India Standard Time) - GET /api/cart HTTP/1.1 200 49 - 166 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 10:09:00 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 200 - - 160 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 10:12:41 GMT+0530 (India Standard Time) - POST /api/cart HTTP/1.1 200 52 - 272 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 10:12:51 GMT+0530 (India Standard Time) - GET /api/cart HTTP/1.1 200 49 - 94 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 10:14:09 GMT+0530 (India Standard Time) - GET /api/cart HTTP/1.1 200 49 - 137 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 10:14:12 GMT+0530 (India Standard Time) - GET /api/cart HTTP/1.1 200 49 - 242 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 10:18:31 GMT+0530 (India Standard Time) - GET /api/cart HTTP/1.1 200 865 - 100 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 10:19:50 GMT+0530 (India Standard Time) - GET /api/userCart?userId=9913179283 HTTP/1.1 200 263 - 88 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 10:22:44 GMT+0530 (India Standard Time) - GET /api/userCart?userId=9913179283 HTTP/1.1 200 865 - 135 - PostmanRuntime/7.29.2
+::1 - Wed Dec 07 2022 10:34:47 GMT+0530 (India Standard Time) - POST /api/confirmEnquiryEmail HTTP/1.1 200 119 - 6937 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:12:19 GMT+0530 (India Standard Time) - GET /api/comment/6386fbed8f19b1eefad20b63 HTTP/1.1 500 35 - 16 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:14:21 GMT+0530 (India Standard Time) - GET /api/comments?blog_id=6386fbed8f19b1eefad20b63 HTTP/1.1 500 35 - 15 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:14:28 GMT+0530 (India Standard Time) - GET /api/comments/?blog_id=6386fbed8f19b1eefad20b63 HTTP/1.1 500 35 - 9 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:14:55 GMT+0530 (India Standard Time) - GET /api/comments/?blog_id=6386fbed8f19b1eefad20b63 HTTP/1.1 500 35 - 18 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:15:36 GMT+0530 (India Standard Time) - GET /api/comments/?blog_id=6386fbed8f19b1eefad20b63 HTTP/1.1 500 35 - 15 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:15:42 GMT+0530 (India Standard Time) - GET /api/comments/?blog_id=6386fbed8f19b1eefad20b63 HTTP/1.1 500 35 - 8 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:16:38 GMT+0530 (India Standard Time) - GET /api/comments/?blog_id=6386fbed8f19b1eefad20b63 HTTP/1.1 200 15 - 14 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:18:31 GMT+0530 (India Standard Time) - POST /api/comment HTTP/1.1 200 57 - 146 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:18:39 GMT+0530 (India Standard Time) - GET /api/comments/?blog_id=6386fbed8f19b1eefad20b63 HTTP/1.1 200 49 - 89 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:19:23 GMT+0530 (India Standard Time) - GET /api/comments/?blog_id=6386fbed8f19b1eefad20b63 HTTP/1.1 200 49 - 95 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:19:26 GMT+0530 (India Standard Time) - GET /api/comments/?blog_id=6386fbed8f19b1eefad20b63 HTTP/1.1 200 49 - 77 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:19:34 GMT+0530 (India Standard Time) - GET /api/comments/?blog_id=6386fbed8f19b1eefad20b63 HTTP/1.1 200 49 - 376 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:19:36 GMT+0530 (India Standard Time) - GET /api/comments HTTP/1.1 200 49 - 64 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:19:39 GMT+0530 (India Standard Time) - GET /api/comment HTTP/1.1 500 35 - 6 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:19:41 GMT+0530 (India Standard Time) - GET /api/comment HTTP/1.1 500 35 - 9 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:19:47 GMT+0530 (India Standard Time) - GET /api/comment HTTP/1.1 500 35 - 2 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:19:49 GMT+0530 (India Standard Time) - GET /api HTTP/1.1 200 - - 92 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:21:44 GMT+0530 (India Standard Time) - GET /api/comments/?blog_id=6386fbed8f19b1eefad20b63 HTTP/1.1 200 49 - 88 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:22:49 GMT+0530 (India Standard Time) - GET /api/comments/?blog_id=6386fbed8f19b1eefad20b63 HTTP/1.1 200 49 - 99 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:22:53 GMT+0530 (India Standard Time) - GET /api/comments HTTP/1.1 200 49 - 77 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:22:57 GMT+0530 (India Standard Time) - GET /api/comment HTTP/1.1 500 35 - 8 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:23:04 GMT+0530 (India Standard Time) - GET /api// HTTP/1.1 200 - - 68 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:24:52 GMT+0530 (India Standard Time) - GET /api/comment/6386fbed8f19b1eefad20b63 HTTP/1.1 200 349 - 88 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:25:19 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 66 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:27:03 GMT+0530 (India Standard Time) - GET /api/comment HTTP/1.1 500 35 - 145 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:27:38 GMT+0530 (India Standard Time) - GET /api/comment HTTP/1.1 200 - - 192 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:35:36 GMT+0530 (India Standard Time) - POST /api/comment HTTP/1.1 404 35 - 20 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:42:04 GMT+0530 (India Standard Time) - POST /api/comment HTTP/1.1 200 57 - 1193 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:42:14 GMT+0530 (India Standard Time) - GET /api/comment/6386fbed8f19b1eefad20b63 HTTP/1.1 404 35 - 16 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:42:16 GMT+0530 (India Standard Time) - GET /api/comment/6386fbed8f19b1eefad20b63 HTTP/1.1 404 35 - 8 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:42:44 GMT+0530 (India Standard Time) - GET /api/comment HTTP/1.1 200 - - 112 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:43:59 GMT+0530 (India Standard Time) - POST /api/comment HTTP/1.1 200 11 - 12 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:53:37 GMT+0530 (India Standard Time) - PUT /api/blogLike HTTP/1.1 200 52 - 2696 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:53:56 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=6386fbed8f19b1eefad20b63 HTTP/1.1 500 35 - 17 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:54:07 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=6386fbed8f19b1eefad20b63 HTTP/1.1 500 35 - 11 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:58:22 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=6386fbed8f19b1eefad20b63 HTTP/1.1 200 49 - 166 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:58:32 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 81 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 12:58:46 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=6388414c2614cfa0803dcada HTTP/1.1 200 - - 66 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 13:01:43 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=6388414c2614cfa0803dcada HTTP/1.1 200 49 - 70 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 13:01:52 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 76 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 13:02:14 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=638841552614cfa0803dcadb HTTP/1.1 200 - - 118 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 13:02:57 GMT+0530 (India Standard Time) - PUT /api/blogLike HTTP/1.1 200 52 - 210 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 13:03:33 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 106 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 13:13:24 GMT+0530 (India Standard Time) - POST /blog/ HTTP/1.1 200 52 - 22 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 13:13:52 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 632 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 13:14:29 GMT+0530 (India Standard Time) - POST /blog/ HTTP/1.1 200 52 - 585 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 13:14:39 GMT+0530 (India Standard Time) - GET /blog/ HTTP/1.1 200 - - 527 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 13:15:30 GMT+0530 (India Standard Time) - POST /api/comment HTTP/1.1 200 11 - 2 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 13:18:59 GMT+0530 (India Standard Time) - POST /api/comment HTTP/1.1 200 11 - 51 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 13:20:18 GMT+0530 (India Standard Time) - POST /api/comment HTTP/1.1 200 124 - 78 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 13:26:04 GMT+0530 (India Standard Time) - POST /api/comment HTTP/1.1 200 57 - 584 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 15:51:41 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 113 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 15:52:30 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 90 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 15:53:54 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 52 - 11 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 15:54:07 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 565 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 15:54:25 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 393 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 15:54:30 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 74 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 15:57:43 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 113 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:09:38 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 49 - 116 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:10:53 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 49 - 207 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:10:58 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 49 - 67 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:11:14 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 200 - - 94 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:11:16 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 200 - - 121 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:12:05 GMT+0530 (India Standard Time) - DELETE /artwork/?artwork_id=638f48baaf84bad74710412b HTTP/1.1 200 52 - 6 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:12:23 GMT+0530 (India Standard Time) - DELETE /artwork/?artwork_id=638f48baaf84bad74710412b HTTP/1.1 200 55 - 174 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:12:27 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 150 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:15:06 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 65 - 167 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:25:39 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 52 - 4 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:25:55 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 730 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:26:19 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 393 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:26:25 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 909 - 80 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:27:27 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 2475 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:27:31 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 127 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:36:17 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 145 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:36:42 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 276 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:37:11 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 137 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:39:42 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 112 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:40:18 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 127 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:40:32 GMT+0530 (India Standard Time) - POST /artist/ HTTP/1.1 500 35 - 107 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:42:22 GMT+0530 (India Standard Time) - POST /artist/ HTTP/1.1 500 35 - 135 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:42:29 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 909 - 68 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:43:11 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 49 - 51 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:44:29 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 419 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:44:41 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 909 - 80 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:44:53 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 646 - 57 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:47:22 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 49 - 96 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:50:16 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 49 - 84 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:50:19 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 49 - 72 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:50:20 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 - - - - - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:50:21 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 - - - - - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:50:22 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 49 - 82 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:51:22 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 96 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:58:58 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 49 - 93 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:59:05 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 52 - 7 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:59:17 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 471 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:59:34 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 405 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 16:59:39 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 614 - 72 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:00:10 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 49 - 79 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:00:12 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 49 - 68 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:00:51 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 49 - 129 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:00:53 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 49 - 69 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:00:55 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 49 - 59 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:01:42 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 161 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:02:12 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 614 - 80 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:19:42 GMT+0530 (India Standard Time) - GET /blog/ HTTP/1.1 200 - - 172 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:22:48 GMT+0530 (India Standard Time) - POST /api/blog HTTP/1.1 404 35 - 61 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:22:57 GMT+0530 (India Standard Time) - POST /api/comment HTTP/1.1 200 57 - 232 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:23:03 GMT+0530 (India Standard Time) - GET /api/comment HTTP/1.1 200 - - 217 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:24:37 GMT+0530 (India Standard Time) - GET /api/comment HTTP/1.1 200 - - 132 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:25:20 GMT+0530 (India Standard Time) - POST /api/comment HTTP/1.1 200 57 - 379 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:30:04 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 312 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:30:25 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 68 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:41:45 GMT+0530 (India Standard Time) - POST /blog/ HTTP/1.1 200 52 - 65 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:41:54 GMT+0530 (India Standard Time) - GET /blog/ HTTP/1.1 200 49 - 115 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:42:15 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 913 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:42:59 GMT+0530 (India Standard Time) - POST /blog/ HTTP/1.1 200 52 - 264 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:43:06 GMT+0530 (India Standard Time) - GET /blog/ HTTP/1.1 200 677 - 423 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:43:52 GMT+0530 (India Standard Time) - POST /api/comment HTTP/1.1 200 57 - 62 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:44:50 GMT+0530 (India Standard Time) - GET /api/comment HTTP/1.1 200 243 - 107 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:45:06 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=6391d4cbc3e6876af414cb78 HTTP/1.1 200 677 - 73 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:45:33 GMT+0530 (India Standard Time) - GET /api/blog/6391d4cbc3e6876af414cb78 HTTP/1.1 500 35 - 5 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:45:37 GMT+0530 (India Standard Time) - GET /api/blog/6391d4cbc3e6876af414cb78 HTTP/1.1 500 35 - 15 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:48:09 GMT+0530 (India Standard Time) - GET /api/blog/6391d4cbc3e6876af414cb78 HTTP/1.1 500 35 - 37 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:48:20 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=6391d4cbc3e6876af414cb78 HTTP/1.1 200 109 - 90 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:50:21 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=6391d4cbc3e6876af414cb78 HTTP/1.1 200 882 - 165 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:52:10 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 150 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:55:03 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 200 614 - 448 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 17:56:47 GMT+0530 (India Standard Time) - GET /api/artworks/ HTTP/1.1 200 49 - 82 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:02:38 GMT+0530 (India Standard Time) - GET /api/artworks/ HTTP/1.1 200 49 - 1824 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:06:08 GMT+0530 (India Standard Time) - GET /api/artworks/ HTTP/1.1 200 49 - 81 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:06:11 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 200 - - 97 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:09:32 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 150 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:10:52 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 2 - 87 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:14:10 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 2 - 83 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:14:38 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 11 - 118 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:15:47 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 136 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:16:29 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 51 - 132 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:16:57 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 161 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:17:29 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 200 - - 95 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:18:18 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 654 - 75 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:22:29 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 654 - 193 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:23:16 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 654 - 247 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:23:33 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 78 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:24:22 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 654 - 92 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:24:28 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 165 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:26:41 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 882 - 123 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:27:35 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 882 - 138 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:35:10 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 53 - 82 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:35:47 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 78 - 95 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:36:35 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 49 - 99 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:38:15 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 887 - 119 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:39:39 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 516 - 141 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:41:04 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 889 - 274 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:45:50 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 500 35 - 22 - PostmanRuntime/7.29.2
+::1 - Thu Dec 08 2022 18:50:35 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 899 - 92 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 09:20:22 GMT+0530 (India Standard Time) - GET /api/artistName/?letter=M HTTP/1.1 200 49 - 75 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 09:20:30 GMT+0530 (India Standard Time) - GET /api/artistName/?letter=A HTTP/1.1 200 948 - 3098 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 09:20:57 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 1650 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 09:38:43 GMT+0530 (India Standard Time) - GET /api/news_gallery HTTP/1.1 404 35 - 15 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 09:41:01 GMT+0530 (India Standard Time) - GET /api/news_gallery HTTP/1.1 200 595 - 985 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:00:16 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 52 - 193 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:00:34 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 200 - - 532 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:00:54 GMT+0530 (India Standard Time) - GET /api/search/?key=Monalisa HTTP/1.1 200 18 - 10 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:01:51 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 654 - 179 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:02:23 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 1611 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:03:38 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 64 - 44 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:04:11 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 206 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:05:07 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 297 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:05:30 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 272 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:07:41 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 1843 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:08:10 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 200 - - 73 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:10:25 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 200 - - 84 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:10:36 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 116 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:11:02 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 236 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:12:11 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 129 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:12:17 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 1908 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:13:12 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 58 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:15:01 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 186 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:15:06 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 81 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:15:12 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 84 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:19:17 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 93 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:19:37 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 389 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:24:17 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 - - - - - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:25:49 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 - - - - - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:26:29 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 272 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:26:36 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 750 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:27:47 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 200 - - 98 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:29:21 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 654 - 324 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:29:30 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 654 - 84 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:29:57 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 632 - 111 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:30:34 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 654 - 86 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:46:06 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 1087 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:46:46 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 632 - 3254 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:47:43 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 3664 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:47:57 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 632 - 1104 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:48:16 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 2355 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:48:38 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 632 - 11071 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:52:41 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 682 - 10252 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:53:48 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 682 - 74 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:53:52 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 682 - 985 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:54:00 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 632 - 78 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:54:50 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 682 - 632 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 10:55:16 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 1212 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:04:01 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 99 - 53 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:10:35 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 11 - 13 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:11:23 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 28 - 208 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:13:13 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 99 - 50 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:19:15 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 99 - 39 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:23:01 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 2753 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:24:43 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 187 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:24:58 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 200 - - 83 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Dec 13 2022 11:25:12 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 304 - - 90 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Dec 13 2022 11:25:13 GMT+0530 (India Standard Time) - GET /favicon.ico HTTP/1.1 200 - - 118 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Dec 13 2022 11:25:14 GMT+0530 (India Standard Time) - GET /public/uploads/artwork/fade.gif HTTP/1.1 404 35 - 8 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Dec 13 2022 11:27:02 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 3398 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:27:28 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 200 - - 102 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Dec 13 2022 11:27:40 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 304 - - 3620 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Dec 13 2022 11:27:43 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 304 - - 51 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Dec 13 2022 11:27:46 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 304 - - 137 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Dec 13 2022 11:27:49 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 304 - - 584 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Dec 13 2022 11:27:51 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 - - - - - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Dec 13 2022 11:27:51 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 - - - - - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Dec 13 2022 11:27:54 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 200 - - 2330 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Dec 13 2022 11:29:58 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 3505 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:32:06 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 181 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:33:31 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 140 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:33:58 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 122 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:35:53 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 13 - 221 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:36:16 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 578 - 135 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:39:51 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 13 - 215 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:39:58 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 13 - 3509 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:43:59 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 13 - 122 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:50:58 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 - - - - - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 11:50:59 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 13 - 258 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:03:14 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 13 - 186 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:03:29 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 97 - 13 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:03:30 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 97 - 8 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:03:31 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 97 - 3 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:03:32 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 97 - 3 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:04:30 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 556 - 143 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:06:15 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 556 - 276 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:06:41 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 61 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:09:36 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 13 - 466 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:09:40 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 13 - 77 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:09:54 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 95 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:13:38 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 13 - 2339 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:13:42 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 13 - 89 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:13:47 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 13 - 106 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:13:55 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 117 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:24:17 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 62 - 127 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:24:23 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 62 - 7 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:28:28 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 129 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:30:42 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 3540 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:31:36 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 1532 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:33:19 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 300 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:35:23 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 639 - 947 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:35:57 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 96 - 395 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:38:20 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 96 - 698 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:38:33 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 96 - 1181 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:38:43 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 661 - 2498 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:40:43 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 96 - 134 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:40:53 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 661 - 118 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:41:09 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 96 - 287 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:41:48 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 96 - 297 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:42:29 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 96 - 180 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:43:56 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 89 - 229 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:44:12 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 632 - 69 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:44:55 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 74 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:46:30 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 162 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 12:46:57 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 90 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:04:34 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=6391ca9e74cb82bb5a9620cb HTTP/1.1 200 49 - 262 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:08:37 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=6391ca9e74cb82bb5a9620cb HTTP/1.1 200 41 - 17 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:09:57 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=6391ca9e74cb82bb5a9620cb HTTP/1.1 200 49 - 1951 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:10:11 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 332 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:11:48 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 213 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:11:57 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=6391ca9e74cb82bb5a9620cb HTTP/1.1 200 - - 3556 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:12:43 GMT+0530 (India Standard Time) - GET /api/news HTTP/1.1 200 - - 86 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:12:55 GMT+0530 (India Standard Time) - GET /api/news/63844a47dfbf5fadb77e7d0b HTTP/1.1 404 35 - 7 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:15:12 GMT+0530 (India Standard Time) - GET /api/news/63844a47dfbf5fadb77e7d0b HTTP/1.1 200 49 - 216 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:15:38 GMT+0530 (India Standard Time) - GET /api/news/63844a47dfbf5fadb77e7d0b HTTP/1.1 200 382 - 261 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:16:42 GMT+0530 (India Standard Time) - GET /api/blog/ HTTP/1.1 200 899 - 96 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:19:02 GMT+0530 (India Standard Time) - GET /api/event HTTP/1.1 200 - - 70 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:20:57 GMT+0530 (India Standard Time) - GET /api/event_type?event_type=Exibitions HTTP/1.1 200 - - 1800 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:25:46 GMT+0530 (India Standard Time) - GET /api/eventSearch/?key=%22Exibition%22 HTTP/1.1 200 79 - 92 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:27:44 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 899 - 135 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:29:09 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=6391d4cbc3e6876af414cb78 HTTP/1.1 200 882 - 664 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:33:12 GMT+0530 (India Standard Time) - POST /api/comment HTTP/1.1 200 57 - 199 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:33:32 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=6391d4cbc3e6876af414cb78 HTTP/1.1 200 884 - 90 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:34:24 GMT+0530 (India Standard Time) - POST /api/comment HTTP/1.1 200 57 - 2876 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:34:31 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=6391d4cbc3e6876af414cb78 HTTP/1.1 200 884 - 61 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:34:50 GMT+0530 (India Standard Time) - POST /api/comment HTTP/1.1 200 57 - 567 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:34:54 GMT+0530 (India Standard Time) - GET /api/comment HTTP/1.1 200 - - 86 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:37:37 GMT+0530 (India Standard Time) - GET /api/comment HTTP/1.1 200 - - 1191 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:37:45 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=6391d4cbc3e6876af414cb78 HTTP/1.1 200 - - 140 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:38:10 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 1316 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:40:16 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 125 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:42:01 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 135 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:43:26 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 2 - 3408 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:44:11 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 783 - 96 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:44:39 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 13 - 236 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:48:43 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 2 - 1035 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:53:00 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 783 - 217 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:53:49 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 783 - 662 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:55:07 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 783 - 5193 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 13:56:18 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 11 - 123 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 14:08:36 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 71 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 14:09:31 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 123 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 14:11:11 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 2653 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 14:12:23 GMT+0530 (India Standard Time) - POST /blog/ HTTP/1.1 200 52 - 1941 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 14:12:29 GMT+0530 (India Standard Time) - GET /blog/ HTTP/1.1 200 - - 1850 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 14:14:14 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 2097 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 14:14:44 GMT+0530 (India Standard Time) - POST /api/comment HTTP/1.1 200 57 - 699 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 14:14:56 GMT+0530 (India Standard Time) - GET /api/comment HTTP/1.1 200 - - 947 - PostmanRuntime/7.29.2
+::1 - Tue Dec 13 2022 14:15:23 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 982 - PostmanRuntime/7.29.2
+::1 - Mon Dec 19 2022 12:22:17 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=6391ca9e74cb82bb5a9620cb HTTP/1.1 200 - - 100 - PostmanRuntime/7.30.0
+::1 - Mon Dec 19 2022 12:22:44 GMT+0530 (India Standard Time) - GET /api/news/63844a47dfbf5fadb77e7d0b HTTP/1.1 200 382 - 1452 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:01:45 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 23590 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:02:08 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 964 - 76 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:02:41 GMT+0530 (India Standard Time) - DELETE /artist/?artist_id=6391c2d319212124b1fc7247 HTTP/1.1 200 54 - 162 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:02:46 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 964 - 58 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:03:02 GMT+0530 (India Standard Time) - DELETE /artist/?artist_id=6391c2d319212124b1fc7247 HTTP/1.1 200 54 - 166 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:03:12 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 964 - 2135 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:03:22 GMT+0530 (India Standard Time) - GET /public/uploads/artwork/fade.gif HTTP/1.1 404 35 - 3 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 12:03:27 GMT+0530 (India Standard Time) - GET /uploads/artwork/fade.gif HTTP/1.1 200 828 - 62 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 12:05:49 GMT+0530 (India Standard Time) - DELETE /artist/?artist_id=6391c2d319212124b1fc7247 HTTP/1.1 200 54 - 122 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:05:55 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 964 - 2540 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:07:02 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 500 35 - 55 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:07:10 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 964 - 88 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:07:29 GMT+0530 (India Standard Time) - DELETE /artist/?artist_id=6391c2d319212124b1fc7247 HTTP/1.1 200 26 - 537 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:07:49 GMT+0530 (India Standard Time) - DELETE /artist/?artist_id=6391c2d319212124b1fc7247 HTTP/1.1 200 54 - 165 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:07:56 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 65 - 1744 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:08:29 GMT+0530 (India Standard Time) - POST /artist/ HTTP/1.1 200 52 - 4 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:08:51 GMT+0530 (India Standard Time) - POST /artist/ HTTP/1.1 500 35 - 536 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:08:54 GMT+0530 (India Standard Time) - POST /artist/ HTTP/1.1 500 35 - 120 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:09:36 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 149 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:11:03 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 2974 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:11:49 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 145 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:12:46 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 23 - 2019 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:13:26 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 255 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:14:49 GMT+0530 (India Standard Time) - PUT /event/featured HTTP/1.1 200 61 - 2 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:15:32 GMT+0530 (India Standard Time) - GET /event/ HTTP/1.1 200 - - 74 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:31:56 GMT+0530 (India Standard Time) - GET /uploads/blog/Zmikas_product.png HTTP/1.1 200 393133 - 2350 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 12:33:30 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 65 - 1439 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:33:43 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 1872 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:33:57 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 974 - 2548 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:34:24 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 62 - 73 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:34:40 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 295 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:35:13 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 974 - 165 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:35:46 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 3171 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:35:59 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 3130 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:47:36 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 275 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 12:47:43 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 637 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 13:03:48 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 2267 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 13:14:47 GMT+0530 (India Standard Time) - GET /uploads/artwork/Zmikas_product.png HTTP/1.1 200 393133 - 2380 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 13:16:51 GMT+0530 (India Standard Time) - GET /uploads/artwork/pic1.jpg HTTP/1.1 200 3813 - 10 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 13:20:07 GMT+0530 (India Standard Time) - GET /uploads/artist/artistGaurav.jpg HTTP/1.1 200 4719 - 4 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 15:18:22 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 118 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 15:18:44 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 49 - 477 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 15:19:28 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 200 49 - 74 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 15:19:40 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 67 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 15:20:19 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 2669 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 15:30:58 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 351 - 3235 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 15:39:41 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 1379 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 15:39:48 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 93 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 15:40:04 GMT+0530 (India Standard Time) - GET /api/artwork/ HTTP/1.1 200 - - 82 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 15:40:26 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 90 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 15:44:53 GMT+0530 (India Standard Time) - GET /uploads/artwork/IMG20221204130431.jpg HTTP/1.1 200 3886953 - 8 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 15:45:19 GMT+0530 (India Standard Time) - GET /public/uploads/artwork/IMG20221204130431.jpg HTTP/1.1 404 35 - 8 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 15:45:48 GMT+0530 (India Standard Time) - GET /uploads/artwork/IMG20221204130300.jpg HTTP/1.1 200 2540764 - 4 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 15:47:39 GMT+0530 (India Standard Time) - GET /api/artist-type HTTP/1.1 200 510 - 65 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 15:53:27 GMT+0530 (India Standard Time) - GET /uploads/artwork/1669022314545.jpg HTTP/1.1 200 90768 - 3 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 15:59:33 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 500 35 - 182 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 15:59:55 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 500 35 - 441 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 16:00:32 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 378 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 16:00:37 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 95 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 16:05:10 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 92 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 16:05:49 GMT+0530 (India Standard Time) - GET /news/ HTTP/1.1 200 - - 71 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 16:41:38 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 158 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 16:47:22 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 60 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 16:59:52 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 52 - 35 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:00:01 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 613 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:00:18 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 54 - 371 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:04:43 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 250 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:04:49 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 2870 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:05:43 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 3314 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:07:14 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 2815 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:07:53 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 1502 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:08:52 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 140 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:09:07 GMT+0530 (India Standard Time) - GET /public/uploads/artwork/artistGaurav.jpg HTTP/1.1 404 35 - 16 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 17:09:15 GMT+0530 (India Standard Time) - GET /uploads/artwork/artistGaurav.jpg HTTP/1.1 404 35 - 10 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 17:09:25 GMT+0530 (India Standard Time) - GET /uploads/artist/artistGaurav.jpg HTTP/1.1 304 - - 5 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 17:14:33 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 102 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:18:17 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 371 - 703 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:18:53 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 251 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:19:03 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 93 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:19:25 GMT+0530 (India Standard Time) - GET /uploads/artwork/frameframe1.jpg HTTP/1.1 404 35 - 11 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 17:19:37 GMT+0530 (India Standard Time) - GET /uploads/artwork/frame/fframe1.jpg HTTP/1.1 404 35 - 8 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 17:19:41 GMT+0530 (India Standard Time) - GET /uploads/artwork/frame/frame1.jpg HTTP/1.1 404 35 - 2 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 17:19:49 GMT+0530 (India Standard Time) - GET /uploads/artwork/ HTTP/1.1 404 35 - 3 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 17:20:28 GMT+0530 (India Standard Time) - GET /uploads/artwork/frame1.jpg HTTP/1.1 200 2888 - 12 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 17:20:28 GMT+0530 (India Standard Time) - GET /favicon.ico HTTP/1.1 200 - - 60 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 17:26:17 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 849 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:32:56 GMT+0530 (India Standard Time) - GET /uploads/artist/artistAnkit.jpg HTTP/1.1 200 2794 - 3 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 17:48:01 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 49 - 445 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:50:24 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 111 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:52:21 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 2838 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:52:26 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 574 - 63 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:53:00 GMT+0530 (India Standard Time) - GET /uploads/artwork/frame2.jpg HTTP/1.1 200 5047 - 7 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 17:57:01 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 207 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:57:09 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 3333 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 17:57:43 GMT+0530 (India Standard Time) - GET /uploads/artwork/frame1.jpg HTTP/1.1 200 2888 - 3 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 17:58:34 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork18.webp HTTP/1.1 200 217706 - 10 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 18:00:56 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 52 - 10 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 18:01:14 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 367 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 18:01:31 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 324 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 18:01:36 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 418 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 18:09:07 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 257 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 18:09:17 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 79 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 18:11:13 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork3.jpg HTTP/1.1 200 15926 - 15 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Wed Dec 21 2022 18:13:23 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 75 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 18:19:00 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 111 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 18:21:51 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 68 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 18:25:31 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 86 - PostmanRuntime/7.30.0
+::1 - Wed Dec 21 2022 18:28:11 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 386 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:16:21 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 52 - 124 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:16:36 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 1838 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:16:50 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 422 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:17:24 GMT+0530 (India Standard Time) - GET /uploads/artwork/frame1.jpg HTTP/1.1 200 2888 - 185 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 09:18:23 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 3719 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:22:37 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 417 - 629 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:24:22 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 498 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:24:30 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 1368 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:25:10 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 1988 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:29:28 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 200 52 - 12 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:29:59 GMT+0530 (India Standard Time) - POST /artist HTTP/1.1 500 35 - 1598 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:41:36 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 376 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:41:53 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 2096 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:43:54 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 4241 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:44:01 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 81 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:44:21 GMT+0530 (India Standard Time) - GET /uploads/artwork/frame4.jpg HTTP/1.1 200 3296 - 8 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 09:47:48 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 2859 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:47:58 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 786 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:52:26 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 1957 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:52:32 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 2012 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:52:53 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork19.jpg HTTP/1.1 200 94092 - 3 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 09:55:27 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 898 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:55:35 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 153 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 09:55:54 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork15.jpg HTTP/1.1 200 83234 - 60 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 10:21:13 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 52 - 2 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 10:21:22 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 1536 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 10:21:45 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 2873 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 10:23:49 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 608 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 10:24:00 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 194 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 10:24:14 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork15.jpg HTTP/1.1 200 83234 - 23 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 10:26:47 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 2778 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 10:26:53 GMT+0530 (India Standard Time) - GET /artwork HTTP/1.1 200 - - 111 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 10:28:21 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork15.jpg HTTP/1.1 304 - - 4 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 10:28:46 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork17.jpg HTTP/1.1 200 60738 - 3 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 10:29:15 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 899 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 10:29:47 GMT+0530 (India Standard Time) - GET /uploads/artist/artistAnkit.jpg HTTP/1.1 404 35 - 31 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 10:42:48 GMT+0530 (India Standard Time) - POST /artwork HTTP/1.1 200 57 - 1736 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 10:43:06 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 4247 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 10:43:37 GMT+0530 (India Standard Time) - GET /uploads/artist/artistAnkit.jpg HTTP/1.1 404 35 - 2 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 10:46:25 GMT+0530 (India Standard Time) - GET /api/artistName/?letter=A HTTP/1.1 200 - - 157 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 10:47:23 GMT+0530 (India Standard Time) - GET /api/artistName/?type=Photographer HTTP/1.1 200 49 - 135 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 10:47:45 GMT+0530 (India Standard Time) - GET /api/artistName/?artist_type=Photographer HTTP/1.1 200 49 - 50 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 10:51:05 GMT+0530 (India Standard Time) - GET /api/artist-type/?artistType=Photographer HTTP/1.1 200 49 - 414 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 10:51:38 GMT+0530 (India Standard Time) - GET /api/artist-type/?artistType=Photographer HTTP/1.1 200 23 - 16 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 10:55:42 GMT+0530 (India Standard Time) - GET /api/artisType/?type=Photographer HTTP/1.1 404 35 - 17 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 10:56:58 GMT+0530 (India Standard Time) - GET /api/artisType/?type=Photographer HTTP/1.1 404 35 - 26 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 10:57:37 GMT+0530 (India Standard Time) - GET /api/artistType/?type=Photographer HTTP/1.1 200 - - 333 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:03:32 GMT+0530 (India Standard Time) - GET /api/artistType/?type=Photographer HTTP/1.1 200 39 - 218 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:05:31 GMT+0530 (India Standard Time) - GET /api/artistType/?type=Photographer HTTP/1.1 500 35 - 28 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:05:34 GMT+0530 (India Standard Time) - GET /api/artistType/?type=Photographer HTTP/1.1 500 35 - 9 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:06:09 GMT+0530 (India Standard Time) - GET /api/artistType/?type=Photographer HTTP/1.1 500 35 - 3 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:07:05 GMT+0530 (India Standard Time) - GET /api/artistType/?type=Photographer HTTP/1.1 200 60 - 25 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:07:43 GMT+0530 (India Standard Time) - GET /api/artistType/?type=Photographer HTTP/1.1 200 - - 253 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:14:39 GMT+0530 (India Standard Time) - GET /api/artistName/?letter=A HTTP/1.1 200 - - 369 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:15:24 GMT+0530 (India Standard Time) - GET /api/artistName/?letter=G HTTP/1.1 200 - - 104 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:16:04 GMT+0530 (India Standard Time) - GET /api/artistName/?letter=G HTTP/1.1 200 - - 113 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:21:17 GMT+0530 (India Standard Time) - GET /uploads/artist/artistAnkit.jpg HTTP/1.1 404 35 - 5 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 11:21:18 GMT+0530 (India Standard Time) - GET /uploads/artist/artistAnkit.jpg HTTP/1.1 404 35 - 5 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 11:23:28 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=6391ca9e74cb82bb5a9620cb HTTP/1.1 200 49 - 57 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:23:36 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 3607 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:25:31 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 542 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:40:42 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 200 19 - 32 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:41:08 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 200 - - 4699 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:42:00 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=63a2fb957663050bc2896cd5 HTTP/1.1 200 - - 1453 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:47:46 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 351 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:47:59 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 96 - 467 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:48:11 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 433 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:48:33 GMT+0530 (India Standard Time) - GET /api/search/?key=Drawing HTTP/1.1 200 17 - 15 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:50:27 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 235 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:50:42 GMT+0530 (India Standard Time) - GET /api/search/?key=Shiva HTTP/1.1 200 15 - 16 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:51:06 GMT+0530 (India Standard Time) - GET /api/search/?key=Shiva HTTP/1.1 200 79 - 438 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:58:25 GMT+0530 (India Standard Time) - GET /api/search/?key=Shiva HTTP/1.1 200 80 - 306 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:58:36 GMT+0530 (India Standard Time) - GET /api/search/?key=SHIVA HTTP/1.1 200 593 - 186 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 11:59:29 GMT+0530 (India Standard Time) - GET /news/ HTTP/1.1 200 - - 376 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 12:02:43 GMT+0530 (India Standard Time) - GET /news/ HTTP/1.1 200 - - 1200 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 12:03:00 GMT+0530 (India Standard Time) - GET /uploads/news/educationPic1.jpg HTTP/1.1 200 10675 - 64 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:13:58 GMT+0530 (India Standard Time) - GET /uploads/news/news2.jpg HTTP/1.1 404 35 - 139 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:14:57 GMT+0530 (India Standard Time) - GET /uploads/news/news2.jpg HTTP/1.1 404 35 - 13 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:17:36 GMT+0530 (India Standard Time) - GET /uploads/news/news1.jpg HTTP/1.1 404 35 - 2 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:17:48 GMT+0530 (India Standard Time) - GET /uploads/news/news1.jpg HTTP/1.1 404 35 - 3 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:18:33 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 1017 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 12:18:46 GMT+0530 (India Standard Time) - GET /news/ HTTP/1.1 200 - - 548 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 12:19:06 GMT+0530 (India Standard Time) - GET /api/news/63844a47dfbf5fadb77e7d0b HTTP/1.1 200 376 - 116 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 12:19:24 GMT+0530 (India Standard Time) - GET /uploads/news/news1.jpg HTTP/1.1 404 35 - 2 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:25:53 GMT+0530 (India Standard Time) - POST /news HTTP/1.1 200 52 - 5987 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 12:26:00 GMT+0530 (India Standard Time) - GET /news HTTP/1.1 200 - - 83 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 12:26:17 GMT+0530 (India Standard Time) - GET /uploads/news/news1.jpg HTTP/1.1 200 14451 - 9 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:26:25 GMT+0530 (India Standard Time) - GET /uploads/news/news1.jpg HTTP/1.1 304 - - 5 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:28:57 GMT+0530 (India Standard Time) - GET /uploads/news/news1.jpg HTTP/1.1 304 - - 1 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:29:11 GMT+0530 (India Standard Time) - GET /uploads/news/news2.jpg HTTP/1.1 200 11048 - 3 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:32:24 GMT+0530 (India Standard Time) - POST /news HTTP/1.1 200 52 - 2514 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 12:32:30 GMT+0530 (India Standard Time) - GET /news HTTP/1.1 200 - - 70 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 12:33:34 GMT+0530 (India Standard Time) - GET /uploads/news/news5.webp HTTP/1.1 200 87394 - 13 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:33:45 GMT+0530 (India Standard Time) - GET /uploads/news/news6.jpg HTTP/1.1 200 65896 - 8 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:35:13 GMT+0530 (India Standard Time) - GET /uploads/news/news1.jpg HTTP/1.1 304 - - 16 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:35:18 GMT+0530 (India Standard Time) - GET /uploads/news/news2.jpg HTTP/1.1 304 - - 4 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:35:23 GMT+0530 (India Standard Time) - GET /uploads/news/news3.jpg HTTP/1.1 404 35 - 11 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:35:28 GMT+0530 (India Standard Time) - GET /uploads/news/news4.jpg HTTP/1.1 404 35 - 4 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:35:32 GMT+0530 (India Standard Time) - GET /uploads/news/news5.jpg HTTP/1.1 404 35 - 2 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:35:38 GMT+0530 (India Standard Time) - GET /uploads/news/news6.jpg HTTP/1.1 304 - - 5 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:35:54 GMT+0530 (India Standard Time) - GET /uploads/news/news4.jpg HTTP/1.1 404 35 - 2 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:35:58 GMT+0530 (India Standard Time) - GET /uploads/news/news4.webp HTTP/1.1 404 35 - 2 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:37:07 GMT+0530 (India Standard Time) - GET /uploads/news/news5.webp HTTP/1.1 304 - - 2 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:38:12 GMT+0530 (India Standard Time) - POST /news HTTP/1.1 200 52 - 691 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 12:38:17 GMT+0530 (India Standard Time) - GET /news HTTP/1.1 200 - - 78 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 12:39:03 GMT+0530 (India Standard Time) - GET /uploads/news/news2.jpg HTTP/1.1 - - - - - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:39:10 GMT+0530 (India Standard Time) - GET /uploads/news/news2.jpg HTTP/1.1 200 11048 - 4 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:39:34 GMT+0530 (India Standard Time) - GET /uploads/news/news4.jpg HTTP/1.1 200 8145 - 8 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:55:44 GMT+0530 (India Standard Time) - POST /news/gallery HTTP/1.1 200 52 - 12 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 12:56:09 GMT+0530 (India Standard Time) - POST /news/gallery HTTP/1.1 200 60 - 3814 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 12:56:16 GMT+0530 (India Standard Time) - GET /api/gallery HTTP/1.1 200 349 - 190 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 12:58:20 GMT+0530 (India Standard Time) - GET /uploads/news/artwork1.jpg HTTP/1.1 200 8716 - 24 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:58:33 GMT+0530 (India Standard Time) - GET /uploads/news/artwork5%20-%20Copy.jpg HTTP/1.1 200 10971 - 6 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 12:58:43 GMT+0530 (India Standard Time) - GET /uploads/news/artwork5.jpg HTTP/1.1 200 10971 - 6 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 13:00:32 GMT+0530 (India Standard Time) - POST /news/gallery HTTP/1.1 200 60 - 6034 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:00:36 GMT+0530 (India Standard Time) - GET /news HTTP/1.1 200 - - 83 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:00:58 GMT+0530 (India Standard Time) - GET /api/news/gallery HTTP/1.1 500 35 - 13 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:01:38 GMT+0530 (India Standard Time) - GET /api/news/gallery/ HTTP/1.1 500 35 - 11 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:03:03 GMT+0530 (India Standard Time) - GET /api/news/gallery/ HTTP/1.1 500 35 - 21 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:03:46 GMT+0530 (India Standard Time) - GET /api/news/gallery/ HTTP/1.1 500 35 - 30 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:04:03 GMT+0530 (India Standard Time) - GET /news/gallery HTTP/1.1 200 52 - 16 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:04:31 GMT+0530 (India Standard Time) - GET /news/gallery HTTP/1.1 200 629 - 1062 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:04:49 GMT+0530 (India Standard Time) - GET /uploads/news/artwork18.webp HTTP/1.1 200 217706 - 53 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 13:09:53 GMT+0530 (India Standard Time) - GET /education/ HTTP/1.1 200 52 - 21 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:10:52 GMT+0530 (India Standard Time) - GET /education/ HTTP/1.1 200 52 - 15 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:11:18 GMT+0530 (India Standard Time) - GET /education/ HTTP/1.1 200 52 - 8 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:11:35 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 376 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:15:59 GMT+0530 (India Standard Time) - POST /education HTTP/1.1 200 57 - 801 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:16:04 GMT+0530 (India Standard Time) - GET /education/ HTTP/1.1 200 52 - 3 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:16:23 GMT+0530 (India Standard Time) - GET /education/ HTTP/1.1 200 - - 913 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:16:49 GMT+0530 (India Standard Time) - GET /uploads/education/education1.jpg HTTP/1.1 200 5471 - 12 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 13:17:31 GMT+0530 (India Standard Time) - POST /education HTTP/1.1 200 57 - 396 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:17:35 GMT+0530 (India Standard Time) - GET /education/ HTTP/1.1 200 - - 226 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:17:47 GMT+0530 (India Standard Time) - GET /uploads/education/education1.jpg HTTP/1.1 200 5471 - 9 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 13:18:44 GMT+0530 (India Standard Time) - GET /uploads/education/educationPic2.jpg HTTP/1.1 200 11448 - 2329 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 13:22:45 GMT+0530 (India Standard Time) - GET /uploads/education/education2.jpg HTTP/1.1 - - - - - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 13:22:48 GMT+0530 (India Standard Time) - GET /uploads/education/education2.jpg HTTP/1.1 404 35 - 10 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 13:24:07 GMT+0530 (India Standard Time) - POST /education HTTP/1.1 200 57 - 211 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:24:13 GMT+0530 (India Standard Time) - GET /education/ HTTP/1.1 200 - - 139 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:24:40 GMT+0530 (India Standard Time) - GET /uploads/education/educationPic2.jpg HTTP/1.1 304 - - 8 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 13:25:40 GMT+0530 (India Standard Time) - GET /uploads/education/education4.jpg HTTP/1.1 200 4908 - 9 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 13:27:20 GMT+0530 (India Standard Time) - POST /education HTTP/1.1 200 57 - 3076 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 13:27:33 GMT+0530 (India Standard Time) - GET /education/ HTTP/1.1 200 - - 2904 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 14:43:35 GMT+0530 (India Standard Time) - GET /blog/ HTTP/1.1 200 - - 1199 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 14:44:00 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 80 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 14:57:11 GMT+0530 (India Standard Time) - POST /blog/ HTTP/1.1 200 52 - 23 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 14:57:31 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 1806 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 14:59:32 GMT+0530 (India Standard Time) - POST /blog/ HTTP/1.1 200 52 - 369 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 14:59:39 GMT+0530 (India Standard Time) - GET /blog/ HTTP/1.1 200 - - 100 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 14:59:55 GMT+0530 (India Standard Time) - GET /uploads/blog/artwork23.jpg HTTP/1.1 200 33008 - 25 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 15:02:15 GMT+0530 (India Standard Time) - POST /blog/ HTTP/1.1 200 52 - 3818 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 15:02:46 GMT+0530 (India Standard Time) - GET /blog/ HTTP/1.1 200 - - 3398 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 15:02:58 GMT+0530 (India Standard Time) - GET /uploads/blog/artwork11.jpg HTTP/1.1 200 49388 - 4 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 15:05:34 GMT+0530 (India Standard Time) - GET /uploads/blog/Zmikas_product.png HTTP/1.1 304 - - 17 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 15:09:00 GMT+0530 (India Standard Time) - POST /blog/ HTTP/1.1 200 52 - 240 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 15:16:28 GMT+0530 (India Standard Time) - POST /blog/ HTTP/1.1 200 52 - 2902 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 15:18:53 GMT+0530 (India Standard Time) - POST /blog/ HTTP/1.1 200 52 - 177 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 15:23:26 GMT+0530 (India Standard Time) - POST /blog/ HTTP/1.1 200 52 - 2512 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 15:23:32 GMT+0530 (India Standard Time) - GET /blog/ HTTP/1.1 200 - - 90 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 15:25:20 GMT+0530 (India Standard Time) - POST /blog/ HTTP/1.1 200 52 - 213 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 15:26:08 GMT+0530 (India Standard Time) - POST /blog/ HTTP/1.1 200 52 - 2238 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 15:26:34 GMT+0530 (India Standard Time) - GET /blog/ HTTP/1.1 200 - - 1379 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 15:27:20 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 88 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 15:33:36 GMT+0530 (India Standard Time) - GET /artist HTTP/1.1 200 - - 435 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 15:34:16 GMT+0530 (India Standard Time) - GET /blog/ HTTP/1.1 200 - - 272 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 15:48:11 GMT+0530 (India Standard Time) - POST /auth/login HTTP/1.1 200 521 - 2976 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:01:30 GMT+0530 (India Standard Time) - GET /api/comment/ HTTP/1.1 200 - - 159 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:02:20 GMT+0530 (India Standard Time) - GET /api/comment HTTP/1.1 200 - - 71 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:02:42 GMT+0530 (India Standard Time) - GET /api/comment/6391d4cbc3e6876af414cb78 HTTP/1.1 404 35 - 9 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:03:17 GMT+0530 (India Standard Time) - GET /api/comment/6391d4cbc3e6876af414cb78 HTTP/1.1 404 35 - 48 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:03:36 GMT+0530 (India Standard Time) - GET /api/comments/6391d4cbc3e6876af414cb78 HTTP/1.1 200 671 - 783 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:04:09 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 1382 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:11:45 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=63a2af57997476a4ce019722 HTTP/1.1 200 686 - 433 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:11:59 GMT+0530 (India Standard Time) - GET /uploads/blog/Zmikas_product.png HTTP/1.1 304 - - 6 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Thu Dec 22 2022 16:14:31 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 3457 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:15:28 GMT+0530 (India Standard Time) - POST /api/comment HTTP/1.1 200 57 - 513 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:15:38 GMT+0530 (India Standard Time) - GET /api/comments/63a2af57997476a4ce019722 HTTP/1.1 200 673 - 2010 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:17:42 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=63a2af57997476a4ce019722%20 HTTP/1.1 500 35 - 23 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:18:43 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=63a2af57997476a4ce019722%20 HTTP/1.1 500 35 - 50 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:18:48 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=63a2af57997476a4ce019722%20 HTTP/1.1 500 35 - 26 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:19:55 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=63a2af57997476a4ce019722%20 HTTP/1.1 500 35 - 33 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:21:36 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 3569 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:22:11 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=63a2af57997476a4ce019722%20 HTTP/1.1 500 35 - 14 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:22:54 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=63a2af57997476a4ce019722%20 HTTP/1.1 500 35 - 29 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:27:00 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=63a2af57997476a4ce019722%20 HTTP/1.1 200 131 - 17 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:28:13 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=63a2af57997476a4ce019722%20 HTTP/1.1 200 14 - 19 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:30:21 GMT+0530 (India Standard Time) - GET /api/blogs/ HTTP/1.1 200 14 - 69 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:30:47 GMT+0530 (India Standard Time) - GET /api/blogs/ HTTP/1.1 200 14 - 176 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:31:49 GMT+0530 (India Standard Time) - GET /api/blogs/ HTTP/1.1 200 38 - 121 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:32:17 GMT+0530 (India Standard Time) - GET /api/blogs/ HTTP/1.1 200 893 - 182 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:38:28 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 115 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:39:31 GMT+0530 (India Standard Time) - GET /api/event HTTP/1.1 200 - - 173 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:40:09 GMT+0530 (India Standard Time) - GET /api/event_type?event_type=Exibitions HTTP/1.1 200 - - 76 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:40:24 GMT+0530 (India Standard Time) - GET /api/featured_events HTTP/1.1 200 704 - 105 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:42:48 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=Mumbai HTTP/1.1 200 79 - 715 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:44:40 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=Mumbai HTTP/1.1 200 79 - 251 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:45:12 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=MUMBAI HTTP/1.1 200 458 - 101 - PostmanRuntime/7.30.0
+::1 - Thu Dec 22 2022 16:51:21 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=MUMBAI HTTP/1.1 200 471 - 462 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:08:57 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 200 - - 147 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:09:13 GMT+0530 (India Standard Time) - GET /uploads/artwork/frame1.jpg HTTP/1.1 200 2888 - 20 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Mon Jan 02 2023 15:14:40 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 2673 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:15:00 GMT+0530 (India Standard Time) - GET /api/artworks/?artwork_id=63a2fb957663050bc2896cd5 HTTP/1.1 200 - - 68 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:18:07 GMT+0530 (India Standard Time) - POST /api/search/?key=SHIVA HTTP/1.1 404 35 - 10 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:19:07 GMT+0530 (India Standard Time) - GET /api/search/?key=SHIVA HTTP/1.1 200 593 - 430 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:26:17 GMT+0530 (India Standard Time) - GET /api/search/?key=SHIVA HTTP/1.1 200 15 - 70 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:27:15 GMT+0530 (India Standard Time) - GET /api/search/?key=SHIVA HTTP/1.1 200 593 - 1071 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:28:10 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 - - 184 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:29:52 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 610 - 1243 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:30:13 GMT+0530 (India Standard Time) - GET /uploads/artwork/Shiva'.jpg HTTP/1.1 200 2473 - 11 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Mon Jan 02 2023 15:30:32 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 610 - 3230 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:30:50 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 610 - 6781 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:31:41 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 96 - 81 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:31:52 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 794 - 58 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:32:09 GMT+0530 (India Standard Time) - GET /uploads/artwork/frame4.jpg HTTP/1.1 200 3296 - 4 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Mon Jan 02 2023 15:41:06 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 201 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:50:30 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 179 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:51:39 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 153 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:53:26 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 3212 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:54:47 GMT+0530 (India Standard Time) - GET /api/artistName/?letter=G HTTP/1.1 200 - - 3074 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 15:54:54 GMT+0530 (India Standard Time) - GET /api/artistType/?type=Photographer HTTP/1.1 200 - - 180 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:21:25 GMT+0530 (India Standard Time) - GET /api/news_gallery HTTP/1.1 200 629 - 89 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:24:35 GMT+0530 (India Standard Time) - GET /uploads/news/artwork9.jpg HTTP/1.1 200 109217 - 2326 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Mon Jan 02 2023 16:27:43 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 2234 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:34:36 GMT+0530 (India Standard Time) - GET /api/blogs/6391d4cbc3e6876af414cb78 HTTP/1.1 404 35 - 221 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:34:57 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=6391d4cbc3e6876af414cb78%20 HTTP/1.1 200 879 - 100 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:40:53 GMT+0530 (India Standard Time) - GET /api/blogs/?blog_id=6391d4cbc3e6876af414cb78%20 HTTP/1.1 200 877 - 76 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:41:11 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=MUMBAI HTTP/1.1 200 469 - 70 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:41:29 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=MUM HTTP/1.1 200 79 - 64 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:41:33 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=MUM HTTP/1.1 200 79 - 1967 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:41:38 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=MUMBAI HTTP/1.1 200 469 - 64 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:41:52 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=Mini-diary HTTP/1.1 200 79 - 65 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:42:22 GMT+0530 (India Standard Time) - GET /api/blogSearch/?key=MUMBAI HTTP/1.1 200 469 - 86 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:42:49 GMT+0530 (India Standard Time) - GET /api/comments/63a2af57997476a4ce019722 HTTP/1.1 200 657 - 82 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:46:20 GMT+0530 (India Standard Time) - POST /api/chitchat HTTP/1.1 200 54 - 4381 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:46:55 GMT+0530 (India Standard Time) - POST /api/chitchat HTTP/1.1 200 54 - 9811 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:47:34 GMT+0530 (India Standard Time) - GET /api/testimonial/ HTTP/1.1 200 173 - 146 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:47:46 GMT+0530 (India Standard Time) - GET /api/clients/logo HTTP/1.1 200 49 - 419 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:47:51 GMT+0530 (India Standard Time) - GET /api/education HTTP/1.1 200 - - 57 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 16:48:04 GMT+0530 (India Standard Time) - GET /uploads/education/education1.jpg HTTP/1.1 200 5471 - 32 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Mon Jan 02 2023 17:09:23 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 194 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:09:51 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 343 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:11:16 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 1182 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:11:59 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 185 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:13:31 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 338 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:14:42 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 356 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:17:22 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 302 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:18:38 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 248 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:28:56 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 169 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:30:13 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 223 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:33:21 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 300 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:38:49 GMT+0530 (India Standard Time) - GET /api/artistType/?type=Photographer HTTP/1.1 200 - - 129 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:39:47 GMT+0530 (India Standard Time) - GET /api/artistType/?type=Photographer HTTP/1.1 200 - - 202 - PostmanRuntime/7.30.0
+::1 - Mon Jan 02 2023 17:40:13 GMT+0530 (India Standard Time) - GET /api/blog HTTP/1.1 200 - - 74 - PostmanRuntime/7.30.0
+
+::1 - Fri Jan 06 2023 10:12:10 GMT+0530 (India Standard Time) - POST /api/artwork HTTP/1.1 200 649 - 251 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 10:15:23 GMT+0530 (India Standard Time) - GET /api/artwork HTTP/1.1 200 - - 172 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 10:15:35 GMT+0530 (India Standard Time) - GET /api/artistName/?letter=G HTTP/1.1 200 - - 2993 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 11:18:10 GMT+0530 (India Standard Time) - GET /api/cart HTTP/1.1 200 49 - 99 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 11:46:27 GMT+0530 (India Standard Time) - GET /api/userCart?userId=123456789 HTTP/1.1 200 49 - 1207 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 11:46:34 GMT+0530 (India Standard Time) - GET /api/cart HTTP/1.1 200 49 - 67 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 13:44:13 GMT+0530 (India Standard Time) - POST /api/cart HTTP/1.1 200 52 - 217 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 13:44:26 GMT+0530 (India Standard Time) - GET /api/userCart?userId=123456789 HTTP/1.1 200 49 - 83 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 13:45:11 GMT+0530 (India Standard Time) - GET /api/userCart?userId=123456789 HTTP/1.1 200 49 - 109 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 13:45:38 GMT+0530 (India Standard Time) - GET /api/cart HTTP/1.1 200 810 - 1011 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 13:45:48 GMT+0530 (India Standard Time) - GET /uploads/cart/framesframe1.jpg HTTP/1.1 404 35 - 10 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Fri Jan 06 2023 13:48:33 GMT+0530 (India Standard Time) - GET /api/cart HTTP/1.1 200 49 - 134 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 13:48:40 GMT+0530 (India Standard Time) - POST /api/cart HTTP/1.1 200 52 - 129 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 13:48:46 GMT+0530 (India Standard Time) - GET /api/cart HTTP/1.1 200 811 - 72 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 13:49:25 GMT+0530 (India Standard Time) - GET /api/userCart?userId=123456789 HTTP/1.1 200 49 - 2092 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 13:49:38 GMT+0530 (India Standard Time) - GET /api/userCart?userId=1234567890 HTTP/1.1 200 811 - 314 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 13:49:47 GMT+0530 (India Standard Time) - GET /uploads/cart/frames/frame1.jpg HTTP/1.1 200 2888 - 6 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Fri Jan 06 2023 16:19:43 GMT+0530 (India Standard Time) - POST /api/contact HTTP/1.1 200 67 - 9170 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 16:20:19 GMT+0530 (India Standard Time) - POST /api/confirmEnquiryEmail HTTP/1.1 200 67 - 17217 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 16:21:29 GMT+0530 (India Standard Time) - POST /api/confirmEnquiryEmail HTTP/1.1 200 67 - 10035 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 16:38:30 GMT+0530 (India Standard Time) - POST /api/confirmEnquiryEmail HTTP/1.1 200 75 - 1217 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 16:39:10 GMT+0530 (India Standard Time) - POST /api/confirmEnquiryEmail HTTP/1.1 200 67 - 5721 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 17:23:22 GMT+0530 (India Standard Time) - POST /api/confirmEnquiryEmail HTTP/1.1 200 67 - 12471 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 17:31:55 GMT+0530 (India Standard Time) - POST /api/confirmEnquiryEmail HTTP/1.1 200 67 - 7482 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 17:34:20 GMT+0530 (India Standard Time) - POST /api/confirmEnquiryEmail HTTP/1.1 200 67 - 12272 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 17:49:09 GMT+0530 (India Standard Time) - POST /api/confirmEnquiryEmail HTTP/1.1 200 67 - 17537 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 17:55:55 GMT+0530 (India Standard Time) - POST /api/confirmEnquiryEmail HTTP/1.1 200 67 - 11752 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 18:12:47 GMT+0530 (India Standard Time) - POST /api/confirmEnquiryEmail HTTP/1.1 200 67 - 12454 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 18:17:59 GMT+0530 (India Standard Time) - POST /api/confirmEnquiryEmail HTTP/1.1 200 67 - 11447 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 18:20:30 GMT+0530 (India Standard Time) - POST /api/confirmEnquiryEmail HTTP/1.1 200 67 - 7089 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 18:22:02 GMT+0530 (India Standard Time) - POST /api/confirmEnquiryEmail HTTP/1.1 200 67 - 13984 - PostmanRuntime/7.30.0
+::1 - Fri Jan 06 2023 18:35:40 GMT+0530 (India Standard Time) - POST /api/confirmEnquiryEmail HTTP/1.1 200 67 - 12794 - PostmanRuntime/7.30.0

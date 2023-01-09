@@ -25,8 +25,8 @@ var storage = multer.diskStorage({
     cb(null, file.originalname)
   },
 });
-var upload = multer({ storage: storage });
 
+var upload = multer({ storage: storage });
 router.get("/comment", function (req, res, next) {
   db.get()
     .collection("comment")
@@ -37,11 +37,11 @@ router.get("/comment", function (req, res, next) {
     });
 });
 
-router.post("/artwork", function (req, resp, next) {  
+router.post("/artwork", function (req, resp, next) {
   try {
     const body = req.body
     // resp.send({ req : body })
-    const page = parseInt(body.page)  
+    const page = parseInt(body.page)
     const limit = parseInt(body.limit)
     const category = body.category ? body.category : ""
     const techniques = body.techniques ? body.techniques : ""
@@ -104,13 +104,13 @@ router.post("/artwork", function (req, resp, next) {
       db.get().collection("artwork").find({
         $or:
           [{ category: { $regex: `${category[0]}` } }, { category: { $regex: `${category[1]}` } }, { category: { $regex: `${category[2]}` } }, { category: { $regex: `${category[3]}` } }, { category: { $regex: `${category[4]}` } }, { category: { $regex: `${category[5]}` } }, { category: { $regex: `${category[6]}` } }, { category: { $regex: `${category[7]}` } }, { category: { $regex: `${category[8]}` } }, { category: { $regex: `${category[9]}` } }, { category: { $regex: `${category[10]}` } }, { category: { $regex: `${category[3]}` } }, { category: { $regex: `${category[4]}` } }, { category: { $regex: `${category[5]}` } }, { style: { $regex: `${style[0]}` } }, { style: { $regex: `${style[1]}` } }, { style: { $regex: `${style[2]}` } }, { style: { $regex: `${style[3]}` } }, { style: { $regex: `${style[4]}` } }, { style: { $regex: `${style[5]}` } }, { style: { $regex: `${style[6]}` } }, { style: { $regex: `${style[7]}` } }, { style: { $regex: `${style[8]}` } }, { techniques: { $regex: `${techniques[0]}` } }, { techniques: { $regex: `${techniques[1]}` } }, { techniques: { $regex: `${techniques[2]}` } }, { techniques: { $regex: `${techniques[3]}` } }, { techniques: { $regex: `${techniques[4]}` } }, { techniques: { $regex: `${techniques[5]}` } }, { techniques: { $regex: `${techniques[6]}` } }, { techniques: { $regex: `${techniques[7]}` } }, { techniques: { $regex: `${techniques[8]}` } }, { techniques: { $regex: `${techniques[9]}` } }, { techniques: { $regex: `${techniques[10]}` } }, { techniques: { $regex: `${techniques[11]}` } }, { techniques: { $regex: `${techniques[12]}` } }, { techniques: { $regex: `${techniques[13]}` } }, { artwork: { $regex: `${artwork[0]}` } }, { artwork: { $regex: `${artwork[1]}` } }, { artwork: { $regex: `${artwork[2]}` } }, { artwork: { $regex: `${artwork[3]}` } }, { artwork: { $regex: `${artwork[4]}` } }]
-      }).toArray((err, res) => { 
+      }).toArray((err, res) => {
         if (err) resp.send({ status: 400, success: false, error: err })
         else {
           // console.log(res.filter(item => item.buyPrice <= 50000))
-          var counterResult = res.filter(function(item) {
+          var counterResult = res.filter(function (item) {
             return item.buyPrice <= price;
-        });
+          });
           totalRecord = counterResult.length
           pages = Math.ceil(counterResult.length / limit)
           console.log(counterResult.length, limit, "pages" + pages)
@@ -125,9 +125,9 @@ router.post("/artwork", function (req, resp, next) {
                 error: err
               })
               else {
-                var results = result.filter(function(item) {
+                var results = result.filter(function (item) {
                   return item.buyPrice <= price;
-              });
+                });
                 resp.send(httpUtil.success(200, "Artwork Data", { pageNumber: page, limits: limit, perPageCount: results.length, totalPages: pages, count: totalRecord, data: results }));
               }
             });
@@ -318,7 +318,7 @@ router.post("/cart", upload.array("selectedFrames"), async function (req, res, n
     const body = req.body
     if (imageFiles) {
       for (let i = 0; i < imageFiles.length; i++) {
-        let imgObj = "http://localhost:3000/" + `${imageFiles[i].destination}` + `${imageFiles[i].originalname}`
+        let imgObj = "http://localhost:3000/uploads/cart/frames/" + `${imageFiles[i].originalname}`
         imagePath.push(imgObj)
       }
       body.selectedFrames = imagePath
@@ -331,6 +331,8 @@ router.post("/cart", upload.array("selectedFrames"), async function (req, res, n
       // buyPrice: body.buyPrice ? body.buyPrice : "",
       // rentPrice: body.rentPrice ? body.rentPrice : "",
       artistName: body.artistName ? body.artistName : "",
+      buy: body.buy ? true : false,
+      rent: body.rent ? false : true
       // cartId: body.cartId ? body.cartId : ""
     }
 
@@ -559,54 +561,85 @@ router.post("/confirmEnquiryEmail", function (req, res, next) {
 
   try {
     const body = req.body
-    const data = {
-      name: body.name ? body.name : "",
-      email: body.email ? body.email : "",
-      phone: body.phone ? body.phone : "",
-      date: body.data ? body.date : "",
-      artworkName: body.artworkName ? body.artworkName : "",
-      buyPrice: body.buyPrice ? body.buyPrice : body.rentPrice,
-    }
-    var adminOptions = {
-      from: secret.ADMIN_EMAIL,
-      to: "av686715@gmail.com",
-      subject: body.buyPrice ? "we got enquiry for buy Artwork from Art India Art" : "enquiry for rent Artwork from Art India Art",
-      html: `<b>Artwork Name</b> : <h3>${body.artworkName}</h3><br> <b>Rate</b> : <h3>${body.buyPrice ? body.buyPrice : body.rentPrice}</h3><br><b>Message</b> : <h3>We will contact to you soon !</h3><br>`
-    };
+    if (body.name !== "" || body.email !== "" || body.address !== "" || body.phone !== "" || body.buyPrice !== "" || body.artworkName !== "") {
+      var adminOptions = {
+        from: secret.ADMIN_EMAIL,
+        to: body.email,
+        subject: body.buyPrice ? "we got new enquiry for buy Artwork from Art India Art" : "enquiry for rent Artwork from Art India Art",
+        html: `
+      <html>
+        <body>
+        <table border="1">
+          <caption><b>Client Information</b></caption>
+          <tr>
+            <th>Client Name : <th>
+            <td colspan=2>${body.name}<td>
+          </tr>
+          <tr>
+            <th>Client Email : <th>
+            <td colspan=2>${body.email}<td>
+          </tr>
+          <tr>
+            <th>Client Contact : <th>
+            <td colspan=2>${body.phone}<td>
+          </tr>
+          <tr>
+            <th>Client Address : <th>
+            <td colspan=2>${body.address}<td>
+          </tr>
+          <tr>
+            <th>Product : <th>
+            <td colspan=2>${body.artworkName}<td>
+          </tr>
+          <tr>
+            <th>Price : <th>
+            <td colspan=2>${body.buyPrice ? body.buyPrice : body.rentPrice}<td>
+          </tr>
+          <tr>
+            <th>Selected Frame Url : </th>
+            <td colspan=2><a href=${body.selectedFramesUrl}>Click here to view frame</a></td>
+          </tr>
+        </table>
+          </body>
+            </html>
+          `
+      };
 
-    var mailOptions = {
-      from: secret.ADMIN_EMAIL,
-      to: body.email,
-      subject: body.buyPrice ? "we got enquiry for buy Artwork from Art India Art" : "enquiry for rent Artwork from Art India Art",
-      html: `<b>Artwork Name</b> : <h3>${body.artworkName}</h3><br> <b>Rate</b> : <h3>${body.buyPrice ? body.buyPrice : body.rentPrice}</h3><br><b>Message</b> : <h3>We will contact to you soon !</h3><br>`
-    };
-
-    db.get()
-      .collection("confirmEnquiryEmail")
-      .insertOne(data, function (err, dbresult) {
-        if (err)
-          res.status(500).send(httpUtil.error(500, "confirm EnquiryEmail Creation Failed."));
-        else {
-          transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-              res.send(error);
-            } else {
-              transporter.sendMail(adminOptions, function (err, result) {
-                if (err) {
-                  res.send({ status: 400, error: err.message, success: false })
-                }
-                else {
-                  res.send({
-                    success: true,
-                    status: 200,
-                    message: `Email sent to ` + `${body.email}` + " confirm order Details added successfully !"
-                  })
-                }
+      var mailOptions = {
+        from: secret.ADMIN_EMAIL,
+        to: body.email,
+        subject: body.buyPrice ? "we got enquiry for buy Artwork from Art India Art" : "enquiry for rent Artwork from Art India Art",
+        html: `<div style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"><b>Artwork Name</b> : <h3>${body.artworkName}</h3><br> <b>Rate</b> : <h3>${body.buyPrice ? body.buyPrice : body.rentPrice}</h3><br><b>Message</b> : <h3>Our team will contact to you soon !</h3><br></div>`
+      };
+      transporter.sendMail(mailOptions, function (err, info) {
+        if (err) {
+          res.send({ status: 400, success: false, error: err })
+        } else {
+          transporter.sendMail(adminOptions, (err, confirm) => {
+            if (err) {
+              res.send({
+                error: err,
+                status: 400,
+                success: false
               })
             }
-          });
+            console.log(confirm.response)
+            res.send({
+              success: true,
+              status: 200,
+              message: "Email sent successfully !"
+            })
+          })
         }
       });
+    }
+    else {
+      res.send({
+        status: 400,
+        error: "all fields are requirs",
+        success: false
+      })
+    }
   } catch (err) {
     res.send({
       status: 400,
@@ -1424,6 +1457,5 @@ module.exports = router;
 
   http://localhost:3000/api/blog
   *get API updated 
-  
   
 */
