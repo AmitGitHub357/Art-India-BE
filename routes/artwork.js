@@ -20,7 +20,7 @@ var storage = multer.diskStorage({
     cb(null, "public/uploads/artwork/");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname)       
+    cb(null, file.originalname)
   },
 });
 
@@ -37,12 +37,11 @@ router.get("/", function (req, res, next) {
 
 
 router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { name: "frameImages", maxCount: 20 }]), async function (req, res, next) {
-  // res.send({ body : req.body })
-  var imagesPath = [], framePath = [] 
-  var imagesFile = [], frameFile = [] 
-  var body = req.body;  
-  if (Object.keys(req.files).length != 0) { 
-    if (Object.keys(req.files).includes('images')) {  
+  var imagesPath = [], framePath = []
+  var imagesFile = [], frameFile = []
+  var body = req.body;
+  if (Object.keys(req.files).length != 0) {
+    if (Object.keys(req.files).includes('images')) {
       imagesFile = await req.files.images
     }
     if (Object.keys(req.files).includes('frameImages')) {
@@ -67,7 +66,7 @@ router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { nam
     artworkName: body.artworkName,
     artistId: ObjectId(body.artistId),
     shortDescription: body.shortDescription,
-    description : body.description,
+    description: body.description,
     buyPrice: body.buyPrice,
     rentPrice: body.rentPrice,
     size: body.size,
@@ -89,15 +88,15 @@ router.post("/", jwt.authenticateToken, upload.fields([{ name: "images" }, { nam
     .insertOne(data, function (err, dbresult) {
       if (err)
         res.status(500).send(httpUtil.error(500, "artwork Creation Failed."));
-          else
-            res.send({
-              status: 200,
-              success: true,
-              message: "Artwork Created"
-            })
-        });
-      });
-      // res.send(httpUtil.success(200, "artwork Created."));
+      else
+        res.send({
+          status: 200,
+          success: true,
+          message: "Artwork Created"
+        })
+    });
+});
+// res.send(httpUtil.success(200, "artwork Created."));
 //     });
 // })
 

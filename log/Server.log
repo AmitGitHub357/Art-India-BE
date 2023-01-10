@@ -15,3 +15,37 @@
 ::1 - Mon Jan 09 2023 15:14:20 GMT+0530 (India Standard Time) - GET /api/artist HTTP/1.1 200 - - 1375 - PostmanRuntime/7.30.0
 ::1 - Mon Jan 09 2023 15:14:37 GMT+0530 (India Standard Time) - GET /api/artist?type=Designers HTTP/1.1 200 - - 361 - PostmanRuntime/7.30.0
 ::1 - Mon Jan 09 2023 15:15:38 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork2.jpg HTTP/1.1 200 4421 - 13 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Mon Jan 09 2023 16:49:45 GMT+0530 (India Standard Time) - GET /api/artistName/?letter=G HTTP/1.1 200 - - 23011 - PostmanRuntime/7.30.0
+::1 - Mon Jan 09 2023 16:50:41 GMT+0530 (India Standard Time) - GET /api/artistName/?letter=G HTTP/1.1 200 - - 209 - PostmanRuntime/7.30.0
+::1 - Mon Jan 09 2023 16:52:51 GMT+0530 (India Standard Time) - GET /api/artistName/?letter=d HTTP/1.1 200 173 - 188 - PostmanRuntime/7.30.0
+::1 - Mon Jan 09 2023 17:05:04 GMT+0530 (India Standard Time) - GET /api/artistName/?letter=d HTTP/1.1 200 94 - 400 - PostmanRuntime/7.30.0
+::1 - Tue Jan 10 2023 10:07:20 GMT+0530 (India Standard Time) - GET /api/artistName/?letter=d HTTP/1.1 200 94 - 2136 - PostmanRuntime/7.30.0
+::1 - Tue Jan 10 2023 10:07:36 GMT+0530 (India Standard Time) - GET /api/artistName/?letter=s HTTP/1.1 200 - - 267 - PostmanRuntime/7.30.0
+::1 - Tue Jan 10 2023 10:24:01 GMT+0530 (India Standard Time) - GET /api/blogSearch HTTP/1.1 200 304 - 279 - PostmanRuntime/7.30.0
+::1 - Tue Jan 10 2023 10:24:37 GMT+0530 (India Standard Time) - GET /api/blogSearch HTTP/1.1 200 304 - 78 - PostmanRuntime/7.30.0
+::1 - Tue Jan 10 2023 10:24:40 GMT+0530 (India Standard Time) - GET /api/blogSearch HTTP/1.1 200 304 - 80 - PostmanRuntime/7.30.0
+::1 - Tue Jan 10 2023 10:27:49 GMT+0530 (India Standard Time) - GET /api/blogSearch HTTP/1.1 200 926 - 1487 - PostmanRuntime/7.30.0
+::1 - Tue Jan 10 2023 10:28:26 GMT+0530 (India Standard Time) - GET /uploads/blog/Zmikas_product.png HTTP/1.1 200 393133 - 14 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 10:29:50 GMT+0530 (India Standard Time) - GET /public/uploads/artwork/artistGaurav.jpg HTTP/1.1 404 35 - 8 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 10:30:10 GMT+0530 (India Standard Time) - GET /public/uploads/artwork/artistShweta.jpg HTTP/1.1 404 35 - 6 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 10:30:51 GMT+0530 (India Standard Time) - GET /public/uploads/artist/artistGaurav.jpg HTTP/1.1 404 35 - 2 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 10:33:47 GMT+0530 (India Standard Time) - GET /uploads/artist/artistGaurav.jpg HTTP/1.1 200 4719 - 3 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 10:36:07 GMT+0530 (India Standard Time) - GET /uploads/artist/artistAnkit.jpg HTTP/1.1 200 2794 - 3 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 10:55:26 GMT+0530 (India Standard Time) - GET /uploads/artist/artistAmit.jpg HTTP/1.1 200 6021 - 4 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 11:28:27 GMT+0530 (India Standard Time) - GET /uploads/artwork/frame1.jpg HTTP/1.1 304 - - 7 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 11:28:44 GMT+0530 (India Standard Time) - GET /uploads/artwork/frame2.jpg HTTP/1.1 304 - - 3 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 11:29:06 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork18.webp HTTP/1.1 200 217706 - 7 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 11:29:27 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork3.jpg HTTP/1.1 200 15926 - 4 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 11:29:45 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork3.jpg HTTP/1.1 304 - - 2 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 11:30:09 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork6.jpg HTTP/1.1 200 5738 - 6 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 11:30:29 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork6.jpg HTTP/1.1 304 - - 1 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 11:30:46 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork2.jpg HTTP/1.1 304 - - 10 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 11:30:59 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork19.jpg HTTP/1.1 200 94092 - 6 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 11:31:18 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork19.jpg HTTP/1.1 304 - - 2 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 11:31:38 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork15.jpg HTTP/1.1 200 83234 - 163 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 11:32:07 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork15.jpg HTTP/1.1 304 - - 1 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 11:32:22 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork15.jpg HTTP/1.1 304 - - 7 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 11:32:35 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork15.jpg HTTP/1.1 304 - - 4 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 11:32:39 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork17.jpg HTTP/1.1 200 60738 - 8 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 11:32:53 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork17.jpg HTTP/1.1 304 - - 1 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+::1 - Tue Jan 10 2023 11:32:57 GMT+0530 (India Standard Time) - GET /uploads/artwork/artwork17.jpg HTTP/1.1 304 - - 1 - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36

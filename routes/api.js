@@ -788,9 +788,9 @@ router.get("/artistName", function (req, res, next) {
               as: "painting"
             }
           },
-          { $match: { name: { $regex: '^' + letter + '' } } }
+          { $match: { name: { $regex: '^' + letter + '' , '$options' : 'i' } } } 
         ]).skip(skips).limit(limit).toArray((err, result) => {
-          if (err) res.send({ error: err.message, success: false, status: 400 })
+          if (err) res.send({ error: err.message, success: false, status: 400 }) 
           else {
             res.send({ success: true, pageNumber: page, perPageCount: result.length, limits: limit, totalPages: pages, count: totalRecord, data: result })
           }
@@ -1096,8 +1096,8 @@ router.get("/blogCategory", function (req, res, next) {
 //   }
 // });
 
-router.get("/artist", function (req, res, next) { 
-  const type = req.query.type 
+router.get("/artist", function (req, res, next) {
+  const type = req.query.type
   // res.send({ type })
   const body = req.body
   const page = parseInt(body.page)
@@ -1106,7 +1106,7 @@ router.get("/artist", function (req, res, next) {
   var totalRecord = 0
   var pages = 0
   if (type) {
-    db.get().collection("artist").find({ artist_type : type }).skip(skips).limit(limit).toArray((err, resp) => {
+    db.get().collection("artist").find({ artist_type: type }).skip(skips).limit(limit).toArray((err, resp) => {
       if (err) {
         res.send({
           status: 400,
@@ -1127,16 +1127,16 @@ router.get("/artist", function (req, res, next) {
               as: "painting"
             }
           },
-          { $match : { artist_type : type }}
+          { $match: { artist_type: type } }
           // { $unwind: "$painting" },
         ]).toArray((err, result) => {
-          if (err) res.send({ error: err, status : 400, success : false })
+          if (err) res.send({ error: err, status: 400, success: false })
           else
             // for (var i = 0; i < result.length; i++) {
             //   console.log(result[i].name)
             // }
-          // res.send({ status: 200, count: result.length, data: result, success: true })
-          res.send({ success: true, pageNumber: page, perPageCount: result.length, limits: limit, totalPages: pages, count: totalRecord, data: result })
+            // res.send({ status: 200, count: result.length, data: result, success: true })
+            res.send({ success: true, pageNumber: page, perPageCount: result.length, limits: limit, totalPages: pages, count: totalRecord, data: result })
         })
       }
     })
@@ -1167,10 +1167,10 @@ router.get("/artist", function (req, res, next) {
           if (err) res.send({ error: err.message })
           else
             // for (var i = 0; i < result.length; i++) {
-              // console.log(result[i].name)
+            // console.log(result[i].name)
             // }
-          // res.send({ status: 200, count: result.length, data: result, success: true })
-          res.send({ success: true, pageNumber: page, perPageCount: result.length, limits: limit, totalPages: pages, count: totalRecord, data: result })
+            // res.send({ status: 200, count: result.length, data: result, success: true })
+            res.send({ success: true, pageNumber: page, perPageCount: result.length, limits: limit, totalPages: pages, count: totalRecord, data: result })
         })
       }
     })
